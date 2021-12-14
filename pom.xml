@@ -27,6 +27,7 @@
         <jackson.version>2.12.3</jackson.version>
         <cucumber.version>4.8.1</cucumber.version>
         <cucumberjvm.version>1.0.5</cucumberjvm.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <restAssured.version>4.4.0</restAssured.version>
         <groovy.version>3.0.7</groovy.version>
         <mongodb.version>3.12.8</mongodb.version>
@@ -112,9 +113,27 @@
             <version>${restAssured.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
 
@@ -123,6 +142,13 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${javaclient.version}</version>
         </dependency>
 
         <dependency>
@@ -149,6 +175,13 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
+        <dependency>
+            <groupId>com.relevantcodes</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extenReport.version}</version>
         </dependency>
 
         <dependency>
