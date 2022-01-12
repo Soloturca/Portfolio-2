@@ -1,4 +1,4 @@
-package api.model.Character;
+package api.model.JSON.Character;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

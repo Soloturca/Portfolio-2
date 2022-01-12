@@ -1,5 +1,7 @@
-package api.model.Character;
+package api.model.JSON.Character;
 
+import api.model.JSON.Character.Location;
+import api.model.JSON.Character.Origin;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;

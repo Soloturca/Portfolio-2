@@ -1,15 +1,15 @@
 package base;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+import java.util.*;
 
+import api.model.JSON.ParameterDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 
 
@@ -118,6 +118,24 @@ public class CommonLib {
         try {
             return mapper.readValue(stringResponse, dataClass);
         } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //-------------------------------------------------------------------------------------
+    // The method that integrates the return result set with the response class.
+    //-------------------------------------------------------------------------------------
+    public static Map<String, String> queryMap(String name, String status, String species, String type, String gender) {
+        Map<String, String> map = new HashMap<>();
+        try {
+            map.put(String.valueOf(ParameterDTO.name), name);
+            map.put(String.valueOf(ParameterDTO.status), status);
+            map.put(String.valueOf(ParameterDTO.species), species);
+            map.put(String.valueOf(ParameterDTO.type), type);
+            map.put(String.valueOf(ParameterDTO.gender), gender);
+            return map;
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return null;

@@ -26,5 +26,16 @@ public class MyStepdefs {
         CharacterMethods obj = new CharacterMethods();
         Assert.assertTrue(obj.controlAllCharacterForName(desiredData));
     }
+
+    @Given("According to {string}, filtering is done according to the {string},{string},{string},{string} and {string} fields.")
+    public void accordingToFilteringIsDoneAccordingToTheAndFields(String desiredPath, String name, String status, String species, String type, String gender) {
+        CharacterMethods obj = new CharacterMethods();
+        Assert.assertTrue(obj.getSpesificCharacterWithFilterParameter(desiredPath, name, status, species, type, gender));
+    }
+
+    @Then("Use Soap")
+    public void useSoap() {
+
+    }
 }
 
