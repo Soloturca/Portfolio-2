@@ -37,6 +37,5 @@ public class RequestBody {
         //Request
         Request request=new Request();
         request.setIMSI("");
-        request.setMSISDN(5490002981);
     }
 }
