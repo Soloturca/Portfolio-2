@@ -1,5 +1,6 @@
 package api.body;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
@@ -9,8 +10,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.ContentType.XML;
 
-public class ResponseBody
-{
+public class ResponseBody {
 
     /**
      * Function:GetResponse
@@ -23,17 +23,39 @@ public class ResponseBody
      *                       Author: Hilal Yilmaz
      *                       Date: 04-06-21
      */
-    public static Response getResponse(String reqBody, String token, String desiredPostURL, Map<String,String> map) {
-        return given()
-                .header("Authorization", "Bearer " + token)
-                .contentType(JSON)
-                .queryParams(map)
-                .and()
-                .body(reqBody)
-                .when()
-                .get(desiredPostURL)
-                .then()
-                .extract().response();
+
+    public static Response getResponse(String desiredRequest, String reqBody, String token, String desiredPostURL, Map<String, String> map) {
+
+        try {
+            switch (desiredRequest) {
+                case "GET":
+                    return given()
+                            .header("Authorization", "Bearer " + token)
+                            .contentType(JSON)
+                            .queryParams(map)
+                            .and()
+                            .body(reqBody)
+                            .when()
+                            .get(desiredPostURL)
+                            .then()
+                            .extract().response();
+                case "POST":
+                    return given()
+                            .header("Authorization", "Bearer " + token)
+                            .contentType(JSON)
+                            .queryParams(map)
+                            .and()
+                            .body(reqBody)
+                            .when()
+                            .post(desiredPostURL)
+                            .then()
+                            .extract().response();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -47,17 +69,40 @@ public class ResponseBody
      *                       Author: Hilal Yilmaz
      *                       Date: 04-06-21
      */
-    public static Response getResponse(String reqBody, String token, String desiredPostURL) {
-        return given()
-                .header("Authorization", "Bearer " + token)
-                .contentType(JSON)
-                .and()
-                .body(reqBody)
-                .when()
-                .get(desiredPostURL)
-                .then()
-                .extract().response();
+    public static Response getResponse(String desiredRequest, String reqBody, String token, String desiredPostURL) {
+        try {
+            switch (desiredRequest) {
+                case "GET":
+                    return given()
+                            .header("Authorization", "Bearer " + token)
+                            .contentType(JSON)
+                            .body(reqBody)
+                            .when()
+                            .get(desiredPostURL)
+                            .then().statusCode(HttpStatus.SC_OK)
+                            .extract().response();
+                case "POST":
+                    return given()
+                            .header("Authorization", "Bearer " + token)
+                            .header("User-Agent", "PostmanRuntime/7.28.4")
+                            .header("Accept-Encoding", "gzip, deflate, br")
+                            .header("Connection", "keep-alive")
+                            .contentType(ContentType.JSON)
+                            .accept("*/*")
+                            .body(reqBody)
+                            .when()
+                            .post(desiredPostURL)
+                            .then().statusCode(HttpStatus.SC_OK)
+                            .extract().response();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+
+
 
     /**
      * Function:GetResponseWithBasicAuthentication
@@ -82,7 +127,7 @@ public class ResponseBody
     }
 
     public static Response getResponseWithSOAPAPI(String reqBody, String desiredPostURL) {
-        return  given()
+        return given()
                 .request().body(reqBody)
                 .contentType(XML)
                 .headers("SOAPAction", "findSoapAction").
@@ -92,4 +137,7 @@ public class ResponseBody
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK).extract().response();
     }
+
+
 }
+

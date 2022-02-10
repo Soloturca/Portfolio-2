@@ -5,5 +5,7 @@ public enum ParameterDTO {
     status,
     type,
     species,
-    gender;
+    gender,
+    sid,
+    method;
 }
