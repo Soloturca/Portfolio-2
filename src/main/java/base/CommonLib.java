@@ -1,16 +1,14 @@
 package base;
 
-import java.io.IOException;
-import java.util.*;
-
 import api.model.JSON.ParameterDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
-import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
+
+import java.io.IOException;
+import java.util.*;
 
 
 public class CommonLib {
@@ -28,22 +26,6 @@ public class CommonLib {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------
-    // This method compares the given element with a String expression.
-    //------------------------------------------------------------------------------------------------------------
-
-    public static boolean controlText(WebElement element, String expectedText) {
-        boolean flag = false;
-        try {
-            if (element.getText().contains(expectedText)) {
-                flag = true;
-            }
-        } catch (NoSuchElementException e) {
-            Assert.fail("The words do not match. Expected: " + expectedText + ", Actual: " + element.getText());
-        }
-        return flag;
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------
     // This method compares the given String with a String expression.
     //------------------------------------------------------------------------------------------------------------
 
@@ -55,22 +37,6 @@ public class CommonLib {
             }
         } catch (NoSuchElementException e) {
             Assert.fail("The words do not match. Expected: " + expectedText + ", Actual: " + actualText);
-        }
-        return flag;
-    }
-
-    //-------------------------------------------------------------------------------------
-    // This method checks if there is a String expression given in the list.
-    //-------------------------------------------------------------------------------------
-
-    public static boolean controlText(List<WebElement> oList, String expectedText) {
-        boolean flag = false;
-        for (WebElement element : oList) {
-            if (element.getText().toUpperCase(Locale.ROOT)
-                    .contains(expectedText.toUpperCase(Locale.ROOT))) {
-                flag = true;
-                break;
-            }
         }
         return flag;
     }
@@ -177,6 +143,13 @@ public class CommonLib {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String integerToString(String variable){
+        int x = Integer.parseInt(variable.substring(0,variable.lastIndexOf(".")));
+        x=x+1;
+        variable = Integer.toString(x);
+        return variable;
     }
 
 }
