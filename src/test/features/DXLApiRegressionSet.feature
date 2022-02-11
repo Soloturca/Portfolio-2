@@ -1,10 +1,9 @@
 Feature: DXLApi
 
-  Scenario: getVFMallOfferingDetailsResponseValidation
+  Scenario: getVFMallOfferingDetails stok miktarı, satış fiyatı ve liste fiyatı kontrolü
     Given createSessionId "POST" request'i ile sessionId olusturulur
     And getVFMallOfferingDetails "POST" requestine sessionId parametresi eklenir ve servis tetiklenir
     Then "VFMallOffering" Response Body icin kontrol edilir
-    #And mongodbde "vfProductGroup" filtresiyle kontrol saglanir
 
   Scenario: getVFMallHomePageResponseValidation
     Given createSessionID URL'i "POST" edilerek sessionID elde edilir.
@@ -13,43 +12,43 @@ Feature: DXLApi
 
   Scenario Outline: createVfMallOfferingOfferOlusturma
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ile tetiklenir
+    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
-    #And mongodbde "code" filtresiyle kontrol saglanir
     Examples:
-      | barcode | maxSaleCount | expectedResultCode | expectedErrorMessage            | expectedResult |
-      |         | 110          | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        |
+      | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult |
+      |         | 110          | 60e80fd0026e19ca7d1fe005 | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        |
 
-
-  Scenario Outline: createVfMallOfferingMaxSaleCountOGirilmesi
-    Given createVfMallToken "POST" request'i ile token olusturulur
-    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ile tetiklenir
-    Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
-
-    Examples:
-      | barcode                              | maxSaleCount | expectedResultCode | expectedErrorMessage                                                                         | expectedResult |
-      | c8249cb5-0848-4cdc-9c91-1e7a576860d7 | 110          | 38                 | Ürünün barkodu bu satıcı için daha önce tanımlanmış. Lüften başka bir barkod değeri giriniz. | FAIL           |
 
   Scenario Outline: createVfMallOfferingBarkodCakismasiKontrolu
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ile tetiklenir
+    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
 
     Examples:
-      | barcode | maxSaleCount | expectedResultCode | expectedErrorMessage                                                         | expectedResult |
-      |         | 0            | 35                 | Girilen sayısal değer sıfırdan büyük olmalıdır. Parametre ismi: maxSaleCount | FAIL           |
+      | barcode                              | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage                                                                         | expectedResult |
+      | c8249cb5-0848-4cdc-9c91-1e7a576860d7 | 110          | 60e80fd0026e19ca7d1fe005 | 38                 | Ürünün barkodu bu satıcı için daha önce tanımlanmış. Lüften başka bir barkod değeri giriniz. | FAIL           |
 
-
-  Scenario: updateVfMallStockAndPriceIleGuncelleme
+  Scenario Outline: createVfMallOfferingMaxSaleCountOGirilmesi
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createSessionId "POST" request'i ile sessionId olusturulur
-    And getVFMallOfferingDetails "POST" requestine sessionId parametresi eklenir ve servis tetiklenir
-    #And mongodbde "vfProductGroup" filtresiyle kontrol saglanir
-    And updateVfMallStockAndPrice "POST" requesti tetiklenir
-    #And mongodbde "vfProductGroup" filtresiyle kontrol saglanir
+    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
+    Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
+
+    Examples:
+      | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage                                                         | expectedResult |
+      |         | 0            | 60e80fd0026e19ca7d1fe005 | 35                 | Girilen sayısal değer sıfırdan büyük olmalıdır. Parametre ismi: maxSaleCount | FAIL           |
+
+  @DXLApi
+  Scenario Outline: createVfMallOfferingCargoCompanyIDYanlışGirilmesi
+    Given createVfMallToken "POST" request'i ile token olusturulur
+    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
+    Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
+
+    Examples:
+      | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage                              | expectedResult |
+      |         | 110          | 601be73da23ffc44f4864242 | 43                 | Kargo kodu Partner'e ait bir kargo kodu olmalıdır | FAIL           |
+
 
   #1
-  @DXLApi
   Scenario: commenting on a product with delivered to customer status
     Given createSessionId "POST" request'i ile sessionId alınır.
     And  cleanShoppingCart "GET" requesti ile sepetin temiz olduğuna bakılır.

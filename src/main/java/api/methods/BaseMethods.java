@@ -15,6 +15,7 @@ import java.util.Objects;
 
 import static base.AutomationConstants.updatedListAmount;
 import static base.AutomationConstants.updatedSalesAmount;
+import static io.restassured.RestAssured.given;
 
 public class BaseMethods {
 
@@ -47,7 +48,7 @@ public class BaseMethods {
     public boolean createVfMallTokenRequest(String desiredPath) {
         boolean status = false;
 
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlCreateVfMallToken);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallToken(), AutomationConstants.urlCreateVfMallToken);
 
         JsonPath js = new JsonPath(response.asPrettyString());
 
@@ -66,13 +67,12 @@ public class BaseMethods {
     //bu metot voiddi stepdefte hata alınca boolean a çevirdim??
     public boolean checkFieldsInResponseBody(String expectedResultCode, String expectedErrorMessage, String expectedResult) {
         boolean status = false;
-        Assert.assertEquals(expectedResultCode, AutomationConstants.resultCode, "result code hatalidir");
-        Assert.assertEquals(expectedErrorMessage, AutomationConstants.resultDesc, "result description hatalidir");
-        Assert.assertEquals(expectedResult, AutomationConstants.result, "result hatalidir");
-
-        if (AutomationConstants.result.contains("SUCCESS")) {
+        try {
+            Assert.assertEquals("result code hatalidir", expectedResultCode, AutomationConstants.resultCode);
+            Assert.assertEquals("result description hatalidir", expectedErrorMessage, AutomationConstants.resultDesc);
+            Assert.assertEquals("result hatalidir", expectedResult, AutomationConstants.result);
             status = true;
-        } else {
+        } catch (Exception e) {
             CommonLib.allureReport("FAIL", "");
         }
         return status;
@@ -87,7 +87,7 @@ public class BaseMethods {
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlGetVFMallOfferingDetails, map);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getOfferingDetails(), "", AutomationConstants.urlGetVFMallOfferingDetails, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -135,20 +135,20 @@ public class BaseMethods {
     //bu metot voiddi stepdefte hata alınca boolean a çevirdim??
     public boolean checkResponseBody(String requestType) {
         boolean status = false;
-
-        switch (requestType) {
-            case "VFMallOffering":
-                org.testng.Assert.assertNotNull(AutomationConstants.salesAmount);
-                org.testng.Assert.assertNotNull(AutomationConstants.listAmount);
-                org.testng.Assert.assertNotNull(AutomationConstants.productQuantity);
-                break;
-            case "VFMallHomePage":
-                org.testng.Assert.assertNotNull(AutomationConstants.title);
-                break;
-        }
-        if (AutomationConstants.result.contains("SUCCESS")) {
-            status = true;
-        } else {
+        try {
+            switch (requestType) {
+                case "VFMallOffering":
+                    Assert.assertNotNull(AutomationConstants.salesAmount);
+                    Assert.assertNotNull(AutomationConstants.listAmount);
+                    Assert.assertNotNull(AutomationConstants.productQuantity);
+                    status = true;
+                    break;
+                case "VFMallHomePage":
+                    Assert.assertNotNull(AutomationConstants.title);
+                    status = true;
+                    break;
+            }
+        } catch (Exception e) {
             CommonLib.allureReport("FAIL", "");
         }
         return status;
@@ -162,16 +162,16 @@ public class BaseMethods {
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlInsertVfMallRateAndComment,map);
+        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlInsertVfMallRateAndComment, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
         String result = js.getString("result.result");
 
-        if(result.contains("SUCCESS")){
+        if (result.contains("SUCCESS")) {
             CommonLib.allureReport("PASS", "");
             status = true;
-        }else{
+        } else {
             CommonLib.allureReport("FAIL", "");
         }
 

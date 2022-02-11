@@ -20,26 +20,6 @@ public class MyStepdefs {
         System.out.println(scenario.getName());
     }
 
-    //   @Given("Bring all the characters from the Rick & Morty cartoon through the {string}.")
-//   public void bringAllTheCharactersFromTheRickMortyCartoonThroughThe(String desiredURL) {
-//       CharacterMethods obj = new CharacterMethods();
-//       Assert.assertTrue(obj.getAllCharacter(desiredURL));
-//   }
-//
-//   @Then("It is checked that there is {string} on the incoming data.")
-//   public void itIsCheckedThatThereIsOnTheIncomingData(String desiredData) {
-//       CharacterMethods obj = new CharacterMethods();
-//       Assert.assertTrue(obj.controlAllCharacterForName(desiredData));
-//   }
-//
-//   @Given("According to {string}, filtering is done according to the {string},{string},{string},{string} and {string} fields.")
-//   public void accordingToFilteringIsDoneAccordingToTheAndFields(String desiredPath, String name, String status, String species, String type, String gender) {
-//       CharacterMethods obj = new CharacterMethods();
-//       Assert.assertTrue(obj.getSpesificCharacterWithFilterParameter(desiredPath, name, status, species, type, gender));
-//   }
-//
-
-    // Scenario: getVFMallHomePageResponseValidation
     @Given("createSessionID URL'i {string} edilerek sessionID elde edilir.")
     public void createsessionidURLIEdilerekSessionIDEldeEdilir(String desiredPath) {
         Assert.assertTrue(new BaseMethods().createSessionID(desiredPath));
@@ -59,11 +39,6 @@ public class MyStepdefs {
     @Then("Response Bodyde {string}, {string},{string} alanlari kontrol edilir")
     public void responseBodydeAlanlariKontrolEdilir(String expectedResultCode, String expectedErrorMessage, String expectedResult) {
         Assert.assertTrue((new BaseMethods().checkFieldsInResponseBody(expectedResultCode, expectedErrorMessage, expectedResult)));
-    }
-
-    @And("createVfMallOffering {string} requesti {string}, {string} ile tetiklenir")
-    public void createvfmallofferingRequestiIleTetiklenir(String desiredPath, String barcode, String maxSaleCount) {
-        Assert.assertTrue(new Offering().createVfMallOfferingRequest(desiredPath, barcode, maxSaleCount));
     }
 
     @And("createSessionId {string} request'i ile sessionId olusturulur")
@@ -129,6 +104,11 @@ public class MyStepdefs {
     @And("updateSalesOrderStatus {string} requesti ile status değeri değiştirilir.")
     public void updateSalesOrderStatusRequestiIleStatusDegeriDegistirilir(String desiredPath) {
         Assert.assertTrue(new Order().updateSalesOrderStatusChange(desiredPath));
+    }
+
+    @And("createVfMallOffering {string} requesti {string}, {string} ve {string} ile tetiklenir")
+    public void createvfmallofferingRequestiVeIleTetiklenir(String desiredPath, String barcode, String maxSaleCount, String cargoCompanyID) {
+            Assert.assertTrue(new Offering().createVfMallOfferingRequest(desiredPath, barcode, maxSaleCount,cargoCompanyID));
     }
 }
 

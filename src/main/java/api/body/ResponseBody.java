@@ -12,6 +12,7 @@ import static io.restassured.http.ContentType.XML;
 
 public class ResponseBody {
 
+
     /**
      * Function:GetResponse
      * Description:
@@ -25,35 +26,36 @@ public class ResponseBody {
      */
 
     public static Response getResponse(String desiredRequest, String reqBody, String token, String desiredPostURL, Map<String, String> map) {
-
         try {
             switch (desiredRequest) {
                 case "GET":
                     return given()
                             .header("Authorization", "Bearer " + token)
-                            .contentType(JSON)
+                            .headers(Headers.headers)
                             .queryParams(map)
                             .and()
                             .body(reqBody)
                             .when()
                             .get(desiredPostURL)
                             .then()
+                            .assertThat().statusCode(HttpStatus.SC_OK)
                             .extract().response();
                 case "POST":
                     return given()
                             .header("Authorization", "Bearer " + token)
-                            .contentType(JSON)
+                            .headers(Headers.headers)
                             .queryParams(map)
                             .and()
                             .body(reqBody)
                             .when()
                             .post(desiredPostURL)
                             .then()
+                            .assertThat().statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return null;
     }
@@ -84,11 +86,45 @@ public class ResponseBody {
                 case "POST":
                     return given()
                             .header("Authorization", "Bearer " + token)
-                            .header("User-Agent", "PostmanRuntime/7.28.4")
-                            .header("Accept-Encoding", "gzip, deflate, br")
-                            .header("Connection", "keep-alive")
                             .contentType(ContentType.JSON)
-                            .accept("*/*")
+                            .body(reqBody)
+                            .when()
+                            .post(desiredPostURL)
+                            .then()
+                            .statusCode(HttpStatus.SC_OK)
+                            .extract().response();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Function:GetResponse
+     * Description:
+     * Input Parameters:
+     *
+     * @param reqBody        Body of the sent request.
+     * @param desiredPostURL URL to be posted
+     *                       Author: Hilal Yilmaz
+     *                       Date: 04-06-21
+     */
+    public static Response getResponse(String desiredRequest, String reqBody, String desiredPostURL) {
+        try {
+            switch (desiredRequest) {
+                case "GET":
+                    return given()
+                            .contentType(JSON)
+                            .body(reqBody)
+                            .when()
+                            .get(desiredPostURL)
+                            .then().statusCode(HttpStatus.SC_OK)
+                            .extract().response();
+                case "POST":
+                    return given()
+                            .contentType(ContentType.JSON)
                             .body(reqBody)
                             .when()
                             .post(desiredPostURL)
@@ -101,7 +137,6 @@ public class ResponseBody {
         }
         return null;
     }
-
 
 
     /**

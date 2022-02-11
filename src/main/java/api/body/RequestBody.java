@@ -2,11 +2,11 @@ package api.body;
 
 public class RequestBody {
 
-    public static String createVfMallOffer(String barcode, String displayName, String maxSaleCount) {
+    public static String createVfMallOffer(String barcode, String displayName, String maxSaleCount, String cargoCompanyID) {
         return "{\n" +
                 "  \"barcode\": \"" + barcode + "\",\n" +
                 "  \"brand\": \"5fd0833e183b320001c8b816\",\n" +
-                "  \"cargoCompanyId\": \"60e80fd0026e19ca7d1fe005\",\n" +
+                "  \"cargoCompanyId\": \"" + cargoCompanyID + "\",\n" +
                 "  \"categoryId\": \"83f2e6e7-7959-441f-8779-1838a51f4c2a\",\n" +
                 "  \"deliveryDuration\": 4,\n" +
                 "  \"description\": \"<html>Urun aciklama </html>\",\n" +
@@ -97,6 +97,7 @@ public class RequestBody {
                 "  ]\n" +
                 "}";
     }
+
     public static String updateVfMallStockAndPrice(String listPriceU, String quantityU, String salePriceU) {
         return "{\n" +
                 "  \"offerings\": [\n" +
@@ -109,6 +110,7 @@ public class RequestBody {
                 "  ]\n" +
                 "}";
     }
+
     public static String addVFMallCustomerProfile(String msisdn) {
         return "{\n" +
                 "    \"name\":\"otomasyon\",\n" +
@@ -121,6 +123,7 @@ public class RequestBody {
                 "    \"detailedAddress\":\"BJKasd22  Mah. 1905098 Sok.Karakartalasdf2222 Cad. Vofomall2 Apt. NO:19 D:05\"\n" +
                 "}";
     }
+
     public static String saveShoppingCartAddress(String deliveryAddressId, String invoiceAddressId) {
         return "{\n" +
                 "  \"deliveryAddressId\": \"" + deliveryAddressId + "\",\n" +
@@ -134,4 +137,19 @@ public class RequestBody {
                 "    \"offeringId\": \"" + offeringId + "\",\n" +
                 "    \"quantity\": \"2\"\n" +
                 "}";
+    }
+
+    public static String getOfferingDetails() {
+        return "{\n" +
+                "    \"uuid\": \"00b34d43-bcd2-4f11-9668-3346e7202192\"\n" +
+                "}";
+    }
+
+    public static String createVfMallToken() {
+        return "\t{\n" +
+                "\t  \"integratorCode\": \"\",\n" +
+                "\t  \"password\": \"Test123456*\",\n" +
+                "\t  \"username\": \"muafpartner.autovfmall@hotmail.com\"\n" +
+                "\t}\n";
+    }
 }
