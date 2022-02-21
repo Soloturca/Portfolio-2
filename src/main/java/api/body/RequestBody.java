@@ -2,7 +2,7 @@ package api.body;
 
 public class RequestBody {
 
-    public static String createVfMallOffer(String barcode, String displayName, String maxSaleCount, String cargoCompanyID) {
+    public static String createVfMallOffer(String barcode, String displayName, String maxSaleCount, String cargoCompanyID, String variantCode) {
         return "{\n" +
                 "  \"barcode\": \"" + barcode + "\",\n" +
                 "  \"brand\": \"5fd0833e183b320001c8b816\",\n" +
@@ -22,7 +22,7 @@ public class RequestBody {
                 "  \"salePrice\": 950,\n" +
                 "  \"stockCode\": \"MJ6667S\",\n" +
                 "  \"title\": \"Title Test\",\n" +
-                "  \"variantCode\": \"MJ6667\",\n" +
+                "  \"variantCode\": \"" + variantCode + "\",\n" +
                 "  \"dimensionalWeight\": \"10\",\n" +
                 "  \"vatRate\": 18,\n" +
                 "  \"maxSaleCount\": " + maxSaleCount + ",\n" +
@@ -132,11 +132,14 @@ public class RequestBody {
                 "}";
     }
 
-    public static String addCartItems(String offeringId) {
-        return "{\n" +
-                "    \"offeringId\": \"" + offeringId + "\",\n" +
-                "    \"quantity\": \"2\"\n" +
-                "}";
+    public static String addCartItems(String uuidID) {
+        return "[\n" +
+                "\n" +
+                "{\n" +
+                "    \"offeringId\": \"" + uuidID + "\",\n" +
+                "    \"quantity\": \"1\"\n" +
+                "}\n" +
+                "]";
     }
 
     public static String getOfferingDetails() {
@@ -151,5 +154,53 @@ public class RequestBody {
                 "\t  \"password\": \"Test123456*\",\n" +
                 "\t  \"username\": \"muafpartner.autovfmall@hotmail.com\"\n" +
                 "\t}\n";
+    }
+
+    public static String insertRateAndComment(String uuidID, String variantCode) {
+        return "{\n" +
+                "    \"uuid\": \"" + uuidID + "\",\n" +
+                "    \"variantCode\": \"" + variantCode + "\",\n" +
+                "    \"rate\": 4,\n" +
+                "    \"title\": \"eh fena değil\",\n" +
+                "    \"comment\": \"çok kaliteli değil ama iş görür.\",\n" +
+                "    \"hideMyName\": false,\n" +
+                "    \"height\": \"192\",\n" +
+                "    \"weight\": \"92\"\n" +
+                "}";
+    }
+
+    public static String updateRateAndComment(String shoppingCartId) {
+        return "{\n" +
+                "    \"id\": \"" + shoppingCartId + ",\n" +
+                "    \"rate\": 3,\n" +
+                "    \"title\": \"Harika\",\n" +
+                "    \"comment\": \"Alır almaz bitirdim\",\n" +
+                "    \"hideMyName\": true,\n" +
+                "    \"height\": \"192\",\n" +
+                "    \"weight\": \"92\"\n" +
+                "}\n";
+    }
+
+    public static String payShoppingCart() {
+        return "{\n" +
+                "  \"cardUniqueId\": \"string\",\n" +
+                "  \"masterpassTokenId\": \"alos\",\n" +
+                "  \"paymentTokenId\": \"string\"\n" +
+                "}";
+    }
+
+    public static String updateStatus(String desiredStatus, String orderId) {
+        return "{\n" +
+                "  \"changedBy\": \"ORDER_TRACKING\",\n" +
+                "  \"newStatus\":\"" + desiredStatus + "\",\n" +
+                "  \"orderStatusRequests\": [\n" +
+                "    {\n" +
+                "    \"orderId\":\"" + orderId + "\",\n" +
+                "      \"reasonCode\": \"string\",\n" +
+                "      \"reasonText\": \"string\"\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"returnOrders\": false\n" +
+                "}";
     }
 }

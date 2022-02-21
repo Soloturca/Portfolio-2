@@ -16,12 +16,12 @@ import java.util.Objects;
 
 public class ShoppingCart extends BaseMethods {
 
-    public boolean cleanShoppingCart(String desiredPath) {
+    public boolean cleanShoppingCart(String desiredPath, String desiredMethod) {
         boolean status = false;
 
         Map<String, String> map = new HashMap<>();
 
-        map.put(String.valueOf(ParameterDTO.method), "cleanShoppingCart");
+        map.put(String.valueOf(ParameterDTO.method), desiredMethod);
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
@@ -42,22 +42,20 @@ public class ShoppingCart extends BaseMethods {
     }
 
 
-    public boolean addVfMallCustomerProfile(String desiredPath) {
+    public boolean addVfMallCustomerProfile(String desiredPath,String desiredMsisdn) {
         boolean status = false;
 
         Map<String, String> map = new HashMap<>();
 
-        map.put("sid", AutomationConstants.sessionId);
+        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.addVFMallCustomerProfile(AutomationConstants.msisdn), "", AutomationConstants.urlAddCustomerProfile, map);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.addVFMallCustomerProfile(desiredMsisdn), AutomationConstants.urlAddCustomerProfile, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
         String result = js.getString("result.result");
 
         AutomationConstants.customerProfileId = js.getString("customerProfile.customerProfileId");
-
-        System.out.println("customerProfileId is: " + AutomationConstants.customerProfileId);
 
         CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
 
@@ -71,19 +69,19 @@ public class ShoppingCart extends BaseMethods {
         return status;
     }
 
-    public boolean saveShoppingCartAddress(String desiredPath) {
+    public boolean saveShoppingCartAddress(String desiredMethod, String desiredPath) {
         boolean status = false;
 
         Map<String, String> map = new HashMap<>();
 
-        map.put(String.valueOf(ParameterDTO.method), "saveShoppingCartAddress");
+        map.put(String.valueOf(ParameterDTO.method), desiredMethod);
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
         AutomationConstants.deliveryAddressId = AutomationConstants.customerProfileId;
         AutomationConstants.invoiceAddressId = AutomationConstants.customerProfileId;
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.saveShoppingCartAddress(AutomationConstants.deliveryAddressId, AutomationConstants.invoiceAddressId), "", AutomationConstants.urlShoppingJourney, map);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.saveShoppingCartAddress(AutomationConstants.deliveryAddressId, AutomationConstants.invoiceAddressId), AutomationConstants.urlShoppingJourney, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -103,16 +101,16 @@ public class ShoppingCart extends BaseMethods {
         return status;
     }
 
-    public boolean addCartItems(String desiredPath) {
+    public boolean addCartItems(String desiredMethod, String desiredPath) {
         boolean status = false;
 
         Map<String, String> map = new HashMap<>();
 
-        map.put(String.valueOf(ParameterDTO.method), "addCartItems");
+        map.put(String.valueOf(ParameterDTO.method), desiredMethod);
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.addCartItems(AutomationConstants.offeringId), "", AutomationConstants.urlAddCartItem, map);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.addCartItems(AutomationConstants.uuidID), AutomationConstants.urlAddCartItem, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -133,4 +131,5 @@ public class ShoppingCart extends BaseMethods {
 
         return status;
     }
+
 }

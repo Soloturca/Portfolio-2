@@ -15,16 +15,15 @@ import java.util.Objects;
 
 import static base.AutomationConstants.updatedListAmount;
 import static base.AutomationConstants.updatedSalesAmount;
-import static io.restassured.RestAssured.given;
 
 public class BaseMethods {
 
-    public boolean createSessionID(String desiredPath) {
+    public boolean createSessionID(String desiredPath, String msisdn) {
         boolean status = false;
 
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlCreateSessionId);
+        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlCreateSessionId + msisdn);
 
-        JsonPath js = new JsonPath(response.asPrettyString());
+        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
         String result = js.getString("result.result");
 
@@ -33,7 +32,6 @@ public class BaseMethods {
         System.out.println("sessionID is: " + AutomationConstants.sessionId);
 
         CommonLib.allureReport("INFO", "sessionID is: " + AutomationConstants.sessionId);
-
 
         if (result.contains("SUCCESS")) {
             CommonLib.allureReport("PASS", "");
@@ -50,7 +48,7 @@ public class BaseMethods {
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallToken(), AutomationConstants.urlCreateVfMallToken);
 
-        JsonPath js = new JsonPath(response.asPrettyString());
+        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
         String result = js.getString("result.result");
         AutomationConstants.token = js.getString("token").substring(7);
@@ -64,7 +62,6 @@ public class BaseMethods {
         return status;
     }
 
-    //bu metot voiddi stepdefte hata alınca boolean a çevirdim??
     public boolean checkFieldsInResponseBody(String expectedResultCode, String expectedErrorMessage, String expectedResult) {
         boolean status = false;
         try {
@@ -77,7 +74,6 @@ public class BaseMethods {
         }
         return status;
     }
-
 
     public boolean addSessionIdOfferingDetailsRequest(String desiredPath) {
 
@@ -99,7 +95,6 @@ public class BaseMethods {
         AutomationConstants.productQuantity = js.getString("offeringDetails.quantity[0]");
         System.out.println("quantity:" + AutomationConstants.productQuantity);
         AutomationConstants.variantCode = js.getString("offeringDetails.variantCode[0]");
-
 
         if (result.contains("SUCCESS")) {
             status = true;
@@ -132,9 +127,9 @@ public class BaseMethods {
         return status;
     }
 
-    //bu metot voiddi stepdefte hata alınca boolean a çevirdim??
     public boolean checkResponseBody(String requestType) {
         boolean status = false;
+
         try {
             switch (requestType) {
                 case "VFMallOffering":
@@ -153,29 +148,4 @@ public class BaseMethods {
         }
         return status;
     }
-
-    public boolean enterSessionIdAtInsertVfMallRateAndComment(String desiredPath) {
-        //addCartItem postman de çalışmadığı için bu da çalışmıyor o yüzden body kısmına bakamadım.
-        boolean status = false;
-
-        Map<String, String> map = new HashMap<>();
-
-        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
-
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlInsertVfMallRateAndComment, map);
-
-        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
-
-        String result = js.getString("result.result");
-
-        if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "");
-            status = true;
-        } else {
-            CommonLib.allureReport("FAIL", "");
-        }
-
-        return status;
-    }
-
 }
