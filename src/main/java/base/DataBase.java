@@ -104,15 +104,15 @@ public class DataBase
         }
     }
 
-    public static MongoDatabase connectionMongoDB(Integer desiredPort, String desiredDatabase) {
-        try {
-            MongoCredential credential = MongoCredential.createCredential(AutomationConstants.MongoDBUsername, AutomationConstants.MongoGeneralDatabase, AutomationConstants.MongoDBPassword.toCharArray());
-            com.mongodb.MongoClient mongoClient = new MongoClient(new ServerAddress(AutomationConstants.MongoDBHost, desiredPort), Collections.singletonList(credential));
-            return mongoClient.getDatabase(desiredDatabase);
-        } catch (MongoException e) {
-            System.out.println("Connection failure.");
-            e.printStackTrace();
-        }
-        return null;
-    }
+ //   public static MongoDatabase connectionMongoDB(Integer desiredPort, String desiredDatabase) {
+ //       try {
+ //           MongoCredential credential = MongoCredential.createCredential(AutomationConstants.MongoDBUsername, AutomationConstants.MongoGeneralDatabase, AutomationConstants.MongoDBPassword.toCharArray());
+ //           com.mongodb.MongoClient mongoClient = new MongoClient(new ServerAddress(AutomationConstants.MongoDBHost, desiredPort), Collections.singletonList(credential));
+ //           return mongoClient.getDatabase(desiredDatabase);
+ //       } catch (MongoException e) {
+ //           System.out.println("Connection failure.");
+ //           e.printStackTrace();
+ //       }
+ //       return null;
+ //   }
 }

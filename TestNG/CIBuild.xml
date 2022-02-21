@@ -4,7 +4,7 @@
     <!-- Cucumber Test -->
     <test name="TestRunner" enabled="true">
         <classes>
-            <class name="com.project.runner.TestRunner"></class>
+            <class name="com.project.runner.TestRunner"/>
         </classes>
     </test>
 </suite>
