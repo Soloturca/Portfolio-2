@@ -31,13 +31,13 @@ public class BaseMethods {
 
         System.out.println("sessionID is: " + AutomationConstants.sessionId);
 
-        CommonLib.allureReport("INFO", "sessionID is: " + AutomationConstants.sessionId);
+        CommonLib.allureReport("INFO", "SessionID is: " + AutomationConstants.sessionId);
 
         if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "");
+            CommonLib.allureReport("PASS", "Session ID created. Value : " + AutomationConstants.sessionId);
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "Error getting session ID. Check it.");
         }
 
         return status;
@@ -53,11 +53,14 @@ public class BaseMethods {
         String result = js.getString("result.result");
         AutomationConstants.token = js.getString("token").substring(7);
         System.out.println("token is: " + AutomationConstants.token);
+        CommonLib.allureReport("INFO", "Token is: " + AutomationConstants.token);
+
 
         if (result.contains("SUCCESS")) {
             status = true;
+            CommonLib.allureReport("PASS", "Token created. Value : " + AutomationConstants.token);
         } else {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "Error getting token. Check it.");
         }
         return status;
     }
@@ -65,12 +68,23 @@ public class BaseMethods {
     public boolean checkFieldsInResponseBody(String expectedResultCode, String expectedErrorMessage, String expectedResult) {
         boolean status = false;
         try {
-            Assert.assertEquals("result code hatalidir", expectedResultCode, AutomationConstants.resultCode);
-            Assert.assertEquals("result description hatalidir", expectedErrorMessage, AutomationConstants.resultDesc);
-            Assert.assertEquals("result hatalidir", expectedResult, AutomationConstants.result);
+            Assert.assertEquals("Result Kodu hatalıdır.", expectedResultCode, AutomationConstants.resultCode);
+            Assert.assertEquals("Result Açıklama hatalıdır.", expectedErrorMessage, AutomationConstants.resultDesc);
+            Assert.assertEquals("Result durumu hatalıdır.", expectedResult, AutomationConstants.result);
+
+            CommonLib.allureReport("PASS", "All expected values have arrived.");
+            CommonLib.allureReport("INFO", "Expected ErrorMessage" + expectedErrorMessage + ". Actual Error Message: " + AutomationConstants.resultDesc);
+            CommonLib.allureReport("INFO", "Expected Kod" + expectedResultCode + ". Actual Result Kod: " + AutomationConstants.resultCode);
+            CommonLib.allureReport("INFO", "Expected Result Status" + expectedResult + ". Actual Error Message: " + AutomationConstants.result);
+
             status = true;
+
         } catch (Exception e) {
-            CommonLib.allureReport("FAIL", "");
+
+            CommonLib.allureReport("FAIL", "Error given. Check it. " + e.getMessage());
+            CommonLib.allureReport("INFO", "Expected ErrorMessage" + expectedErrorMessage + ". Actual Error Message: " + AutomationConstants.resultDesc);
+            CommonLib.allureReport("INFO", "Expected Kod" + expectedResultCode + ". Actual Result Kod: " + AutomationConstants.resultCode);
+            CommonLib.allureReport("INFO", "Expected Result Status" + expectedResult + ". Actual Error Message: " + AutomationConstants.result);
         }
         return status;
     }
@@ -88,13 +102,22 @@ public class BaseMethods {
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
         String result = js.getString("result.result");
+
         AutomationConstants.salesAmount = js.getString("offeringDetails.saleAmount.value[0]");
+        CommonLib.allureReport("INFO", "SalesAmount : " + AutomationConstants.salesAmount);
         System.out.println("salesAmount:" + AutomationConstants.salesAmount);
+
         AutomationConstants.listAmount = js.getString("offeringDetails.listAmount.value[0]");
         System.out.println("listAmount:" + AutomationConstants.listAmount);
+        CommonLib.allureReport("INFO", "listAmount:" + AutomationConstants.listAmount);
+
         AutomationConstants.productQuantity = js.getString("offeringDetails.quantity[0]");
         System.out.println("quantity:" + AutomationConstants.productQuantity);
+        CommonLib.allureReport("INFO", "quantity:" + AutomationConstants.productQuantity);
+
         AutomationConstants.variantCode = js.getString("offeringDetails.variantCode[0]");
+        AutomationConstants.variantCode = js.getString("offeringDetails.variantCode[0]");
+
 
         if (result.contains("SUCCESS")) {
             status = true;
@@ -116,7 +139,6 @@ public class BaseMethods {
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
         String result = js.getString("result.result");
         String resultCode = js.getString("result.resultCode");
-        String resultDesc = js.getString("result.resultDesc");
 
         if (result.contains("SUCCESS") && resultCode.equals("0")) {
             status = true;
@@ -129,7 +151,6 @@ public class BaseMethods {
 
     public boolean checkResponseBody(String requestType) {
         boolean status = false;
-
         try {
             switch (requestType) {
                 case "VFMallOffering":

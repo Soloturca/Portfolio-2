@@ -1,5 +1,6 @@
 Feature: DXLApi
 
+  @DXLApi
   Scenario: getVFMallOfferingDetails stok miktarı, satış fiyatı ve liste fiyatı kontrolü
     Given createSessionId "POST" request'i ve "5467028995" ile sessionId alınır.
     And getVFMallOfferingDetails "POST" requestine sessionId parametresi eklenir ve servis tetiklenir
@@ -48,7 +49,6 @@ Feature: DXLApi
       |         | 110          | 601be73da23ffc44f4864242 | 43                 | Kargo kodu Partner'e ait bir kargo kodu olmalıdır | FAIL           |
 
   #1
-  @DXLApi
   Scenario Outline: Musteriye teslim edildi statusundeki urune yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
     And createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
@@ -157,7 +157,7 @@ Feature: DXLApi
       |         | 110          | 60e80fd0026e19ca7d1fe005 | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        | Değerlendirme yapabilmek için bu ürünü teslim almış olmalısınız |
 
   #7
-  @DXLApi
+ # @DXLApi
   Scenario Outline: Daha önce yorum yapılmış ürünün yorumunu guncelleme
     Given createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
     And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
