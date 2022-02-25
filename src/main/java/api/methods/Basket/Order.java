@@ -16,33 +16,30 @@ import java.util.Objects;
 
 public class Order extends BaseMethods {
     public boolean sellProductsWithPayShoppingCart(String desiredPath, String desiredMethod) {
-        boolean status = false, done = false;
-        do {
-            Map<String, String> map = new HashMap<>();
+        boolean status = false;
 
-            map.put(String.valueOf(ParameterDTO.method), desiredMethod);
+        Map<String, String> map = new HashMap<>();
 
-            map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+        map.put(String.valueOf(ParameterDTO.method), desiredMethod);
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.payShoppingCart(), AutomationConstants.urlPayShoppingCart, map);
+        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-            JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.payShoppingCart(), AutomationConstants.urlPayShoppingCart, map);
 
-            String result = js.getString("result.result");
-            String resultCode = js.getString("result.resultCode");
+        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
+        String result = js.getString("result.result");
+        String resultCode = js.getString("result.resultCode");
 
-            if (result.contains("SUCCESS") && resultCode.contains("0")) {
-                CommonLib.allureReport("PASS", "");
-                done = true;
-                status = true;
-            } else {
-                CommonLib.allureReport("FAIL", "");
-                System.out.println(response.asPrettyString());
-                CommonLib.waitSeconds(5);
-            }
+        if (result.contains("SUCCESS") && resultCode.contains("0")) {
+            CommonLib.allureReport("PASS", "");
+            status = true;
+        } else {
+            CommonLib.allureReport("FAIL", "");
+            System.out.println(response.asPrettyString());
+            CommonLib.waitSeconds(5);
+        }
 
-        } while (!done);
         return status;
     }
 
@@ -78,6 +75,8 @@ public class Order extends BaseMethods {
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateStatus(desiredStatus, AutomationConstants.orderId), AutomationConstants.urlUpdateSalesOrderStatus);
 
+        System.out.println("orderId is: " + AutomationConstants.orderId);
+
         if (Objects.requireNonNull(response).getStatusCode() == HttpStatus.SC_OK) {
             AutomationConstants.status = desiredStatus;
             CommonLib.allureReport("PASS", "");
@@ -90,14 +89,16 @@ public class Order extends BaseMethods {
         return status;
     }
 
-    public boolean enterSessionIdAtInsertVfMallRateAndComment(String desiredPath) {
+    public boolean enterSessionIdAtInsertVfMallRateAndComment(String desiredPath, String desiredHideMyName) {
         boolean status = false;
         try {
             Map<String, String> map = new HashMap<>();
 
             map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.insertRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlInsertVfMallRateAndComment, map);
+            Response response = ResponseBody.getResponse(desiredPath, RequestBody.insertRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode, desiredHideMyName), AutomationConstants.urlInsertVfMallRateAndComment, map);
+
+            AutomationConstants.hideMyName = desiredHideMyName;
 
             AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
 
@@ -112,14 +113,77 @@ public class Order extends BaseMethods {
         return status;
     }
 
-    public boolean enterSessionIdAtInsertVfMallRateAndCommentUpdate(String desiredPath) {
+    public boolean getVFMallRateAndComment(String desiredPath) {
+        boolean status = false;
+
+        try {
+            Map<String, String> map = new HashMap<>();
+
+            map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+
+            Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+
+            JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+
+            AutomationConstants.commentId = js.getString("vfMallRateAndComment.id");
+
+            System.out.println("commentId is: " + AutomationConstants.commentId);
+
+            AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
+
+            System.out.println(AutomationConstants.responseData);
+
+            status = true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+    }
+
+    public boolean getVFMallRateAndCommentRandomID(String desiredPath) {
+        boolean status = false;
+
+        Map<String, String> map = new HashMap<>();
+
+        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+
+        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+
+        String result = js.getString("result.result");
+        String resultCode = js.getString("result.resultCode");
+
+        AutomationConstants.commentId = AutomationConstants.randomCommentId;
+
+        System.out.println("commentId is: " + AutomationConstants.commentId);
+
+        CommonLib.allureReport("INFO", "commentId is: " + AutomationConstants.commentId);
+
+        if (result.contains("SUCCESS") && resultCode.contains("0")) {
+            CommonLib.allureReport("PASS", "");
+            status = true;
+        } else {
+            CommonLib.allureReport("FAIL", "");
+        }
+
+        return status;
+    }
+
+    public boolean enterSessionIdAtInsertVfMallRateAndCommentUpdate(String desiredPath, String desiredHideMyName) {
         boolean status = false;
         try {
             Map<String, String> map = new HashMap<>();
 
             map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateRateAndComment(AutomationConstants.shoppingCartId), AutomationConstants.urlUpdateVfMallRateAndComment, map);
+            Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName), AutomationConstants.urlUpdateVfMallRateAndComment, map);
+
+            AutomationConstants.hideMyName = desiredHideMyName;
+
+            System.out.println(Objects.requireNonNull(response).asPrettyString());
 
             AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
 
@@ -141,7 +205,6 @@ public class Order extends BaseMethods {
 
         String result = js.getString("result.result");
         String resultDesc = js.getString("result.resultDesc");
-
 
         if (result.contains(expectedResult) && resultDesc.contains(expectedResultMessage)) {
             CommonLib.allureReport("PASS", "");
