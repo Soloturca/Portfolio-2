@@ -21,7 +21,7 @@ public class BaseMethods {
     public boolean createSessionID(String desiredPath, String msisdn) {
         boolean status = false;
 
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlCreateSessionId + msisdn);
+        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlCreateSessionId + msisdn);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -97,7 +97,7 @@ public class BaseMethods {
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getOfferingDetails(), "", AutomationConstants.urlGetVFMallOfferingDetails, map);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getOfferingDetails(AutomationConstants.uuidID), "", AutomationConstants.urlGetVFMallOfferingDetails, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 

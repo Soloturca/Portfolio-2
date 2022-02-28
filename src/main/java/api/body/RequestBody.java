@@ -142,9 +142,9 @@ public class RequestBody {
                 "]";
     }
 
-    public static String getOfferingDetails() {
+    public static String getOfferingDetails(String uuidID) {
         return "{\n" +
-                "    \"uuid\": \"00b34d43-bcd2-4f11-9668-3346e7202192\"\n" +
+                "    \"uuidID\": \"" + uuidID + "\"\n" +
                 "}";
     }
 
@@ -156,29 +156,35 @@ public class RequestBody {
                 "\t}\n";
     }
 
-    public static String insertRateAndComment(String uuidID, String variantCode) {
+    public static String insertRateAndComment(String uuidID, String variantCode, String desiredHideMyName) {
         return "{\n" +
-                "    \"uuid\": \"" + uuidID + "\",\n" +
+                "   \"uuid\": \"" + uuidID + "\",\n" +
                 "    \"variantCode\": \"" + variantCode + "\",\n" +
                 "    \"rate\": 4,\n" +
                 "    \"title\": \"eh fena değil\",\n" +
                 "    \"comment\": \"çok kaliteli değil ama iş görür.\",\n" +
-                "    \"hideMyName\": false,\n" +
+                "    \"hideMyName\":" + desiredHideMyName + ",\n" +
                 "    \"height\": \"192\",\n" +
                 "    \"weight\": \"92\"\n" +
                 "}";
     }
 
-    public static String updateRateAndComment(String shoppingCartId) {
+    public static String getRateAndComment(String uuidID, String variantCode) {
         return "{\n" +
-                "    \"id\": \"" + shoppingCartId + ",\n" +
+                "    \"uuid\": \"" + uuidID + "\",\n" +
+                "    \"variantCode\": \"" + variantCode + "\"\n" +
+                "}";
+    }
+
+    public static String updateRateAndComment(String commentId, String desiredHideMyName) {
+        return "{\n" +
+                "    \"id\": \"" + commentId + "\",\n" +
                 "    \"rate\": 3,\n" +
                 "    \"title\": \"Harika\",\n" +
+                "    \"status\": \"1\",\n" +
                 "    \"comment\": \"Alır almaz bitirdim\",\n" +
-                "    \"hideMyName\": true,\n" +
-                "    \"height\": \"192\",\n" +
-                "    \"weight\": \"92\"\n" +
-                "}\n";
+                "    \"hideMyName\": \"" + desiredHideMyName + "\"\n" +
+                "}";
     }
 
     public static String payShoppingCart() {
