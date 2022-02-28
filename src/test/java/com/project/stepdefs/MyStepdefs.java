@@ -117,6 +117,5 @@ public class MyStepdefs {
     @And("updateRateAndComment {string} requestine hideMyName {string} girilir ve yeni rate, comment bilgileri girilerek güncellenir.")
     public void updateRateAndCommentRequestineHideMyNameGirilirVeYeniRateCommentBilgileriGirilerekGuncellenir(String desiredPath, String desiredHideMyName) {
         Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndCommentUpdate(desiredPath, desiredHideMyName));
-
     }
 }

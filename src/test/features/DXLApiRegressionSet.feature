@@ -238,11 +238,3 @@ Feature: DXLApi
     And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
     #1.case de false giriyorum burda true ya dönmüyor neden?? 1.case çalışmazsa bu çalışıyor
     And updateRateAndComment "POST" requestine hideMyName "true" girilir ve yeni rate, comment bilgileri girilerek güncellenir.
-
-
-
-
-
-
-
-
