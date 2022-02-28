@@ -2,7 +2,6 @@ package api.body;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.apache.http.HttpStatus;
 
 import java.util.Map;
 
@@ -38,7 +37,6 @@ public class ResponseBody {
                             .when()
                             .get(desiredPostURL)
                             .then()
-                            .assertThat().statusCode(HttpStatus.SC_OK)
                             .extract().response();
                 case "POST":
                     return given()
@@ -50,7 +48,6 @@ public class ResponseBody {
                             .when()
                             .post(desiredPostURL)
                             .then()
-                            .assertThat().statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 
@@ -83,7 +80,6 @@ public class ResponseBody {
                             .when()
                             .get(desiredPostURL)
                             .then()
-                            .assertThat().statusCode(HttpStatus.SC_OK)
                             .extract().response();
                 case "POST":
                     return given()
@@ -94,7 +90,6 @@ public class ResponseBody {
                             .when()
                             .post(desiredPostURL)
                             .then()
-                            .assertThat().statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 
@@ -126,7 +121,7 @@ public class ResponseBody {
                             .body(reqBody)
                             .when()
                             .get(desiredPostURL)
-                            .then().statusCode(HttpStatus.SC_OK)
+                            .then()
                             .extract().response();
                 case "POST":
                     return given()
@@ -136,7 +131,6 @@ public class ResponseBody {
                             .when()
                             .post(desiredPostURL)
                             .then()
-                            .statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 
@@ -165,7 +159,7 @@ public class ResponseBody {
                             .body(reqBody)
                             .when()
                             .get(desiredPostURL)
-                            .then().statusCode(HttpStatus.SC_OK)
+                            .then()
                             .extract().response();
                 case "POST":
                     return given()
@@ -173,7 +167,7 @@ public class ResponseBody {
                             .body(reqBody)
                             .when()
                             .post(desiredPostURL)
-                            .then().statusCode(HttpStatus.SC_OK)
+                            .then()
                             .extract().response();
             }
 
@@ -214,8 +208,7 @@ public class ResponseBody {
                         when()
                 .post(desiredPostURL).
                         then()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK).extract().response();
+                .extract().response();
     }
 }
 
