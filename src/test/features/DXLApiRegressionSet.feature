@@ -51,18 +51,18 @@ Feature: DXLApi
   @DXLApi
   Scenario Outline: Musteriye teslim edildi statusundeki urune yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
+    And createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
-    And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
-    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
+    And addVFMallCustomerProfile "POST" requestine "5467028866" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
+    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
     And payShoppingCart "POST" requesti ve "payShoppingCart" metodu aracılıgıyla sepetteki ürünler satılır.
     And createVfMallToken "POST" request'i ile token olusturulur
     And getVfMallOrders "GET" requestine Authkey girilir ve status PENDING olacak şekilde istek gönderilir.
     And updateSalesOrderStatus "POST" requesti ile status değeri "DELIVERED_TO_CUSTOMER" ile değiştirilir.
-    And insertVfMallRateAndComment "POST" requestine sessionId girilir.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
     Then "SUCCESS" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
       | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult | expectedResultMessage      |
@@ -71,9 +71,9 @@ Feature: DXLApi
   #2
   #@DXLApi
   Scenario Outline: Daha önce yorum yapılmış veya onayda bekleyen yorumu olan urune yorum yapma
-    Given createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
-    And insertVfMallRateAndComment "POST" requestine sessionId girilir.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
     Then "<expectedResult>" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
       | expectedResult | expectedResultMessage        |
@@ -82,34 +82,37 @@ Feature: DXLApi
   #3
   #@DXLApi
   Scenario Outline: Satın alınmamış urune yorum yapma
-    Given createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
-    And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
+    Given createVfMallToken "POST" request'i ile token olusturulur
+    And createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
+    Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
+    And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
+    And addVFMallCustomerProfile "POST" requestine "5467028866" msisdn degeri kullanılarak sessionId atılır.
     And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
-    #And addVFMallCustomerProfile "POST" requestine "5467028988" msisdn degeri kullanılarak sessionId atılır.
-    #And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
-    And insertVfMallRateAndComment "POST" requestine sessionId girilir.
-    Then "<expectedResult>" ve "<expectedResultMessage>" geldiği görülür.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
+    Then "FAIL" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
-      | expectedResult | expectedResultMessage                                           |
-      | FAIL           | Değerlendirme yapabilmek için bu ürünü teslim almış olmalısınız |
+      | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult | expectedResultMessage                                           |
+      |         | 110          | 60e80fd0026e19ca7d1fe005 | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        | Değerlendirme yapabilmek için bu ürünü teslim almış olmalısınız |
+
 
   #4
   #@DXLApi
   Scenario Outline: Beklemede statusundeki urune yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
+    And createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
-    And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
-    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
+    And addVFMallCustomerProfile "POST" requestine "5467028866" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
+    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
     And payShoppingCart "POST" requesti ve "payShoppingCart" metodu aracılıgıyla sepetteki ürünler satılır.
     And createVfMallToken "POST" request'i ile token olusturulur
     And getVfMallOrders "GET" requestine Authkey girilir ve status PENDING olacak şekilde istek gönderilir.
    # And updateSalesOrderStatus "POST" requesti ile status değeri "PENDING" ile değiştirilir.
-    And insertVfMallRateAndComment "POST" requestine sessionId girilir.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
     Then "FAIL" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
       | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult | expectedResultMessage                                           |
@@ -117,59 +120,121 @@ Feature: DXLApi
 
 
   #5
+  #@DXLApi
   Scenario Outline: Hazırlanıyor statusundeki urune yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
+    And createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
-    And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
-    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
+    And addVFMallCustomerProfile "POST" requestine "5467028866" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
+    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
     And payShoppingCart "POST" requesti ve "payShoppingCart" metodu aracılıgıyla sepetteki ürünler satılır.
     And createVfMallToken "POST" request'i ile token olusturulur
     And getVfMallOrders "GET" requestine Authkey girilir ve status PENDING olacak şekilde istek gönderilir.
     And updateSalesOrderStatus "POST" requesti ile status değeri "PREPARING" ile değiştirilir.
-    And insertVfMallRateAndComment "POST" requestine sessionId girilir.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
     Then "FAIL" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
       | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult | expectedResultMessage                                           |
       |         | 110          | 60e80fd0026e19ca7d1fe005 | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        | Değerlendirme yapabilmek için bu ürünü teslim almış olmalısınız |
 
   #6
+  #@DXLApi
   Scenario Outline: Kargoya verildi statusundeki urune yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
-    And createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
+    And createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
-    And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
-    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
+    And addVFMallCustomerProfile "POST" requestine "5467028866" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
+    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
     And payShoppingCart "POST" requesti ve "payShoppingCart" metodu aracılıgıyla sepetteki ürünler satılır.
     And createVfMallToken "POST" request'i ile token olusturulur
     And getVfMallOrders "GET" requestine Authkey girilir ve status PENDING olacak şekilde istek gönderilir.
     And updateSalesOrderStatus "POST" requesti ile status değeri "SHIPPED_TO_CUSTOMER" ile değiştirilir.
-    And insertVfMallRateAndComment "POST" requestine sessionId girilir.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
     Then "FAIL" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
       | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult | expectedResultMessage                                           |
       |         | 110          | 60e80fd0026e19ca7d1fe005 | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        | Değerlendirme yapabilmek için bu ürünü teslim almış olmalısınız |
 
   #7
-  @DXLApi
+  #@DXLApi
   Scenario Outline: Daha önce yorum yapılmış ürünün yorumunu guncelleme
-    Given createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
-    And addVFMallCustomerProfile "POST" requestine "5467023357" msisdn degeri kullanılarak sessionId atılır.
-    And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
-    And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
-    And updateRateAndComment "POST" requestine yeni rate ve comment bilgileri girilerek güncellenir.
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    And updateRateAndComment "POST" requestine hideMyName "false" girilir ve yeni rate, comment bilgileri girilerek güncellenir.
     Then "<expectedResult>" ve "<expectedResultMessage>" geldiği görülür.
     Examples:
-      | expectedResult | expectedResultMessage                        |
-      | SUCCESS        | Yorumunuz onaya gönderildi. Onay statusu = 0 |
-
+      | expectedResult | expectedResultMessage       |
+      | SUCCESS        | Yorumunuz onaya gönderildi. |
 
   #8
-  Scenario: Daha önce yorum yapılmamış ürünün yorumunu guncelleme
-    Given createSessionId "POST" request'i ve "5467023357" ile sessionId alınır.
+  #@DXLApi
+  Scenario Outline: Daha önce yorum yapılmamış ürünün yorumunu guncelleme
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile rastgele bir yorumun id alınır.
+    And updateRateAndComment "POST" requestine hideMyName "false" girilir ve yeni rate, comment bilgileri girilerek güncellenir.
+    Then "<expectedResult>" ve "<expectedResultMessage>" geldiği görülür.
+    Examples:
+      | expectedResult | expectedResultMessage |
+      | FAIL           | Kayıt bulunamadı      |
+
+  #9
+  Scenario: Onayda Bekleyen bir Yorumu çekme
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    #devamı MONGO
+
+  #10
+  Scenario: Onayı geçmiş bir Yorumu çekme
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    #devamı MONGO
+
+
+  #11
+  Scenario: Reddedilmiş bir yorumu çekme
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    #devamı MONGO
+
+  #12
+  #@DXLApi
+  Scenario: Onayı geçmiş bütün yorumları çekme
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    #response ta gösterme kısmı kaldı
+
+  #13
+  #@DXLApi
+  Scenario: İsim gizlenmeden satın alınmış ürüne yorum yapılması
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And insertVfMallRateAndComment "POST" requestine hideMyName "false" girilir ve sessionId girilir.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+
+  #14
+  @DXLApi
+  Scenario: İsim gizlenerek satın alınmış ürüne yorum yapılması
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    #1.case de false giriyorum burda true ya dönmüyor neden?? 1.case çalışmazsa bu çalışıyor
+    And insertVfMallRateAndComment "POST" requestine hideMyName "true" girilir ve sessionId girilir.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+
+  #15
+  #@DXLApi
+  Scenario: İsim Gizlenmeden yapılan yorumun güncellenmesi
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    And updateRateAndComment "POST" requestine hideMyName "false" girilir ve yeni rate, comment bilgileri girilerek güncellenir.
+
+
+  #16
+  Scenario: İsim gizlenerek yapılan yorumun güncellenmesi
+    Given createSessionId "POST" request'i ve "5467028866" ile sessionId alınır.
+    And getVFMallRateAndComment "POST" requesti ile yorumun idsi alınır.
+    #1.case de false giriyorum burda true ya dönmüyor neden?? 1.case çalışmazsa bu çalışıyor
+    And updateRateAndComment "POST" requestine hideMyName "true" girilir ve yeni rate, comment bilgileri girilerek güncellenir.

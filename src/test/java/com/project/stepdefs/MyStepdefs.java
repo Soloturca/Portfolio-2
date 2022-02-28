@@ -24,7 +24,6 @@ public class MyStepdefs {
         Assert.assertTrue(new HomePage().getVfMallHomepageRequestWithSessionID(desiredPath));
     }
 
-
     @Given("createVfMallToken {string} request'i ile token olusturulur")
     public void createvfmalltokenRequestIIleTokenOlusturulur(String desiredPath) {
         Assert.assertTrue(new BaseMethods().createVfMallTokenRequest(desiredPath));
@@ -48,11 +47,6 @@ public class MyStepdefs {
     @Then("{string} Response Body icin kontrol edilir")
     public void responseBodyIcinKontrolEdilir(String requestType) {
         Assert.assertTrue(new BaseMethods().checkResponseBody(requestType));
-    }
-
-    @And("insertVfMallRateAndComment {string} requestine sessionId girilir.")
-    public void insertvfmallrateandcommentRequestineSessionIdGirilir(String desiredPath) {
-        Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndComment(desiredPath));
     }
 
     @And("getVfMallOrders {string} requestine Authkey girilir ve status PENDING olacak şekilde istek gönderilir.")
@@ -105,8 +99,23 @@ public class MyStepdefs {
         Assert.assertTrue(new BaseMethods().createSessionID(desiredPath, msisdn));
     }
 
-    @And("updateRateAndComment {string} requestine yeni rate ve comment bilgileri girilerek güncellenir.")
-    public void updateRateAndCommentRequestineYeniRateVeCommentBilgileriGirilerekGuncellenir(String desiredPath) {
-        Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndCommentUpdate(desiredPath));
+    @And("getVFMallRateAndComment {string} requesti ile yorumun idsi alınır.")
+    public void getVfMallRateAndCommentRequestiIleYorumunIdsiAlinir(String desiredPath) {
+        Assert.assertTrue(new Order().getVFMallRateAndComment(desiredPath));
+    }
+
+    @And("getVFMallRateAndComment {string} requesti ile rastgele bir yorumun id alınır.")
+    public void getVfMallRateAndCommentRequestiIleRastgeleBirYorumunIdAlinir(String desiredPath) {
+        Assert.assertTrue(new Order().getVFMallRateAndCommentRandomID(desiredPath));
+    }
+
+    @And("insertVfMallRateAndComment {string} requestine hideMyName {string} girilir ve sessionId girilir.")
+    public void insertvfmallrateandcommentRequestineHideMyNameGirilirVeSessionIdGirilir(String desiredPath, String desiredHideMyName) {
+        Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndComment(desiredPath, desiredHideMyName));
+    }
+
+    @And("updateRateAndComment {string} requestine hideMyName {string} girilir ve yeni rate, comment bilgileri girilerek güncellenir.")
+    public void updateRateAndCommentRequestineHideMyNameGirilirVeYeniRateCommentBilgileriGirilerekGuncellenir(String desiredPath, String desiredHideMyName) {
+        Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndCommentUpdate(desiredPath, desiredHideMyName));
     }
 }
