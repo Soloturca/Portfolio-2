@@ -17,27 +17,31 @@ public class BaseMethods {
 
     public boolean createSessionID(String desiredPath, String msisdn) {
         boolean status = false;
+        try {
+            CommonLib.waitSeconds(3);
+            Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlCreateSessionId + msisdn);
 
-        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlCreateSessionId + msisdn);
+            JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
-        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+            String result = js.getString("result.result");
 
-        String result = js.getString("result.result");
+            AutomationConstants.sessionId = js.getString("session.sessionId");
 
-        AutomationConstants.sessionId = js.getString("session.sessionId");
+            System.out.println("sessionID is: " + AutomationConstants.sessionId);
 
-        System.out.println("sessionID is: " + AutomationConstants.sessionId);
+            CommonLib.allureReport("INFO", "SessionID is: " + AutomationConstants.sessionId);
 
-        CommonLib.allureReport("INFO", "SessionID is: " + AutomationConstants.sessionId);
+            if (result.contains("SUCCESS")) {
+                CommonLib.allureReport("PASS", "Session ID created. ");
+                status = true;
+            } else {
+                CommonLib.allureReport("FAIL", "Error getting session ID. Check it.");
+            }
 
-        if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "Session ID created. Value : " + AutomationConstants.sessionId);
-            status = true;
-        } else {
-            CommonLib.allureReport("FAIL", "Error getting session ID. Check it.");
+            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
+        } catch (Exception e) {
+            CommonLib.allureReport("FAIL", "Error getting session ID. Check it.Error : " + e.getMessage());
         }
-
-        CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
 
         return status;
     }
