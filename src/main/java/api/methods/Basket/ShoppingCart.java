@@ -32,22 +32,27 @@ public class ShoppingCart extends BaseMethods {
         String result = js.getString("result.result");
 
         if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "");
+            CommonLib.allureReport("PASS", "Basket cleared successfully.");
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "An error was encountered while cleaning the basket. Check.");
         }
+
+        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
 
         return status;
     }
 
 
-    public boolean addVfMallCustomerProfile(String desiredPath,String desiredMsisdn) {
+    public boolean addVfMallCustomerProfile(String desiredPath, String desiredMsisdn) {
+
         boolean status = false;
 
         Map<String, String> map = new HashMap<>();
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+
+        CommonLib.allureReport("INFO", "Request : " + RequestBody.addVFMallCustomerProfile(desiredMsisdn));
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.addVFMallCustomerProfile(desiredMsisdn), AutomationConstants.urlAddCustomerProfile, map);
 
@@ -60,11 +65,13 @@ public class ShoppingCart extends BaseMethods {
         CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
 
         if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "");
+            CommonLib.allureReport("PASS", "The registration to the Save Shopping Cart Address has been done properly.");
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "Registration to the Save Shopping Cart Address did not occur properly. Please check.");
         }
+
+        CommonLib.allureReport("INFO", "DATA : " + response.asPrettyString());
 
         return status;
     }

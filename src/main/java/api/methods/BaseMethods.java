@@ -13,9 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import static base.AutomationConstants.updatedListAmount;
-import static base.AutomationConstants.updatedSalesAmount;
-
 public class BaseMethods {
 
     public boolean createSessionID(String desiredPath, String msisdn) {
@@ -40,11 +37,15 @@ public class BaseMethods {
             CommonLib.allureReport("FAIL", "Error getting session ID. Check it.");
         }
 
+        CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
+
         return status;
     }
 
     public boolean createVfMallTokenRequest(String desiredPath) {
         boolean status = false;
+
+        CommonLib.allureReport("INFO", "Request: " + RequestBody.createVfMallToken());
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallToken(), AutomationConstants.urlCreateVfMallToken);
 
@@ -97,7 +98,9 @@ public class BaseMethods {
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getOfferingDetails(AutomationConstants.uuidID), "", AutomationConstants.urlGetVFMallOfferingDetails, map);
+        CommonLib.allureReport("INFO", "Request: " + RequestBody.getOfferingDetails());
+
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getOfferingDetails(), "", AutomationConstants.urlGetVFMallOfferingDetails, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -116,36 +119,38 @@ public class BaseMethods {
         CommonLib.allureReport("INFO", "quantity:" + AutomationConstants.productQuantity);
 
         AutomationConstants.variantCode = js.getString("offeringDetails.variantCode[0]");
-        AutomationConstants.variantCode = js.getString("offeringDetails.variantCode[0]");
-
+        CommonLib.allureReport("INFO", "variantCode:" + AutomationConstants.variantCode);
 
         if (result.contains("SUCCESS")) {
+            CommonLib.allureReport("PASS", "Offer details of the successfully requested product are given.");
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
-            CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
+            CommonLib.allureReport("FAIL", "Failed. Check.");
         }
+        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         return status;
     }
 
     public boolean updateVfMallStockAndPriceRequest(String desiredPath) {
         boolean status = false;
 
-        updatedListAmount = CommonLib.integerToString(AutomationConstants.listAmount);
-        updatedSalesAmount = CommonLib.integerToString(AutomationConstants.salesAmount);
+        AutomationConstants.updatedListAmount = CommonLib.integerToString(AutomationConstants.listAmount);
+        AutomationConstants.updatedSalesAmount = CommonLib.integerToString(AutomationConstants.salesAmount);
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateVfMallStockAndPrice(updatedListAmount, AutomationConstants.updatedProductQuantity, updatedSalesAmount), AutomationConstants.token, AutomationConstants.urlUpdateVfMallStockAndPrice);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateVfMallStockAndPrice(AutomationConstants.updatedListAmount, AutomationConstants.updatedProductQuantity, AutomationConstants.updatedSalesAmount), AutomationConstants.token, AutomationConstants.urlUpdateVfMallStockAndPrice);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+
         String result = js.getString("result.result");
         String resultCode = js.getString("result.resultCode");
 
         if (result.contains("SUCCESS") && resultCode.equals("0")) {
+            CommonLib.allureReport("PASS", "");
             status = true;
         } else {
             CommonLib.allureReport("FAIL", "");
-            CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         }
+        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         return status;
     }
 
@@ -154,18 +159,31 @@ public class BaseMethods {
         try {
             switch (requestType) {
                 case "VFMallOffering":
-                    Assert.assertNotNull(AutomationConstants.salesAmount);
-                    Assert.assertNotNull(AutomationConstants.listAmount);
-                    Assert.assertNotNull(AutomationConstants.productQuantity);
-                    status = true;
+                    if (AutomationConstants.salesAmount != null && AutomationConstants.listAmount != null && AutomationConstants.productQuantity != null) {
+                        status = true;
+                        CommonLib.allureReport("PASS", "It is seen that the desired values are not empty but come filled.");
+                    } else {
+                        CommonLib.allureReport("FAIL", "It was seen that the data was not empty. Check it.");
+                    }
+                    CommonLib.allureReport("INFO", "Sales Amount: " + AutomationConstants.salesAmount);
+                    CommonLib.allureReport("INFO", "List Amount: " + AutomationConstants.listAmount);
+                    CommonLib.allureReport("INFO", "Product Quantity: " + AutomationConstants.productQuantity);
+
                     break;
+
                 case "VFMallHomePage":
-                    Assert.assertNotNull(AutomationConstants.title);
-                    status = true;
+                    if (AutomationConstants.title != null) {
+                        status = true;
+                        CommonLib.allureReport("PASS", "It is seen that the desired values are not empty but come filled.");
+                    } else {
+                        CommonLib.allureReport("FAIL", "It was seen that the data was not empty. Check it.");
+                    }
+                    CommonLib.allureReport("INFO", "Title " + AutomationConstants.title);
+
                     break;
             }
         } catch (Exception e) {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "An error occurred while checking. Check service values.");
         }
         return status;
     }

@@ -26,10 +26,13 @@ public class Offering extends BaseMethods {
                 AutomationConstants.variantCode += (char) (r.nextInt(26) + 'a');
             }
         }
+
         AutomationConstants.variantCode += barcode;
 
         System.out.println("variantCode: " + AutomationConstants.variantCode);
         String displayName = "automation" + AutomationConstants.id;
+
+        CommonLib.allureReport("INFO", "Request: " + RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode));
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
 
@@ -41,19 +44,25 @@ public class Offering extends BaseMethods {
         AutomationConstants.resultDesc = js.getString("result.resultDesc");
         AutomationConstants.uuidID = js.getString("offeringId");
         AutomationConstants.offerCode = js.getString("code");
+
         System.out.println("offeringId: " + AutomationConstants.uuidID);
+
         CommonLib.allureReport("INFO", "offerID:" + AutomationConstants.uuidID);
 
         if (maxSaleCount.equals("0") || barcode.equals("c8249cb5-0848-4cdc-9c91-1e7a576860d7") || cargoCompanyID.equals("601be73da23ffc44f4864242")) {
             if (AutomationConstants.result.contains("FAIL") && AutomationConstants.offerStatus == null) {
                 status = true;
+                CommonLib.allureReport("PASS", "It was seen that the error was received as desired.");
             }
         } else if (AutomationConstants.result.contains("SUCCESS") && AutomationConstants.offerStatus.contains("Active")) {
             status = true;
+            CommonLib.allureReport("FAIL", "Offer Status appears to be 'Active' and progressing properly.");
         } else {
-            CommonLib.allureReport("FAIL", "");
-            CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
+            CommonLib.allureReport("FAIL", "An error occurred while generating data. Check.");
         }
+
+        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
+
         return status;
     }
 }
