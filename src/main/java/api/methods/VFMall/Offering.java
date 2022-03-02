@@ -67,7 +67,7 @@ public class Offering extends BaseMethods {
             CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "An error occurred while generating data. Check.Error : " + e.getMessage());
-            CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
+            CommonLib.allureReport("INFO", "Response: " + response.asPrettyString());
         }
 
         return status;

@@ -133,7 +133,7 @@ public class Order extends BaseMethods {
 
     public boolean getVFMallRateAndComment(String desiredPath) {
         boolean status = false;
-
+        Response response = null;
         try {
             Map<String, String> map = new HashMap<>();
 
@@ -141,7 +141,7 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request : " + RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode));
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+            response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -166,7 +166,8 @@ public class Order extends BaseMethods {
             CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            CommonLib.allureReport("FAIL", "An error was received while trying to get the Comment ID. Error: " + e.getLocalizedMessage());
+            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
         }
 
         return status;
