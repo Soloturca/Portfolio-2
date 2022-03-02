@@ -17,7 +17,7 @@ public class Offering extends BaseMethods {
         boolean status = false;
 
         CommonLib.waitSeconds(3);
-
+        Response response = null;
         try {
             if (barcode.isEmpty()) {
                 Random rand = new Random();
@@ -37,7 +37,7 @@ public class Offering extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request: " + RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode));
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
+            response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -67,6 +67,7 @@ public class Offering extends BaseMethods {
             CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "An error occurred while generating data. Check.Error : " + e.getMessage());
+            CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         }
 
         return status;

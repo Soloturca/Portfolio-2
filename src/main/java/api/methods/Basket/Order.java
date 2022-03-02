@@ -226,14 +226,13 @@ public class Order extends BaseMethods {
         String result = js.getString("result.result");
         String resultCode = js.getString("result.resultCode");
 
-        AutomationConstants.commentId = AutomationConstants.randomCommentId;
-
-        System.out.println("commentId is: " + AutomationConstants.commentId);
-
         CommonLib.allureReport("INFO", "commentId is: " + AutomationConstants.commentId);
 
         if (result.contains("SUCCESS") && resultCode.contains("0")) {
             CommonLib.allureReport("PASS", "");
+            AutomationConstants.commentId = AutomationConstants.randomCommentId;
+
+            System.out.println("commentId is: " + AutomationConstants.commentId);
             status = true;
         } else {
             CommonLib.allureReport("FAIL", "");
@@ -245,6 +244,7 @@ public class Order extends BaseMethods {
 
     public boolean enterSessionIdAtInsertVfMallRateAndCommentUpdate(String desiredPath, String desiredHideMyName) {
         boolean status = false;
+        Response response = null;
         try {
             Map<String, String> map = new HashMap<>();
 
@@ -252,7 +252,7 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request: " + RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName));
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName), AutomationConstants.urlUpdateVfMallRateAndComment, map);
+            response = ResponseBody.getResponse(desiredPath, RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName), AutomationConstants.urlUpdateVfMallRateAndComment, map);
 
             AutomationConstants.hideMyName = desiredHideMyName;
 
@@ -266,6 +266,7 @@ public class Order extends BaseMethods {
 
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "An error was received while updating the comment. Error :" + e.getMessage());
+            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
         }
 
         return status;

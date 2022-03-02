@@ -126,7 +126,8 @@ public class ResponseBody {
                             .body(reqBody)
                             .when()
                             .get(desiredPostURL)
-                            .then().statusCode(HttpStatus.SC_OK)
+                            .then()
+                            //.statusCode(HttpStatus.SC_OK)
                             .extract().response();
                 case "POST":
                     return given()
@@ -136,7 +137,7 @@ public class ResponseBody {
                             .when()
                             .post(desiredPostURL)
                             .then()
-                            .statusCode(HttpStatus.SC_OK)
+                           // .statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 
@@ -165,7 +166,8 @@ public class ResponseBody {
                             .body(reqBody)
                             .when()
                             .get(desiredPostURL)
-                            .then().statusCode(HttpStatus.SC_OK)
+                            .then()
+                            //.statusCode(HttpStatus.SC_OK)
                             .extract().response();
                 case "POST":
                     return given()
@@ -173,7 +175,8 @@ public class ResponseBody {
                             .body(reqBody)
                             .when()
                             .post(desiredPostURL)
-                            .then().statusCode(HttpStatus.SC_OK)
+                            .then()
+                            //.statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 

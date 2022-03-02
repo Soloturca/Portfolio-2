@@ -17,9 +17,10 @@ public class BaseMethods {
 
     public boolean createSessionID(String desiredPath, String msisdn) {
         boolean status = false;
+        Response response = null;
         try {
             CommonLib.waitSeconds(3);
-            Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlCreateSessionId + msisdn);
+            response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlCreateSessionId + msisdn);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -41,6 +42,7 @@ public class BaseMethods {
             CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "Error getting session ID. Check it.Error : " + e.getMessage());
+            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
         }
 
         return status;
@@ -78,9 +80,9 @@ public class BaseMethods {
             Assert.assertEquals("Result durumu hatalıdır.", expectedResult, AutomationConstants.result);
 
             CommonLib.allureReport("PASS", "All expected values have arrived.");
-            CommonLib.allureReport("INFO", "Expected ErrorMessage" + expectedErrorMessage + ". Actual Error Message: " + AutomationConstants.resultDesc);
-            CommonLib.allureReport("INFO", "Expected Kod" + expectedResultCode + ". Actual Result Kod: " + AutomationConstants.resultCode);
-            CommonLib.allureReport("INFO", "Expected Result Status" + expectedResult + ". Actual Error Message: " + AutomationConstants.result);
+            CommonLib.allureReport("INFO", "Expected ErrorMessage: " + expectedErrorMessage + ". Actual Error Message: " + AutomationConstants.resultDesc);
+            CommonLib.allureReport("INFO", "Expected Kod: " + expectedResultCode + ". Actual Result Kod: " + AutomationConstants.resultCode);
+            CommonLib.allureReport("INFO", "Expected Result Status: " + expectedResult + ". Actual Error Message: " + AutomationConstants.result);
 
             status = true;
 

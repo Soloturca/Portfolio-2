@@ -99,11 +99,12 @@ public class ShoppingCart extends BaseMethods {
         String result = js.getString("result.result");
 
         if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "");
+            CommonLib.allureReport("PASS", "The Customer Profile ID appears to have been successfully added.");
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "It appears that the Customer Profile ID could not be successfully added.");
         }
+        CommonLib.allureReport("INFO", "DATA : " + response.asPrettyString());
 
         return status;
     }
@@ -123,18 +124,20 @@ public class ShoppingCart extends BaseMethods {
 
         String result = js.getString("result.result");
 
-        AutomationConstants.shoppingCartId = js.getString("shoppingCart.id");
-
-        System.out.println("shoppingCartId is: " + AutomationConstants.shoppingCartId);
-
-        CommonLib.allureReport("INFO", "shoppingCartId is: " + AutomationConstants.shoppingCartId);
-
         if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "");
+            CommonLib.allureReport("PASS", "It is seen that the products are added correctly.");
+
+            AutomationConstants.shoppingCartId = js.getString("shoppingCart.id");
+
+            System.out.println("shoppingCartId is: " + AutomationConstants.shoppingCartId);
+
+            CommonLib.allureReport("INFO", "shoppingCartId is: " + AutomationConstants.shoppingCartId);
+
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "It appears that the products cannot be added correctly.");
         }
+        CommonLib.allureReport("INFO", "DATA : " + response.asPrettyString());
 
         return status;
     }
