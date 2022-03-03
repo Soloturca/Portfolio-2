@@ -133,7 +133,6 @@ public class Order extends BaseMethods {
 
     public boolean getVFMallRateAndComment(String desiredPath) {
         boolean status = false;
-        Response response = null;
         try {
             Map<String, String> map = new HashMap<>();
 
@@ -141,7 +140,7 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request : " + RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode));
 
-            response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+            Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -163,9 +162,8 @@ public class Order extends BaseMethods {
                 CommonLib.allureReport("FAIL", "An error was received while trying to get the Comment ID.");
                 CommonLib.allureReport("FAIL", "Data : " + response.asPrettyString());
             }
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             CommonLib.allureReport("FAIL", "An error was received while trying to get the Comment ID. Error: " + e.getLocalizedMessage());
-            CommonLib.allureReport("FAIL", "Data : " + Objects.requireNonNull(response).asPrettyString());
         }
 
         return status;
@@ -213,13 +211,12 @@ public class Order extends BaseMethods {
 
     public boolean getVFMallRateAndCommentRandomID(String desiredPath) {
         boolean status = false;
-        Response response = null;
         try {
             Map<String, String> map = new HashMap<>();
 
             map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-            response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+            Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -238,9 +235,8 @@ public class Order extends BaseMethods {
                 CommonLib.allureReport("FAIL", "Failed to get Comment ID successfully.");
                 CommonLib.allureReport("FAIL", "Response : " + response.asPrettyString());
             }
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             CommonLib.allureReport("FAIL", "An error was received while updating the comment. Error :" + e.getMessage());
-            CommonLib.allureReport("INFO", "Data : " + Objects.requireNonNull(response).asPrettyString());
         }
         return status;
     }
