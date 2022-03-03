@@ -161,13 +161,11 @@ public class Order extends BaseMethods {
                 status = true;
             } else {
                 CommonLib.allureReport("FAIL", "An error was received while trying to get the Comment ID.");
+                CommonLib.allureReport("FAIL", "Data : " + response.asPrettyString());
             }
-
-            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
-
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "An error was received while trying to get the Comment ID. Error: " + e.getLocalizedMessage());
-            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
+            CommonLib.allureReport("FAIL", "Data : " + response.asPrettyString());
         }
 
         return status;
@@ -237,8 +235,8 @@ public class Order extends BaseMethods {
             status = true;
         } else {
             CommonLib.allureReport("FAIL", "");
+            CommonLib.allureReport("FAIL", "Response : " + response.asPrettyString());
         }
-        CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
 
         return status;
     }

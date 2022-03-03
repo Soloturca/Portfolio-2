@@ -60,12 +60,10 @@ public class BaseMethods {
         String result = js.getString("result.result");
         AutomationConstants.token = js.getString("token").substring(7);
         System.out.println("token is: " + AutomationConstants.token);
-        CommonLib.allureReport("INFO", "Token is: " + AutomationConstants.token);
-
 
         if (result.contains("SUCCESS")) {
             status = true;
-            CommonLib.allureReport("PASS", "Token created. Value : " + AutomationConstants.token);
+            CommonLib.allureReport("PASS", "The token was created correctly.");
         } else {
             CommonLib.allureReport("FAIL", "Error getting token. Check it.");
         }
