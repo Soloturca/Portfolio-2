@@ -165,7 +165,7 @@ public class Order extends BaseMethods {
             }
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "An error was received while trying to get the Comment ID. Error: " + e.getLocalizedMessage());
-            CommonLib.allureReport("FAIL", "Data : " + response.asPrettyString());
+            CommonLib.allureReport("FAIL", "Data : " + Objects.requireNonNull(response).asPrettyString());
         }
 
         return status;
@@ -213,31 +213,35 @@ public class Order extends BaseMethods {
 
     public boolean getVFMallRateAndCommentRandomID(String desiredPath) {
         boolean status = false;
+        Response response = null;
+        try {
+            Map<String, String> map = new HashMap<>();
 
-        Map<String, String> map = new HashMap<>();
+            map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+            response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+            JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
-        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+            String result = js.getString("result.result");
+            String resultCode = js.getString("result.resultCode");
 
-        String result = js.getString("result.result");
-        String resultCode = js.getString("result.resultCode");
+            CommonLib.allureReport("INFO", "commentId is: " + AutomationConstants.commentId);
 
-        CommonLib.allureReport("INFO", "commentId is: " + AutomationConstants.commentId);
+            if (result.contains("SUCCESS") && resultCode.contains("0")) {
+                CommonLib.allureReport("PASS", "Successfully retrieved Comment ID");
+                AutomationConstants.commentId = AutomationConstants.randomCommentId;
 
-        if (result.contains("SUCCESS") && resultCode.contains("0")) {
-            CommonLib.allureReport("PASS", "");
-            AutomationConstants.commentId = AutomationConstants.randomCommentId;
-
-            System.out.println("commentId is: " + AutomationConstants.commentId);
-            status = true;
-        } else {
-            CommonLib.allureReport("FAIL", "");
-            CommonLib.allureReport("FAIL", "Response : " + response.asPrettyString());
+                System.out.println("commentId is: " + AutomationConstants.commentId);
+                status = true;
+            } else {
+                CommonLib.allureReport("FAIL", "Failed to get Comment ID successfully.");
+                CommonLib.allureReport("FAIL", "Response : " + response.asPrettyString());
+            }
+        } catch (Exception e) {
+            CommonLib.allureReport("FAIL", "An error was received while updating the comment. Error :" + e.getMessage());
+            CommonLib.allureReport("INFO", "Data : " + Objects.requireNonNull(response).asPrettyString());
         }
-
         return status;
     }
 
@@ -265,7 +269,7 @@ public class Order extends BaseMethods {
 
         } catch (Exception e) {
             CommonLib.allureReport("FAIL", "An error was received while updating the comment. Error :" + e.getMessage());
-            CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
+            CommonLib.allureReport("INFO", "Data : " + Objects.requireNonNull(response).asPrettyString());
         }
 
         return status;
