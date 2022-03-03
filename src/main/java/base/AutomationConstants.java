@@ -41,8 +41,8 @@ public class AutomationConstants {
     public static String salesAmount;
     public static String listAmount;
     public static String productQuantity;
-    public static String updatedSalesAmount;
-    public static String updatedListAmount;
+    public static String updatedSalesAmount = "";
+    public static String updatedListAmount = "";
     public static String updatedProductQuantity;
     public static String variantCode = "";
 

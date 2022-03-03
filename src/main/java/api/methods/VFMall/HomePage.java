@@ -25,20 +25,23 @@ public class HomePage extends BaseMethods {
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
         String result = js.getString("result.result");
+
         AutomationConstants.idList = js.get("vfmallHome.id");
         AutomationConstants.sizeList = AutomationConstants.idList.size();
         System.out.println("idList:" + AutomationConstants.idList);
         CommonLib.allureReport("INFO", "idList:" + AutomationConstants.idList);
+
         AutomationConstants.title = js.get("vfmallHome.title");
         System.out.println("title:" + AutomationConstants.title);
         CommonLib.allureReport("INFO", "title:" + AutomationConstants.title);
 
         if (result.contains("SUCCESS")) {
+            CommonLib.allureReport("PASS", "Title field appears.");
             status = true;
         } else {
-            CommonLib.allureReport("FAIL", "");
-            CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
+            CommonLib.allureReport("FAIL", "It appears that an error has been received. Check it.");
         }
+        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
         return status;
     }
 }

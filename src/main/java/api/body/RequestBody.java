@@ -1,5 +1,9 @@
 package api.body;
 
+import api.model.JSON.InsertRateComment;
+import base.AutomationConstants;
+import base.CommonLib;
+
 public class RequestBody {
 
     public static String createVfMallOffer(String barcode, String displayName, String maxSaleCount, String cargoCompanyID, String variantCode) {
@@ -142,9 +146,9 @@ public class RequestBody {
                 "]";
     }
 
-    public static String getOfferingDetails(String uuidID) {
+    public static String getOfferingDetails() {
         return "{\n" +
-                "    \"uuidID\": \"" + uuidID + "\"\n" +
+                "    \"uuid\": \"00b34d43-bcd2-4f11-9668-3346e7202192\"\n" +
                 "}";
     }
 
@@ -157,16 +161,18 @@ public class RequestBody {
     }
 
     public static String insertRateAndComment(String uuidID, String variantCode, String desiredHideMyName) {
-        return "{\n" +
-                "   \"uuid\": \"" + uuidID + "\",\n" +
-                "    \"variantCode\": \"" + variantCode + "\",\n" +
-                "    \"rate\": 4,\n" +
-                "    \"title\": \"eh fena değil\",\n" +
-                "    \"comment\": \"çok kaliteli değil ama iş görür.\",\n" +
-                "    \"hideMyName\":" + desiredHideMyName + ",\n" +
-                "    \"height\": \"192\",\n" +
-                "    \"weight\": \"92\"\n" +
-                "}";
+        InsertRateComment insertRateComment=new InsertRateComment();
+
+        insertRateComment.setUuid(uuidID);
+        insertRateComment.setVariantCode(variantCode);
+        insertRateComment.setRate(4);
+        insertRateComment.setTitle("eh fena değil");
+        insertRateComment.setComment("çok kaliteli değil ama iş görür.");
+        insertRateComment.setHideMyName(Boolean.parseBoolean(desiredHideMyName));
+        insertRateComment.setHeight("192");
+        insertRateComment.setWeight("92");
+
+        return CommonLib.prepJson(insertRateComment);
     }
 
     public static String getRateAndComment(String uuidID, String variantCode) {
@@ -183,7 +189,7 @@ public class RequestBody {
                 "    \"title\": \"Harika\",\n" +
                 "    \"status\": \"1\",\n" +
                 "    \"comment\": \"Alır almaz bitirdim\",\n" +
-                "    \"hideMyName\": \"" + desiredHideMyName + "\"\n" +
+                "    \"hideMyName\":" + desiredHideMyName + "\n" +
                 "}";
     }
 

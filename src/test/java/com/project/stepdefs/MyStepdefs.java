@@ -118,4 +118,11 @@ public class MyStepdefs {
     public void updateRateAndCommentRequestineHideMyNameGirilirVeYeniRateCommentBilgileriGirilerekGuncellenir(String desiredPath, String desiredHideMyName) {
         Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndCommentUpdate(desiredPath, desiredHideMyName));
     }
+
+
+    @And("{string} requesti ile HideMyName {string} olduğundan isim ve soyisim buna göre gözükür.")
+    public void requestiIleHideMyNameOlduğundanIsimVeSoyisimBunaGöreGözükür(String desiredPath, String desiredWay) {
+        Assert.assertTrue(new Order().checkResponseForMask(desiredPath,desiredWay));
+
+    }
 }
