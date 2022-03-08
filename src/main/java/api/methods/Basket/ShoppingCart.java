@@ -25,7 +25,7 @@ public class ShoppingCart extends BaseMethods {
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-        Response response = ResponseBody.getResponse(desiredPath, "", "", AutomationConstants.urlShoppingJourney, map);
+        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlShoppingJourney, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -138,6 +138,74 @@ public class ShoppingCart extends BaseMethods {
             CommonLib.allureReport("FAIL", "It appears that the products cannot be added correctly.");
         }
         CommonLib.allureReport("INFO", "DATA : " + response.asPrettyString());
+
+        return status;
+    }
+
+    public boolean getVfMallCustomerProfileList(String desiredPath) {
+        boolean status = false;
+
+        Map<String, String> map = new HashMap<>();
+
+        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+
+        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlGetVfMallCustomerProfileList, map);
+
+        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+
+        String result = js.getString("result.result");
+
+        if (result.contains("SUCCESS")) {
+            CommonLib.allureReport("PASS", "It is seen that the products are listed correctly.");
+
+            AutomationConstants.customerProfileId = js.getString("customerProfileList.customerProfileId[0]");
+
+            System.out.println("customerProfileId is: " + AutomationConstants.customerProfileId);
+
+            System.out.println("getVfMallCustomerProfile çalıştı");
+
+            CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
+
+            status = true;
+        } else {
+            CommonLib.allureReport("FAIL", "It appears that the products cannot be listed correctly.");
+        }
+        CommonLib.allureReport("INFO", "DATA : " + response.asPrettyString());
+
+        return status;
+    }
+
+    public boolean removeCustomerProfile(String desiredMethod, String desiredPath) {
+        boolean status = false;
+
+        Map<String, String> map = new HashMap<>();
+
+        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+
+        map.put(String.valueOf(ParameterDTO.method), desiredMethod);
+
+        map.put(String.valueOf(ParameterDTO.customerProfileId), AutomationConstants.customerProfileId);
+
+        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlRemoveCustomerProfile, map);
+
+        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+
+        String result = js.getString("result.result");
+
+        System.out.println("customerProfileId is: " + AutomationConstants.customerProfileId);
+
+        System.out.println("removeVfMallCustomerProfile çalıştı");
+
+        CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
+
+        if (result.contains("SUCCESS")) {
+            CommonLib.allureReport("PASS", "customerProfileId removed. ");
+            status = true;
+        } else {
+            CommonLib.allureReport("FAIL", "Error getting customerProfileId.");
+        }
+
+        CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
 
         return status;
     }

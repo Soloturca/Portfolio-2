@@ -29,7 +29,6 @@ public class Offering extends BaseMethods {
                     AutomationConstants.variantCode += (char) (r.nextInt(26) + 'a');
                 }
             }
-
             AutomationConstants.variantCode += barcode;
 
             System.out.println("variantCode: " + AutomationConstants.variantCode);

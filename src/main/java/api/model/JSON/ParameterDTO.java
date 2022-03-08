@@ -7,5 +7,6 @@ public enum ParameterDTO {
     species,
     gender,
     sid,
-    method;
+    method,
+    customerProfileId;
 }

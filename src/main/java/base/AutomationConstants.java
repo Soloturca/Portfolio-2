@@ -64,4 +64,6 @@ public class AutomationConstants {
     public static String urlInsertVfMallRateAndComment = "https://efes.vodafone.com.tr/vfmall/insertVFMallRateAndComment";
     public static String urlGetRateAndComment = "https://efes.vodafone.com.tr/vfmall/getVFMallRateAndComment";
     public static String urlUpdateVfMallRateAndComment = "https://efes.vodafone.com.tr/vfmall/updateVFMallRateAndComment";
+    public static String urlGetVfMallCustomerProfileList = "http://10.86.244.136:8080/vfmall/getVFMallCustomerProfileList";
+    public static String urlRemoveCustomerProfile = "http://10.86.244.136:8080/api";
 }
