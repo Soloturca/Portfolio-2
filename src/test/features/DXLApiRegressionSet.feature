@@ -1,4 +1,4 @@
-@DXLApi
+#@DXLApi
 Feature: DXLApi
 
   @API-TC0017
@@ -50,7 +50,7 @@ Feature: DXLApi
       | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage                              | expectedResult |
       |         | 110          | 601be73da23ffc44f4864242 | 43                 | Kargo kodu Partner'e ait bir kargo kodu olmalıdır | FAIL           |
 
-
+  @DXLApi
   @API-TC0001
   Scenario Outline: Müşteriye Teslim Edildi Statusundeki ürüne yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur

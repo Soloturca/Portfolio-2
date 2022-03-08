@@ -115,6 +115,10 @@ public class Order extends BaseMethods {
 
             Response response = ResponseBody.getResponse(desiredPath, RequestBody.insertRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode, desiredHideMyName), AutomationConstants.urlInsertVfMallRateAndComment, map);
 
+            CommonLib.allureReport("INFO", "Data: " + response.asPrettyString());
+            CommonLib.allureReport("INFO", "Status Code: " + response.getStatusCode());
+
+
             AutomationConstants.hideMyName = desiredHideMyName;
 
             CommonLib.allureReport("INFO", "HideMyName: " + AutomationConstants.hideMyName);
@@ -123,8 +127,6 @@ public class Order extends BaseMethods {
             AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
 
             CommonLib.allureReport("PASS", "It was seen that the name display status was entered as desired and comments were added.");
-
-            CommonLib.allureReport("INFO", "Data: " + response.asPrettyString());
 
             status = true;
 
