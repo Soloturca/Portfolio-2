@@ -119,10 +119,18 @@ public class MyStepdefs {
         Assert.assertTrue(new Order().enterSessionIdAtInsertVfMallRateAndCommentUpdate(desiredPath, desiredHideMyName));
     }
 
-
     @And("{string} requesti ile HideMyName {string} olduğundan isim ve soyisim buna göre gözükür.")
-    public void requestiIleHideMyNameOlduğundanIsimVeSoyisimBunaGöreGözükür(String desiredPath, String desiredWay) {
-        Assert.assertTrue(new Order().checkResponseForMask(desiredPath,desiredWay));
+    public void requestiIleHideMyNameOldugundanIsimVeSoyisimBunaGoreGozukur(String desiredPath, String desiredWay) {
+        Assert.assertTrue(new Order().checkResponseForMask(desiredPath, desiredWay));
+    }
 
+    @And("getVfMallCustomerProfileList {string} requesti atılır ve customerProfileId değeri çekilir.")
+    public void getVfMallCustomerProfileListRequestiAtilirVeCustomerProfileIdDegeriCekilir(String desiredPath) {
+        Assert.assertTrue(new ShoppingCart().getVfMallCustomerProfileList(desiredPath));
+    }
+
+    @And("customerProfileID parametresi {string} metoduyla {string} isteği atılarak silinir.")
+    public void customerProfileIdParametresiMetoduylaIstegiAtilarakSilinir(String desiredPath, String desiredMethod) {
+        Assert.assertTrue(new ShoppingCart().removeCustomerProfile(desiredPath, desiredMethod));
     }
 }

@@ -50,13 +50,15 @@ Feature: DXLApi
       |         | 110          | 601be73da23ffc44f4864242 | 43                 | Kargo kodu Partner'e ait bir kargo kodu olmalıdır | FAIL           |
 
 
-  @DXLApi   @API-TC0001
+  @API-TC0001
   Scenario Outline: Müşteriye Teslim Edildi Statusundeki ürüne yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
     And createSessionId "POST" request'i ve "5467023333" ile sessionId alınır.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
-    And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
+    And cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
+    And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
+    And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
     And addVFMallCustomerProfile "POST" requestine "5467023333" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
     And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
@@ -105,6 +107,8 @@ Feature: DXLApi
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
+    And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
+    And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
     And addVFMallCustomerProfile "POST" requestine "5467023333" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
     And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
@@ -125,6 +129,8 @@ Feature: DXLApi
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
+    And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
+    And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
     And addVFMallCustomerProfile "POST" requestine "5467023333" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
     And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
@@ -146,6 +152,8 @@ Feature: DXLApi
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
+    And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
+    And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
     And addVFMallCustomerProfile "POST" requestine "5467023333" msisdn degeri kullanılarak sessionId atılır.
     And "addCartItems" metodu ve ürünün uuidsi ile "POST" requseti atılır.
     And customerProfileID parametresi "saveShoppingCartAddress" metoduyla "POST" requestine eklenir.
@@ -242,6 +250,8 @@ Feature: DXLApi
     Examples:
       | barcode | maxSaleCount | cargoCompanyID           | expectedResultCode | expectedErrorMessage            | expectedResult |
       |         | 110          | 60e80fd0026e19ca7d1fe005 | 0                  | İşleminiz başarıyla tamamlandı. | SUCCESS        |
+
+
   @API-TC0015
   Scenario: İsim Gizlenmeden yapılan yorumun güncellenmesi
     Given createSessionId "POST" request'i ve "5467023333" ile sessionId alınır.
