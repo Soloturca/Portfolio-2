@@ -111,6 +111,8 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request: " + RequestBody.insertRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode, desiredHideMyName));
 
+            CommonLib.waitSeconds(2);
+
             Response response = ResponseBody.getResponse(desiredPath, RequestBody.insertRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode, desiredHideMyName), AutomationConstants.urlInsertVfMallRateAndComment, map);
 
             AutomationConstants.hideMyName = desiredHideMyName;
