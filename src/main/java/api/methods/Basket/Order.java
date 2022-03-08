@@ -79,6 +79,8 @@ public class Order extends BaseMethods {
 
         CommonLib.allureReport("INFO", "Request : " + RequestBody.updateStatus(desiredStatus, AutomationConstants.orderId));
 
+        CommonLib.waitSeconds(2);
+
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.updateStatus(desiredStatus, AutomationConstants.orderId), AutomationConstants.urlUpdateSalesOrderStatus);
 
         System.out.println("orderId is: " + AutomationConstants.orderId);

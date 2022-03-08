@@ -36,6 +36,8 @@ public class Offering extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request: " + RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode));
 
+            CommonLib.waitSeconds(10);
+
             response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());

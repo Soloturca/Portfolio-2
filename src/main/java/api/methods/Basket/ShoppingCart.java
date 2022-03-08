@@ -162,8 +162,6 @@ public class ShoppingCart extends BaseMethods {
 
             System.out.println("customerProfileId is: " + AutomationConstants.customerProfileId);
 
-            System.out.println("getVfMallCustomerProfile çalıştı");
-
             CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
 
             status = true;
@@ -193,8 +191,6 @@ public class ShoppingCart extends BaseMethods {
         String result = js.getString("result.result");
 
         System.out.println("customerProfileId is: " + AutomationConstants.customerProfileId);
-
-        System.out.println("removeVfMallCustomerProfile çalıştı");
 
         CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
 
