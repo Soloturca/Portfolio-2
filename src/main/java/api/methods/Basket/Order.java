@@ -115,6 +115,8 @@ public class Order extends BaseMethods {
 
             Response response = ResponseBody.getResponse(desiredPath, RequestBody.insertRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode, desiredHideMyName), AutomationConstants.urlInsertVfMallRateAndComment, map);
 
+            System.out.println(response.getStatusCode());
+
             CommonLib.allureReport("INFO", "Data: " + response.asPrettyString());
             CommonLib.allureReport("INFO", "Status Code: " + response.getStatusCode());
 
