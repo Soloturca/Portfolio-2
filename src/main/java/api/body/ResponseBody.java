@@ -1,7 +1,10 @@
 package api.body;
 
+import base.AutomationConstants;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.ProxySpecification;
 import org.apache.http.HttpStatus;
 
 import java.util.Map;
@@ -9,6 +12,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.ContentType.XML;
+import static io.restassured.specification.ProxySpecification.host;
 
 public class ResponseBody {
 
@@ -104,6 +108,55 @@ public class ResponseBody {
         return null;
     }
 
+    /**
+     * Function:GetResponse
+     * Description:
+     * Input Parameters:
+     *
+     * @param reqBody        Body of the sent request.
+     * @param desiredPostURL URL to be posted
+     *                       Author: Hilal Yilmaz
+     *                       Date: 04-06-21
+     */
+
+    public static Response getResponseWithProxy(String desiredRequest, String reqBody,
+                                                String desiredPostURL, Map<String, String> map) {
+        try {
+            switch (desiredRequest) {
+                case "GET":
+                    return given()
+                            .proxy(host(AutomationConstants.proxyHost).withPort(AutomationConstants.proxyPort)
+                                    .withAuth(AutomationConstants.proxyUsername, AutomationConstants.proxyPassword))
+                            .headers(Headers.headers)
+                            .queryParams(map)
+                            .and()
+                            .body(reqBody)
+                            .when()
+                            .get(desiredPostURL)
+                            .then()
+                            .assertThat().statusCode(HttpStatus.SC_OK)
+                            .extract().response();
+                case "POST":
+                    return given()
+                            .proxy(host(AutomationConstants.proxyHost).withPort(AutomationConstants.proxyPort)
+                                    .withAuth(AutomationConstants.proxyUsername, AutomationConstants.proxyPassword))
+                            .headers(Headers.headers)
+                            .queryParams(map)
+                            .and()
+                            .body(reqBody)
+                            .when()
+                            .post(desiredPostURL)
+                            .then()
+                            .assertThat().statusCode(HttpStatus.SC_OK)
+                            .extract().response();
+            }
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return null;
+    }
+
 
     /**
      * Function:GetResponse
@@ -137,7 +190,7 @@ public class ResponseBody {
                             .when()
                             .post(desiredPostURL)
                             .then()
-                           // .statusCode(HttpStatus.SC_OK)
+                            // .statusCode(HttpStatus.SC_OK)
                             .extract().response();
             }
 
