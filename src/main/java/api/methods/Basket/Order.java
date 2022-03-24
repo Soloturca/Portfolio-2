@@ -142,7 +142,7 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request : " + RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode));
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+            Response response = ResponseBody.getResponseWithProxy(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -179,7 +179,7 @@ public class Order extends BaseMethods {
 
         CommonLib.allureReport("INFO", "Request : " + RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode));
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+        Response response = ResponseBody.getResponseWithProxy(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -218,7 +218,7 @@ public class Order extends BaseMethods {
 
             map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
 
-            Response response = ResponseBody.getResponse(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
+            Response response = ResponseBody.getResponseWithProxy(desiredPath, RequestBody.getRateAndComment(AutomationConstants.uuidID, AutomationConstants.variantCode), AutomationConstants.urlGetRateAndComment, map);
 
             JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
@@ -253,7 +253,7 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "Request: " + RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName));
 
-            response = ResponseBody.getResponse(desiredPath, RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName), AutomationConstants.urlUpdateVfMallRateAndComment, map);
+            response = ResponseBody.getResponseWithProxy(desiredPath, RequestBody.updateRateAndComment(AutomationConstants.commentId, desiredHideMyName), AutomationConstants.urlUpdateVfMallRateAndComment, map);
 
             AutomationConstants.hideMyName = desiredHideMyName;
 
