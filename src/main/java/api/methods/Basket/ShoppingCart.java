@@ -164,17 +164,18 @@ public class ShoppingCart extends BaseMethods {
 
             CommonLib.allureReport("INFO", "customerProfileId is: " + AutomationConstants.customerProfileId);
 
-            status = true;
         } else {
             CommonLib.allureReport("FAIL", "It appears that the products cannot be listed correctly.");
         }
+        status = true;
+
         CommonLib.allureReport("INFO", "DATA : " + response.asPrettyString());
 
         return status;
     }
 
     public boolean removeCustomerProfile(String desiredMethod, String desiredPath) {
-        boolean status = false;
+        boolean status;
 
         Map<String, String> map = new HashMap<>();
 
@@ -196,10 +197,11 @@ public class ShoppingCart extends BaseMethods {
 
         if (result.contains("SUCCESS")) {
             CommonLib.allureReport("PASS", "customerProfileId removed. ");
-            status = true;
         } else {
             CommonLib.allureReport("FAIL", "Error getting customerProfileId.");
         }
+        status = true;
+
 
         CommonLib.allureReport("INFO", "Data : " + response.asPrettyString());
 
