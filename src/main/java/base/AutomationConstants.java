@@ -52,7 +52,10 @@ public class AutomationConstants {
     public static String updatedProductQuantity;
     public static String variantCode = "";
 
-    //url
+    //core
+    public static String shipmentRefNo = "";
+
+    //url api
     public static String urlCreateToken = "http://10.177.244.60:7003/ws/rest/v10/token/subscription/create";
     public static String urlCreateSubscription = "http://10.177.244.60:7003/ws/rest/v11/subscription/create";
     public static String urlCreateSessionId = "http://10.86.244.136:8080/api?method=createSession&password=11111111&msisdn=";
@@ -72,4 +75,7 @@ public class AutomationConstants {
     public static String urlUpdateVfMallRateAndComment = "https://efes.vodafone.com.tr/vfmall/updateVFMallRateAndComment";
     public static String urlGetVfMallCustomerProfileList = "http://10.86.244.136:8080/vfmall/getVFMallCustomerProfileList";
     public static String urlRemoveCustomerProfile = "http://10.86.244.136:8080/api";
+
+    //url core
+    public static String urlCreateShipment = "http://ms-shipment-marketplace.apps.mbt.vodafone.local/shipment/";
 }

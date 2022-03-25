@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
 
-        features = "src/test/features/DXLApiRegressionSet.feature",
-        tags = "@DXLApi",
+        features = "src/test/features/DXLCoreRegressionSet.feature",
+        tags = "@DXLCore",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
         glue = {"com.project.stepdefs"})
 
