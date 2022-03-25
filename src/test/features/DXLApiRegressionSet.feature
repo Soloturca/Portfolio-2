@@ -9,7 +9,7 @@ Feature: DXLApi
 
   @API-TC0018
   Scenario: getVFMallHomePageResponseValidation
-    Given createSessionId "POST" request'i ve "5467022872" ile sessionId alınır.
+    Given createSessionId "POST" request'i ve "5467023333" ile sessionId alınır.
     And getVFMallHomePage requestine sessionId parametresi eklenir ve servis "GET" olarak tetiklenir
 
   @API-TC0019
