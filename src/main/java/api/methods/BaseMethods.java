@@ -101,7 +101,6 @@ public class BaseMethods {
         Map<String, String> map = new HashMap<>();
 
         map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
-        map.put("message","SHORT_NO");
 
         CommonLib.allureReport("INFO", "Request: " + RequestBody.getOfferingDetails());
 
