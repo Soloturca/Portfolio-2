@@ -12,6 +12,12 @@ public class AutomationConstants {
     public static String oracleUsername = "";
     public static String oraclePassword = "";
 
+    // Proxy constants
+    public static String proxyUsername = "srvc.pntest";
+    public static String proxyPassword = "0z+jswpcqrunftyzldMpyrfmu1";
+    public static String proxyHost = "172.31.53.99";
+    public static Integer proxyPort = 8080;
+
     //Common Values
     public static String responseData = "";
     public static String sessionId = "";
