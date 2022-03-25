@@ -119,8 +119,8 @@ Feature: DXLApi
   Scenario Outline: Beklemede statusundeki Ürüne Yorum yapma
     Given createVfMallToken "POST" request'i ile token olusturulur
     And createSessionId "POST" request'i ve "5467022872" ile sessionId alınır.
-    And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
-    And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
+   # And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
+  #  And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     And  cleanShoppingCart "GET" requesti ve "cleanShoppingCart" metodu aracılıgıyla sepetin temiz olduğuna bakılır.
