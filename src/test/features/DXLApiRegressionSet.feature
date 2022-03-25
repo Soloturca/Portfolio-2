@@ -15,6 +15,9 @@ Feature: DXLApi
   @API-TC0019
   Scenario Outline: createVfMallOfferingOfferOlusturma
     Given createVfMallToken "POST" request'i ile token olusturulur
+    And createSessionId "POST" request'i ve "5467023333" ile sessionId alınır.
+    And getVfMallCustomerProfileList "POST" requesti atılır ve customerProfileId değeri çekilir.
+    And customerProfileID parametresi "removeVFMallCustomerProfile" metoduyla "POST" isteği atılarak silinir.
     And createVfMallOffering "POST" requesti "<barcode>", "<maxSaleCount>" ve "<cargoCompanyID>" ile tetiklenir
     Then Response Bodyde "<expectedResultCode>", "<expectedErrorMessage>","<expectedResult>" alanlari kontrol edilir
     Examples:
