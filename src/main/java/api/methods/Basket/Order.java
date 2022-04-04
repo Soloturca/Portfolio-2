@@ -117,7 +117,6 @@ public class Order extends BaseMethods {
 
             CommonLib.allureReport("INFO", "HideMyName: " + AutomationConstants.hideMyName);
 
-
             AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
 
             CommonLib.allureReport("PASS", "It was seen that the name display status was entered as desired and comments were added.");
@@ -153,7 +152,6 @@ public class Order extends BaseMethods {
             System.out.println("commentId is: " + AutomationConstants.commentId);
 
             CommonLib.allureReport("INFO", "commentId is: " + AutomationConstants.commentId);
-
 
             AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
 

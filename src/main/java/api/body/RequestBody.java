@@ -1,11 +1,12 @@
 package api.body;
 
 import api.model.JSON.InsertRateComment;
-import base.AutomationConstants;
+import api.model.JSON.ShipmentStatus;
 import base.CommonLib;
 
 public class RequestBody {
 
+    //API SIDE
     public static String createVfMallOffer(String barcode, String displayName, String maxSaleCount, String cargoCompanyID, String variantCode) {
         return "{\n" +
                 "  \"barcode\": \"" + barcode + "\",\n" +
@@ -161,7 +162,7 @@ public class RequestBody {
     }
 
     public static String insertRateAndComment(String uuidID, String variantCode, String desiredHideMyName) {
-        InsertRateComment insertRateComment=new InsertRateComment();
+        InsertRateComment insertRateComment = new InsertRateComment();
 
         insertRateComment.setUuid(uuidID);
         insertRateComment.setVariantCode(variantCode);
@@ -214,5 +215,159 @@ public class RequestBody {
                 "  ],\n" +
                 "  \"returnOrders\": false\n" +
                 "}";
+    }
+
+    //CORE SIDE
+    public static String createShipment(String shipmentRefNo, String shipmentCompany) {
+        return "{\n" +
+                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
+                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
+                "    \"shipmentPayer\": \"PLATFORM\",\n" +
+                "    \"customerShip\": false,\n" +
+                "    \"fromAddress\": {\n" +
+                "        \"city\": \"İSTANBUL\",\n" +
+                "        \"town\": \"Sarıyer\",\n" +
+                "        \"name\": \"Fatma\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul\",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"toAddress\": {\n" +
+                "        \"city\": \"istanbul\",\n" +
+                "        \"town\": \"kağıthane\",\n" +
+                "        \"name\": \"Deneme\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"items\": [\n" +
+                "        {\n" +
+                "            \"code\": \"01\",\n" +
+                "            \"name\": \"test1\",\n" +
+                "            \"weight\": 1,\n" +
+                "            \"quantity\": 1,\n" +
+                "            \"size\": {\n" +
+                "                \"deci\": 1\n" +
+                "            }\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+    }
+
+    public static String createShipmentEmptyFromAddressText(String shipmentRefNo, String shipmentCompany) {
+        return "{\n" +
+                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
+                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
+                "    \"shipmentPayer\": \"PLATFORM\",\n" +
+                "    \"customerShip\": false,\n" +
+                "    \"fromAddress\": {\n" +
+                "        \"city\": \"İSTANBUL\",\n" +
+                "        \"town\": \"Sarıyer\",\n" +
+                "        \"name\": \"Fatma\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"\",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"toAddress\": {\n" +
+                "        \"city\": \"istanbul\",\n" +
+                "        \"town\": \"kağıthane\",\n" +
+                "        \"name\": \"Deneme\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"items\": [\n" +
+                "        {\n" +
+                "            \"code\": \"01\",\n" +
+                "            \"name\": \"test1\",\n" +
+                "            \"weight\": 1,\n" +
+                "            \"quantity\": 1,\n" +
+                "            \"size\": {\n" +
+                "                \"deci\": 1\n" +
+                "            }\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+    }
+
+    public static String createShipmentEmptyToAddressText(String shipmentRefNo, String shipmentCompany) {
+        return "{\n" +
+                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
+                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
+                "    \"shipmentPayer\": \"PLATFORM\",\n" +
+                "    \"customerShip\": false,\n" +
+                "    \"fromAddress\": {\n" +
+                "        \"city\": \"İSTANBUL\",\n" +
+                "        \"town\": \"Sarıyer\",\n" +
+                "        \"name\": \"Fatma\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul\",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"toAddress\": {\n" +
+                "        \"city\": \"istanbul\",\n" +
+                "        \"town\": \"kağıthane\",\n" +
+                "        \"name\": \"Deneme\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"\",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"items\": [\n" +
+                "        {\n" +
+                "            \"code\": \"01\",\n" +
+                "            \"name\": \"test1\",\n" +
+                "            \"weight\": 1,\n" +
+                "            \"quantity\": 1,\n" +
+                "            \"size\": {\n" +
+                "                \"deci\": 1\n" +
+                "            }\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+    }
+
+    public static String createShipmentEmptyShipmentRefNo(String shipmentRefNo, String shipmentCompany) {
+        return "{\n" +
+                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
+                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
+                "    \"shipmentPayer\": \"PLATFORM\",\n" +
+                "    \"customerShip\": false,\n" +
+                "    \"fromAddress\": {\n" +
+                "        \"city\": \"İSTANBUL\",\n" +
+                "        \"town\": \"Sarıyer\",\n" +
+                "        \"name\": \"Fatma\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul\",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"toAddress\": {\n" +
+                "        \"city\": \"istanbul\",\n" +
+                "        \"town\": \"kağıthane\",\n" +
+                "        \"name\": \"Deneme\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \",\n" +
+                "        \"msisdn\": \"5363636363\"\n" +
+                "    },\n" +
+                "    \"items\": [\n" +
+                "        {\n" +
+                "            \"code\": \"01\",\n" +
+                "            \"name\": \"test1\",\n" +
+                "            \"weight\": 1,\n" +
+                "            \"quantity\": 1,\n" +
+                "            \"size\": {\n" +
+                "                \"deci\": 1\n" +
+                "            }\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+    }
+
+    public static String shipmentStatus(String shipmentCompany, String shipmentRefNo) {
+        ShipmentStatus shipmentStatus = new ShipmentStatus();
+
+        shipmentStatus.setShipmentCompany(shipmentCompany);
+        shipmentStatus.setShipmentRefNo(shipmentRefNo);
+
+        return CommonLib.prepJson(shipmentStatus);
     }
 }
