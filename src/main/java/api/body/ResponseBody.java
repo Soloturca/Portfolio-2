@@ -108,6 +108,7 @@ public class ResponseBody {
         return null;
     }
 
+
     /**
      * Function:GetResponse
      * Description:

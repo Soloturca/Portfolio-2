@@ -1,7 +1,6 @@
 package api.body;
 
-import api.model.JSON.InsertRateComment;
-import api.model.JSON.ShipmentStatus;
+import api.model.JSON.*;
 import base.CommonLib;
 
 public class RequestBody {
@@ -117,24 +116,30 @@ public class RequestBody {
     }
 
     public static String addVFMallCustomerProfile(String msisdn) {
-        return "{\n" +
-                "    \"name\":\"otomasyon\",\n" +
-                "    \"surname\": \"otomasyon\",\n" +
-                "    \"contactNumber\":\"\",\n" +
-                "    \"msisdn\": \"" + msisdn + "\",\n" +
-                "    \"city\": \"Bolu\",\n" +
-                "    \"district\": \"Abant\",\n" +
-                "    \"addressTitle\": \"otomasyon\",\n" +
-                "    \"detailedAddress\":\"BJKasd22  Mah. 1905098 Sok.Karakartalasdf2222 Cad. Vofomall2 Apt. NO:19 D:05\"\n" +
-                "}";
+
+        AddVfMallCustomerProfile addVfMallCustomerProfile = new AddVfMallCustomerProfile();
+
+        addVfMallCustomerProfile.setName("otomasyon");
+        addVfMallCustomerProfile.setSurname("otomasyon");
+        addVfMallCustomerProfile.setContactNumber("");
+        addVfMallCustomerProfile.setMsisdn(msisdn);
+        addVfMallCustomerProfile.setCity("Bolu");
+        addVfMallCustomerProfile.setDistrict("Abant");
+        addVfMallCustomerProfile.setAddressTitle("otomasyon");
+        addVfMallCustomerProfile.setDetailedAddress("BJKasd22  Mah. 1905098 Sok.Karakartalasdf2222 Cad. Vofomall2 Apt. NO:19 D:05");
+
+        return CommonLib.prepJson(addVfMallCustomerProfile);
     }
 
     public static String saveShoppingCartAddress(String deliveryAddressId, String invoiceAddressId) {
-        return "{\n" +
-                "  \"deliveryAddressId\": \"" + deliveryAddressId + "\",\n" +
-                "  \"invoiceAddressId\": \"" + invoiceAddressId + "\",\n" +
-                "  \"shoppingCartId\": \"\"\n" +
-                "}";
+
+        SaveShoppingCartAddress saveShoppingCartAddress = new SaveShoppingCartAddress();
+
+        saveShoppingCartAddress.setDeliveryAddressId(deliveryAddressId);
+        saveShoppingCartAddress.setInvoiceAddressId(invoiceAddressId);
+        saveShoppingCartAddress.setShoppingCartId("");
+
+        return CommonLib.prepJson(saveShoppingCartAddress);
     }
 
     public static String addCartItems(String uuidID) {
@@ -177,21 +182,27 @@ public class RequestBody {
     }
 
     public static String getRateAndComment(String uuidID, String variantCode) {
-        return "{\n" +
-                "    \"uuid\": \"" + uuidID + "\",\n" +
-                "    \"variantCode\": \"" + variantCode + "\"\n" +
-                "}";
+
+        GetRateAndComment getRateAndComment = new GetRateAndComment();
+
+        getRateAndComment.setUuid(uuidID);
+        getRateAndComment.setVariantCode(variantCode);
+
+        return CommonLib.prepJson(getRateAndComment);
     }
 
     public static String updateRateAndComment(String commentId, String desiredHideMyName) {
-        return "{\n" +
-                "    \"id\": \"" + commentId + "\",\n" +
-                "    \"rate\": 3,\n" +
-                "    \"title\": \"Harika\",\n" +
-                "    \"status\": \"1\",\n" +
-                "    \"comment\": \"Alır almaz bitirdim\",\n" +
-                "    \"hideMyName\":" + desiredHideMyName + "\n" +
-                "}";
+
+        UpdateRateAndComment updateRateAndComment = new UpdateRateAndComment();
+
+        updateRateAndComment.setId(commentId);
+        updateRateAndComment.setRate(3);
+        updateRateAndComment.setTitle("Harika");
+        updateRateAndComment.setStatus("1");
+        updateRateAndComment.setComment("Alır almaz bitirdim");
+        updateRateAndComment.setHideMyName(Boolean.parseBoolean(desiredHideMyName));
+
+        return CommonLib.prepJson(updateRateAndComment);
     }
 
     public static String payShoppingCart() {
@@ -369,5 +380,42 @@ public class RequestBody {
         shipmentStatus.setShipmentRefNo(shipmentRefNo);
 
         return CommonLib.prepJson(shipmentStatus);
+    }
+
+    public static String createShipmentIade(String shipmentRefNo, String shipmentCompany) {
+        return "{\n" +
+                "\"shipmentRefNo\":\"" + shipmentRefNo + "\",\n" +
+                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
+                "    \"shipmentPayer\": \"PLATFORM\",\n" +
+                "    \"customerShip\": true,\n" +
+                "    \"fromAddress\": {\n" +
+                "        \"city\": \"istanbul\",\n" +
+                "        \"town\": \"kağıthane\",\n" +
+                "        \"name\": \"Fatma\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "\t\t\"msisdn\": \"5363636363\",\n" +
+                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \"\n" +
+                "    },\n" +
+                "    \"toAddress\": {\n" +
+                "\t\t \"city\": \"İSTANBUL\",\n" +
+                "        \"town\": \"Sarıyer\",\n" +
+                "        \"name\": \"Leyla\",\n" +
+                "\t\t\"surname\":\"Delen\",\n" +
+                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No: 27 Kat: 2-3-4 Daire: 54-57-59 Sarıyer 34485 İstanbul\",\n" +
+                "        \"msisdn\": \"5363636363\",\n" +
+                "        \"shipmentMembershipDealerNo\" : \"PAR-52060852-8382\"\n" +
+                "    },\n" +
+                "    \"items\": [\n" +
+                "        {\n" +
+                "            \"code\": \"01\",\n" +
+                "            \"name\": \"test1\",\n" +
+                "            \"weight\": 1,\n" +
+                "            \"quantity\": 1,\n" +
+                "            \"size\": {\n" +
+                "                \"deci\": 1\n" +
+                "            }\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
     }
 }
