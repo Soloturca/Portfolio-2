@@ -1,7 +1,7 @@
-@DXLCore
+
 Feature: DXLCore
 
-  @CORE-TC0001
+  @CORE-TC0001 @DXLCore
   Scenario: Kargo sürecinin başlanması için createShipment metotu tetiklenmesi
     Given "createShipment" metodu tüm alanlar doğru, ShipmentRefNo "REFV0002" ve ShipmentCompany "5" olacak şekilde gönderilerek "POST" edilir.
 
@@ -49,12 +49,18 @@ Feature: DXLCore
 
   @CORE-TC0011
   Scenario Outline: Kargonun iade edildi statü  kontrolu
-    Given "createShipment" metodu tüm alanlar doğru, ShipmentRefNo "REFV0004" ve ShipmentCompany "5" olacak şekilde gönderilerek "POST" edilir.
+    Given "createShipment" metodu tüm alanlar doğru, ShipmentRefNo "REFV0003" ve ShipmentCompany "5" olacak şekilde gönderilerek "POST" edilir.
     Given "shipmentStatus" metodu shipmentCompany "5" olarak "POST" edilir.
     Then "<expectedStatus>" alanının ne olduğu kontrol edilir.
     Examples:
       | expectedStatus |
       | RETURNED       |
+
+  @CORE-TC0012
+  Scenario: Kargonun iade edilme CreateShipment
+    Given "createShipment" iade metodu tüm alanlar doğru, ShipmentRefNo "1510001377" ve ShipmentCompany "5" olacak şekilde gönderilerek "POST" edilir.
+
+
 
 
 

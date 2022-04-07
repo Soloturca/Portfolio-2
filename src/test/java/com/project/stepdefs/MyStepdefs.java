@@ -3,6 +3,7 @@ package com.project.stepdefs;
 import api.methods.BaseMethods;
 import api.methods.Basket.Order;
 import api.methods.Basket.ShoppingCart;
+import api.methods.Shipment.ShipmentIade;
 import api.methods.Shipment.ShipmentNormal;
 import api.methods.VFMall.HomePage;
 import api.methods.VFMall.Offering;
@@ -175,5 +176,10 @@ public class MyStepdefs {
     @Then("{string} alanının ne olduğu kontrol edilir.")
     public void alanininNeOlduguKontrolEdilir(String expectedStatus) {
         Assert.assertTrue(new ShipmentNormal().checkStatus(expectedStatus));
+    }
+
+    @Given("{string} iade metodu tüm alanlar doğru, ShipmentRefNo {string} ve ShipmentCompany {string} olacak şekilde gönderilerek {string} edilir.")
+    public void iadeMetoduTumAlanlarDogruShipmentRefNoVeShipmentCompanyOlacakSekildeGonderilerekEdilir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentIade().createShipmentIade(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
     }
 }

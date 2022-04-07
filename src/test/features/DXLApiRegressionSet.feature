@@ -1,7 +1,7 @@
-@DXLApi
+
 Feature: DXLApi
 
-  @API-TC0017
+  @API-TC0017 @DXLApi
   Scenario: getVFMallOfferingDetails stok miktarı, satış fiyatı ve liste fiyatı kontrolü
     Given createSessionId "POST" request'i ve "5467023333" ile sessionId alınır.
     And getVFMallOfferingDetails "POST" requestine sessionId parametresi eklenir ve servis tetiklenir
