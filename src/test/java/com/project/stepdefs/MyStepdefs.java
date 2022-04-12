@@ -3,6 +3,8 @@ package com.project.stepdefs;
 import api.methods.BaseMethods;
 import api.methods.Basket.Order;
 import api.methods.Basket.ShoppingCart;
+import api.methods.Shipment.ShipmentIade;
+import api.methods.Shipment.ShipmentNormal;
 import api.methods.VFMall.HomePage;
 import api.methods.VFMall.Offering;
 import io.cucumber.core.api.Scenario;
@@ -19,6 +21,7 @@ public class MyStepdefs {
         System.out.println(scenario.getName());
     }
 
+    //API SIDE
     @And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {
         Assert.assertTrue(new HomePage().getVfMallHomepageRequestWithSessionID(desiredPath));
@@ -132,5 +135,51 @@ public class MyStepdefs {
     @And("customerProfileID parametresi {string} metoduyla {string} isteği atılarak silinir.")
     public void customerProfileIdParametresiMetoduylaIstegiAtilarakSilinir(String desiredPath, String desiredMethod) {
         Assert.assertTrue(new ShoppingCart().removeCustomerProfile(desiredPath, desiredMethod));
+    }
+
+    //CORE SIDE
+    @Given("{string} metodu tüm alanlar doğru, ShipmentRefNo {string} ve ShipmentCompany {string} olacak şekilde gönderilerek {string} edilir.")
+    public void metoduTumAlanlarDogruVeShipmentCompanyOlacakSekildeGonderilerekEdilir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentNormal().createShipment(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
+    }
+
+    @Given("{string} metodu fromAddress alanındaki text alanı boş, ShipmentRefNo {string} ve ShipmentCompany {string} olarak {string} edilir.")
+    public void metoduFromAddressAlanindakiTextAlaniBosVeShipmentCompanyOlarakEdilir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentNormal().createShipmentEmptyFromAddressText(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
+    }
+
+    @Given("{string} metodu toAddress alanındaki text alanı boş, ShipmentRefNo {string} ve ShipmentCompany {string} olarak {string} edilir.")
+    public void metoduToAddressAlanindakiTextAlaniBosVeShipmentCompanyOlarakEdilir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentNormal().createShipmentEmptyToAddressText(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
+    }
+
+    @Then("{string} ve {string} alanları kontrol edilir.")
+    public void veAlanlariKontrolEdilir(String expectedResultSuccessful, String expectedResultDesc) {
+        Assert.assertTrue(new ShipmentNormal().checkFields(expectedResultSuccessful, expectedResultDesc));
+    }
+
+    @Given("{string} metodu tüm alanlar doğru, ShipmentRefNo {string} \\(bos) ve ShipmentCompany {string} olacak şekilde gönderilerek {string} edilir.")
+    public void metoduShipmentRefNoAlaniBosVeShipmentCompanyOlarakEdilirVeRequestKendiligindenRefNoUretir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentNormal().createShipmentEmptyShipmentRefNo(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
+    }
+
+    @Then("{string} alanı kontrol edilir.")
+    public void alaniKontrolEdilir(String expectedResultSuccessful) {
+        Assert.assertTrue(new ShipmentNormal().checkFieldRefNo(expectedResultSuccessful));
+    }
+
+    @Given("{string} metodu shipmentCompany {string} olarak {string} edilir.")
+    public void metoduShipmentCompanyOlarakEdilir(String desiredMethod, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentNormal().shipmentStatus(desiredMethod, desiredShipmentCompany, desiredPath));
+    }
+
+    @Then("{string} alanının ne olduğu kontrol edilir.")
+    public void alanininNeOlduguKontrolEdilir(String expectedStatus) {
+        Assert.assertTrue(new ShipmentNormal().checkStatus(expectedStatus));
+    }
+
+    @Given("{string} iade metodu tüm alanlar doğru, ShipmentRefNo {string} ve ShipmentCompany {string} olacak şekilde gönderilerek {string} edilir.")
+    public void iadeMetoduTumAlanlarDogruShipmentRefNoVeShipmentCompanyOlacakSekildeGonderilerekEdilir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
+        Assert.assertTrue(new ShipmentIade().createShipmentIade(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
     }
 }
