@@ -20,6 +20,8 @@ public class Offering extends BaseMethods {
         Response response = null;
         try {
             if (barcode.isEmpty()) {
+                AutomationConstants.variantCode = "";
+                AutomationConstants.uuidID = "";
                 Random rand = new Random();
                 AutomationConstants.id = rand.nextInt(1000);
                 barcode = UUID.randomUUID().toString();

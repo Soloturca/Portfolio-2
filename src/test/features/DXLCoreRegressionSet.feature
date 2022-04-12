@@ -1,7 +1,7 @@
-
+@DXLCore
 Feature: DXLCore
 
-  @CORE-TC0001 @DXLCore
+  @CORE-TC0001
   Scenario: Kargo sürecinin başlanması için createShipment metotu tetiklenmesi
     Given "createShipment" metodu tüm alanlar doğru, ShipmentRefNo "REFV0002" ve ShipmentCompany "5" olacak şekilde gönderilerek "POST" edilir.
 
