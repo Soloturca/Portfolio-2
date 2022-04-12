@@ -184,4 +184,5 @@ public class MyStepdefs {
     public void iadeMetoduTumAlanlarDogruShipmentRefNoVeShipmentCompanyOlacakSekildeGonderilerekEdilir(String desiredMethod, String desiredShipmentRefNo, String desiredShipmentCompany, String desiredPath) {
         Assert.assertTrue(new ShipmentIade().createShipmentIade(desiredMethod, desiredShipmentRefNo, desiredShipmentCompany, desiredPath));
     }
+
 }
