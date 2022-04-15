@@ -1,7 +1,21 @@
 package api.body;
 
-import api.model.JSON.*;
+import api.model.JSON.AddVfMallCustomerProfile;
+import api.model.JSON.CreateShipment.*;
+import api.model.JSON.CreateVfMallToken;
+import api.model.JSON.GetOfferingDetails;
+import api.model.JSON.ShoppingCart.PayShoppingCart;
+import api.model.JSON.RateAndComment.GetRateAndComment;
+import api.model.JSON.RateAndComment.InsertRateComment;
+import api.model.JSON.RateAndComment.UpdateRateAndComment;
+import api.model.JSON.ShoppingCart.SaveShoppingCartAddress;
+import api.model.JSON.ShipmentStatus;
+import api.model.JSON.UpdateStatus.OrderStatusRequest;
+import api.model.JSON.UpdateStatus.UpdateStatus;
 import base.CommonLib;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RequestBody {
 
@@ -153,20 +167,27 @@ public class RequestBody {
     }
 
     public static String getOfferingDetails() {
-        return "{\n" +
-                "    \"uuid\": \"00b34d43-bcd2-4f11-9668-3346e7202192\"\n" +
-                "}";
+
+        GetOfferingDetails getOfferingDetails = new GetOfferingDetails();
+
+        getOfferingDetails.setUuid("00b34d43-bcd2-4f11-9668-3346e7202192");
+
+        return CommonLib.prepJson(getOfferingDetails);
     }
 
     public static String createVfMallToken() {
-        return "\t{\n" +
-                "\t  \"integratorCode\": \"\",\n" +
-                "\t  \"password\": \"Test123456*\",\n" +
-                "\t  \"username\": \"muafpartner.autovfmall@hotmail.com\"\n" +
-                "\t}\n";
+
+        CreateVfMallToken createVfMallToken=new CreateVfMallToken();
+
+        createVfMallToken.setIntegratorCode("");
+        createVfMallToken.setPassword("Test123456*");
+        createVfMallToken.setUsername("muafpartner.autovfmall@hotmail.com");
+
+        return CommonLib.prepJson(createVfMallToken);
     }
 
     public static String insertRateAndComment(String uuidID, String variantCode, String desiredHideMyName) {
+
         InsertRateComment insertRateComment = new InsertRateComment();
 
         insertRateComment.setUuid(uuidID);
@@ -206,171 +227,204 @@ public class RequestBody {
     }
 
     public static String payShoppingCart() {
-        return "{\n" +
-                "  \"cardUniqueId\": \"string\",\n" +
-                "  \"masterpassTokenId\": \"alos\",\n" +
-                "  \"paymentTokenId\": \"string\"\n" +
-                "}";
+
+        PayShoppingCart payShoppingCart = new PayShoppingCart();
+
+        payShoppingCart.setCardUniqueId("string");
+        payShoppingCart.setMasterpassTokenId("alos");
+        payShoppingCart.setPaymentTokenId("string");
+
+        return CommonLib.prepJson(payShoppingCart);
+
     }
 
     public static String updateStatus(String desiredStatus, String orderId) {
-        return "{\n" +
-                "  \"changedBy\": \"ORDER_TRACKING\",\n" +
-                "  \"newStatus\":\"" + desiredStatus + "\",\n" +
-                "  \"orderStatusRequests\": [\n" +
-                "    {\n" +
-                "    \"orderId\":\"" + orderId + "\",\n" +
-                "      \"reasonCode\": \"string\",\n" +
-                "      \"reasonText\": \"string\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"returnOrders\": false\n" +
-                "}";
+
+        UpdateStatus updateStatus=new UpdateStatus();
+        OrderStatusRequest orderStatusRequest = new OrderStatusRequest();
+
+        orderStatusRequest.setOrderId(orderId);
+        orderStatusRequest.setReasonCode("");
+        orderStatusRequest.setReasonText("");
+
+        updateStatus.setChangedBy("ORDER_TRACKING");
+        updateStatus.setNewStatus(desiredStatus);
+        List<OrderStatusRequest> orderStatusRequestsValues = new ArrayList<>();
+        orderStatusRequestsValues.add(orderStatusRequest);
+        updateStatus.setOrderStatusRequests(orderStatusRequestsValues);
+        updateStatus.setReturnOrders(false);
+
+        return CommonLib.prepJson(updateStatus);
     }
 
     //CORE SIDE
     public static String createShipment(String shipmentRefNo, String shipmentCompany) {
-        return "{\n" +
-                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
-                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
-                "    \"shipmentPayer\": \"PLATFORM\",\n" +
-                "    \"customerShip\": false,\n" +
-                "    \"fromAddress\": {\n" +
-                "        \"city\": \"İSTANBUL\",\n" +
-                "        \"town\": \"Sarıyer\",\n" +
-                "        \"name\": \"Fatma\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul\",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"toAddress\": {\n" +
-                "        \"city\": \"istanbul\",\n" +
-                "        \"town\": \"kağıthane\",\n" +
-                "        \"name\": \"Deneme\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"items\": [\n" +
-                "        {\n" +
-                "            \"code\": \"01\",\n" +
-                "            \"name\": \"test1\",\n" +
-                "            \"weight\": 1,\n" +
-                "            \"quantity\": 1,\n" +
-                "            \"size\": {\n" +
-                "                \"deci\": 1\n" +
-                "            }\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";
+
+        CreateShipment createShipment = new CreateShipment();
+        FromAddress fromAddress = new FromAddress();
+        ToAddress toAddress = new ToAddress();
+        Item item = new Item();
+        Size size = new Size();
+
+        fromAddress.setCity("İSTANBUL");
+        fromAddress.setTown("Sarıyer");
+        fromAddress.setName("Fatma");
+        fromAddress.setSurname("Delen");
+        fromAddress.setText("Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul");
+        fromAddress.setMsisdn("5363636363");
+
+        toAddress.setCity("istanbul");
+        toAddress.setTown("kağıthane");
+        toAddress.setName("Deneme");
+        toAddress.setSurname("Delen");
+        toAddress.setText("Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul ");
+        toAddress.setMsisdn("5363636363");
+
+        item.setCode("01");
+        item.setName("test1");
+        item.setWeight(1);
+        item.setQuantity(1);
+        item.setSize(size);
+        size.setDeci(1);
+
+        createShipment.setShipmentRefNo(shipmentRefNo);
+        createShipment.setShipmentCompany(shipmentCompany);
+        createShipment.setShipmentPayer("PLATFORM");
+        createShipment.setCustomerShip(false);
+        createShipment.setFromAddress(fromAddress);
+        createShipment.setToAddress(toAddress);
+        List<Item> itemValues = new ArrayList<>();
+        itemValues.add(item);
+        createShipment.setItems(itemValues);
+
+        return CommonLib.prepJson(createShipment);
     }
 
     public static String createShipmentEmptyFromAddressText(String shipmentRefNo, String shipmentCompany) {
-        return "{\n" +
-                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
-                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
-                "    \"shipmentPayer\": \"PLATFORM\",\n" +
-                "    \"customerShip\": false,\n" +
-                "    \"fromAddress\": {\n" +
-                "        \"city\": \"İSTANBUL\",\n" +
-                "        \"town\": \"Sarıyer\",\n" +
-                "        \"name\": \"Fatma\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"\",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"toAddress\": {\n" +
-                "        \"city\": \"istanbul\",\n" +
-                "        \"town\": \"kağıthane\",\n" +
-                "        \"name\": \"Deneme\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"items\": [\n" +
-                "        {\n" +
-                "            \"code\": \"01\",\n" +
-                "            \"name\": \"test1\",\n" +
-                "            \"weight\": 1,\n" +
-                "            \"quantity\": 1,\n" +
-                "            \"size\": {\n" +
-                "                \"deci\": 1\n" +
-                "            }\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";
+
+        CreateShipment createShipment = new CreateShipment();
+        FromAddress fromAddress = new FromAddress();
+        ToAddress toAddress = new ToAddress();
+        Item item = new Item();
+        Size size = new Size();
+
+        fromAddress.setCity("İSTANBUL");
+        fromAddress.setTown("Sarıyer");
+        fromAddress.setName("Fatma");
+        fromAddress.setSurname("Delen");
+        fromAddress.setText("");
+        fromAddress.setMsisdn("5363636363");
+
+        toAddress.setCity("istanbul");
+        toAddress.setTown("kağıthane");
+        toAddress.setName("Deneme");
+        toAddress.setSurname("Delen");
+        toAddress.setText("Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul ");
+        toAddress.setMsisdn("5363636363");
+
+        item.setCode("01");
+        item.setName("test1");
+        item.setWeight(1);
+        item.setQuantity(1);
+        item.setSize(size);
+        size.setDeci(1);
+
+        createShipment.setShipmentRefNo(shipmentRefNo);
+        createShipment.setShipmentCompany(shipmentCompany);
+        createShipment.setShipmentPayer("PLATFORM");
+        createShipment.setCustomerShip(false);
+        createShipment.setFromAddress(fromAddress);
+        createShipment.setToAddress(toAddress);
+        List<Item> itemValues = new ArrayList<>();
+        itemValues.add(item);
+        createShipment.setItems(itemValues);
+
+        return CommonLib.prepJson(createShipment);
     }
 
     public static String createShipmentEmptyToAddressText(String shipmentRefNo, String shipmentCompany) {
-        return "{\n" +
-                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
-                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
-                "    \"shipmentPayer\": \"PLATFORM\",\n" +
-                "    \"customerShip\": false,\n" +
-                "    \"fromAddress\": {\n" +
-                "        \"city\": \"İSTANBUL\",\n" +
-                "        \"town\": \"Sarıyer\",\n" +
-                "        \"name\": \"Fatma\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul\",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"toAddress\": {\n" +
-                "        \"city\": \"istanbul\",\n" +
-                "        \"town\": \"kağıthane\",\n" +
-                "        \"name\": \"Deneme\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"\",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"items\": [\n" +
-                "        {\n" +
-                "            \"code\": \"01\",\n" +
-                "            \"name\": \"test1\",\n" +
-                "            \"weight\": 1,\n" +
-                "            \"quantity\": 1,\n" +
-                "            \"size\": {\n" +
-                "                \"deci\": 1\n" +
-                "            }\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";
+
+        CreateShipment createShipment = new CreateShipment();
+        FromAddress fromAddress = new FromAddress();
+        ToAddress toAddress = new ToAddress();
+        Item item = new Item();
+        Size size = new Size();
+
+        fromAddress.setCity("İSTANBUL");
+        fromAddress.setTown("Sarıyer");
+        fromAddress.setName("Fatma");
+        fromAddress.setSurname("Delen");
+        fromAddress.setText("Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul");
+        fromAddress.setMsisdn("5363636363");
+
+        toAddress.setCity("istanbul");
+        toAddress.setTown("kağıthane");
+        toAddress.setName("Deneme");
+        toAddress.setSurname("Delen");
+        toAddress.setText("");
+        toAddress.setMsisdn("5363636363");
+
+        item.setCode("01");
+        item.setName("test1");
+        item.setWeight(1);
+        item.setQuantity(1);
+        item.setSize(size);
+        size.setDeci(1);
+
+        createShipment.setShipmentRefNo(shipmentRefNo);
+        createShipment.setShipmentCompany(shipmentCompany);
+        createShipment.setShipmentPayer("PLATFORM");
+        createShipment.setCustomerShip(false);
+        createShipment.setFromAddress(fromAddress);
+        createShipment.setToAddress(toAddress);
+        List<Item> itemValues = new ArrayList<>();
+        itemValues.add(item);
+        createShipment.setItems(itemValues);
+
+        return CommonLib.prepJson(createShipment);
     }
 
     public static String createShipmentEmptyShipmentRefNo(String shipmentRefNo, String shipmentCompany) {
-        return "{\n" +
-                "    \"shipmentRefNo\": \"" + shipmentRefNo + "\",\n" +
-                "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
-                "    \"shipmentPayer\": \"PLATFORM\",\n" +
-                "    \"customerShip\": false,\n" +
-                "    \"fromAddress\": {\n" +
-                "        \"city\": \"İSTANBUL\",\n" +
-                "        \"town\": \"Sarıyer\",\n" +
-                "        \"name\": \"Fatma\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul\",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"toAddress\": {\n" +
-                "        \"city\": \"istanbul\",\n" +
-                "        \"town\": \"kağıthane\",\n" +
-                "        \"name\": \"Deneme\",\n" +
-                "\t\t\"surname\":\"Delen\",\n" +
-                "        \"text\": \"Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul \",\n" +
-                "        \"msisdn\": \"5363636363\"\n" +
-                "    },\n" +
-                "    \"items\": [\n" +
-                "        {\n" +
-                "            \"code\": \"01\",\n" +
-                "            \"name\": \"test1\",\n" +
-                "            \"weight\": 1,\n" +
-                "            \"quantity\": 1,\n" +
-                "            \"size\": {\n" +
-                "                \"deci\": 1\n" +
-                "            }\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";
+
+        CreateShipment createShipment = new CreateShipment();
+        FromAddress fromAddress = new FromAddress();
+        ToAddress toAddress = new ToAddress();
+        Item item = new Item();
+        Size size = new Size();
+
+        fromAddress.setCity("İSTANBUL");
+        fromAddress.setTown("Sarıyer");
+        fromAddress.setName("Fatma");
+        fromAddress.setSurname("Delen");
+        fromAddress.setText("Maslak Mah. Eski Büyükdere Cad. Orjin Maslak Plaza No:27 Kat:2-3-4 Daire:54-57-59 Sarıyer 34485 İstanbul");
+        fromAddress.setMsisdn("5363636363");
+
+        toAddress.setCity("istanbul");
+        toAddress.setTown("kağıthane");
+        toAddress.setName("Deneme");
+        toAddress.setSurname("Delen");
+        toAddress.setText("Merkez Mahallesi, Ayazma Cad. Papirus Plaza, B Blok, No: 37/44 Kağıthane/İstanbul ");
+        toAddress.setMsisdn("5363636363");
+
+        item.setCode("01");
+        item.setName("test1");
+        item.setWeight(1);
+        item.setQuantity(1);
+        item.setSize(size);
+        size.setDeci(1);
+
+        createShipment.setShipmentRefNo(shipmentRefNo);
+        createShipment.setShipmentCompany(shipmentCompany);
+        createShipment.setShipmentPayer("PLATFORM");
+        createShipment.setCustomerShip(false);
+        createShipment.setFromAddress(fromAddress);
+        createShipment.setToAddress(toAddress);
+        List<Item> itemValues = new ArrayList<>();
+        itemValues.add(item);
+        createShipment.setItems(itemValues);
+
+        return CommonLib.prepJson(createShipment);
+
     }
 
     public static String shipmentStatus(String shipmentCompany, String shipmentRefNo) {
@@ -383,6 +437,7 @@ public class RequestBody {
     }
 
     public static String createShipmentIade(String shipmentRefNo, String shipmentCompany) {
+
         return "{\n" +
                 "\"shipmentRefNo\":\"" + shipmentRefNo + "\",\n" +
                 "  \"shipmentCompany\": \"" + shipmentCompany + "\",\n" +
