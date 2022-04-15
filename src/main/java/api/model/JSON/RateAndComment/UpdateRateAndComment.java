@@ -1,4 +1,4 @@
-package api.model.JSON;
+package api.model.JSON.RateAndComment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
