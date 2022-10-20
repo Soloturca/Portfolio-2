@@ -1,29 +1,19 @@
-package api.model.JSON.RateAndComment;
+package api.model.JSON.UpdateStatus.RateAndComment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class InsertRateComment {
-    @JsonProperty("uuid")
-    public String getUuid() {
-        return this.uuid;
+public class UpdateRateAndComment {
+
+    @JsonProperty("id")
+    public String getId() {
+        return this.id;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    String uuid;
-
-    @JsonProperty("variantCode")
-    public String getVariantCode() {
-        return this.variantCode;
-    }
-
-    public void setVariantCode(String variantCode) {
-        this.variantCode = variantCode;
-    }
-
-    String variantCode;
+    String id;
 
     @JsonProperty("rate")
     public int getRate() {
@@ -47,6 +37,17 @@ public class InsertRateComment {
 
     String title;
 
+    @JsonProperty("status")
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    String status;
+
     @JsonProperty("comment")
     public String getComment() {
         return this.comment;
@@ -68,26 +69,4 @@ public class InsertRateComment {
     }
 
     boolean hideMyName;
-
-    @JsonProperty("height")
-    public String getHeight() {
-        return this.height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    String height;
-
-    @JsonProperty("weight")
-    public String getWeight() {
-        return this.weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
-    String weight;
 }

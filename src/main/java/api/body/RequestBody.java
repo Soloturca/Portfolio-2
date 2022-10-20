@@ -5,9 +5,9 @@ import api.model.JSON.CreateShipment.*;
 import api.model.JSON.CreateVfMallToken;
 import api.model.JSON.GetOfferingDetails;
 import api.model.JSON.ShoppingCart.PayShoppingCart;
-import api.model.JSON.RateAndComment.GetRateAndComment;
-import api.model.JSON.RateAndComment.InsertRateComment;
-import api.model.JSON.RateAndComment.UpdateRateAndComment;
+import api.model.JSON.UpdateStatus.RateAndComment.GetRateAndComment;
+import api.model.JSON.UpdateStatus.RateAndComment.InsertRateComment;
+import api.model.JSON.UpdateStatus.RateAndComment.UpdateRateAndComment;
 import api.model.JSON.ShoppingCart.SaveShoppingCartAddress;
 import api.model.JSON.ShipmentStatus;
 import api.model.JSON.UpdateStatus.OrderStatusRequest;
@@ -308,7 +308,7 @@ public class RequestBody {
         Item item = new Item();
         Size size = new Size();
 
-        fromAddress.setCity("İSTANBUL");
+        fromAddress.setCity("İSTANBULL");
         fromAddress.setTown("Sarıyer");
         fromAddress.setName("Fatma");
         fromAddress.setSurname("Delen");
