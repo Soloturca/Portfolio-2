@@ -175,7 +175,7 @@ public class ResponseBody {
             switch (desiredRequest) {
                 case "GET":
                     return given()
-                            .header("Authorization", "Bearer " + token)
+                            .header("Authorization", "" + token)
                             .contentType(JSON)
                             .body(reqBody)
                             .when()
@@ -185,7 +185,7 @@ public class ResponseBody {
                             .extract().response();
                 case "POST":
                     return given()
-                            .header("Authorization", "Bearer " + token)
+                            .header("Authorization", "" + token)
                             .contentType(ContentType.JSON)
                             .body(reqBody)
                             .when()
