@@ -12,16 +12,16 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
 
-        features = "src/test/features/DXLCoreRegressionSet.feature",
-        tags = "@DXLCore",
+        features = "src/test/features/",
+        tags = "@VFMallApi",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
         glue = {"com.project.stepdefs"})
 
-public class TestDXLCoreRunner {
+public class TestVFMallAPIRunner {
     @API(
             status = API.Status.STABLE
     )
-    private TestNGCucumberRunner testNGCucumberRunner;
+    private io.cucumber.testng.TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeClass(alwaysRun = true)
     public void setUpClass() {
