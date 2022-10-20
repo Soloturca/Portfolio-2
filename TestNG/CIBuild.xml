@@ -5,14 +5,14 @@
         <listener class-name="com.project.listener.TestFilterListener"></listener>
     </listeners>
     <!-- Cucumber Test -->
-    <test name="DXLAPI" enabled="true">
+    <test name="VFMallApi" enabled="true">
         <classes>
-            <class name="com.project.runner.TestDXLAPIRunner"/>
+            <class name="com.project.runner.TestVFMallAPIRunner"/>
         </classes>
     </test>
-    <test name="DXLCore" enabled="true">
+    <test name="DXLAPI" enabled="false">
         <classes>
-            <class name="com.project.runner.TestDXLCoreRunner"/>
+            <class name="com.project.runner.TestDXLAPIRunner"/>
         </classes>
     </test>
 </suite>
