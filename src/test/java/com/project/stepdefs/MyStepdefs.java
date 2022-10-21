@@ -1,5 +1,6 @@
 package com.project.stepdefs;
 
+import api.body.RequestBody;
 import api.methods.BaseMethods;
 import api.methods.Basket.Order;
 import api.methods.Basket.ShoppingCart;
@@ -34,6 +35,20 @@ public class MyStepdefs {
         Assert.assertTrue(new Offering().createVFMallOffering(desiredPath));
     }
 
+    @Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
+    public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath) {
+        Assert.assertTrue(new Offering().createVFMallOfferingWithoutDeliveryDuration(desiredPath));
+    }
+
+    @Given("createVFMallOfferingWithoutDescription {string} is sent with token")
+    public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath) {
+        Assert.assertTrue(new Offering().createVFMallOfferingWithoutDescription(desiredPath));
+    }
+
+    @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
+    public void createvfmallofferingwithoutdisplaynameIsSentWithToken(String desiredPath) {
+        Assert.assertTrue(new Offering().createVFMallOfferingWithoutDisplayName(desiredPath));
+    }
 
     //@And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     //public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {

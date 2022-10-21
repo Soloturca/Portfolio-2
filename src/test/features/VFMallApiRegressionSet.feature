@@ -5,11 +5,27 @@ Feature: VFMallApi
   Scenario: Take the token service
     Given createVfMallToken "POST" service is sent and take the token
 
-
   @TC002
   Scenario: Sent the createVfMallOffering service
     Given createVfMallOffering "POST" is sent with token
 
+  #Batu: Ürünün teslimat süresi boş geçildiğinde hata vermesi kontrol edilir
+  @TC009
+  Scenario: Sent the createVfMallOffering service without delivery duration
+    Given createVfMallToken "POST" service is sent and take the token
+    Given createVFMallOfferingWithoutDeliveryDuration "POST" is sent with token
+
+  #Batu: Ürünün detay açıklamasıdır boş geçilemez.
+  @TC010
+  Scenario: Sent the createVfMallOffering service without description
+    Given createVfMallToken "POST" service is sent and take the token
+    Given createVFMallOfferingWithoutDescription "POST" is sent with token
+
+  #Batu: Ürünün panel ekranlarında görünecek adıdır. Boş geçilemez
+  @TC011
+  Scenario: Sent the createVfMallOffering service without displayname
+    Given createVfMallToken "POST" service is sent and take the token
+    Given createVFMallOfferingWithoutDisplayName "POST" is sent with token
 
 
 
