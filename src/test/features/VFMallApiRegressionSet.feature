@@ -11,21 +11,33 @@ Feature: VFMallApi
 
   #Batu: Ürünün teslimat süresi boş geçildiğinde hata vermesi kontrol edilir
   @TC009
-  Scenario: Sent the createVfMallOffering service without delivery duration
+  Scenario Outline: Sent the createVfMallOffering service without delivery duration
     Given createVfMallToken "POST" service is sent and take the token
     Given createVFMallOfferingWithoutDeliveryDuration "POST" is sent with token
+    Then check the "<exceptedResult>" and "<exceptedResultDesc>" fields
+    Examples:
+      | exceptedResult | exceptedResultDesc                    |
+      | FAIL           | deliveryDuration alanı boş geçilemez. |
 
   #Batu: Ürünün detay açıklamasıdır boş geçilemez.
   @TC010
-  Scenario: Sent the createVfMallOffering service without description
+  Scenario Outline: Sent the createVfMallOffering service without description
     Given createVfMallToken "POST" service is sent and take the token
     Given createVFMallOfferingWithoutDescription "POST" is sent with token
+    Then check the "<exceptedResult>" and "<exceptedResultDesc>" fields
+    Examples:
+      | exceptedResult | exceptedResultDesc               |
+      | FAIL           | description alanı boş geçilemez. |
 
   #Batu: Ürünün panel ekranlarında görünecek adıdır. Boş geçilemez
   @TC011
-  Scenario: Sent the createVfMallOffering service without displayname
+  Scenario Outline: Sent the createVfMallOffering service without displayname
     Given createVfMallToken "POST" service is sent and take the token
     Given createVFMallOfferingWithoutDisplayName "POST" is sent with token
+    Then check the "<exceptedResult>" and "<exceptedResultDesc>" fields
+    Examples:
+      | exceptedResult | exceptedResultDesc               |
+      | FAIL           | displayName alanı boş geçilemez. |
 
 
 

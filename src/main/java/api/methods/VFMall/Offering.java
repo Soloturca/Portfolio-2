@@ -58,6 +58,8 @@ public class Offering extends BaseMethods {
         //responseBody classında birçok getResponse metotu var. Servis için hangisi gerekliyse onu kullanıyoruz.
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOfferingWithoutDeliveryDuration(AutomationConstants.barcode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
 
+       AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
+
         System.out.println("Response is: " + Objects.requireNonNull(response).asPrettyString());
 
         //response tan çekeceğimiz bir değer olduğunda response u önce jsonpath le new liyoruz
@@ -67,7 +69,7 @@ public class Offering extends BaseMethods {
         AutomationConstants.result = js.getString("result.result");
 
         //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
-        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
+        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("FAIL")) {
             status = true;
             CommonLib.allureReport("PASS", "CreateVFMallOffering service sent successfully.");
         } else {
@@ -98,7 +100,7 @@ public class Offering extends BaseMethods {
         AutomationConstants.result = js.getString("result.result");
 
         //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
-        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
+        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("FAIL")) {
             status = true;
             CommonLib.allureReport("PASS", "CreateVFMallOffering service sent successfully.");
         } else {
@@ -129,7 +131,7 @@ public class Offering extends BaseMethods {
         AutomationConstants.result = js.getString("result.result");
 
         //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
-        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
+        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("FAIL")) {
             status = true;
             CommonLib.allureReport("PASS", "CreateVFMallOffering service sent successfully.");
         } else {

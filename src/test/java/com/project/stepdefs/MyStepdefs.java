@@ -50,6 +50,11 @@ public class MyStepdefs {
         Assert.assertTrue(new Offering().createVFMallOfferingWithoutDisplayName(desiredPath));
     }
 
+    @Then("check the {string} and {string} fields")
+    public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
+        Assert.assertTrue(new Order().checkFields(exceptedResult,exceptedResultDesc));
+    }
+
     //@And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     //public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {
     //    Assert.assertTrue(new HomePage().getVfMallHomepageRequestWithSessionID(desiredPath));

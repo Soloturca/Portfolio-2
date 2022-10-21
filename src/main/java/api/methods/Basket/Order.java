@@ -271,7 +271,7 @@ public class Order extends BaseMethods {
    //     return status;
    // }
 
-    public boolean checkInsertVFMallRateAndComment(String expectedResult, String expectedResultMessage) {
+    public boolean checkFields(String expectedResult, String exceptedResultDesc) {
         boolean status = false;
 
         JsonPath js = new JsonPath(Objects.requireNonNull(AutomationConstants.responseData));
@@ -279,9 +279,10 @@ public class Order extends BaseMethods {
         String result = js.getString("result.result");
         String resultDesc = js.getString("result.resultDesc");
 
-        if (result.contains(expectedResult) && resultDesc.contains(expectedResultMessage)) {
+        if (result.contains(expectedResult) && resultDesc.contains(exceptedResultDesc)) {
             CommonLib.allureReport("PASS", "It was seen that the desired message and status were received.");
             status = true;
+
         } else {
             CommonLib.allureReport("FAIL", "It was seen that the requested message and status did not come. Check.");
         }
