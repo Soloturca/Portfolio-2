@@ -1,7 +1,6 @@
 package api.model.JSON.CreateVFMallOffering;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "maturityCount",
         "parameters"
 })
-@Generated("jsonschema2pojo")
+
 public class Main {
 
     @JsonProperty("barcode")
@@ -47,7 +46,7 @@ public class Main {
     @JsonProperty("categoryId")
     private String categoryId;
     @JsonProperty("deliveryDuration")
-    private Integer deliveryDuration;
+    private String deliveryDuration;
     @JsonProperty("description")
     private String description;
     @JsonProperty("displayName")
@@ -55,15 +54,15 @@ public class Main {
     @JsonProperty("images")
     private List<String> images = null;
     @JsonProperty("listPrice")
-    private Integer listPrice;
+    private String listPrice;
     @JsonProperty("name")
     private String name;
     @JsonProperty("quantity")
-    private Integer quantity;
+    private String quantity;
     @JsonProperty("cargoPaymentFlag")
     private String cargoPaymentFlag;
     @JsonProperty("salePrice")
-    private Integer salePrice;
+    private String salePrice;
     @JsonProperty("stockCode")
     private String stockCode;
     @JsonProperty("title")
@@ -134,12 +133,12 @@ public class Main {
     }
 
     @JsonProperty("deliveryDuration")
-    public Integer getDeliveryDuration() {
+    public String getDeliveryDuration() {
         return deliveryDuration;
     }
 
     @JsonProperty("deliveryDuration")
-    public void setDeliveryDuration(Integer deliveryDuration) {
+    public void setDeliveryDuration(String deliveryDuration) {
         this.deliveryDuration = deliveryDuration;
     }
 
@@ -174,12 +173,12 @@ public class Main {
     }
 
     @JsonProperty("listPrice")
-    public Integer getListPrice() {
+    public String getListPrice() {
         return listPrice;
     }
 
     @JsonProperty("listPrice")
-    public void setListPrice(Integer listPrice) {
+    public void setListPrice(String listPrice) {
         this.listPrice = listPrice;
     }
 
@@ -194,12 +193,12 @@ public class Main {
     }
 
     @JsonProperty("quantity")
-    public Integer getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
     @JsonProperty("quantity")
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(String  quantity) {
         this.quantity = quantity;
     }
 
@@ -214,12 +213,12 @@ public class Main {
     }
 
     @JsonProperty("salePrice")
-    public Integer getSalePrice() {
+    public String getSalePrice() {
         return salePrice;
     }
 
     @JsonProperty("salePrice")
-    public void setSalePrice(Integer salePrice) {
+    public void setSalePrice(String salePrice) {
         this.salePrice = salePrice;
     }
 

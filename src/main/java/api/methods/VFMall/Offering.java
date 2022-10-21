@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class Offering extends BaseMethods {
 
-    public boolean createVFMallOffering(String desiredPath) {
+    public boolean createVFMallOffering(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
 
@@ -23,16 +23,17 @@ public class Offering extends BaseMethods {
         AutomationConstants.barcode += +rand.nextInt(1000000000);
         System.out.println("Barcode: " + AutomationConstants.barcode);
 
-        //response u tanımladığımız yer. burada postmandeki post, url, varsa body, varsa token gibi şeyleri parametrik veriyoruz.
-        //responseBody classında birçok getResponse metotu var. Servis için hangisi gerekliyse onu kullanıyoruz.
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity),
+                AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
+
+        AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();
 
         System.out.println("Response is: " + Objects.requireNonNull(response).asPrettyString());
 
         //response tan çekeceğimiz bir değer olduğunda response u önce jsonpath le new liyoruz
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
-        //burada da responsetan çekeceğimiz değeri gtStrşng ile alıyoryz.
+        //burada da responsetan çekeceğimiz değeri gtString ile alıyoruz.
         AutomationConstants.result = js.getString("result.result");
         AutomationConstants.code=js.getString("code");
 
@@ -40,9 +41,37 @@ public class Offering extends BaseMethods {
         if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
             status = true;
             CommonLib.allureReport("PASS", "CreateVFMallOffering service sent successfully.");
+            System.out.println("CreateVFMallOffering service sent successfully.");
+        }
+        if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("FAIL")) {
+            status = true;
+            CommonLib.allureReport("PASS", "CreateVFMallOffering service empty fields check successfully.");
+            System.out.println("CreateVFMallOffering service empty fields check successfully.");
         } else {
             CommonLib.allureReport("FAIL", "Check it. CreateVFMallOffering service unsuccessfully");
         }
+        return status;
+    }
+
+    public boolean checkFields(String expectedResult, String exceptedResultDesc) {
+        boolean status = false;
+
+        JsonPath js = new JsonPath(Objects.requireNonNull(AutomationConstants.responseData));
+
+        String result = js.getString("result.result");
+        String resultDesc = js.getString("result.resultDesc");
+
+        if (result.contains(expectedResult) && resultDesc.contains(exceptedResultDesc)) {
+            CommonLib.allureReport("PASS", "It was seen that the desired message and status were received.");
+            CommonLib.allureReport("INFO", "Result is: " + result);
+            CommonLib.allureReport("INFO", "Result Description is: " + resultDesc);
+            status = true;
+        } else {
+            CommonLib.allureReport("FAIL", "It was seen that the requested message and status did not come. Check.");
+        }
+
+        CommonLib.allureReport("INFO", "Data: " + AutomationConstants.responseData);
+
         return status;
     }
 
