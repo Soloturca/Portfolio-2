@@ -32,7 +32,7 @@ public class MyTestNGBaseClass {
     @BeforeSuite
     //@BeforeTest
     public void BeforeMethod(@Optional("") String browserName) throws Throwable {
-        //browserName = "chrome";
+        browserName = "chrome";
         //browserName = System.getProperty("browserName");
         System.out.println("Browser Name : " + browserName);
 

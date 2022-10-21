@@ -1,5 +1,6 @@
 package com.project.runner;
 
+import base.MyTestNGBaseClass;
 import io.cucumber.testng.CucumberFeatureWrapper;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
@@ -13,11 +14,11 @@ import org.testng.annotations.Test;
 @CucumberOptions(
 
         features = "src/test/features/VFMallApiRegressionSet.feature",
-        tags = "@TC003",
+        tags = "@VFMallApi",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
         glue = {"com.project.stepdefs"})
 
-public class TestVFMallAPIRunner {
+public class TestVFMallAPIRunner extends MyTestNGBaseClass {
     @API(
             status = API.Status.STABLE
     )
