@@ -18,6 +18,7 @@ public class Offering extends BaseMethods {
 
         boolean status = false;
 
+        //barcode u random atıyoruz
         Random rand = new Random();
         AutomationConstants.barcode += +rand.nextInt(1000000000);
         System.out.println("Barcode: " + AutomationConstants.barcode);
@@ -29,10 +30,13 @@ public class Offering extends BaseMethods {
 
         System.out.println("Response is: " + Objects.requireNonNull(response).asPrettyString());
 
+        //response tan çekeceğimiz bir değer olduğunda response u önce jsonpath le new liyoruz
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
+        //burada da responsetan çekeceğimiz değeri gtString ile alıyoruz.
         AutomationConstants.result = js.getString("result.result");
 
+        //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
         if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
             status = true;
             CommonLib.allureReport("PASS", "CreateVFMallOffering service sent successfully.");

@@ -2,9 +2,14 @@ package com.project.stepdefs;
 
 import api.methods.BaseMethods;
 import api.methods.Basket.Order;
+import api.methods.Basket.ShoppingCart;
+import api.methods.VFMall.HomePage;
 import api.methods.VFMall.Offering;
+import base.AutomationConstants;
 import io.cucumber.core.api.Scenario;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
@@ -28,13 +33,25 @@ public class MyStepdefs {
         Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
     }
 
-    @Then("check the {string} and {string} fields")
-    public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
-        Assert.assertTrue(new Offering().checkFields(exceptedResult, exceptedResultDesc));
+    @Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
+    public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
     }
 
+    @Given("createVFMallOfferingWithoutDescription {string} is sent with token")
+    public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+    }
 
+    @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
+    public void createvfmallofferingwithoutdisplaynameIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+    }
 
+    @Then("check the {string} and {string} fields")
+    public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
+        Assert.assertTrue(new Offering().checkFields(exceptedResult,exceptedResultDesc));
+    }
 
     //@And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     //public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {
