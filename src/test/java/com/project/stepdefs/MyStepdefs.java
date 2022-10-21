@@ -6,16 +6,28 @@ import api.methods.Basket.ShoppingCart;
 import api.methods.VFMall.HomePage;
 import api.methods.VFMall.Offering;
 import base.AutomationConstants;
+import base.CommonLib;
+import base.MyTestNGBaseClass;
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class MyStepdefs {
+import java.io.ByteArrayInputStream;
 
+public class MyStepdefs extends MyTestNGBaseClass {
+
+    CommonLib commonLib = new CommonLib();
+
+    int timeout = 30;
     @Before
     public void setReportName(Scenario scenario) {
         System.out.println(scenario.getName());
@@ -34,6 +46,136 @@ public class MyStepdefs {
         Assert.assertTrue(new Offering().createVFMallOffering(desiredPath));
     }
 
+    @Given("^Open the (.*) URL$")
+    public void openUrl(String URL) {
+        CommonLib.navigateToURL(oDriver, URL);
+    }
+
+    @Then("^I see (.*) page$")
+    public void seePage(String page) {
+        commonLib.seePage(page);
+    }
+
+    @Then("^I enter \"([^\"]*)\" text to (.*) at index (\\d+)")
+    public boolean enterText(String text, String element, int index) throws InterruptedException {
+        WebElement object;
+        object = commonLib.waitElement(element, timeout, index);
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                object.clear();
+                object.sendKeys(text);
+                System.out.println("The text has been entered:" + text);
+                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+                return true;
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not entered the text:" + text);
+            flag = false;
+        }
+        return flag;
+    }
+
+    @And("^I wait (.*) element (\\d+) seconds at index (\\d+)")
+    public void waitElement(String element, int timeout, int index) throws InterruptedException {
+        commonLib.waitElement(element, timeout, index);
+        Allure.addAttachment("Element found", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+    }
+
+    @When("^(?:I )?click element: (\\w+(?: \\w+)*) at index (\\d+)")
+    public boolean clickElement(String element, int index) {
+        WebElement object = commonLib.findElement(element, index);
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                System.out.println("Clicked on object --> " + element);
+                //System.out.println(AutomationConstants.fileName);
+                Allure.addAttachment("Element is clicked.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                return true;
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("Element is not clicked.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not clicked the element: " + element);
+            flag = false;
+        }
+
+        return flag;
+    }
+    @Given("I go to \"([^\"]*)\" with this username: \"([^\"]*)\" and this password:\"([^\"]*)\"")
+    public void loginSystem(String URL, String username, String password) throws InterruptedException {
+        openUrl(URL);
+        seePage("login");
+        enterText(username, "username text area", 1);
+        enterText(password, "password text area", 1);
+        waitElement("login button", timeout, 1);
+        clickElement("login button", 1);
+        seePage("home");
+    }
+
+
+    @Then("^I enter OFRCode text to (.*) at index (\\d+)")
+    public boolean enterOFRCode(String element, int index) throws InterruptedException {
+        WebElement object;
+        object = commonLib.waitElement(element, timeout, index);
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                object.clear();
+                object.sendKeys(AutomationConstants.code);
+                System.out.println("The text has been entered:" + AutomationConstants.code);
+                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+                return true;
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not entered the text:" + AutomationConstants.code);
+            flag = false;
+        }
+        return flag;
+    }
+
+    @And("^I need to just wait")
+    public void justWait() throws InterruptedException {
+        Thread.sleep(10000);
+    }
+
+    @Then("^I need to check if record is (more|less|equal) to (\\d+) for (.*)")
+    public boolean getCountWebTable2(String rule, int expectedCount, String element) {
+
+        boolean flag = false;
+        int rowCount = Integer.valueOf(commonLib.findElement(element, 1).getText().substring(13));
+        System.out.println("Record count: " + rowCount);
+
+        switch (rule) {
+            case "more":
+                if (rowCount > expectedCount) flag = true;
+                break;
+            case "less":
+                if (rowCount < expectedCount) flag = true;
+                break;
+            case "equal":
+                if (rowCount == expectedCount) flag = true;
+                break;
+            default:
+                flag = false;
+                break;
+        }
+
+        if (flag) {
+            System.out.println("Condition of " + rule + " than " + expectedCount + " is PASSED");
+        } else {
+            Allure.addAttachment("FAIL", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Condition of " + rule + " than " + expectedCount + " is FAILED! Record count: " + rowCount);
+        }
+        return true;
+    }
 
     //@And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     //public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {

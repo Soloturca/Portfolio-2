@@ -3,16 +3,43 @@ package base;
 import api.model.JSON.ParameterDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import  base.Parser;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
+import base.*;
 
-public class CommonLib {
+public class CommonLib extends MyTestNGBaseClass{
 
+    public static WebDriver oDriver;
+    public String page = "common";
+    Parser parser= new Parser();
+
+    WebDriverWait wait = new WebDriverWait(oDriver, 30);
+    int timeout = 30;
 
     //-------------------------------------------------------------------------------------------------------------------------------
     //It allows to wait on the page for as long as required.
@@ -24,6 +51,7 @@ public class CommonLib {
             e.printStackTrace();
         }
     }
+
 
     //-------------------------------------------------------------------------------------------------------------------------------
     // This method compares the given String with a String expression.
@@ -150,6 +178,201 @@ public class CommonLib {
         x=x+1;
         variable = Integer.toString(x);
         return variable;
+    }
+
+
+    public static DesiredCapabilities getCapability() throws Exception {
+        DesiredCapabilities oCapability = new DesiredCapabilities();
+        oCapability.setJavascriptEnabled(true);
+        //oCapability.setCapability("proxy", getProxy());
+
+        return oCapability;
+    }
+    //-----------------------------------------------
+    //set InterExplorer options by merging the Desired Capability
+    //-----------------------------------------------
+    public static InternetExplorerOptions getIEOptions() throws Exception {
+        InternetExplorerOptions oIEOptions = new InternetExplorerOptions();
+        oIEOptions.merge(getCapability());
+        oIEOptions.ignoreZoomSettings();
+        oIEOptions.introduceFlakinessByIgnoringSecurityDomains();
+
+        return oIEOptions;
+    }
+
+    //-----------------------------------------------
+    //set ChromeOptions by merging the Desired Capability
+    //-----------------------------------------------
+    public static ChromeOptions getChromeOptions() throws Exception {
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("download.default_directory",  System.getProperty("user.dir")+ File.separator + "Library" + File.separator + "downloadFiles");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setExperimentalOption("prefs", prefs);
+
+
+
+        chromeOptions.merge(getCapability());
+        chromeOptions.addArguments("test-type");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
+        //Dil çevirme penceresini kapattırma.
+        chromeOptions.addArguments("disable-translate");
+        //Browser tam ekranda gösterilir.
+        chromeOptions.addArguments("start-maximized");
+        //Pop-uplar bloklanır.
+        chromeOptions.addArguments("disable-popup-blocking");
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NONE);
+        return chromeOptions;
+    }
+
+
+
+    //-----------------------------------------------
+    //set FirefoxOptions by merging the Desired Capability
+    //-----------------------------------------------
+    public static FirefoxOptions getFirefoxOptions() throws Exception {
+        FirefoxOptions oFirefoxOptions = new FirefoxOptions();
+        oFirefoxOptions.merge(getCapability());
+
+        return oFirefoxOptions;
+    }
+
+    //-----------------------------------------------
+    //set EdgeOptions by merging the Desired Capability
+    //-----------------------------------------------
+    public static EdgeOptions getEdgeOptions() throws Exception {
+        EdgeOptions oEdgeOptions = new EdgeOptions();
+        oEdgeOptions.merge(getCapability());
+
+        return oEdgeOptions;
+    }
+
+    public static int getBrowserId(String sBrowserName) throws Exception {
+        if (sBrowserName.equalsIgnoreCase("ie")) return 1;
+        else if (sBrowserName.equalsIgnoreCase("firefox")) return 2;
+        else if (sBrowserName.equalsIgnoreCase("chrome")) return 3;
+        else if (sBrowserName.equalsIgnoreCase("htmlunit")) return 4;
+        else if (sBrowserName.equalsIgnoreCase("edge")) return 5;
+        else return -1;
+    }
+    public static WebDriver getDriver(String sBrowserName) throws Exception {
+
+        switch (getBrowserId(sBrowserName)) {
+            case 1:
+                System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + AutomationConstants.sIEDriverPath);
+                WebDriverManager.iedriver().setup();
+                oDriver = new InternetExplorerDriver(getIEOptions());
+                break;
+
+            case 2:
+                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + AutomationConstants.sGeckoDriverPath);
+                WebDriverManager.firefoxdriver().setup();
+                oDriver = new FirefoxDriver(getFirefoxOptions());
+                break;
+
+            case 3:
+                //System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + AutomationConstants.sChromeDriverPath);
+                WebDriverManager.chromedriver().setup();
+                oDriver = new ChromeDriver(getChromeOptions());
+                break;
+
+            case 5:
+                System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + AutomationConstants.sMsEdgeDriverPath);
+                WebDriverManager.edgedriver().setup();
+                oDriver = new EdgeDriver(getEdgeOptions());
+                break;
+
+            default:
+                throw new Exception("Unknown browsername =" + sBrowserName +
+                        " valid names are: ie,firefox,chrome,htmlunit");
+        }
+
+        oDriver.manage().deleteAllCookies();
+        oDriver.manage().timeouts().pageLoadTimeout(AutomationConstants.lngPageLoadTimeout, TimeUnit.SECONDS);
+        oDriver.manage().timeouts().implicitlyWait(AutomationConstants.lngImplicitWaitTimeout, TimeUnit.SECONDS);
+
+        return oDriver;
+
+    }
+
+
+
+    public static void navigateToURL(WebDriver oDriver, String URL) {
+        oDriver.navigate().to(URL);
+    }
+
+    public WebElement findElement(String elem, int index) {
+        WebElement object = null;
+        String element = parser.getElement(page, elem);
+
+        try {
+            if (element != null) {
+                if (element.startsWith("//") || element.startsWith("(//")) {
+                    object = oDriver.findElements(By.xpath(element)).get(index - 1);
+
+                    System.out.println("Element found : " + elem);
+                } else if (element.startsWith("#") || element.startsWith(".")) {
+                    object = oDriver.findElements(By.cssSelector(element)).get(index - 1);
+                    System.out.println("Element found : " + elem);
+                } else {
+                    object = oDriver.findElements(By.id(element)).get(index - 1);
+                    System.out.println("Element found : " + elem);
+                }
+            } else if (element == null) {
+                object = oDriver.findElement(By.xpath("//*[text()='" + elem + "'or contains(text(),'" + elem + "')]"));
+            }
+
+            if (object == null) {
+                System.out.println("Element not found: " + elem);
+                Assert.fail("Element not found : " + elem);
+            }
+            return object;
+        } catch (Exception e) {
+            System.out.println("Element not found: " + elem);
+            Allure.addAttachment("There is no such element.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Element not found : " + elem);
+
+            return null;
+
+        }
+    }
+
+
+    public WebElement waitElement(String element, int timeout, int index) throws InterruptedException {
+        WebElement object;
+        try {
+            for (int i = 0; i < timeout; i++) {
+
+                object = findElement(element, index);
+                if (object != null) {
+                    Thread.sleep(2000);
+                    return object;
+                } else {
+                    Thread.sleep(500);
+                }
+            }
+        } catch (Exception e) {
+            Assert.fail("Waiting element is not found!");
+        }
+        return null;
+    }
+
+    public String seePage(String page) {
+        List<String> returnValue = parser.isPageExist (page);
+
+        try {
+            if (returnValue.get(0).equalsIgnoreCase(page)) {
+                System.out.println(page + " page found!");
+                this.page = page;
+
+                if (returnValue.get(1).length() > 0) {
+                    waitElement(returnValue.get(1), timeout, 1);
+                }
+                return page;
+            }
+        } catch (Exception e) {
+            Assert.fail("Page not found! '" + page + "'");
+        }
+        return null;
     }
 
 }

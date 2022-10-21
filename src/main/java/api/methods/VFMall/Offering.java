@@ -34,6 +34,7 @@ public class Offering extends BaseMethods {
 
         //burada da responsetan çekeceğimiz değeri gtStrşng ile alıyoryz.
         AutomationConstants.result = js.getString("result.result");
+        AutomationConstants.code=js.getString("code");
 
         //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
         if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {

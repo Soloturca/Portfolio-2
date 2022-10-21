@@ -52,6 +52,7 @@ public class AutomationConstants {
     public static String updatedProductQuantity;
     public static String variantCode = "";
     public static int barcode ;
+    public static String code ="";
 
     //url api
     public static String urlCreateVfMallToken = "https://efes.vodafone.com.tr/vfmallapi/createVfMallToken";
@@ -77,4 +78,13 @@ public class AutomationConstants {
     public static String urlAddCustomerProfile = "http://10.86.244.136:8080/vfmall/addVFMallCustomerProfile";
     public static String urlPayShoppingCart = "http://10.86.244.136:8080/";
     public static String urlAddCartItem = "http://10.86.244.136:8080/api";
+
+
+
+    public static String sIEDriverPath      	= "/Exes/IEDriverServer.exe";
+    public static String sChromeDriverPath  	= "/Exes/chromedriver.exe";
+    public static String sGeckoDriverPath   	= "/Exes/geckodriver.exe";
+    public static String sMsEdgeDriverPath   	= "/Exes/msedgedriver.exe";
+    public static long lngPageLoadTimeout 		= 90L;
+    public static long lngImplicitWaitTimeout	= 60L;
 }
