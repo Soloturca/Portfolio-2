@@ -17,11 +17,11 @@ Feature: VFMallApi
   @TC0012
   Scenario Outline: Sent the createVfMallOffering service without images
     Given createVfMallToken "POST" service is sent and take the token
-    Given createVfMallOffering "POST" is sent with "<brand>", "<catID>", "<deliveryDuration>", "<desc>", "<displayName>", "<images>", "<listPrice>", "<salePrice>", "<quantity>" and token
+    Given createVfMallOffering "POST" is sent with "<brand>", "<catID>", "<deliveryDuration>", "<desc>", "<displayName>", "<listPrice>", "<salePrice>", "<quantity>" and token
     Then check the "<exceptedResult>" and "<exceptedResultDesc>" fields
     Examples:
-      | brand                    | catID                                | deliveryDuration | desc                        | displayName     | images | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc                                                            |
-      | 5fc8de0c72fb11234c3c5e26 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName |        | 100       | 80        | 40       | FAIL           | Ürün resimleri yüklenirken hata oluştu. Hata listesi: : Geçersiz resim url'i. |
+      | brand                    | catID                                | deliveryDuration | desc                        | displayName     | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc          |
+      | 5fc8de0c72fb11234c3c5e26 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | 100       | 80        | 40       | FAIL           | images alanı boş geçilemez. |
 
 
 
