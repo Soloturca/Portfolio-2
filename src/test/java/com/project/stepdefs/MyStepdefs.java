@@ -47,15 +47,6 @@ public class MyStepdefs extends MyTestNGBaseClass {
         Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
     }
 
-    //@Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
-   // public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-     //   Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-   // }
-
-    //@Given("createVFMallOfferingWithoutDescription {string} is sent with token")
-   // public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-    //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    //}
 
     @Given("^Open the (.*) URL$")
     public void openUrl(String URL) {

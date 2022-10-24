@@ -9,35 +9,34 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
-import java.text.DecimalFormat;
 import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
 public class Offering extends BaseMethods {
 
-    public boolean createVFMallOffering(String desiredPath, String barcode, String brand,String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    public boolean createVFMallOffering(String desiredPath, String barcode, String brand, String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
-        //float listPriceFloat= Float.parseFloat(listPrice);
-        DecimalFormat df = new DecimalFormat("#.##");
-        String listPrice1 = df.format(listPrice);
-        System.out.println(listPrice1);
-        //String listPrice1 = String.format("%.2f", listPriceFloat);
-        AutomationConstants.listPrice=listPrice1;
-       System.out.println(AutomationConstants.listPrice);
-        if(barcode.isEmpty()){
+
+        if (barcode.isEmpty()) {
 
             barcode = UUID.randomUUID().toString();
-            AutomationConstants.barcode =barcode;
+            AutomationConstants.barcode = barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        } else {
+            AutomationConstants.barcode = barcode;
             System.out.println("Barcode: " + AutomationConstants.barcode);
         }
 
-        else {
-            AutomationConstants.barcode =barcode;
-            System.out.println("Barcode: " + AutomationConstants.barcode);
-        }
-        //barcode u random atıyoruz
+        Float listPriceFloat = Float.parseFloat(listPrice);
+
+        //DecimalFormat listPriceFloat1 = new DecimalFormat("#.##");
+        //String listPrice1 = df.format(listPrice);
+
+        System.out.println(listPriceFloat);
+        AutomationConstants.listPrice = String.format("%.2f", listPriceFloat);
+        System.out.println(AutomationConstants.listPrice);
 
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity),
@@ -52,7 +51,7 @@ public class Offering extends BaseMethods {
 
         //burada da responsetan çekeceğimiz değeri gtString ile alıyoruz.
         AutomationConstants.result = js.getString("result.result");
-        AutomationConstants.code=js.getString("code");
+        AutomationConstants.code = js.getString("code");
 
         //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
         if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
@@ -126,12 +125,6 @@ public class Offering extends BaseMethods {
         }
         return status;
     }
-
-
-
-
-
-
 
 
     //public boolean createVfMallOfferingRequest(String desiredPath, String barcode, String maxSaleCount, String cargoCompanyID) {
