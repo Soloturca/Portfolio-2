@@ -9,34 +9,57 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
 public class Offering extends BaseMethods {
 
-    public boolean createVFMallOffering(String desiredPath, String barcode, String brand, String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    public boolean createVFMallOffering(String desiredPath, String barcode, String brand,String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
+        if(listPrice.contains(".")){
+            double listPriceFloat= Double.parseDouble(listPrice);
+            double roundOff = Math.round(listPriceFloat * 100.0) / 100.0;
+            AutomationConstants.listPrice= String.format(Locale.US, "%.2f", roundOff);
+        }
 
-        if (barcode.isEmpty()) {
+        else{
+            float listPriceFloat= (float) (Integer.parseInt(listPrice));
+            AutomationConstants.listPrice= String.format(Locale.US, "%.2f", listPriceFloat);
+
+        }
+
+
+        if(salePrice.contains(".")){
+            double salePriceFloat= Double.parseDouble(salePrice);
+            double roundOff = Math.round(salePriceFloat * 100.0) / 100.0;
+            AutomationConstants.salePrice = String.format(Locale.US, "%.2f", roundOff);
+        }
+
+        else {
+            float salePriceFloat = (float) (Integer.parseInt(salePrice));
+            AutomationConstants.salePrice = String.format(Locale.US, "%.2f", salePriceFloat);
+        }
+
+        AutomationConstants.quantity=quantity;
+
+
+        if(barcode.isEmpty()){
 
             barcode = UUID.randomUUID().toString();
-            AutomationConstants.barcode = barcode;
-            System.out.println("Barcode: " + AutomationConstants.barcode);
-        } else {
-            AutomationConstants.barcode = barcode;
+            AutomationConstants.barcode =barcode;
             System.out.println("Barcode: " + AutomationConstants.barcode);
         }
 
-        Float listPriceFloat = Float.parseFloat(listPrice);
-
-        //DecimalFormat listPriceFloat1 = new DecimalFormat("#.##");
-        //String listPrice1 = df.format(listPrice);
-
-        System.out.println(listPriceFloat);
-        AutomationConstants.listPrice = String.format("%.2f", listPriceFloat);
-        System.out.println(AutomationConstants.listPrice);
+        else {
+            AutomationConstants.barcode =barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        }
+        //barcode u random atıyoruz
 
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity),

@@ -10,10 +10,10 @@ Feature: VFMallApi
     Given createVfMallOffering "POST" is sent with "<barcode>", "<brand>", "<cargoCompID>", "<catID>", "<deliveryDuration>", "<desc>", "<displayName>", "<images>", "<listPrice>", "<salePrice>", "<quantity>" and token
     Examples:
       | barcode | brand                    | cargoCompID              | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity |
-      |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        | 40       |
+      |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100.12    | 80.46     | 40       |
 
-  #Laman: Ürünün oluştuğunun panelden kontrol edilmesi
-  @TC002
+  #Laman: Ürünün oluştuğu panelden kontrol edilir
+  @TC003
   Scenario Outline: Check the product is created
     Given I go to "https://vfmallpanel-gui-secure-marketplace.apps.mbt.vodafone.local/" with this username: "<username>" and this password:"<password>"
     And I wait product button element 50 seconds at index 1
@@ -21,7 +21,6 @@ Feature: VFMallApi
     And I wait list product button element 50 seconds at index 1
     When I click element: list product button at index 1
     Then I see productList page
-
     When I wait product code input element 50 seconds at index 1
     Then I enter OFRCode text to product code input at index 1
     And I wait search button element 50 seconds at index 1
@@ -33,20 +32,18 @@ Feature: VFMallApi
     When I switch to child window
     Then I see product page
     When I click element: feature list from list at index 1
-    #Then I get the value of list price text area at index 1
-    #Then I get the text area information: list price text area at index 1
     And I confirm if element: list price text area equals to value from API Response
-
+    Then I confirm if element: sale price text area equals to value from API Response
+    And I wait stock update element 10 seconds at index 1
+    Then I click element: stock update at index 1
+    Then I confirm if element: stock quantity equals to value from API Response
     Then I need to just wait
 
-
-
     Examples:
-      | username           | password       | listPrice |
-      | otomasyon@test.com | Test123456789. | 100       |
+      | username           | password       |
+      | otomasyon@test.com | Test123456789. |
 
-
-  #Laman: Ürünün oluştuğunun panelden kontrol edilmesi
+  #Laman:  "barcode" çakışması kontrol edilir
   @TC004
   Scenario Outline: Sent the createVfMallOffering service with barcode conflict
     Given createVfMallToken "POST" service is sent and take the token
@@ -56,6 +53,25 @@ Feature: VFMallApi
       | barcode                              | brand                    | cargoCompID              | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc                                                                           |
       | aaf338bf-8a70-4dec-9be1-ced24647c448 | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        | 40       | FAIL           | Ürünün barkodu bu satıcı için daha önce tanımlanmış. Lüften başka bir barkod değeri giriniz. |
 
+  #Laman: Ürünün brand alanı boş geçildiğinde hata vermesi kontrol edilir
+  @TC005
+  Scenario Outline: Sent the createVfMallOffering service without brand
+    Given createVfMallToken "POST" service is sent and take the token
+    Given createVfMallOffering "POST" is sent with "<barcode>", "<brand>", "<cargoCompID>", "<catID>", "<deliveryDuration>", "<desc>", "<displayName>", "<images>", "<listPrice>", "<salePrice>", "<quantity>" and token
+    Then check the "<exceptedResult>" and "<exceptedResultDesc>" fields
+    Examples:
+      | barcode | brand | cargoCompID              | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc         |
+      |         |       | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        | 40       | FAIL           | brand alanı boş geçilemez. |
+
+  #Laman: Ürünün cagoCompanyID alanı boş geçildiğinde hata vermesi kontrol edilir
+  @TC006
+  Scenario Outline: Sent the createVfMallOffering service without cargoCompanyID
+    Given createVfMallToken "POST" service is sent and take the token
+    Given createVfMallOffering "POST" is sent with "<barcode>", "<brand>", "<cargoCompID>", "<catID>", "<deliveryDuration>", "<desc>", "<displayName>", "<images>", "<listPrice>", "<salePrice>", "<quantity>" and token
+    Then check the "<exceptedResult>" and "<exceptedResultDesc>" fields
+    Examples:
+      | barcode | brand                    | cargoCompID | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc                  |
+      |         | 5fc8de0c72fb11234c3c5e26 |             | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        | 40       | FAIL           | cargoCompanyId alanı boş geçilemez. |
 
   #Beyza: Ürünün images alanı boş geçildiğinde hata vermesi kontrol edilir
   @TC0012
@@ -67,9 +83,7 @@ Feature: VFMallApi
       | brand                    | catID                                | deliveryDuration | desc                        | displayName     | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc          |
       | 5fc8de0c72fb11234c3c5e26 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | 100       | 80        | 40       | FAIL           | images alanı boş geçilemez. |
 
-
-
-  #Beyza: Ürünün listPrice ve salePrice alanı boş geçildiğinde hata vermesi kontrol edilir
+  #Laman: Ürünün listPrice ve salePrice alanı boş geçildiğinde hata vermesi kontrol edilir
   @TC0013
   Scenario Outline: Sent the createVfMallOffering service without listPrice and salePrice
     Given createVfMallToken "POST" service is sent and take the token
@@ -79,8 +93,7 @@ Feature: VFMallApi
       | barcode | brand                    | cargoCompID              | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc             |
       |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg |           |           | 40       | FAIL           | listPrice alanı boş geçilemez. |
 
-
-  #Beyza: Ürünün quantity alanı boş geçildiğinde hata vermesi kontrol edilir
+  #Laman: Ürünün quantity alanı boş geçildiğinde hata vermesi kontrol edilir
   @TC0014
   Scenario Outline: Sent the createVfMallOffering service without quantity
     Given createVfMallToken "POST" service is sent and take the token
@@ -100,7 +113,6 @@ Feature: VFMallApi
       | barcode | brand                    | cargoCompID              | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc                    |
       |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a |                  | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        |          | FAIL           | deliveryDuration alanı boş geçilemez. |
 
-
   #Batu: Ürünün detay açıklamasıdır boş geçilemez.
   @TC010
   Scenario Outline: Sent the createVfMallOffering service without description
@@ -110,7 +122,6 @@ Feature: VFMallApi
     Examples:
       | barcode | brand                    | cargoCompID              | catID                                | deliveryDuration | desc | displayName     | images                                                                          | listPrice | salePrice | quantity | exceptedResult | exceptedResultDesc               |
       |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                |      | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        |          | FAIL           | description alanı boş geçilemez. |
-
 
   #Batu: Ürünün panel ekranlarında görünecek adıdır. Boş geçilemez
   @TC011
