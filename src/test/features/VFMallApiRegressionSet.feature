@@ -13,7 +13,7 @@ Feature: VFMallApi
       |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100       | 80        | 40       |
 
   #Laman: Ürünün oluştuğunun panelden kontrol edilmesi
-  @TC003
+  @TC002
   Scenario Outline: Check the product is created
     Given I go to "https://vfmallpanel-gui-secure-marketplace.apps.mbt.vodafone.local/" with this username: "<username>" and this password:"<password>"
     And I wait product button element 50 seconds at index 1
@@ -28,11 +28,22 @@ Feature: VFMallApi
     Then I click element: search button at index 1
     Then I need to just wait
     Then I need to check if record is equal to 1 for Record Count
+    When I double click element: products in table at index 1
+    Then I need to just wait
+    When I switch to child window
+    Then I see product page
+    When I click element: feature list from list at index 1
+    #Then I get the value of list price text area at index 1
+    #Then I get the text area information: list price text area at index 1
+    And I confirm if element: list price text area equals to value from API Response
+
+    Then I need to just wait
+
 
 
     Examples:
-      | username           | password       |
-      | otomasyon@test.com | Test123456789. |
+      | username           | password       | listPrice |
+      | otomasyon@test.com | Test123456789. | 100       |
 
 
   #Laman: Ürünün oluştuğunun panelden kontrol edilmesi

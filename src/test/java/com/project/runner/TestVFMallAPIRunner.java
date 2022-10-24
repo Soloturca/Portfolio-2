@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
 
         features = "src/test/features/VFMallApiRegressionSet.feature",
-        tags = "@VFMallApi",
+        tags = "@TC002",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
         glue = {"com.project.stepdefs"})
 

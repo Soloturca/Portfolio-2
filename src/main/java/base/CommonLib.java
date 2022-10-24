@@ -15,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,6 +38,9 @@ public class CommonLib extends MyTestNGBaseClass{
     public static WebDriver oDriver;
     public String page = "common";
     Parser parser= new Parser();
+    Actions actions = new Actions(oDriver);
+
+    public static String itemValue;
 
     WebDriverWait wait = new WebDriverWait(oDriver, 30);
     int timeout = 30;
@@ -374,5 +378,27 @@ public class CommonLib extends MyTestNGBaseClass{
         }
         return null;
     }
+
+    public void doubleClickElement(WebElement object) {
+        actions.doubleClick(object).perform();
+
+    }
+
+    public String getTheItemValue(String elem, int index) {
+        String elementText = (findElement(elem, index).getText());
+        //System.out.println(elementText);
+        this.itemValue = elementText;
+        //System.out.println(itemValue);
+        return elementText;
+    }
+
+    public String getTheItemValueFromAttribute(String elem, int index) {
+        String elementText = (findElement(elem, index).getAttribute("value"));
+        //System.out.println(elementText);
+        this.itemValue = elementText;
+        //System.out.println(itemValue);
+        return elementText;
+    }
+
 
 }

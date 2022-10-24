@@ -9,6 +9,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
@@ -18,7 +19,13 @@ public class Offering extends BaseMethods {
     public boolean createVFMallOffering(String desiredPath, String barcode, String brand,String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
-
+        //float listPriceFloat= Float.parseFloat(listPrice);
+        DecimalFormat df = new DecimalFormat("#.##");
+        String listPrice1 = df.format(listPrice);
+        System.out.println(listPrice1);
+        //String listPrice1 = String.format("%.2f", listPriceFloat);
+        AutomationConstants.listPrice=listPrice1;
+       System.out.println(AutomationConstants.listPrice);
         if(barcode.isEmpty()){
 
             barcode = UUID.randomUUID().toString();
