@@ -164,7 +164,7 @@ public class RequestBody {
         return CommonLib.prepJson(main);
     }
 
-    public static String createVFMallOfferingWithOutImages(int barcode, String brand, String catID, String deliveryDuration, String desc, String displayName, String listPrice, String salePrice, String quantity){
+    public static String createVFMallOfferingWithOutImages(String barcode, String brand, String catID, String deliveryDuration, String desc, String displayName, String listPrice, String salePrice, String quantity){
 
         Main main = new Main();
 
