@@ -10,6 +10,8 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
@@ -19,13 +21,33 @@ public class Offering extends BaseMethods {
     public boolean createVFMallOffering(String desiredPath, String barcode, String brand,String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
-        //float listPriceFloat= Float.parseFloat(listPrice);
-        DecimalFormat df = new DecimalFormat("#.##");
-        String listPrice1 = df.format(listPrice);
-        System.out.println(listPrice1);
-        //String listPrice1 = String.format("%.2f", listPriceFloat);
-        AutomationConstants.listPrice=listPrice1;
-       System.out.println(AutomationConstants.listPrice);
+        if(listPrice.contains(".")){
+            double listPriceFloat= Double.parseDouble(listPrice);
+            double roundOff = Math.round(listPriceFloat * 100.0) / 100.0;
+            AutomationConstants.listPrice= String.format(Locale.US, "%.2f", roundOff);
+        }
+
+        else{
+            float listPriceFloat= (float) (Integer.parseInt(listPrice));
+            AutomationConstants.listPrice= String.format(Locale.US, "%.2f", listPriceFloat);
+
+        }
+
+
+        if(salePrice.contains(".")){
+            double salePriceFloat= Double.parseDouble(salePrice);
+            double roundOff = Math.round(salePriceFloat * 100.0) / 100.0;
+            AutomationConstants.salePrice = String.format(Locale.US, "%.2f", roundOff);
+        }
+
+        else {
+            float salePriceFloat = (float) (Integer.parseInt(salePrice));
+            AutomationConstants.salePrice = String.format(Locale.US, "%.2f", salePriceFloat);
+        }
+
+        AutomationConstants.quantity=quantity;
+
+
         if(barcode.isEmpty()){
 
             barcode = UUID.randomUUID().toString();

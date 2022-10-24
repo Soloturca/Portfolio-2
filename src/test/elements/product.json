@@ -60,15 +60,6 @@
           "feature list2" : "ngb-tab-7"
         },
         {
-          "stock update" : "//button[contains(text(),'Stok G\u00FCncelle')]"
-        },
-        {
-          "stock quantity" : "//label[contains(text(),'Stok Adeti')]"
-        },
-        {
-          "stock quantity input" : "//*[@id=\"ngForm\"]/div[2]/input"
-        },
-        {
           "update stock" : "//button[contains(text(),'G\u00FCncelle')]"
         },
         {
@@ -202,12 +193,25 @@
         },
         {
           "warning popup v5" : "//div[contains(text(),'Girilen stok')]"
-        }
-      ,
+        },
         {
           "list price text area" : "//div[5]/input[@type='text']"
+        },
+        {
+          "sale price text area" : "//div[6]/input[@type='text']"
+        },
+        {
+          "sale price text area" : "//div[6]/input[@type='text']"
+        },
+        {
+          "stock update" : "//button[contains(text(),'Stok G\u00FCncelle')]"
+        },
+        {
+          "stock quantity label" : "//label[contains(text(),'Stok Adeti')]"
+        },
+        {
+          "stock quantity" : "//*[@id=\"ngForm\"]/div[2]/input"
         }
-
       ]
     }
   ]

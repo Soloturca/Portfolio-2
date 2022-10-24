@@ -30,6 +30,7 @@ public class MyStepdefs extends MyTestNGBaseClass {
     CommonLib commonLib = new CommonLib();
 
     int timeout = 30;
+
     @Before
     public void setReportName(Scenario scenario) {
         System.out.println(scenario.getName());
@@ -48,12 +49,12 @@ public class MyStepdefs extends MyTestNGBaseClass {
     }
 
     //@Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
-   // public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-     //   Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-   // }
+    // public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    //   Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+    // }
 
     //@Given("createVFMallOfferingWithoutDescription {string} is sent with token")
-   // public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    // public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
     //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
     //}
 
@@ -117,6 +118,7 @@ public class MyStepdefs extends MyTestNGBaseClass {
 
         return flag;
     }
+
     @Given("I go to \"([^\"]*)\" with this username: \"([^\"]*)\" and this password:\"([^\"]*)\"")
     public void loginSystem(String URL, String username, String password) throws InterruptedException {
         openUrl(URL);
@@ -187,14 +189,14 @@ public class MyStepdefs extends MyTestNGBaseClass {
         }
         return true;
     }
-   // @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
+    // @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
     //public void createvfmallofferingwithoutdisplaynameIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
     //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-   // }
+    // }
 
     @Then("check the {string} and {string} fields")
     public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
-        Assert.assertTrue(new Offering().checkFields(exceptedResult,exceptedResultDesc));
+        Assert.assertTrue(new Offering().checkFields(exceptedResult, exceptedResultDesc));
     }
 
     @When("^(?:I )?double click element: (\\w+(?: \\w+)*) at index (\\d+)")
@@ -254,26 +256,65 @@ public class MyStepdefs extends MyTestNGBaseClass {
     }
 
     @Then("^I confirm if element: (.*) equals to value from API Response")
-    public boolean checkString(String element) {
-        String object1 = commonLib.getTheItemValueFromAttribute(element, 1);
-        System.out.println(object1);
+    public boolean checkStrings(String element) {
         boolean flag = false;
+        switch (element) {
+            case "list price text area":
+                String object1 = commonLib.getTheItemValueFromAttribute(element, 1);
+                System.out.println(object1);
 
-        try {
-            if (object1.equals(AutomationConstants.listPrice)) {
-                System.out.println(element + " is " + AutomationConstants.listPrice + " .");
-                Allure.addAttachment(element + " is " + AutomationConstants.listPrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                try {
+                    if (object1.equals(AutomationConstants.listPrice)) {
+                        System.out.println(element + " is " + AutomationConstants.listPrice + " .");
+                        Allure.addAttachment(element + " is " + AutomationConstants.listPrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                        flag = true;
 
-                flag = true;
-            }
-        } catch (Exception e) {
-            Allure.addAttachment(element + " and " + AutomationConstants.listPrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-            Assert.fail(element + " and " + AutomationConstants.listPrice + " are not equal.");
-            flag = false;
+                    }
+                } catch (Exception e) {
+                    Allure.addAttachment(element + " and " + AutomationConstants.listPrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    Assert.fail(element + " and " + AutomationConstants.listPrice + " are not equal.");
+
+                }
+                break;
+
+            case "sale price text area":
+                String object2 = commonLib.getTheItemValueFromAttribute(element, 1);
+                System.out.println(object2);
+                try {
+                    if (object2.equals(AutomationConstants.salePrice)) {
+                        System.out.println(element + " is " + AutomationConstants.salePrice + " .");
+                        Allure.addAttachment(element + " is " + AutomationConstants.salePrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    }
+                } catch (Exception e) {
+                    Allure.addAttachment(element + " and " + AutomationConstants.salePrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    Assert.fail(element + " and " + AutomationConstants.salePrice + " are not equal.");
+
+                }
+                break;
+
+            case "stock quantity":
+                String object3 = commonLib.getTheItemValueFromAttribute(element, 1);
+                System.out.println(object3);
+
+
+                try {
+                    if (object3.equals(AutomationConstants.quantity)) {
+                        System.out.println(element + " is " + AutomationConstants.quantity + " .");
+                        Allure.addAttachment(element + " is " + AutomationConstants.quantity + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+
+                    }
+                } catch (Exception e) {
+                    Allure.addAttachment(element + " and " + AutomationConstants.quantity + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    Assert.fail(element + " and " + AutomationConstants.quantity + " are not equal.");
+
+                }
+                break;
+
         }
 
-        return flag;
 
+        return flag;
     }
 
     @Then("^(?:I )?get the text area information: (\\w+(?: \\w+)*) at index (\\d+)")
