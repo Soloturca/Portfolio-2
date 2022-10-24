@@ -45,7 +45,7 @@ public class AutomationConstants {
     public static String hideMyName;
 
     public static String salesAmount;
-    public static String listAmount;
+    public static String listPrice;
     public static String productQuantity;
     public static String updatedSalesAmount = "";
     public static String updatedListAmount = "";
@@ -53,6 +53,7 @@ public class AutomationConstants {
     public static String variantCode = "";
     public static String barcode="" ;
     public static String code ="";
+    public static String field="";
 
     //url api
     public static String urlCreateVfMallToken = "https://efes.vodafone.com.tr/vfmallapi/createVfMallToken";

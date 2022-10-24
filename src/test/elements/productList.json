@@ -18,7 +18,11 @@
         },
         {
           "Record Count": "//p[@class='small']"
+        },
+        {
+          "products in table": "//table/tbody/tr"
         }
+
       ]
     }
   ]
