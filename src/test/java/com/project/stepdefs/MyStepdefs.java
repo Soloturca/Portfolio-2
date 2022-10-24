@@ -40,20 +40,20 @@ public class MyStepdefs extends MyTestNGBaseClass {
         Assert.assertTrue(new BaseMethods().createVfMallTokenRequest(desiredPath));
     }
 
-    @Given("createVfMallOffering {string} is sent with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and token")
-    public void createvfmallofferingIsSentWithAndToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+    @Given("createVfMallOffering {string} is sent with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and token")
+    public void createvfmallofferingIsSentWithAndToken(String desiredPath, String barcode, String brand, String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
     }
 
-    @Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
-    public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    }
+    //@Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
+   // public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+     //   Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+   // }
 
-    @Given("createVFMallOfferingWithoutDescription {string} is sent with token")
-    public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    }
+    //@Given("createVFMallOfferingWithoutDescription {string} is sent with token")
+   // public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+    //}
 
     @Given("^Open the (.*) URL$")
     public void openUrl(String URL) {
@@ -185,15 +185,17 @@ public class MyStepdefs extends MyTestNGBaseClass {
         }
         return true;
     }
-    @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
-    public void createvfmallofferingwithoutdisplaynameIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    }
+   // @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
+    //public void createvfmallofferingwithoutdisplaynameIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
+   // }
 
     @Then("check the {string} and {string} fields")
     public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
         Assert.assertTrue(new Offering().checkFields(exceptedResult,exceptedResultDesc));
     }
+
+
 
     //@And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     //public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {

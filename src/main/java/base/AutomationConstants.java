@@ -51,7 +51,7 @@ public class AutomationConstants {
     public static String updatedListAmount = "";
     public static String updatedProductQuantity;
     public static String variantCode = "";
-    public static int barcode ;
+    public static String barcode="" ;
     public static String code ="";
 
     //url api

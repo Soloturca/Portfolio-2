@@ -11,19 +11,29 @@ import org.apache.http.HttpStatus;
 
 import java.util.Objects;
 import java.util.Random;
+import java.util.UUID;
 
 public class Offering extends BaseMethods {
 
-    public boolean createVFMallOffering(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    public boolean createVFMallOffering(String desiredPath, String barcode, String brand,String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
 
-        //barcode u random atıyoruz
-        Random rand = new Random();
-        AutomationConstants.barcode += +rand.nextInt(1000000000);
-        System.out.println("Barcode: " + AutomationConstants.barcode);
+        if(barcode.isEmpty()){
 
-        Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity),
+            barcode = UUID.randomUUID().toString();
+            AutomationConstants.barcode =barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        }
+
+        else {
+            AutomationConstants.barcode =barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        }
+        //barcode u random atıyoruz
+
+
+        Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity),
                 AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
 
         AutomationConstants.responseData = Objects.requireNonNull(response).asPrettyString();

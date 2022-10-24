@@ -22,13 +22,13 @@ public class RequestBody {
         return CommonLib.prepJson(createVfMallToken);
     }
 
-    public static String createVFMallOffering(int barcode, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity){
+    public static String createVFMallOffering(String barcode, String brand, String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity){
 
         Main main = new Main();
 
         main.setBarcode(barcode);
         main.setBrand(brand);
-        main.setCargoCompanyId("60d44700026e19ca7dfc0155");
+        main.setCargoCompanyId(cargoCompID);
         main.setAlternativeCargoCompanyId("601be721a23ffc44f4864240");
         main.setCategoryId(catID);
         main.setDeliveryDuration(deliveryDuration);

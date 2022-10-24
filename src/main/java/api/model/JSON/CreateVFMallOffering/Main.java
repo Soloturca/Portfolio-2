@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Main {
 
     @JsonProperty("barcode")
-    private int barcode;
+    private String barcode;
     @JsonProperty("brand")
     private String brand;
     @JsonProperty("cargoCompanyId")
@@ -83,12 +83,12 @@ public class Main {
     private List<Parameter> parameters = null;
 
     @JsonProperty("barcode")
-    public int getBarcode() {
+    public String  getBarcode() {
         return barcode;
     }
 
     @JsonProperty("barcode")
-    public void setBarcode(int barcode) {
+    public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 
