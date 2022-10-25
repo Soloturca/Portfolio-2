@@ -15,6 +15,8 @@ Feature: VFMallApi
   #Laman: Ürünün oluştuğu panelden kontrol edilir
   @TC003
   Scenario Outline: Check the product is created
+    Given createVfMallToken "POST" service is sent and take the token
+    Given createVfMallOffering "POST" is sent with "<barcode>", "<brand>", "<cargoCompID>", "<catID>", "<deliveryDuration>", "<desc>", "<displayName>", "<images>", "<listPrice>", "<salePrice>", "<quantity>" and token
     Given I go to "https://vfmallpanel-gui-secure-marketplace.apps.mbt.vodafone.local/" with this username: "<username>" and this password:"<password>"
     And I wait product button element 50 seconds at index 1
     When I click element: product button at index 1
@@ -40,8 +42,8 @@ Feature: VFMallApi
     Then I need to just wait
 
     Examples:
-      | username           | password       |
-      | otomasyon@test.com | Test123456789. |
+      | barcode | brand                    | cargoCompID              | catID                                | deliveryDuration | desc                        | displayName     | images                                                                          | listPrice | salePrice | quantity | username           | password       |
+      |         | 5fc8de0c72fb11234c3c5e26 | 60d44700026e19ca7dfc0155 | 83f2e6e7-7959-441f-8779-1838a51f4c2a | 4                | <html>Urun aciklama </html> | testDisplayName | https://ligarbatravel.com/wp-content/uploads/2020/06/kahve-one-cikan-gorsel.jpg | 100.12    | 80.46     | 40       | otomasyon@test.com | Test123456789. |
 
   #Laman:  "barcode" çakışması kontrol edilir
   @TC004
