@@ -9,7 +9,6 @@ import base.CommonLib;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -44,35 +43,35 @@ public class Order extends BaseMethods {
    //    return status;
    //}
 
-    public boolean VfMallOrderStatusPending(String desiredPath) {
-        boolean status = false;
-
-        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.token, AutomationConstants.urlVfMallOrders);
-
-        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
-
-        String result = js.getString("result.result");
-
-        AutomationConstants.orderId = js.getString("listSalesOrders.id[0]");
-        System.out.println("orderId is: " + AutomationConstants.orderId);
-        CommonLib.allureReport("INFO", "orderId is: " + AutomationConstants.orderId);
-
-
-        AutomationConstants.status = js.getString("listSalesOrders.status[0]");
-        System.out.println("status:" + AutomationConstants.status);
-        CommonLib.allureReport("INFO", "orderId is: " + AutomationConstants.orderId);
-
-        if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "It appears to have successfully attained the 'PENDING' status.");
-            status = true;
-        } else {
-            CommonLib.allureReport("FAIL", "Error trying to set 'PENDING' status. Please check.");
-        }
-
-        CommonLib.allureReport("INFO", "Data :" + Objects.requireNonNull(response).asPrettyString());
-
-        return status;
-    }
+   // public boolean VfMallOrderStatusPending(String desiredPath) {
+   //     boolean status = false;
+   //
+   //     Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.token, AutomationConstants.urlVfMallOrders);
+   //
+   //     JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+   //
+   //     String result = js.getString("result.result");
+   //
+   //     AutomationConstants.orderId = js.getString("listSalesOrders.id[0]");
+   //     System.out.println("orderId is: " + AutomationConstants.orderId);
+   //     CommonLib.allureReport("INFO", "orderId is: " + AutomationConstants.orderId);
+   //
+   //
+   //     AutomationConstants.status = js.getString("listSalesOrders.status[0]");
+   //     System.out.println("status:" + AutomationConstants.status);
+   //     CommonLib.allureReport("INFO", "orderId is: " + AutomationConstants.orderId);
+   //
+   //     if (result.contains("SUCCESS")) {
+   //         CommonLib.allureReport("PASS", "It appears to have successfully attained the 'PENDING' status.");
+   //         status = true;
+   //     } else {
+   //         CommonLib.allureReport("FAIL", "Error trying to set 'PENDING' status. Please check.");
+   //     }
+   //
+   //     CommonLib.allureReport("INFO", "Data :" + Objects.requireNonNull(response).asPrettyString());
+   //
+   //     return status;
+   // }
 
    //public boolean updateSalesOrderStatusChange(String desiredPath, String desiredStatus) {
    //    boolean status = false;
@@ -271,23 +270,5 @@ public class Order extends BaseMethods {
    //     return status;
    // }
 
-    public boolean checkInsertVFMallRateAndComment(String expectedResult, String expectedResultMessage) {
-        boolean status = false;
 
-        JsonPath js = new JsonPath(Objects.requireNonNull(AutomationConstants.responseData));
-
-        String result = js.getString("result.result");
-        String resultDesc = js.getString("result.resultDesc");
-
-        if (result.contains(expectedResult) && resultDesc.contains(expectedResultMessage)) {
-            CommonLib.allureReport("PASS", "It was seen that the desired message and status were received.");
-            status = true;
-        } else {
-            CommonLib.allureReport("FAIL", "It was seen that the requested message and status did not come. Check.");
-        }
-
-        CommonLib.allureReport("INFO", "Data: " + AutomationConstants.responseData);
-
-        return status;
-    }
 }

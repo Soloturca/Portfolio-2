@@ -1,0 +1,29 @@
+{
+  "pages": [
+    {
+      "pageInfo": {
+        "pageName": "ProductList",
+        "parent": "home",
+        "waitelement": "page title"
+      },
+      "elements": [
+        {
+          "page title": "//title[contains(text(),'\u00DCr\u00FCnler')]"
+        },
+        {
+          "product code input": "//input[@placeholder='\u00DCr\u00FCn Kodu']"
+        },
+        {
+          "search button": "//button[contains(text(),'Ara')]"
+        },
+        {
+          "Record Count": "//p[@class='small']"
+        },
+        {
+          "products in table": "//table/tbody/tr"
+        }
+
+      ]
+    }
+  ]
+}

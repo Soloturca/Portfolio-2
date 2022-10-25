@@ -16,32 +16,32 @@ import java.util.Objects;
 
 public class ShoppingCart extends BaseMethods {
 
-    public boolean cleanShoppingCart(String desiredPath, String desiredMethod) {
-        boolean status = false;
-
-        Map<String, String> map = new HashMap<>();
-
-        map.put(String.valueOf(ParameterDTO.method), desiredMethod);
-
-        map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
-
-        Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlShoppingJourney, map);
-
-        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
-
-        String result = js.getString("result.result");
-
-        if (result.contains("SUCCESS")) {
-            CommonLib.allureReport("PASS", "Basket cleared successfully.");
-            status = true;
-        } else {
-            CommonLib.allureReport("FAIL", "An error was encountered while cleaning the basket. Check.");
-        }
-
-        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
-
-        return status;
-    }
+   // public boolean cleanShoppingCart(String desiredPath, String desiredMethod) {
+   //     boolean status = false;
+   //
+   //     Map<String, String> map = new HashMap<>();
+   //
+   //     map.put(String.valueOf(ParameterDTO.method), desiredMethod);
+   //
+   //     map.put(String.valueOf(ParameterDTO.sid), AutomationConstants.sessionId);
+   //
+   //     Response response = ResponseBody.getResponse(desiredPath, "", AutomationConstants.urlShoppingJourney, map);
+   //
+   //     JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
+   //
+   //     String result = js.getString("result.result");
+   //
+   //     if (result.contains("SUCCESS")) {
+   //         CommonLib.allureReport("PASS", "Basket cleared successfully.");
+   //         status = true;
+   //     } else {
+   //         CommonLib.allureReport("FAIL", "An error was encountered while cleaning the basket. Check.");
+   //     }
+   //
+   //     CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
+   //
+   //     return status;
+   // }
 
 
    //public boolean addVfMallCustomerProfile(String desiredPath, String desiredMsisdn) {

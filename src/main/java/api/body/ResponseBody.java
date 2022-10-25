@@ -6,16 +6,13 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.ProxySpecification;
 import org.apache.http.HttpStatus;
-
 import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.ContentType.XML;
 import static io.restassured.specification.ProxySpecification.host;
 
 public class ResponseBody {
-
 
     /**
      * Function:GetResponse
