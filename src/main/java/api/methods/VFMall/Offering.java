@@ -9,58 +9,48 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Random;
 import java.util.UUID;
 
 public class Offering extends BaseMethods {
 
-    public boolean createVFMallOffering(String desiredPath, String barcode, String brand,String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
+    public boolean createVFMallOffering(String desiredPath, String barcode, String brand, String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
-        if(listPrice.contains(".")){
-            double listPriceFloat= Double.parseDouble(listPrice);
-            double roundOff = Math.round(listPriceFloat * 100.0) / 100.0;
-            AutomationConstants.listPrice= String.format(Locale.US, "%.2f", roundOff);
+
+        if (!listPrice.isEmpty()) {
+            if (listPrice.contains(".")) {
+                double listPriceFloat = Double.parseDouble(listPrice);
+                double roundOff = Math.round(listPriceFloat * 100.0) / 100.0;
+                AutomationConstants.listPrice = String.format(Locale.US, "%.2f", roundOff);
+            } else {
+                float listPriceFloat = (float) (Integer.parseInt(listPrice));
+                AutomationConstants.listPrice = String.format(Locale.US, "%.2f", listPriceFloat);
+            }
         }
 
-        else{
-            float listPriceFloat= (float) (Integer.parseInt(listPrice));
-            AutomationConstants.listPrice= String.format(Locale.US, "%.2f", listPriceFloat);
-
+        if (!salePrice.isEmpty()) {
+            if (salePrice.contains(".")) {
+                double salePriceFloat = Double.parseDouble(salePrice);
+                double roundOff = Math.round(salePriceFloat * 100.0) / 100.0;
+                AutomationConstants.salePrice = String.format(Locale.US, "%.2f", roundOff);
+            } else {
+                float salePriceFloat = (float) (Integer.parseInt(salePrice));
+                AutomationConstants.salePrice = String.format(Locale.US, "%.2f", salePriceFloat);
+            }
         }
 
+        AutomationConstants.quantity = quantity;
 
-        if(salePrice.contains(".")){
-            double salePriceFloat= Double.parseDouble(salePrice);
-            double roundOff = Math.round(salePriceFloat * 100.0) / 100.0;
-            AutomationConstants.salePrice = String.format(Locale.US, "%.2f", roundOff);
-        }
-
-        else {
-            float salePriceFloat = (float) (Integer.parseInt(salePrice));
-            AutomationConstants.salePrice = String.format(Locale.US, "%.2f", salePriceFloat);
-        }
-
-        AutomationConstants.quantity=quantity;
-
-
-        if(barcode.isEmpty()){
-
+        if (barcode.isEmpty()) {
             barcode = UUID.randomUUID().toString();
-            AutomationConstants.barcode =barcode;
+            AutomationConstants.barcode = barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        } else {
+            AutomationConstants.barcode = barcode;
             System.out.println("Barcode: " + AutomationConstants.barcode);
         }
-
-        else {
-            AutomationConstants.barcode =barcode;
-            System.out.println("Barcode: " + AutomationConstants.barcode);
-        }
-        //barcode u random atıyoruz
-
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOffering(AutomationConstants.barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity),
                 AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
@@ -69,14 +59,11 @@ public class Offering extends BaseMethods {
 
         System.out.println("Response is: " + Objects.requireNonNull(response).asPrettyString());
 
-        //response tan çekeceğimiz bir değer olduğunda response u önce jsonpath le new liyoruz
         JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
 
-        //burada da responsetan çekeceğimiz değeri gtString ile alıyoruz.
         AutomationConstants.result = js.getString("result.result");
         AutomationConstants.code = js.getString("code");
 
-        //response un 200 olması ve responsetaki result ın success dönmesini kontrol ettirip allure reportta bastırdığımız pass ya da fail mesajları
         if (response.getStatusCode() == HttpStatus.SC_OK && AutomationConstants.result.contains("SUCCESS")) {
             status = true;
             CommonLib.allureReport("PASS", "CreateVFMallOffering service sent successfully.");
@@ -115,13 +102,19 @@ public class Offering extends BaseMethods {
     }
 
 
-    public boolean createVFMallOfferingWithOutImages(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String listPrice, String salePrice, String quantity) {
+    public boolean createVFMallOfferingWithOutImages(String desiredPath, String barcode, String brand, String catID, String deliveryDuration, String desc, String displayName, String listPrice, String salePrice, String quantity) {
 
         boolean status = false;
 
-        Random rand = new Random();
-        AutomationConstants.barcode += +rand.nextInt(1000000000);
-        System.out.println("Barcode: " + AutomationConstants.barcode);
+        if (barcode.isEmpty()) {
+
+            barcode = UUID.randomUUID().toString();
+            AutomationConstants.barcode = barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        } else {
+            AutomationConstants.barcode = barcode;
+            System.out.println("Barcode: " + AutomationConstants.barcode);
+        }
 
         Response response = ResponseBody.getResponse(desiredPath, RequestBody.createVFMallOfferingWithOutImages(AutomationConstants.barcode, brand, catID, deliveryDuration, desc, displayName, listPrice, salePrice, quantity),
                 AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
@@ -148,69 +141,4 @@ public class Offering extends BaseMethods {
         }
         return status;
     }
-
-
-    //public boolean createVfMallOfferingRequest(String desiredPath, String barcode, String maxSaleCount, String cargoCompanyID) {
-    //    boolean status = false;
-    //
-    //    CommonLib.waitSeconds(3);
-    //    Response response = null;
-    //    try {
-    //        if (barcode.isEmpty()) {
-    //            AutomationConstants.variantCode = "";
-    //            AutomationConstants.uuidID = "";
-    //            Random rand = new Random();
-    //            AutomationConstants.id = rand.nextInt(1000);
-    //            barcode = UUID.randomUUID().toString();
-    //            AutomationConstants.uuidID = barcode;
-    //            Random r = new Random();
-    //            for (int i = 0; i < 4; i++) {
-    //                AutomationConstants.variantCode += (char) (r.nextInt(26) + 'a');
-    //            }
-    //        }
-    //        AutomationConstants.variantCode += barcode;
-    //
-    //        System.out.println("variantCode: " + AutomationConstants.variantCode);
-    //        String displayName = "automation" + AutomationConstants.id;
-    //
-    //        CommonLib.allureReport("INFO", "Request: " + RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode));
-    //
-    //        CommonLib.waitSeconds(10);
-    //
-    //        response = ResponseBody.getResponse(desiredPath, RequestBody.createVfMallOffer(barcode, displayName, maxSaleCount, cargoCompanyID, AutomationConstants.variantCode), AutomationConstants.token, AutomationConstants.urlCreateVfMallOffering);
-    //
-    //        JsonPath js = new JsonPath(Objects.requireNonNull(response).asPrettyString());
-    //
-    //        AutomationConstants.result = js.getString("result.result");
-    //        AutomationConstants.offerStatus = js.getString("status");
-    //        AutomationConstants.resultCode = js.getString("result.resultCode");
-    //        AutomationConstants.resultDesc = js.getString("result.resultDesc");
-    //        AutomationConstants.uuidID = js.getString("offeringId");
-    //        AutomationConstants.offerCode = js.getString("code");
-    //
-    //        System.out.println("offeringId: " + AutomationConstants.uuidID);
-    //
-    //        CommonLib.allureReport("INFO", "offerID:" + AutomationConstants.uuidID);
-    //
-    //        if (maxSaleCount.equals("0") || barcode.equals("c8249cb5-0848-4cdc-9c91-1e7a576860d7") || cargoCompanyID.equals("601be73da23ffc44f4864242")) {
-    //            if (AutomationConstants.result.contains("FAIL") && AutomationConstants.offerStatus == null) {
-    //                status = true;
-    //                CommonLib.allureReport("PASS", "It was seen that the error was received as desired.");
-    //            }
-    //        } else if (AutomationConstants.result.contains("SUCCESS") && AutomationConstants.offerStatus.contains("Active")) {
-    //            status = true;
-    //            CommonLib.allureReport("FAIL", "Offer Status appears to be 'Active' and progressing properly.");
-    //        } else {
-    //            CommonLib.allureReport("FAIL", "An error occurred while generating data. Check.");
-    //        }
-    //
-    //        CommonLib.allureReport("INFO", "DATA: " + response.asPrettyString());
-    //    } catch (Exception e) {
-    //        CommonLib.allureReport("FAIL", "An error occurred while generating data. Check.Error : " + e.getMessage());
-    //        CommonLib.allureReport("INFO", "Response: " + response.asPrettyString());
-    //    }
-    //
-    //    return status;
-    //}
-
 }

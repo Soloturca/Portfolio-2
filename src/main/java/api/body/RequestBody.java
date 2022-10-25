@@ -10,7 +10,6 @@ import java.util.List;
 
 public class RequestBody {
 
-    //API SIDE
     public static String createVfMallToken() {
 
         CreateVfMallToken createVfMallToken = new CreateVfMallToken();
@@ -301,14 +300,6 @@ public class RequestBody {
 
         return CommonLib.prepJson(main);
     }
-
-
-
-
-
-
-
-
 
    // public static String updateVfMallStockAndPrice(String listPriceU, String quantityU, String salePriceU) {
    //     return "{\n" +

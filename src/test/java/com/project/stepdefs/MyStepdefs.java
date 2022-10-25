@@ -1,15 +1,11 @@
 package com.project.stepdefs;
 
 import api.methods.BaseMethods;
-import api.methods.Basket.Order;
-import api.methods.Basket.ShoppingCart;
-import api.methods.VFMall.HomePage;
 import api.methods.VFMall.Offering;
 import base.AutomationConstants;
 import base.CommonLib;
 import base.MyTestNGBaseClass;
 import io.cucumber.core.api.Scenario;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -36,8 +32,6 @@ public class MyStepdefs extends MyTestNGBaseClass {
         System.out.println(scenario.getName());
     }
 
-    //API SIDE
-
     @Given("createVfMallToken {string} service is sent and take the token")
     public void createVfMallTokenServiceIsSentAndTakeTheToken(String desiredPath) {
         Assert.assertTrue(new BaseMethods().createVfMallTokenRequest(desiredPath));
@@ -48,15 +42,10 @@ public class MyStepdefs extends MyTestNGBaseClass {
         Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
     }
 
-    //@Given("createVFMallOfferingWithoutDeliveryDuration {string} is sent with token")
-    // public void createVFMallOfferingWithoutDeliveryDuration(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-    //   Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    // }
-
-    //@Given("createVFMallOfferingWithoutDescription {string} is sent with token")
-    // public void createvfmallofferingwithoutdescriptionIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-    //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    //}
+    @Given("createVfMallOffering {string} is sent with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and token")
+    public void createvfmallofferingIsSentWithAndToken(String desiredPath, String brand, String barcode, String catID, String deliveryDuration, String desc, String displayName, String listPrice, String salePrice, String quantity) {
+        Assert.assertTrue(new Offering().createVFMallOfferingWithOutImages(desiredPath, barcode, brand, catID, deliveryDuration, desc, displayName, listPrice, salePrice, quantity));
+    }
 
     @Given("^Open the (.*) URL$")
     public void openUrl(String URL) {
@@ -118,6 +107,7 @@ public class MyStepdefs extends MyTestNGBaseClass {
 
         return flag;
     }
+
     @Given("I go to \"([^\"]*)\" with this username: \"([^\"]*)\" and this password:\"([^\"]*)\"")
     public void loginSystem(String URL, String username, String password) throws InterruptedException {
         openUrl(URL);
@@ -188,10 +178,6 @@ public class MyStepdefs extends MyTestNGBaseClass {
         }
         return true;
     }
-    // @Given("createVFMallOfferingWithoutDisplayName {string} is sent with token")
-    //public void createvfmallofferingwithoutdisplaynameIsSentWithToken(String desiredPath, String brand, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-    //    Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, brand, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    // }
 
     @Then("check the {string} and {string} fields")
     public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
@@ -260,29 +246,26 @@ public class MyStepdefs extends MyTestNGBaseClass {
         switch (element) {
             case "list price text area":
                 String object1 = commonLib.getTheItemValueFromAttribute(element, 1);
-                System.out.println(object1);
 
                 try {
                     if (object1.equals(AutomationConstants.listPrice)) {
-                        System.out.println(element + " is " + AutomationConstants.listPrice + " .");
-                        Allure.addAttachment(element + " is " + AutomationConstants.listPrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                        System.out.println(element + " is: " + AutomationConstants.listPrice + " .");
+                        Allure.addAttachment(element + " is: " + AutomationConstants.listPrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                         flag = true;
-
                     }
                 } catch (Exception e) {
                     Allure.addAttachment(element + " and " + AutomationConstants.listPrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                     Assert.fail(element + " and " + AutomationConstants.listPrice + " are not equal.");
-
                 }
                 break;
 
             case "sale price text area":
                 String object2 = commonLib.getTheItemValueFromAttribute(element, 1);
-                System.out.println(object2);
+
                 try {
                     if (object2.equals(AutomationConstants.salePrice)) {
-                        System.out.println(element + " is " + AutomationConstants.salePrice + " .");
-                        Allure.addAttachment(element + " is " + AutomationConstants.salePrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                        System.out.println(element + " is: " + AutomationConstants.salePrice + " .");
+                        Allure.addAttachment(element + " is: " + AutomationConstants.salePrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                     }
                 } catch (Exception e) {
                     Allure.addAttachment(element + " and " + AutomationConstants.salePrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
@@ -293,26 +276,18 @@ public class MyStepdefs extends MyTestNGBaseClass {
 
             case "stock quantity":
                 String object3 = commonLib.getTheItemValueFromAttribute(element, 1);
-                System.out.println(object3);
-
 
                 try {
                     if (object3.equals(AutomationConstants.quantity)) {
-                        System.out.println(element + " is " + AutomationConstants.quantity + " .");
-                        Allure.addAttachment(element + " is " + AutomationConstants.quantity + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-
-
+                        System.out.println(element + " is: " + AutomationConstants.quantity + " .");
+                        Allure.addAttachment(element + " is: " + AutomationConstants.quantity + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                     }
                 } catch (Exception e) {
                     Allure.addAttachment(element + " and " + AutomationConstants.quantity + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                     Assert.fail(element + " and " + AutomationConstants.quantity + " are not equal.");
-
                 }
                 break;
-
         }
-
-
         return flag;
     }
 
@@ -335,7 +310,6 @@ public class MyStepdefs extends MyTestNGBaseClass {
         }
         return flag;
     }
-
 
     //@And("getVFMallHomePage requestine sessionId parametresi eklenir ve servis {string} olarak tetiklenir")
     //public void getvfmallhomepageRequestineSessionIdParametresiEklenirVeServisOlarakTetiklenir(String desiredPath) {
