@@ -54,6 +54,7 @@ public class AutomationConstants {
     public static String updatedProductQuantity;
     public static String variantCode = "";
     public static String barcode="" ;
+    public static String msisdn = "";
     public static String code ="";
     public static String field="";
 

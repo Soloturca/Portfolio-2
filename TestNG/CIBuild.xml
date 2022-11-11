@@ -5,7 +5,7 @@
     <!-- Cucumber Test -->
     <test name="VFMallApi" enabled="true">
         <classes>
-            <class name="com.project.runner.TestVFMallAPIRunner"/>
+            <class name="com.project.runners.Runner"/>
         </classes>
     </test>
 

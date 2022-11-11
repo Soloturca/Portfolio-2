@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import base.*;
 
-public class CommonLib extends MyTestNGBaseClass{
+public class CommonLib{
 
     public static WebDriver oDriver;
     public String page = "common";
@@ -139,6 +139,9 @@ public class CommonLib extends MyTestNGBaseClass{
         return null;
     }
 
+    //-------------------------------------------------------------------------------------
+    // The method that will add a zero to the left side.
+    //-------------------------------------------------------------------------------------
     public static String addZeroLeft(String value) {
         boolean status = false;
         StringBuilder valueBuilder = new StringBuilder(value);
