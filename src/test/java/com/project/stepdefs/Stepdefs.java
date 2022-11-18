@@ -1,7 +1,7 @@
 package com.project.stepdefs;
 
-import api.methods.BaseMethods;
-import api.methods.VFMall.Offering;
+import api.examplemethods.BaseMethods;
+import api.examplemethods.vfMall.Offering;
 import base.AutomationConstants;
 import base.CommonLib;
 import io.cucumber.core.api.Scenario;

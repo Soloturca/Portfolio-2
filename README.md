@@ -2,7 +2,7 @@
 
 Hi, 
 
-This structure you will use; It contains **UI, API, DB and XRAY connections**. In this regard, the project name has been determined as "All-In-One".
+This structure you will use; It contains **UI, API, db and XRAY connections**. In this regard, the project name has been determined as "All-In-One".
 
 Using this structure, you can write UI - Selenium project; It can automate your APIs; With Xray implementation, you can automatically open a bug report in JIRA.
 
@@ -28,7 +28,7 @@ The report will be displayed via Chrome.
 
 Merhaba,
 
-Kullanacağınız bu yapı; **UI,API, DB ve XRAY bağlantılarını içerir**. Bu kapsamda proje adı "All-In-One" olarak belirlenmiştir.
+Kullanacağınız bu yapı; **UI,API, db ve XRAY bağlantılarını içerir**. Bu kapsamda proje adı "All-In-One" olarak belirlenmiştir.
 
 Bu yapıyı kullanarak UI - Selenium projesi yazabilir, API'lerinizi otomatikleştirebilir, Xray ile JIRA'da otomatik olarak bir hata kaydı açtırabilirsiniz.
 

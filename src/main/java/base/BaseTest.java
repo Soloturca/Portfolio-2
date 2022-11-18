@@ -38,7 +38,6 @@ public class BaseTest {
 
     @AfterMethod
     public synchronized void teardown() {
-        //ThreadLocalDriver.getTLDriver().quit();
        LocalDriver.getTLDriver().quit();
     }
 

@@ -1,6 +1,6 @@
 package base;
 
-import api.model.JSON.ParameterDTO;
+import api.Examplemodel.JSON.ParameterDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -17,21 +17,15 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import  base.Parser;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
-
-import base.*;
 
 public class CommonLib{
 
