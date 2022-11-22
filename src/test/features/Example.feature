@@ -1,4 +1,4 @@
-@AllTests
+@MyAllTests
 Feature: VFMallApi
 
   @TC001
