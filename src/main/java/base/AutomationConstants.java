@@ -26,7 +26,7 @@ public class AutomationConstants {
     public static List<String> idList = new ArrayList<String>();
     public static int sizeList;
 
-    public static String token = "";
+
     public static int id;
     public static String result;
     public static String status;
@@ -40,9 +40,11 @@ public class AutomationConstants {
     public static String field="";
 
     //url api
-    public static String urlCreateVfMallToken = "https://efes.vodafone.com.tr/vfmallapi/createVfMallToken";
-    public static String urlCreateVfMallOffering = "https://efes.vodafone.com.tr/vfmallapi/createVfMallOffering";
-    public static String urlGetVfMallHomePage = "http://10.86.244.136:8080/vfmall/getVFMallHomePage";
+    public static String urlCreatePaytionTokenURL = "http://vftr-auth-server.apps.mbt.vodafone.local/oauth/token";
+    public static String urlKolaypackPreauth  = "http://kolaypacks-api-server.apps.mbt.vodafone.local/preauth/";
+    public static String CLIENT_ID = "test-client-01";
+    public static String CLENT_SECRET = "secret";
+    public static String token = "";
 
 
     public static String sIEDriverPath      	= "/Exes/IEDriverServer.exe";

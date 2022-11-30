@@ -1,10 +1,7 @@
 package com.project.listener;
-
 import java.util.ArrayList;
 
-public class MyLocalVariables {
-
-    private static ArrayList<String> testTagList=new ArrayList<>();
+public class MyLocalVariables { private static ArrayList<String> testTagList=new ArrayList<>();
     private static int activeTestNumber;
     public static void addTestTagToList(String tag)
     {
@@ -22,6 +19,5 @@ public class MyLocalVariables {
     public static void setActiveTestNumber(int activeTestNumber) {
         activeTestNumber = activeTestNumber;
     }
-
 
 }

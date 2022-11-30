@@ -1,6 +1,7 @@
 package com.project.listener;
 
 import com.project.listener.MyLocalVariables;
+
 import org.testng.IMethodInstance;
 import org.testng.IMethodInterceptor;
 import org.testng.ITestContext;
@@ -71,7 +72,7 @@ public class TestFilterListener implements IMethodInterceptor {
 
                     xml+="<test name=\"Test\" enabled=\"true\">" +
                             "<classes>" +
-                            "<class name=\"runners.TestRunnerXRay\"/>" +
+                            "<class name=\"com.project.runners.Runner\"/>" +
                             "<parameter name=\"tagName\" value=\"" + testname + "\"/>" +
                             "</classes>" +
                             "</test>";

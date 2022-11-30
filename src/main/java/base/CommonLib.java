@@ -1,6 +1,6 @@
 package base;
 
-import api.Examplemodel.JSON.ParameterDTO;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -118,20 +118,20 @@ public class CommonLib{
     //-------------------------------------------------------------------------------------
     // The method that integrates the return result set with the response class.
     //-------------------------------------------------------------------------------------
-    public static Map<String, String> queryMap(String name, String status, String species, String type, String gender) {
-        Map<String, String> map = new HashMap<>();
-        try {
-            map.put(String.valueOf(ParameterDTO.name), name);
-            map.put(String.valueOf(ParameterDTO.status), status);
-            map.put(String.valueOf(ParameterDTO.species), species);
-            map.put(String.valueOf(ParameterDTO.type), type);
-            map.put(String.valueOf(ParameterDTO.gender), gender);
-            return map;
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//   public static Map<String, String> queryMap(String name, String status, String species, String type, String gender) {
+//       Map<String, String> map = new HashMap<>();
+//       try {
+//           map.put(String.valueOf(ParameterDTO.name), name);
+//           map.put(String.valueOf(ParameterDTO.status), status);
+//           map.put(String.valueOf(ParameterDTO.species), species);
+//           map.put(String.valueOf(ParameterDTO.type), type);
+//           map.put(String.valueOf(ParameterDTO.gender), gender);
+//           return map;
+//       } catch (NullPointerException e) {
+//           e.printStackTrace();
+//       }
+//       return null;
+//   }
 
     //-------------------------------------------------------------------------------------
     // The method that will add a zero to the left side.

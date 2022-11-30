@@ -2,13 +2,12 @@ package com.project.runners;
 
 import base.BaseTest;
 import com.project.listener.MyLocalVariables;
-import com.project.listener.TestFilterListener;
-import com.project.listener.MyLocalVariables;
 import gherkin.pickles.PickleTag;
 import io.cucumber.testng.CucumberFeatureWrapper;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
+import org.apiguardian.api.API;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,16 +15,21 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 @CucumberOptions(
-        features = "src/test/features/allCases-SuccessCases",
-        tags = "@AllTests",
+        features = "src/test/features/",
+        tags = "@Test001",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "json:target/cucumber-reports/Cucumber.json",
                 "junit:target/cucumber-reports/Cucumber.xml",
                 "html:target/cucumber-reports"},
-        glue = {"stepdefs"})
+        glue = {"com.project.stepdefs"})
 
 public class Runner extends BaseTest {
+
+    @API(
+            status = API.Status.STABLE
+    )
     private TestNGCucumberRunner testNGCucumberRunner;
+
 
     @BeforeClass(alwaysRun = true)
     public void setUpClass() {
@@ -38,14 +42,13 @@ public class Runner extends BaseTest {
     }
 
     @DataProvider
-    public Object[][] features() {
-        Object[][] scenariosTemp = testNGCucumberRunner.provideScenarios();
+    public Object[][] features() {   Object[][] scenariosTemp = testNGCucumberRunner.provideScenarios();
         Object[][] scenarios = new Object[scenariosTemp.length][2];
         int count=0;
         for (int i = 0; i < scenariosTemp.length; i++) {
 
             ArrayList<PickleTag> myList = getTags((PickleEventWrapper) scenariosTemp[i][0]);
-            if (checkTags("@"+ MyLocalVariables.getTestTagFromList(MyLocalVariables.getActiveTestNumber()), myList)) {
+            if (checkTags("@"+MyLocalVariables.getTestTagFromList(MyLocalVariables.getActiveTestNumber()), myList)) {
                 scenarios[count][0] = scenariosTemp[i][0];
                 scenarios[count][1] = scenariosTemp[i][1];
                 count++;

@@ -1,11 +1,13 @@
 package com.project.stepdefs;
 
-import api.examplemethods.BaseMethods;
-import api.examplemethods.vfMall.Offering;
+import api.baseMethods.BaseMethods;
+import api.body.Requests;
+import api.body.Responses;
+import api.paytionPojo.OriginatorInfo;
 import base.AutomationConstants;
 import base.CommonLib;
+import com.mysql.cj.util.TestUtils;
 import io.cucumber.core.api.Scenario;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,6 +20,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -25,27 +29,25 @@ public class Stepdefs {
 
     CommonLib commonLib = new CommonLib();
     WebDriver oDriver;
+    InputStream stringsis;
+    public static HashMap<String, String> strings = new HashMap<String, String>();
+    base.TestUtils utils;
 
     int timeout = 30;
 
-    @Before
+
     public void setReportName(Scenario scenario) {
         System.out.println(scenario.getName());
     }
 
-    @Given("createVfMallToken {string} service is sent and take the token")
-    public void createVfMallTokenServiceIsSentAndTakeTheToken(String desiredPath) {
-        Assert.assertTrue(new BaseMethods().createVfMallTokenRequest(desiredPath));
+    @Given("createPaytionToken service is sent and take the token")
+    public void createPaytionTokenServiceIsSentAndTakeTheToken() {
+        Assert.assertTrue(new BaseMethods().createPaytionTokenRequest());
     }
 
-    @Given("createVfMallOffering {string} is sent with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and token")
-    public void createvfmallofferingIsSentWithAndToken(String desiredPath, String barcode, String brand, String cargoCompID, String catID, String deliveryDuration, String desc, String displayName, String images, String listPrice, String salePrice, String quantity) {
-        Assert.assertTrue(new Offering().createVFMallOffering(desiredPath, barcode, brand, cargoCompID, catID, deliveryDuration, desc, displayName, images, listPrice, salePrice, quantity));
-    }
-
-    @Given("createVfMallOffering {string} is sent with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and token")
-    public void createvfmallofferingIsSentWithAndToken(String desiredPath, String brand, String barcode, String catID, String deliveryDuration, String desc, String displayName, String listPrice, String salePrice, String quantity) {
-        Assert.assertTrue(new Offering().createVFMallOfferingWithOutImages(desiredPath, barcode, brand, catID, deliveryDuration, desc, displayName, listPrice, salePrice, quantity));
+    @And("KolayPackPreAuth {string} request {string}, {string} , {string}, {string} , {string} , {string} , {string} , {string} , {string} , {string},{string},{string},{string},{string},{string}")
+    public void KolayPackPreAuthPostRequest(String desiredRequestMethod, String transactionId, String transactionGroupId, String reconDate, String ipAddress, String companyId, String institutionId, String productId, String bankId, String transactionDate, String description, String paymentMethod, String customerReferenceType, String sun, String customerCode, String installment) {
+        Assert.assertTrue(new Responses().KolaypackPreauthPostResponse(desiredRequestMethod, transactionId, transactionGroupId, reconDate, ipAddress, companyId, institutionId, productId, bankId, transactionDate, description, paymentMethod, customerReferenceType, sun, customerCode, installment));
     }
 
     @Given("^Open the (.*) URL$")
@@ -77,6 +79,50 @@ public class Stepdefs {
             Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
             Assert.fail("Could not entered the text:" + text);
             flag = false;
+        }
+        return flag;
+    }
+
+    @When("^(?:I )?have to verify the text for: (\\w+(?: \\w+)*) at index (\\d+)")
+    public boolean verifyText(String element, int index) throws Exception {
+        WebElement object = commonLib.findElement(element, index);
+        boolean flag = false;
+        try {
+            if (object != null) {
+                String xmlFileName = "strings.xml";
+                stringsis = this.getClass().getClassLoader().getResourceAsStream(xmlFileName);
+                strings = utils.parseStringXML(stringsis);
+
+                object.click();
+                String actualErrTxt = object.getText(); //xpath'ten okuduğu.
+                if (element.contains("approve popup")) {
+                    String expectedErrText = strings.get("approve popup"); //strings.xml dosyası
+                    System.out.println("actual popup text - " + actualErrTxt + "\n" + "expected popup text - " + expectedErrText);
+                    Assert.assertEquals(actualErrTxt, expectedErrText); //kıyaslıyor.
+                    Allure.addAttachment("Verification completed.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    return true;
+                } else if (element.contains("assign to pool popup")) {
+                    String expectedErrText = strings.get("assign to pool popup");
+                    System.out.println("actual popup text - " + actualErrTxt + "\n" + "expected popup text - " + expectedErrText);
+                    Assert.assertEquals(actualErrTxt, expectedErrText);
+                    Allure.addAttachment("Verification completed.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    return true;
+                } else if (element.contains("cancel popup")) {
+                    String expectedErrText = strings.get("cancel popup");
+                    System.out.println("actual popup text - " + actualErrTxt + "\n" + "expected popup text - " + expectedErrText);
+                    Assert.assertEquals(actualErrTxt, expectedErrText);
+                    Allure.addAttachment("Verification completed.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("Verification does not completed.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not clicked the element:" + element);
+            flag = false;
+        } finally {
+            if (stringsis != null) {
+                stringsis.close();
+            }
         }
         return flag;
     }
@@ -180,10 +226,6 @@ public class Stepdefs {
         return true;
     }
 
-    @Then("check the {string} and {string} fields")
-    public void checkTheAndFields(String exceptedResult, String exceptedResultDesc) {
-        Assert.assertTrue(new Offering().checkFields(exceptedResult, exceptedResultDesc));
-    }
 
     @When("^(?:I )?double click element: (\\w+(?: \\w+)*) at index (\\d+)")
     public void doubleClickElement(String element, int index) {
@@ -311,7 +353,6 @@ public class Stepdefs {
         }
         return flag;
     }
-
 
 
 }
