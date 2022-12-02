@@ -4,11 +4,29 @@
       "pageInfo": {
         "pageName": "lineProcessesPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "random no radio button"
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "random no radio button": "//div[2]/label[@class='e-radio']/span[@class='e-check']"
+        },
+        {
+          "random telephone no": "//*[@id='content']//app-new-msisdn//div[4]/div[1]/div[1]"
+        },
+        {
+          "continue button": "//div[@class='align--right']/a[@href='javascript:;']"
+        },
+        {
+          "telephone number": "//*[@id='content']//app-tariff-detail-bar//section//input"
+        },
+        {
+          "send confirmation code button": "//div[@class='ng-star-inserted']//button[@type='submit']"
+        },
+        {
+          "confirmation code text": "//*[@id='content']//app-tariff-detail-bar//section//div/app-new-msisdn//input"
+        },
+        {
+          "confirm ve continue button": "//button[contains(text(),'Onayla ve Devam Et')]"
         }
       ]
     }

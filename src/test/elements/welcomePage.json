@@ -8,7 +8,7 @@
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "yeni faturali hat": "//a[contains(text(),'Yeni fatura')]"
         }
       ]
     }

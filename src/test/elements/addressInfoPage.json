@@ -4,11 +4,32 @@
       "pageInfo": {
         "pageName": "addressInfoPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "delivery selection"
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "delivery selection": "//h3[contains(text(),'Teslimat seçimi')]"
+        },
+        {
+          "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
+        },
+        {
+          "dropDownCity": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
+        },
+        {
+          "listCity": "//div[@id='deliveryCities']/label"
+        },
+        {
+          "dropDownDistrict": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
+        },
+        {
+          "listDistrict": "//div[@id='deliveryDistricts']/label"
+        },
+        {
+          "dropDownNeighborhood": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
+        },
+        {
+          "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
         }
       ]
     }
