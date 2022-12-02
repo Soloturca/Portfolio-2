@@ -1,20 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="DefSuite" duration-ms="430" started-at="2022-12-01T15:50:04 EET" finished-at="2022-12-01T15:50:04 EET">
+  <suite name="DefSuite" duration-ms="14115" started-at="2022-12-02T08:33:32 EET" finished-at="2022-12-02T08:33:46 EET">
     <groups>
       <group name="cucumber">
-        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@10c2e6b]" name="runScenario" class="com.project.runners.Runner"/>
+        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@226a82c4]" name="runScenario" class="com.project.runners.Runner"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="430" started-at="2022-12-01T15:50:04 EET" finished-at="2022-12-01T15:50:04 EET">
+    <test name="Test" duration-ms="14115" started-at="2022-12-02T08:33:32 EET" finished-at="2022-12-02T08:33:46 EET">
       <class name="com.project.runners.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@10c2e6b]" name="setUpClass" is-config="true" duration-ms="320" started-at="2022-12-01T15:50:04 EET" finished-at="2022-12-01T15:50:04 EET">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@226a82c4]" name="setUpClass" is-config="true" duration-ms="513" started-at="2022-12-02T08:33:32 EET" finished-at="2022-12-02T08:33:33 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@10c2e6b]" name="tearDownClass" is-config="true" duration-ms="50" started-at="2022-12-01T15:50:04 EET" finished-at="2022-12-01T15:50:04 EET">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@226a82c4]" name="setup" is-config="true" duration-ms="12086" started-at="2022-12-02T08:33:33 EET" finished-at="2022-12-02T08:33:45 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@226a82c4]" name="runScenario" duration-ms="324" started-at="2022-12-02T08:33:45 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-02T08:33:45 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Welcomepage"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["CBU_C2D"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at base.CommonLib.navigateToURL(CommonLib.java:301)
+at com.project.stepdefs.Stepdefs.openUrl(Stepdefs.java:55)
+at ✽.Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL(file:src/test/features/CBU_C2D.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@226a82c4]" name="teardown" is-config="true" duration-ms="789" started-at="2022-12-02T08:33:45 EET" finished-at="2022-12-02T08:33:46 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@226a82c4]" name="tearDownClass" is-config="true" duration-ms="338" started-at="2022-12-02T08:33:46 EET" finished-at="2022-12-02T08:33:46 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

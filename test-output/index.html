@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-DefSuite">
-              <span class="suite-name border-passed">DefSuite</span>
+              <span class="suite-name border-failed">DefSuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-DefSuite">
-                    <span>C:\Users\amdocslvalizada\IdeaProjects\digital---marketing-tribe---c2d-test-automation-project-\testng.xml</span>
+                    <span>C:\Users\amdocssbakir\IdeaProjects\digital---marketing-tribe---c2d-test-automation-project-\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -59,7 +59,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="group-DefSuite">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">0 methods,   </span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-DefSuite" class="hide-methods failed suite-DefSuite"> (hide)</a> <!-- hide-methods failed suite-DefSuite -->
+                      <a href="#" panel-name="suite-DefSuite" class="show-methods failed suite-DefSuite"> (show)</a> <!-- show-methods failed suite-DefSuite -->
+                    </span>
+                    <div class="method-list-content failed suite-DefSuite">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-DefSuite" title="com.project.runners.Runner" hash-for-method="runScenario(&quot;Welcomepage&quot;, &quot;CBU_C2D&quot;)">runScenario("Welcomepage", "CBU_C2D")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-DefSuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -103,10 +117,34 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-DefSuite" class="panel DefSuite">
+          <div class="suite-DefSuite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.project.runners.Runner</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Welcomepage&quot;, &quot;CBU_C2D&quot;)">
+                  </a> <!-- runScenario("Welcomepage", "CBU_C2D") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Welcomepage", "CBU_C2D")</span>
+                  <div class="stack-trace">java.lang.NullPointerException
+	at base.CommonLib.navigateToURL(CommonLib.java:301)
+	at com.project.stepdefs.Stepdefs.openUrl(Stepdefs.java:55)
+	at ✽.Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL(file:src/test/features/CBU_C2D.feature:5)
+
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Feature)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-DefSuite-class-failed -->
         </div> <!-- panel DefSuite -->
         <div panel-name="test-xml-DefSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\amdocslvalizada\IdeaProjects\digital---marketing-tribe---c2d-test-automation-project-\testng.xml</span>
+            <span class="header-content">C:\Users\amdocssbakir\IdeaProjects\digital---marketing-tribe---c2d-test-automation-project-\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -115,7 +153,7 @@
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;DefSuite&quot;&gt;
   &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
-    &lt;parameter name=&quot;tagName&quot; value=&quot;@TEST-952954&quot;/&gt;
+    &lt;parameter name=&quot;tagName&quot; value=&quot;TEST-952954&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.project.runners.Runner&quot;/&gt;
     &lt;/classes&gt;
@@ -141,6 +179,14 @@
             <span class="header-content">Groups for DefSuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">cucumber</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">runScenario</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-DefSuite" class="panel">
@@ -157,12 +203,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(0);
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'runScenario')
+data.setCell(0, 2, 'com.project.runners.Runner')
+data.setCell(0, 3, 324);
 window.suiteTableData['DefSuite']= { tableData: data, tableDiv: 'times-div-DefSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 324 ms</span>
               <div id="times-div-DefSuite">
               </div> <!-- times-div-DefSuite -->
             </div> <!-- times-div -->
@@ -193,9 +243,23 @@ return data;
                 <span class="method-name">setUpClass</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome)</span>
+                <span class="method-start">553 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runScenario("Welcomepage", "CBU_C2D")</span>
+                <span class="method-start">12640 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown</span>
+                <span class="method-start">12967 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">368 ms</span>
+                <span class="method-start">13758 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

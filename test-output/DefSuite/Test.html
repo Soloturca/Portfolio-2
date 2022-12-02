@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Dec 01 15:50:04 EET 2022</td>
+<td>Started on:</td><td>Fri Dec 02 08:33:32 EET 2022</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (430 ms)</td>
+<tr><td>Total time:</td><td>14 seconds (14115 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,5 +67,27 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.project.runners.Runner.runScenario()'><b>runScenario</b><br>Test class: com.project.runners.Runner<br>Test method: Runs Cucumber Feature<br>Parameters: "Welcomepage", "CBU_C2D"</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.CommonLib.navigateToURL(CommonLib.java:301)
+	at com.project.stepdefs.Stepdefs.openUrl(Stepdefs.java:55)
+	at ?.Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL(file:src/test/features/CBU_C2D.feature:5)
+</pre></div><a href='#' onClick='toggleBox("stack-trace337545117", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace337545117'><pre>java.lang.NullPointerException
+	at base.CommonLib.navigateToURL(CommonLib.java:301)
+	at com.project.stepdefs.Stepdefs.openUrl(Stepdefs.java:55)
+	at ?.Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL(file:src/test/features/CBU_C2D.feature:5)
+</pre></div></td>
+<td>0</td>
+<td>com.project.runners.Runner@226a82c4</td></tr>
+</table><p>
 </body>
 </html>
