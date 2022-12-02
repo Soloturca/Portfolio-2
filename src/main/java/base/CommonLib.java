@@ -21,9 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
@@ -331,6 +329,16 @@ public class CommonLib extends BaseTest{
 
             return null;
 
+        }
+    }
+
+    public void randomTelNumber() {
+
+       String txtTelNumber = "5";
+        Random r = new Random();
+        for (int i = 0; i < 9; i++) {
+            txtTelNumber += +r.nextInt(9);
+            AutomationConstants.txtTelNumber = txtTelNumber;
         }
     }
 

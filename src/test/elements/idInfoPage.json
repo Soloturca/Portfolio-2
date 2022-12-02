@@ -4,11 +4,26 @@
       "pageInfo": {
         "pageName": "idInfoPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "name"
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "name": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[1]/label/input"
+        },
+        {
+          "surname": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[2]/label/input"
+        },
+        {
+          "ID": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[2]//div[1]/label/input"
+        },
+        {
+          "father name": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[2]//div[2]/label/input"
+        },
+        {
+          "date of birth": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[3]//div/fieldset/input"
+        },
+        {
+          "id information continue button": "//*[@id='personalInfoErrorFocus']/fieldset/div[2]/button"
         }
       ]
     }
