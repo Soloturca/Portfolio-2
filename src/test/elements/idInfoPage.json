@@ -2,7 +2,7 @@
   "pages": [
     {
       "pageInfo": {
-        "pageName": "example",
+        "pageName": "idInfoPage",
         "parent": "",
         "waitelement": "Yeni Faturalı Hat Al"
       },
@@ -12,5 +12,3 @@
     }
   ]
 }
-
-
