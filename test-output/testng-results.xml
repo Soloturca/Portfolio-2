@@ -1,51 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="DefSuite" duration-ms="17055" started-at="2022-12-02T09:41:54 EET" finished-at="2022-12-02T09:42:11 EET">
+  <suite name="DefSuite" duration-ms="334" started-at="2022-12-02T13:52:51 EET" finished-at="2022-12-02T13:52:51 EET">
     <groups>
       <group name="cucumber">
-        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@6b53e23f]" name="runScenario" class="com.project.runners.Runner"/>
+        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" class="com.project.runners.Runner"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="17055" started-at="2022-12-02T09:41:54 EET" finished-at="2022-12-02T09:42:11 EET">
+    <test name="Test" duration-ms="334" started-at="2022-12-02T13:52:51 EET" finished-at="2022-12-02T13:52:51 EET">
       <class name="com.project.runners.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@6b53e23f]" name="setUpClass" is-config="true" duration-ms="311" started-at="2022-12-02T09:41:54 EET" finished-at="2022-12-02T09:41:55 EET">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="253" started-at="2022-12-02T13:52:51 EET" finished-at="2022-12-02T13:52:51 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@6b53e23f]" name="setup" is-config="true" duration-ms="5019" started-at="2022-12-02T09:41:55 EET" finished-at="2022-12-02T09:42:00 EET">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@6b53e23f]" name="runScenario" duration-ms="10646" started-at="2022-12-02T09:42:00 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-02T09:42:10 EET">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Welcomepage"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["CBU_C2D"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@6b53e23f]" name="teardown" is-config="true" duration-ms="859" started-at="2022-12-02T09:42:10 EET" finished-at="2022-12-02T09:42:11 EET">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@6b53e23f]" name="tearDownClass" is-config="true" duration-ms="161" started-at="2022-12-02T09:42:11 EET" finished-at="2022-12-02T09:42:11 EET">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="43" started-at="2022-12-02T13:52:51 EET" finished-at="2022-12-02T13:52:51 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
