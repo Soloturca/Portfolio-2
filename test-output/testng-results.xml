@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="DefSuite" duration-ms="13274" started-at="2022-12-02T09:33:16 EET" finished-at="2022-12-02T09:33:30 EET">
+  <suite name="DefSuite" duration-ms="40783" started-at="2022-12-02T10:21:41 EET" finished-at="2022-12-02T10:22:21 EET">
     <groups>
       <group name="cucumber">
-        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" class="com.project.runners.Runner"/>
+        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="runScenario" class="com.project.runners.Runner"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="13274" started-at="2022-12-02T09:33:16 EET" finished-at="2022-12-02T09:33:30 EET">
+    <test name="Test" duration-ms="40783" started-at="2022-12-02T10:21:41 EET" finished-at="2022-12-02T10:22:21 EET">
       <class name="com.project.runners.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="222" started-at="2022-12-02T09:33:16 EET" finished-at="2022-12-02T09:33:17 EET">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="setUpClass" is-config="true" duration-ms="234" started-at="2022-12-02T10:21:41 EET" finished-at="2022-12-02T10:21:41 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="2054" started-at="2022-12-02T09:33:17 EET" finished-at="2022-12-02T09:33:19 EET">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="setup" is-config="true" duration-ms="2274" started-at="2022-12-02T10:21:41 EET" finished-at="2022-12-02T10:21:43 EET">
           <params>
             <param index="0">
               <value>
@@ -25,27 +25,41 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="10284" started-at="2022-12-02T09:33:19 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-02T09:33:29 EET">
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="runScenario" duration-ms="37469" started-at="2022-12-02T10:21:43 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-02T10:22:21 EET">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Open to URL"]]>
+                <![CDATA["Istenen Numarayla Magazaya Teslim NL Basvuru"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["FirstStageTestCases"]]>
+                <![CDATA["Akif's Cases"]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Waiting element is not found!]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Waiting element is not found!
+at org.testng.Assert.fail(Assert.java:97)
+at base.CommonLib.waitElement(CommonLib.java:352)
+at base.CommonLib.seePage(CommonLib.java:366)
+at com.project.stepdefs.Stepdefs.seePage(Stepdefs.java:66)
+at ✽.I see HatAlPage page(file:src/test/features/Akif'sCases.feature:8)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="598" started-at="2022-12-02T09:33:29 EET" finished-at="2022-12-02T09:33:30 EET">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="teardown" is-config="true" duration-ms="667" started-at="2022-12-02T10:22:21 EET" finished-at="2022-12-02T10:22:21 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="67" started-at="2022-12-02T09:33:30 EET" finished-at="2022-12-02T09:33:30 EET">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="tearDownClass" is-config="true" duration-ms="95" started-at="2022-12-02T10:22:21 EET" finished-at="2022-12-02T10:22:21 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

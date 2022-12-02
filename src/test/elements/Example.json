@@ -7,9 +7,7 @@
         "waitelement": "Yeni Faturalı Hat Al"
       },
       "elements": [
-        {
-          "Yeni Faturalı Hat Al": "/html/body/app-root/app-welcome-page/div[1]/div[1]/div/div/div/div[2]/div/div[2]/a"
-        }
+
       ]
     }
   ]
