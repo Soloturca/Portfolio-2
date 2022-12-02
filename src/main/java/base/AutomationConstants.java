@@ -34,10 +34,12 @@ public class AutomationConstants {
     public static String salePrice;
     public static String quantity;
 
-    public static String barcode="" ;
     public static String msisdn = "";
     public static String code ="";
     public static String field="";
+    public static String txtTelNumber="";
+
+
 
     //url api
     public static String urlCreatePaytionTokenURL = "http://vftr-auth-server.apps.mbt.vodafone.local/oauth/token";

@@ -4,11 +4,14 @@
       "pageInfo": {
         "pageName": "tariffSelectionPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "tarife"
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "tarife": "//app-tariff-card-rd[1]/div"
+        },
+        {
+          "tarife sec button": "//app-tariff-card-rd[1]//a[2]"
         }
       ]
     }

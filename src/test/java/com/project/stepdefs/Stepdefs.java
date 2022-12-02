@@ -1,14 +1,10 @@
 package com.project.stepdefs;
 
 import api.baseMethods.BaseMethods;
-import api.body.Requests;
 import api.body.Responses;
-import api.paytionPojo.OriginatorInfo;
 import base.AutomationConstants;
 import base.CommonLib;
 import base.LocalDriver;
-import com.mysql.cj.util.TestUtils;
-import io.cucumber.core.api.Scenario;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,6 +15,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
@@ -76,6 +73,31 @@ public class Stepdefs {
                 object.click();
                 object.clear();
                 object.sendKeys(text);
+                System.out.println("The text has been entered:" + text);
+                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+                return true;
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not entered the text:" + text);
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Then("^I enter (.*) random telephone number to at index (\\d+)")
+    public boolean enterRandomText(String element, int index) throws InterruptedException {
+        WebElement object;
+        object = commonLib.waitElement(element, timeout, index);
+        commonLib.randomTelNumber();
+        String text = AutomationConstants.txtTelNumber;
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                object.clear();
+                object.sendKeys(AutomationConstants.txtTelNumber);
                 System.out.println("The text has been entered:" + text);
                 Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
@@ -160,7 +182,6 @@ public class Stepdefs {
 
         return flag;
     }
-
 
     @Then("^I enter OFRCode text to (.*) at index (\\d+)")
     public boolean enterOFRCode(String element, int index) throws InterruptedException {
