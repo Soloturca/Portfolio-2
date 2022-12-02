@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 @CucumberOptions(
-        features = "src/test/features/Akif'sCases.feature",
-        tags = "@Test953024",
+        features = "src/test/features/",
+        tags = "@Test",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "json:target/cucumber-reports/Cucumber.json",
                 "junit:target/cucumber-reports/Cucumber.xml",

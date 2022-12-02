@@ -6,8 +6,10 @@ import api.body.Responses;
 import api.paytionPojo.OriginatorInfo;
 import base.AutomationConstants;
 import base.CommonLib;
+import base.LocalDriver;
 import com.mysql.cj.util.TestUtils;
 import io.cucumber.core.api.Scenario;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -27,7 +29,7 @@ import java.util.Set;
 
 public class Stepdefs {
 
-    CommonLib commonLib = new CommonLib();
+    CommonLib commonLib;
     WebDriver oDriver;
     InputStream stringsis;
     public static HashMap<String, String> strings = new HashMap<String, String>();
@@ -35,9 +37,12 @@ public class Stepdefs {
 
     int timeout = 30;
 
+    @Before
+    public void setup() {
 
-    public void setReportName(Scenario scenario) {
-        System.out.println(scenario.getName());
+        oDriver = LocalDriver.getTLDriver();
+        commonLib=new CommonLib(oDriver);
+
     }
 
     @Given("createPaytionToken service is sent and take the token")
@@ -51,8 +56,9 @@ public class Stepdefs {
     }
 
     @Given("^Open the (.*) URL$")
-    public void openUrl(String URL) {
-        CommonLib.navigateToURL(oDriver, URL);
+    public void openUrl(String URL) throws Exception {
+        commonLib.navigateToURL(oDriver, URL);
+
     }
 
     @Then("^I see (.*) page$")
@@ -153,17 +159,6 @@ public class Stepdefs {
         }
 
         return flag;
-    }
-
-    @Given("I go to \"([^\"]*)\" with this username: \"([^\"]*)\" and this password:\"([^\"]*)\"")
-    public void loginSystem(String URL, String username, String password) throws InterruptedException {
-        openUrl(URL);
-        seePage("login");
-        enterText(username, "username text area", 1);
-        enterText(password, "password text area", 1);
-        waitElement("login button", timeout, 1);
-        clickElement("login button", 1);
-        seePage("home");
     }
 
 
