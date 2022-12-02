@@ -1,0 +1,16 @@
+{
+  "pages": [
+    {
+      "pageInfo": {
+        "pageName": "confirmationPage",
+        "parent": "",
+        "waitelement": ""
+      },
+      "elements": [
+        {
+          "example": "exampleXpath"
+        }
+      ]
+    }
+  ]
+}

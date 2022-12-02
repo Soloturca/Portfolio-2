@@ -2,7 +2,7 @@
   "pages": [
     {
       "pageInfo": {
-        "pageName": "example",
+        "pageName": "tariffSelectionPage",
         "parent": "",
         "waitelement": ""
       },
@@ -14,5 +14,3 @@
     }
   ]
 }
-
-
