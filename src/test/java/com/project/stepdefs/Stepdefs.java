@@ -355,4 +355,7 @@ public class Stepdefs {
     }
 
 
+    @When("I click element: Yeni Faturalı Hat Al at index {int}")
+    public void iClickElementYeniFaturalıHatAlAtIndex(int arg0) {
+    }
 }
