@@ -8,7 +8,10 @@
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "example": "//div[@class='text']"
+        },
+        {
+          "example2": "//a[contains(text(),'Yeni fatura')]"
         }
       ]
     }
