@@ -3,6 +3,7 @@ package base;
 import org.openqa.selenium.WebDriver;
 
 public class LocalDriver {
+
     private static  WebDriver tlDriver;
 
     public static synchronized void setTLDriver(WebDriver driver) { tlDriver=driver;}
@@ -10,4 +11,4 @@ public class LocalDriver {
     public static synchronized WebDriver getTLDriver() {
         return tlDriver;
     }
-}
+    }

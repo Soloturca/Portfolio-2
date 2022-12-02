@@ -23,12 +23,12 @@ import org.testng.Assert;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
-public class CommonLib{
-
+public class CommonLib extends BaseTest{
     public static WebDriver oDriver;
     public String page = "common";
     Parser parser= new Parser();
@@ -38,6 +38,11 @@ public class CommonLib{
 
     WebDriverWait wait = new WebDriverWait(oDriver, 30);
     int timeout = 30;
+
+    public CommonLib(WebDriver driver) {
+        oDriver = driver;
+    }
+
 
     //-------------------------------------------------------------------------------------------------------------------------------
     //It allows to wait on the page for as long as required.
@@ -205,16 +210,9 @@ public class CommonLib{
     //set ChromeOptions by merging the Desired Capability
     //-----------------------------------------------
     public static ChromeOptions getChromeOptions() throws Exception {
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("download.default_directory",  System.getProperty("user.dir")+ File.separator + "Library" + File.separator + "downloadFiles");
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setExperimentalOption("prefs", prefs);
-
-
-
         chromeOptions.merge(getCapability());
         chromeOptions.addArguments("test-type");
-        chromeOptions.addArguments("--disable-dev-shm-usage");
         //Dil çevirme penceresini kapattırma.
         chromeOptions.addArguments("disable-translate");
         //Browser tam ekranda gösterilir.
@@ -277,7 +275,7 @@ public class CommonLib{
                 break;
 
             case 5:
-                System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + AutomationConstants.sMsEdgeDriverPath);
+                //System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + AutomationConstants.sMsEdgeDriverPath);
                 WebDriverManager.edgedriver().setup();
                 oDriver = new EdgeDriver(getEdgeOptions());
                 break;
@@ -295,9 +293,8 @@ public class CommonLib{
 
     }
 
-
-
     public static void navigateToURL(WebDriver oDriver, String URL) {
+        System.out.println("My URL: " + URL);
         oDriver.navigate().to(URL);
     }
 
