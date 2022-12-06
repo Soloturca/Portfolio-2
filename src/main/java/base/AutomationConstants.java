@@ -25,6 +25,7 @@ public class AutomationConstants {
     public static List<String> title = new ArrayList<String>();
     public static List<String> idList = new ArrayList<String>();
     public static int sizeList;
+    public static String txtTelNumber="";
 
 
     public static int id;

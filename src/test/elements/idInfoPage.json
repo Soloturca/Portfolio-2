@@ -4,9 +4,30 @@
       "pageInfo": {
         "pageName": "idInfoPage",
         "parent": "",
-        "waitelement": "Yeni Faturalı Hat Al"
+        "waitelement": ""
       },
       "elements": [
+        {
+          "ad": "//*[@id=\"personalInfoErrorFocus\"]/fieldset/fieldset[1]/div/div[1]/label/input"
+        },
+        {
+          "soyad": "//*[@id=\"personalInfoErrorFocus\"]/fieldset/fieldset[1]/div/div[2]/label/input"
+        },
+        {
+          "tckn": "//*[@id=\"personalInfoErrorFocus\"]/fieldset/fieldset[2]/div/div[1]/label/input"
+        },
+        {
+          "babaadi": "//*[@id=\"personalInfoErrorFocus\"]/fieldset/fieldset[2]/div/div[2]/label/input"
+        },
+        {
+          "dogum tarihi": "//*[@id=\"personalInfoErrorFocus\"]/fieldset/fieldset[3]/div//fieldset/input"
+        },
+        {
+          "kimlikbilgisidevametbutton": "//*[@id=\"personalInfoErrorFocus\"]/fieldset/div[2]/button"
+        },
+        {
+          "bu kisi ile devam et button": "//*[@id=\"content\"]/app-tariff-detail-bar/div[4]/section/div/div/div/div[1]/app-private-session/div/div/div/div/div/div[2]/a"
+        }
 
       ]
     }

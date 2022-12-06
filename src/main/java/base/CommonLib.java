@@ -154,6 +154,15 @@ public class CommonLib extends BaseTest{
         value = valueBuilder.toString();
         return value;
     }
+    public void randomTelNumber() {
+
+        String txtTelNumber = "5";
+        Random r = new Random();
+        for (int i = 0; i < 9; i++) {
+            txtTelNumber += +r.nextInt(9);
+            AutomationConstants.txtTelNumber = txtTelNumber;
+        }
+    }
 
     public static long generateRandomNumber(int numberCount) {
         Random rnd = new Random();

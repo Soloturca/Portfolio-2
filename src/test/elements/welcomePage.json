@@ -8,7 +8,10 @@
       },
       "elements": [
         {
-          "example": "exampleXpath"
+          "Yeni Faturali Hat Al": "//a[contains(text(),'Yeni fatura')]"
+        },
+        {
+          "Numarani Tasi": "//a[contains(text(),'Numaran')]"
         }
       ]
     }
