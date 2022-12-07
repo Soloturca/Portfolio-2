@@ -9,6 +9,9 @@
       "elements": [
         {
           "confirmationQuestionTextArea": "//h3[contains(text(),'onaylamak')]"
+        },
+        {
+          "confirmationSuccessfullyTextArea": "//h3[contains(text(),'tamam')]"
         }
       ]
     }

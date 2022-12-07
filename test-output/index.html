@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,17 @@
                     <div class="method-list-content passed suite-DefSuite">
                       <span>
                         <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-DefSuite" title="com.project.runners.Runner" hash-for-method="runScenario(&quot;Farkli Adres MNP Basvuru&quot;, &quot;CBU_C2D&quot;)">runScenario("Farkli Adres MNP Basvuru", "CBU_C2D")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-DefSuite" title="com.project.runners.Runner" hash-for-method="runScenario(&quot;Ayni Adres MNP Basvuru&quot;, &quot;CBU_C2D&quot;)">runScenario("Ayni Adres MNP Basvuru", "CBU_C2D")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-DefSuite" title="com.project.runners.Runner" hash-for-method="runScenario(&quot;Magazadan Al MNP Basvuru&quot;, &quot;CBU_C2D&quot;)">runScenario("Magazadan Al MNP Basvuru", "CBU_C2D")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-DefSuite -->
@@ -125,10 +135,30 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+                  <a name="runScenario(&quot;Farkli Adres MNP Basvuru&quot;, &quot;CBU_C2D&quot;)">
+                  </a> <!-- runScenario("Farkli Adres MNP Basvuru", "CBU_C2D") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Farkli Adres MNP Basvuru", "CBU_C2D")</span>
+                  <em>
+(Runs Cucumber Feature)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="runScenario(&quot;Ayni Adres MNP Basvuru&quot;, &quot;CBU_C2D&quot;)">
                   </a> <!-- runScenario("Ayni Adres MNP Basvuru", "CBU_C2D") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Ayni Adres MNP Basvuru", "CBU_C2D")</span>
+                  <em>
+(Runs Cucumber Feature)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Magazadan Al MNP Basvuru&quot;, &quot;CBU_C2D&quot;)">
+                  </a> <!-- runScenario("Magazadan Al MNP Basvuru", "CBU_C2D") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Magazadan Al MNP Basvuru", "CBU_C2D")</span>
                   <em>
 (Runs Cucumber Feature)                  </em>
                 </div> <!-- method-content -->
@@ -147,7 +177,7 @@
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;DefSuite&quot;&gt;
   &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
-    &lt;parameter name=&quot;tagName&quot; value=&quot;TEST-953016&quot;/&gt;
+    &lt;parameter name=&quot;tagName&quot; value=&quot;BATU&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.project.runners.Runner&quot;/&gt;
     &lt;/classes&gt;
@@ -197,16 +227,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.project.runners.Runner')
-data.setCell(0, 3, 82221);
+data.setCell(0, 3, 93108);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'runScenario')
+data.setCell(1, 2, 'com.project.runners.Runner')
+data.setCell(1, 3, 84376);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'runScenario')
+data.setCell(2, 2, 'com.project.runners.Runner')
+data.setCell(2, 3, 82885);
 window.suiteTableData['DefSuite']= { tableData: data, tableDiv: 'times-div-DefSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 4 minutes</span>
               <div id="times-div-DefSuite">
               </div> <!-- times-div-DefSuite -->
             </div> <!-- times-div -->
@@ -239,19 +277,43 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">setup(chrome)</span>
-                <span class="method-start">265 ms</span>
+                <span class="method-start">266 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">runScenario("Ayni Adres MNP Basvuru", "CBU_C2D")</span>
-                <span class="method-start">2188 ms</span>
+                <span class="method-start">2088 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown</span>
-                <span class="method-start">84412 ms</span>
+                <span class="method-start">86465 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome)</span>
+                <span class="method-start">87150 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Farkli Adres MNP Basvuru", "CBU_C2D")</span>
+                <span class="method-start">88430 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown</span>
+                <span class="method-start">181538 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome)</span>
+                <span class="method-start">182203 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Magazadan Al MNP Basvuru", "CBU_C2D")</span>
+                <span class="method-start">183556 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown</span>
+                <span class="method-start">266441 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">85071 ms</span>
+                <span class="method-start">267120 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

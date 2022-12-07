@@ -72,6 +72,9 @@
         },
         {
           "different address checkbox": "//span[@for=\"sameAddress-approve\"]"
+        },
+        {
+          "buy from shopping center area": "//a[@class=\"item\"]"
         }
       ]
     }

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="DefSuite" duration-ms="85229" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:19:16 EET">
+  <suite name="DefSuite" duration-ms="267447" started-at="2022-12-07T14:52:32 EET" finished-at="2022-12-07T14:56:59 EET">
     <groups>
       <group name="cucumber">
         <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" class="com.project.runners.Runner"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="85229" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:19:16 EET">
+    <test name="Test" duration-ms="267447" started-at="2022-12-07T14:52:32 EET" finished-at="2022-12-07T14:56:59 EET">
       <class name="com.project.runners.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="226" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:17:51 EET">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="229" started-at="2022-12-07T14:52:32 EET" finished-at="2022-12-07T14:52:32 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="1923" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:17:53 EET">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="1821" started-at="2022-12-07T14:52:32 EET" finished-at="2022-12-07T14:52:34 EET">
           <params>
             <param index="0">
               <value>
@@ -25,7 +25,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="82221" started-at="2022-12-07T12:17:53 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-07T12:19:16 EET">
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="84376" started-at="2022-12-07T14:52:34 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-07T14:53:58 EET">
           <params>
             <param index="0">
               <value>
@@ -41,11 +41,73 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="658" started-at="2022-12-07T12:19:16 EET" finished-at="2022-12-07T12:19:16 EET">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="685" started-at="2022-12-07T14:53:58 EET" finished-at="2022-12-07T14:53:59 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="149" started-at="2022-12-07T12:19:16 EET" finished-at="2022-12-07T12:19:16 EET">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="1280" started-at="2022-12-07T14:53:59 EET" finished-at="2022-12-07T14:54:00 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="93108" started-at="2022-12-07T14:54:00 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-07T14:55:33 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Farkli Adres MNP Basvuru"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["CBU_C2D"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="665" started-at="2022-12-07T14:55:33 EET" finished-at="2022-12-07T14:55:34 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="1353" started-at="2022-12-07T14:55:34 EET" finished-at="2022-12-07T14:55:35 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="82885" started-at="2022-12-07T14:55:35 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-07T14:56:58 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Magazadan Al MNP Basvuru"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["CBU_C2D"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="678" started-at="2022-12-07T14:56:58 EET" finished-at="2022-12-07T14:56:59 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="318" started-at="2022-12-07T14:56:59 EET" finished-at="2022-12-07T14:56:59 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
