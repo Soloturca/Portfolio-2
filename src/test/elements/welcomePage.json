@@ -9,6 +9,9 @@
       "elements": [
         {
           "yeni faturali hat": "//a[contains(text(),'Yeni fatura')]"
+        },
+        {
+          "numarani tasi button": "//a[@class=\"button button--primary\" and contains(text(),'Numaran\u0131 Ta\u015F\u0131')]"
         }
       ]
     }

@@ -8,7 +8,7 @@
       },
       "elements": [
         {
-          "delivery selection": "//h3[contains(text(),'Teslimat seçimi')]"
+          "delivery selection": "//h3[contains(text(),'Teslimat se\u00E7imi')]"
         },
         {
           "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
@@ -30,6 +30,24 @@
         },
         {
           "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
+        },
+        {
+          "istanbulCity": "//span[contains(text(),'\u0130STANB\u0055L')]"
+        },
+        {
+          "adalarDistrict": "//span[contains(text(),'ADALAR')]"
+        },
+        {
+          "burgazadaStreet": "//span[contains(text(),'BURGAZADA')]"
+        },
+        {
+          "addressTextArea": "//input[@id=\"address\"]"
+        },
+        {
+          "emailTextArea": "//input[@id=\"eposta\"]"
+        },
+        {
+          "address information continue button": "//button[contains(text(),'Devam et')]"
         }
       ]
     }

@@ -4,7 +4,7 @@
       "pageInfo": {
         "pageName": "lineProcessesPage",
         "parent": "",
-        "waitelement": "random no radio button"
+        "waitelement": ""
       },
       "elements": [
         {
@@ -26,9 +26,13 @@
           "confirmation code text": "//*[@id='content']//app-tariff-detail-bar//section//div/app-new-msisdn//input"
         },
         {
+          "confirmation code text 2": "//input[@type=\"tel\"]"
+        },
+        {
           "confirm ve continue button": "//button[contains(text(),'Onayla ve Devam Et')]"
         }
       ]
     }
   ]
 }
+
