@@ -14,19 +14,28 @@
           "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
         },
         {
-          "dropDownCity": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
+          "dropDownCityDelivery": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
+        },
+        {
+          "dropDownCityBilling": "//div[@id='billCitiesSelect']/input[@type='text']"
         },
         {
           "listCity": "//div[@id='deliveryCities']/label"
         },
         {
-          "dropDownDistrict": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
+          "dropDownDistrictDelivery": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
+        },
+        {
+          "dropDownDistrictBilling": "//div[@id='billDistrictsSelect']/input[@type='text']"
         },
         {
           "listDistrict": "//div[@id='deliveryDistricts']/label"
         },
         {
-          "dropDownNeighborhood": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
+          "dropDownNeighborhoodDelivery": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
+        },
+        {
+          "dropDownNeighborhoodBilling": "//div[@id='billNeighborhoodsSelect']/input[@type='text']"
         },
         {
           "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
@@ -35,19 +44,34 @@
           "istanbulCity": "//span[contains(text(),'\u0130STANB\u0055L')]"
         },
         {
+          "ankaraCity": "//span[contains(text(),'ANKARA')]"
+        },
+        {
           "adalarDistrict": "//span[contains(text(),'ADALAR')]"
+        },
+        {
+          "akyurtDistrict": "//span[contains(text(),'AKY\u0055RT')]"
         },
         {
           "burgazadaStreet": "//span[contains(text(),'BURGAZADA')]"
         },
         {
-          "addressTextArea": "//input[@id=\"address\"]"
+          "bozcaStreet": "//span[contains(text(),'BOZCA')]"
+        },
+        {
+          "deliveryaddressTextArea": "//input[@id=\"address\"]"
+        },
+        {
+          "billingaddressTextArea": "//input[@id=\"billAddress\"]"
         },
         {
           "emailTextArea": "//input[@id=\"eposta\"]"
         },
         {
           "address information continue button": "//button[contains(text(),'Devam et')]"
+        },
+        {
+          "different address checkbox": "//span[@for=\"sameAddress-approve\"]"
         }
       ]
     }

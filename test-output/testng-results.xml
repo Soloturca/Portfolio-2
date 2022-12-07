@@ -2,19 +2,19 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="DefSuite" duration-ms="94755" started-at="2022-12-07T11:11:25 EET" finished-at="2022-12-07T11:12:59 EET">
+  <suite name="DefSuite" duration-ms="85229" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:19:16 EET">
     <groups>
       <group name="cucumber">
         <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" class="com.project.runners.Runner"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="94755" started-at="2022-12-07T11:11:25 EET" finished-at="2022-12-07T11:12:59 EET">
+    <test name="Test" duration-ms="85229" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:19:16 EET">
       <class name="com.project.runners.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="229" started-at="2022-12-07T11:11:25 EET" finished-at="2022-12-07T11:11:25 EET">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="226" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:17:51 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="1830" started-at="2022-12-07T11:11:25 EET" finished-at="2022-12-07T11:11:27 EET">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="1923" started-at="2022-12-07T12:17:51 EET" finished-at="2022-12-07T12:17:53 EET">
           <params>
             <param index="0">
               <value>
@@ -25,11 +25,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="91846" started-at="2022-12-07T11:11:27 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-07T11:12:59 EET">
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="82221" started-at="2022-12-07T12:17:53 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-07T12:19:16 EET">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Aynı Adres MNP Basvuru"]]>
+                <![CDATA["Ayni Adres MNP Basvuru"]]>
               </value>
             </param>
             <param index="1">
@@ -41,11 +41,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="654" started-at="2022-12-07T11:12:59 EET" finished-at="2022-12-07T11:12:59 EET">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="658" started-at="2022-12-07T12:19:16 EET" finished-at="2022-12-07T12:19:16 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="147" started-at="2022-12-07T11:12:59 EET" finished-at="2022-12-07T11:12:59 EET">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="149" started-at="2022-12-07T12:19:16 EET" finished-at="2022-12-07T12:19:16 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
