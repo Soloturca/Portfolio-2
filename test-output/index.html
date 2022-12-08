@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-DefSuite">
-              <span class="suite-name border-passed">DefSuite</span>
+              <span class="suite-name border-failed">DefSuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-DefSuite" class="hide-methods passed suite-DefSuite"> (hide)</a> <!-- hide-methods passed suite-DefSuite -->
-                      <a href="#" panel-name="suite-DefSuite" class="show-methods passed suite-DefSuite"> (show)</a> <!-- show-methods passed suite-DefSuite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-DefSuite" class="hide-methods failed suite-DefSuite"> (hide)</a> <!-- hide-methods failed suite-DefSuite -->
+                      <a href="#" panel-name="suite-DefSuite" class="show-methods failed suite-DefSuite"> (show)</a> <!-- show-methods failed suite-DefSuite -->
                     </span>
-                    <div class="method-list-content passed suite-DefSuite">
+                    <div class="method-list-content failed suite-DefSuite">
                       <span>
-                        <img width="3%" src="passed.png"/>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-DefSuite" title="com.project.runners.Runner" hash-for-method="runScenario(&quot;Rastgele Numarayla Farklı Adrese Teslim NL Başvuru&quot;, &quot;CBU_C2D&quot;)">runScenario("Rastgele Numarayla Farklı Adrese Teslim NL Başvuru", "CBU_C2D")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-DefSuite -->
+                    </div> <!-- method-list-content failed suite-DefSuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,9 +117,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-DefSuite" class="panel DefSuite">
-          <div class="suite-DefSuite-class-passed">
+          <div class="suite-DefSuite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.project.runners.Runner</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -129,12 +129,19 @@
                   </a> <!-- runScenario("Rastgele Numarayla Farklı Adrese Teslim NL Başvuru", "CBU_C2D") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Rastgele Numarayla Farklı Adrese Teslim NL Başvuru", "CBU_C2D")</span>
+                  <div class="stack-trace">java.lang.AssertionError: Element not found : yeni faturali hat
+	at base.CommonLib.findElement(CommonLib.java:328)
+	at base.CommonLib.waitElement(CommonLib.java:361)
+	at com.project.stepdefs.Stepdefs.waitElement(Stepdefs.java:187)
+	at ✽.I wait yeni faturali hat element 30 seconds at index 1(file:src/test/features/CBU_C2D.feature:16)
+... Removed 1 stack frames
+</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Feature)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-DefSuite-class-passed -->
+          </div> <!-- suite-DefSuite-class-failed -->
         </div> <!-- panel DefSuite -->
         <div panel-name="test-xml-DefSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -201,12 +208,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.project.runners.Runner')
-data.setCell(0, 3, 85045);
+data.setCell(0, 3, 11150);
 window.suiteTableData['DefSuite']= { tableData: data, tableDiv: 'times-div-DefSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 11 seconds</span>
               <div id="times-div-DefSuite">
               </div> <!-- times-div-DefSuite -->
             </div> <!-- times-div -->
@@ -239,19 +246,21 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">setup(chrome)</span>
-                <span class="method-start">342 ms</span>
+                <span class="method-start">347 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">runScenario("Rastgele Numarayla Farklı Adrese Teslim NL Başvuru", "CBU_C2D")</span>
-                <span class="method-start">3718 ms</span>
+                <span class="method-start">3563 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown</span>
-                <span class="method-start">88767 ms</span>
+                <span class="method-start">14719 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">89536 ms</span>
+                <span class="method-start">15574 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

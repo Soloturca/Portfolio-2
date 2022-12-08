@@ -8,7 +8,7 @@
       },
       "elements": [
         {
-          "yeni faturali hat": "//a[contains(text(),'Yeni fatura')]"
+          "yeni faturali hat": "//a[contains(text(),'Yeni fatura')] and //a[@class='button button--primary']"
         }
       ]
     }

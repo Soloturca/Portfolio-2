@@ -4,32 +4,62 @@
       "pageInfo": {
         "pageName": "addressInfoPage",
         "parent": "",
-        "waitelement": "delivery selection"
+        "waitelement": "delivery address"
       },
       "elements": [
-        {
-          "delivery selection": "//h3[contains(text(),'Teslimat seçimi')]"
-        },
         {
           "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
         },
         {
-          "dropDownCity": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
+          "city": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
         },
         {
-          "listCity": "//div[@id='deliveryCities']/label"
+          "district": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
         },
         {
-          "dropDownDistrict": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
+          "neighborhood": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
         },
         {
-          "listDistrict": "//div[@id='deliveryDistricts']/label"
+          "address input": "//input[@name='adres']"
         },
         {
-          "dropDownNeighborhood": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
+          "same address checkbox": "//label[@class='emr-checkbox ng-star-inserted']//span[@class='checkmark']"
         },
         {
-          "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
+          "bill city": "//div[@id='billCitiesSelect']/input[@type='text']"
+        },
+        {
+          "bill district": "//div[@id='billDistrictsSelect']/input[@type='text']"
+        },
+        {
+          "bill neighborhood": "//div[@id='billNeighborhoodsSelect']/input[@type='text']"
+        },
+        {
+          "bill address input": "//input[@id='billAddress']"
+        },
+        {
+          "mail input": "//input[@name='eposta']"
+        },
+        {
+          "address continue button": "//div[@class='component__source']//button[.=' Devam et ']"
+        },
+        {
+          "Edevlet button": "//a[contains(text(),'Evet, E-devlet')]"
+        },
+        {
+          "continue with Edevlet": "//div[@class='component__source']//p"
+        },
+        {
+          "courier button": "//a[contains(text(),'Hay\u0131r, kurye')]"
+        },
+        {
+          "continue with courier": "//h3[contains(text(),'Ba\u015Fvurunuz ba\u015Far\u0131yla tamamland\u0131.')]"
+        },
+        {
+          "buy in store button": "//p[contains(text(),'Ma\u011Fazadan alaca\u011F\u0131m')]"
+        },
+        {
+          "bill address": "//h3[contains(text(),'Fatura adresi')]"
         }
       ]
     }

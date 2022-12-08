@@ -15,7 +15,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
@@ -38,7 +37,7 @@ public class Stepdefs {
     public void setup() {
 
         oDriver = LocalDriver.getTLDriver();
-        commonLib=new CommonLib(oDriver);
+        commonLib = new CommonLib(oDriver);
 
     }
 
@@ -98,10 +97,36 @@ public class Stepdefs {
                 object.click();
                 object.clear();
                 object.sendKeys(AutomationConstants.txtTelNumber);
+
                 System.out.println("The text has been entered:" + text);
                 Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-
                 return true;
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not entered the text:" + text);
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Then("^I enter (.*) random seven digits to at index (\\d+)")
+    public boolean enterRandomSevenDigits(String element, int index) throws InterruptedException {
+        WebElement object;
+        object = commonLib.waitElement(element, timeout, index);
+        commonLib.randomSevenDigits();
+        String text = AutomationConstants.lastSevenDigits;
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                object.clear();
+                object.sendKeys(AutomationConstants.lastSevenDigits);
+
+                System.out.println("The text has been entered:" + text);
+                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                return true;
+
             }
         } catch (Exception e) {
             Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
@@ -115,17 +140,19 @@ public class Stepdefs {
     public boolean verifyText(String element, int index) throws Exception {
         WebElement object = commonLib.findElement(element, index);
         boolean flag = false;
+        System.out.println("text: " + object.getText());
         try {
             if (object != null) {
                 String xmlFileName = "strings.xml";
                 stringsis = this.getClass().getClassLoader().getResourceAsStream(xmlFileName);
                 strings = utils.parseStringXML(stringsis);
 
+
                 object.click();
                 String actualErrTxt = object.getText(); //xpath'ten okuduğu.
-                if (element.contains("approve popup")) {
-                    String expectedErrText = strings.get("approve popup"); //strings.xml dosyası
-                    System.out.println("actual popup text - " + actualErrTxt + "\n" + "expected popup text - " + expectedErrText);
+                if (element.contains("continue with Edevlet")) {
+                    String expectedErrText = strings.get("continue with Edevlet"); //strings.xml dosyası
+                    System.out.println("actual continue with Edevlet - " + actualErrTxt + "\n" + "excepted continue with Edevlet - " + expectedErrText);
                     Assert.assertEquals(actualErrTxt, expectedErrText); //kıyaslıyor.
                     Allure.addAttachment("Verification completed.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                     return true;
@@ -160,6 +187,13 @@ public class Stepdefs {
         commonLib.waitElement(element, timeout, index);
         Allure.addAttachment("Element found", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
+    }
+
+    @Then("I go back previous page")
+    public void goBackToPreviousPage(String desiredTelephoneNumber) {
+        //go back to previous page
+        oDriver.navigate().back();
+        CommonLib.waitSeconds(10);
     }
 
     @When("^(?:I )?click element: (\\w+(?: \\w+)*) at index (\\d+)")

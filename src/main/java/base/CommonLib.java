@@ -267,8 +267,8 @@ public class CommonLib extends BaseTest{
                 break;
 
             case 3:
-                //System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + AutomationConstants.sChromeDriverPath);
-                WebDriverManager.chromedriver().setup();
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + AutomationConstants.sChromeDriverPath);
+               WebDriverManager.chromedriver().setup();
                 oDriver = new ChromeDriver(getChromeOptions());
                 break;
 
@@ -339,6 +339,16 @@ public class CommonLib extends BaseTest{
         for (int i = 0; i < 9; i++) {
             txtTelNumber += +r.nextInt(9);
             AutomationConstants.txtTelNumber = txtTelNumber;
+        }
+    }
+
+    public void randomSevenDigits() {
+
+       String txtSevenNumber = "";
+        Random r = new Random();
+        for (int i = 0; i < 7; i++) {
+            txtSevenNumber += r.nextInt(9);
+            AutomationConstants.lastSevenDigits = txtSevenNumber;
         }
     }
 

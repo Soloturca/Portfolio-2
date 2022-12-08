@@ -27,6 +27,18 @@
         },
         {
           "confirm ve continue button": "//button[contains(text(),'Onayla ve Devam Et')]"
+        },
+        {
+          "search no radio button": "//div[1]/label[@class='e-radio']/span[@class='e-check']"
+        },
+        {
+          "last seven digits": "input[name='form-input-text-required']"
+        },
+        {
+          "search button": "//a[contains(text(),'Ara')]"
+        },
+        {
+          "select telephone no": "//*[@id=\"content\"]//app-new-msisdn/div[2]/div[4]/div[1]"
         }
       ]
     }
