@@ -185,6 +185,7 @@ public class Stepdefs {
     @And("^I wait (.*) element (\\d+) seconds at index (\\d+)")
     public void waitElement(String element, int timeout, int index) throws InterruptedException {
         commonLib.waitElement(element, timeout, index);
+        System.out.println(element);
         Allure.addAttachment("Element found", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
     }
@@ -404,5 +405,27 @@ public class Stepdefs {
         return flag;
     }
 
+    @When("^(?:I )?select element: \"([^\"]*)\" under (\\w+(?: \\w+)*) at index (\\d+)")
+    public boolean selectElement(String text, String element, int index) {
+        WebElement object = commonLib.findElement(element, index);
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                System.out.println("Select the object type-->" + text + element);
+                Select select = new Select(object);
+                select.selectByVisibleText(text);
+                Allure.addAttachment("The selection is done.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("The selection cannot be done.");
+            Allure.addAttachment("The selection cannot be done.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("The selection cannot be done!");
+            flag = false;
+        }
+        return flag;
+    }
 
 }

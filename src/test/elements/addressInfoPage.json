@@ -8,6 +8,9 @@
       },
       "elements": [
         {
+          "delivery selection": "//h3[contains(text(),'Teslimat se\u00E7imi')]"
+        },
+        {
           "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
         },
         {
@@ -36,20 +39,69 @@
         },
         {
           "bill address input": "//input[@id='billAddress']"
+          "dropDownCityDelivery": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
+        },
+        {
+          "dropDownCityBilling": "//div[@id='billCitiesSelect']/input[@type='text']"
         },
         {
           "mail input": "//input[@name='eposta']"
         },
         {
+          "dropDownDistrictDelivery": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
+        },
+        {
+          "dropDownDistrictBilling": "//div[@id='billDistrictsSelect']/input[@type='text']"
           "address continue button": "//div[@class='component__source']//button[.=' Devam et ']"
         },
         {
           "Edevlet button": "//a[contains(text(),'Evet, E-devlet')]"
         },
         {
+          "dropDownNeighborhoodDelivery": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
+        },
+        {
+          "dropDownNeighborhoodBilling": "//div[@id='billNeighborhoodsSelect']/input[@type='text']"
           "continue with Edevlet": "//div[@class='component__source']//p"
         },
         {
+          "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
+        },
+        {
+          "istanbulCity": "//span[contains(text(),'\u0130STANB\u0055L')]"
+        },
+        {
+          "ankaraCity": "//span[contains(text(),'ANKARA')]"
+        },
+        {
+          "adalarDistrict": "//span[contains(text(),'ADALAR')]"
+        },
+        {
+          "akyurtDistrict": "//span[contains(text(),'AKY\u0055RT')]"
+        },
+        {
+          "burgazadaStreet": "//span[contains(text(),'BURGAZADA')]"
+        },
+        {
+          "bozcaStreet": "//span[contains(text(),'BOZCA')]"
+        },
+        {
+          "deliveryaddressTextArea": "//input[@id=\"address\"]"
+        },
+        {
+          "billingaddressTextArea": "//input[@id=\"billAddress\"]"
+        },
+        {
+          "emailTextArea": "//input[@id=\"eposta\"]"
+        },
+        {
+          "address information continue button": "//button[contains(text(),'Devam et')]"
+        },
+        {
+          "different address checkbox": "//span[@for=\"sameAddress-approve\"]"
+        },
+        {
+          "buy from shopping center area": "//a[@class=\"item\"]"
           "courier button": "//a[contains(text(),'Hay\u0131r, kurye')]"
         },
         {
