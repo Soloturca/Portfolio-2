@@ -8,7 +8,7 @@
       },
       "elements": [
         {
-          "random no radio button": "//div[2]/label[@class='e-radio']/span[@class='e-check']"
+          "random no radio button": "//span[@class=\"e-check\"]"
         },
         {
           "random telephone no": "//*[@id='content']//app-new-msisdn//div[4]/div[1]/div[1]"
