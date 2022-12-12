@@ -38,7 +38,7 @@ public class AutomationConstants {
     public static String msisdn = "";
     public static String code ="";
     public static String field="";
-    public static String txtTelNumber="";
+    //public static String txtTelNumber="";
 
 
 

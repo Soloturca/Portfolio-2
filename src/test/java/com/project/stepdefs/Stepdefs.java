@@ -596,28 +596,5 @@ public class Stepdefs {
         Thread.sleep(secondsToMilis);
 
     }
-    @Then("^I enter random telephone number to (.*) at index (\\d+)")
-    public boolean enterRandomText(String element, int index) throws InterruptedException {
-        WebElement object;
-        object = commonLib.waitElement(element, timeout, index);
-        commonLib.randomTelNumber();
-        String text = AutomationConstants.txtTelNumber;
-        boolean flag = false;
-        try {
-            if (object != null) {
-                object.click();
-                object.clear();
-                object.sendKeys(AutomationConstants.txtTelNumber);
-                System.out.println("The text has been entered:" + text);
-                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
-                return true;
-            }
-        } catch (Exception e) {
-            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-            Assert.fail("Could not entered the text:" + text);
-            flag = false;
-        }
-        return flag;
-    }
 }
