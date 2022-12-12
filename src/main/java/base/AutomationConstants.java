@@ -55,4 +55,5 @@ public class AutomationConstants {
     public static String sMsEdgeDriverPath   	= "/Exes/msedgedriver.exe";
     public static long lngPageLoadTimeout 		= 90L;
     public static long lngImplicitWaitTimeout	= 60L;
+    public static String value;
 }

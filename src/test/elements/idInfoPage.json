@@ -24,7 +24,84 @@
         },
         {
           "id information continue button": "//*[@id='personalInfoErrorFocus']/fieldset/div[2]/button"
+        },
+        {
+          "_comment": "laman",
+          "name input area": "//input[@name='ad']"
+        },
+        {
+          "_comment": "laman",
+          "surname input area": "//input[@name='soyad']"
+        },
+        {
+          "_comment": "laman",
+          "tc input area": "//input[@name='form-input-number']"
+        },
+        {
+          "_comment": "laman",
+          "father name input area": "//input[@name='baba-adi']"
+        },
+        {
+          "_comment": "laman",
+          "birth date input area": "//input[@name='dogum-tarihi']"
+        },
+        {
+          "_comment": "laman",
+          "devam et button": "//button[contains(text(),'Devam Et')]"
+        },
+        {
+          "_comment": "laman",
+          "error text area": "//div[@class='errorText errorSubtext ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "alert text area": "//div[@class='caption__text caption__text--top alert__text']"
+        },
+        {
+          "_comment": "laman",
+          "line owner warning area": "//div[@class='hatsahibi-sec-pdng']"
+        },
+        {
+          "_comment": "laman",
+          "no button": "//a[contains(text(),'Hay\u0131r')]"
+        },
+        {
+          "_comment": "laman",
+          "yes button": "//a[contains(text(),'Evet')]"
+        },
+
+        {
+          "_comment": "laman",
+          "basvuru ozeti areas": "//div[@class='basvuru-item' or @class= 'basvuru-item ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "tariff name text area": "//div[@class='basvuru-item']//p"
+        },
+        {
+          "_comment": "laman",
+          "tariff details text area": "//div[@class='basvuru-item']//span"
+        },
+        {
+          "_comment": "laman",
+          "degistir button": "//a[@class='basvuru-bardegistir ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "tariff pay text area": "//div[@class='basvuru-item ng-star-inserted']//pre"
+        },
+        {
+          "_comment": "laman",
+          "number text area": "//div[@class='basvuru-second']//p"
         }
+
+
+
+
+
+
+
+
       ]
     }
   ]

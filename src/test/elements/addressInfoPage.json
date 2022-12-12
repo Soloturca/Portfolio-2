@@ -4,7 +4,7 @@
       "pageInfo": {
         "pageName": "addressInfoPage",
         "parent": "",
-        "waitelement": "delivery selection"
+        "waitelement": ""
       },
       "elements": [
         {

@@ -402,5 +402,75 @@ public class CommonLib extends BaseTest{
         return elementText;
     }
 
+    public WebElement checkElement(String elem, int index) {
+        WebElement object = null;
+        String element = parser.getElement(page, elem);
+
+        try {
+            if (element != null) {
+                if (element.startsWith("//") || element.startsWith("(//")) {
+                    object = oDriver.findElements(By.xpath(element)).get(index - 1);
+
+                    System.out.println("Element found : " + elem);
+                } else if (element.startsWith("#") || element.startsWith(".")) {
+                    object = oDriver.findElements(By.cssSelector(element)).get(index - 1);
+                    System.out.println("Element found : " + elem);
+                } else {
+                    object = oDriver.findElements(By.id(element)).get(index - 1);
+                    System.out.println("Element found : " + elem);
+                }
+            } else if (element == null) {
+                object = oDriver.findElement(By.xpath("//*[text()='" + elem + "'or contains(text(),'" + elem + "')]"));
+            }
+
+            if (object == null) {
+                System.out.println("Element not found: " + elem);
+                Assert.fail("Element not found : " + elem);
+            }
+            return object;
+        } catch (Exception e) {
+            System.out.println("Element not found: " + elem);
+            return null;
+
+        }
+    }
+
+    public List<WebElement> findElements(String elem) {
+        List<WebElement> objects = null;
+        String element = parser.getElement(page, elem);
+
+        try {
+            if (element != null) {
+                if (element.startsWith("//") || element.startsWith("(//")) {
+                    objects = oDriver.findElements(By.xpath(element));
+
+                    System.out.println("Element found : " + elem);
+                } else if (element.startsWith("#") || element.startsWith(".")) {
+                    objects = oDriver.findElements(By.cssSelector(element));
+                    System.out.println("Element found : " + elem);
+                } else {
+                    objects = oDriver.findElements(By.id(element));
+                    System.out.println("Element found : " + elem);
+                }
+            } else if (element == null) {
+                objects = oDriver.findElements(By.xpath("//*[text()='" + elem + "'or contains(text(),'" + elem + "')]"));
+            }
+            if (objects == null) {
+                System.out.println("Element not found: " + elem);
+                Assert.fail("Element not found : " + elem);
+            }
+            return objects;
+        } catch (Exception e) {
+            System.out.println("Element not found: " + elem);
+            Allure.addAttachment("There is no such element.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Element not found : " + elem);
+
+            return null;
+
+        }
+    }
+
+
+
 
 }
