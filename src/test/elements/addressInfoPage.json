@@ -8,28 +8,28 @@
       },
       "elements": [
         {
-          "delivery selection": "//h3[contains(text(),'Teslimat seçimi')]"
+          "il": "//*[@id=\"deliveryCitiesSelect\"]/img"
         },
         {
-          "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
+          "istanbul": "//*[@id=\"deliveryCities\"]/label[1]/span[2]"
         },
         {
-          "dropDownCity": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
+          "fatih": "//*[@id=\"deliveryDistricts\"]/label[20]/span[2]"
         },
         {
-          "listCity": "//div[@id='deliveryCities']/label"
+          "topkapi": "//*[@id=\"deliveryNeighborhoods\"]/label[60]/span[2]"
         },
         {
-          "dropDownDistrict": "//div[@id='deliveryDistrictsSelect']/input[@type='text']"
+          "adres": "//*[@id=\"address\"]"
         },
         {
-          "listDistrict": "//div[@id='deliveryDistricts']/label"
+          "eposta": "//*[@id=\"eposta\"]"
         },
         {
-          "dropDownNeighborhood": "//div[@id='deliveryNeighborhoodsSelect']/input[@type='text']"
+          "adresdevametbutton": "//div[@class='component__source']//button[.=' Devam et '] "
         },
         {
-          "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
+          "kuryebutton": "//a[contains(text(), 'kurye gel')]"
         }
       ]
     }

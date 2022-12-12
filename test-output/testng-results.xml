@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="DefSuite" duration-ms="112607" started-at="2022-12-12T09:57:34 EET" finished-at="2022-12-12T09:59:27 EET">
+  <suite name="DefSuite" duration-ms="142299" started-at="2022-12-06T11:39:11 EET" finished-at="2022-12-06T11:41:33 EET">
     <groups>
       <group name="cucumber">
-        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" class="com.project.runners.Runner"/>
+        <method signature="Runner.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="runScenario" class="com.project.runners.Runner"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test" duration-ms="112607" started-at="2022-12-12T09:57:34 EET" finished-at="2022-12-12T09:59:27 EET">
+    <test name="Test" duration-ms="142299" started-at="2022-12-06T11:39:11 EET" finished-at="2022-12-06T11:41:33 EET">
       <class name="com.project.runners.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setUpClass" is-config="true" duration-ms="251" started-at="2022-12-12T09:57:34 EET" finished-at="2022-12-12T09:57:34 EET">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="setUpClass" is-config="true" duration-ms="234" started-at="2022-12-06T11:39:11 EET" finished-at="2022-12-06T11:39:11 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="setup" is-config="true" duration-ms="2429" started-at="2022-12-12T09:57:34 EET" finished-at="2022-12-12T09:57:37 EET">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="setup" is-config="true" duration-ms="2332" started-at="2022-12-06T11:39:11 EET" finished-at="2022-12-06T11:39:13 EET">
           <params>
             <param index="0">
               <value>
@@ -25,11 +25,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@1e9807f]" name="runScenario" duration-ms="108792" started-at="2022-12-12T09:57:37 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-12T09:59:26 EET">
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="runScenario" duration-ms="138700" started-at="2022-12-06T11:39:13 EET" description="Runs Cucumber Feature" data-provider="features" finished-at="2022-12-06T11:41:32 EET">
           <params>
             <param index="0">
               <value>
-                <![CDATA["OTP Adımı"]]>
+                <![CDATA["Istenen Numarayla Magazaya Teslim NL Basvuru"]]>
               </value>
             </param>
             <param index="1">
@@ -38,28 +38,14 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Element not found : degistir button]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Element not found : degistir button
-at org.testng.Assert.fail(Assert.java:97)
-at base.CommonLib.findElement(CommonLib.java:328)
-at base.CommonLib.waitElement(CommonLib.java:351)
-at com.project.stepdefs.Stepdefs.waitElement(Stepdefs.java:166)
-at ✽.I wait degistir button element 20 seconds at index 2(file:src/test/features/CBU_C2D.feature:250)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="teardown" is-config="true" duration-ms="750" started-at="2022-12-12T09:59:26 EET" finished-at="2022-12-12T09:59:26 EET">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="teardown" is-config="true" duration-ms="751" started-at="2022-12-06T11:41:32 EET" finished-at="2022-12-06T11:41:33 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@1e9807f]" name="tearDownClass" is-config="true" duration-ms="326" started-at="2022-12-12T09:59:26 EET" finished-at="2022-12-12T09:59:27 EET">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.project.runners.Runner@4f9a3314]" name="tearDownClass" is-config="true" duration-ms="233" started-at="2022-12-06T11:41:33 EET" finished-at="2022-12-06T11:41:33 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
