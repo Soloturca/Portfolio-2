@@ -40,11 +40,12 @@ public class AutomationConstants {
     public static String field="";
     //public static String txtTelNumber="";
 
+    public static String lastSevenDigits = "";
 
 
     //url api
     public static String urlCreatePaytionTokenURL = "http://vftr-auth-server.apps.mbt.vodafone.local/oauth/token";
-    public static String urlKolaypackPreauth  = "http://kolaypacks-api-server.apps.mbt.vodafone.local/preauth/";
+    public static String urlKolaypackPreauth = "http://kolaypacks-api-server.apps.mbt.vodafone.local/preauth/";
     public static String CLIENT_ID = "test-client-01";
     public static String CLENT_SECRET = "secret";
     public static String token = "";

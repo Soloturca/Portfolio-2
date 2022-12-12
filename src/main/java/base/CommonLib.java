@@ -342,6 +342,16 @@ public class CommonLib extends BaseTest{
         }
     }
 
+    public void randomSevenDigits() {
+
+       String txtSevenNumber = "";
+        Random r = new Random();
+        for (int i = 0; i < 7; i++) {
+            txtSevenNumber += r.nextInt(9);
+            AutomationConstants.lastSevenDigits = txtSevenNumber;
+        }
+    }
+
 
     public WebElement waitElement(String element, int timeout, int index) throws InterruptedException {
         WebElement object;

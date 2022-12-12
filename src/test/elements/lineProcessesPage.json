@@ -42,7 +42,9 @@
         },
         {
           "tasima onayla ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-mnp-msisdn/div[2]/div[2]/div/form/div[2]/button"
-          "random no radio button": "//div[2]/label[@class='e-radio']/span[@class='e-check']"
+        },
+        {
+          "random no radio button": "//span[@class=\"e-check\"]"
         },
         {
           "random telephone no": "//*[@id='content']//app-new-msisdn//div[4]/div[1]/div[1]"
@@ -60,7 +62,25 @@
           "confirmation code text": "//*[@id='content']//app-tariff-detail-bar//section//div/app-new-msisdn//input"
         },
         {
+          "confirmation code text 2": "//input[@type=\"tel\"]"
+        },
+        {
           "confirm ve continue button": "//button[contains(text(),'Onayla ve Devam Et')]"
+        },
+        {
+          "search no radio button": "//label[@class='e-radio']/span[@class='e-check']"
+        },
+        {
+          "last seven digits": "//input[@name='form-input-text-required']"
+        },
+        {
+          "search button": "//a[contains(text(),'Ara')]"
+        },
+        {
+          "select telephone no": "//*[@id=\"content\"]//app-new-msisdn/div[2]/div[4]/div[1]"
+        },
+        {
+          "continue button 2": "//div[@class='align--right ng-star-inserted']/a[@href='javascript:;']"
         },
         {
           "_comment": "laman",

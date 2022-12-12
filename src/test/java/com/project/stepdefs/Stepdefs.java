@@ -99,8 +99,33 @@ public class Stepdefs {
                 object.sendKeys(AutomationConstants.txtTelNumber);
                 System.out.println("The text has been entered:" + text);
                 Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-
                 return true;
+            }
+        } catch (Exception e) {
+            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Could not entered the text:" + text);
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Then("^I enter (.*) random seven digits to at index (\\d+)")
+    public boolean enterRandomSevenDigits(String element, int index) throws InterruptedException {
+        WebElement object;
+        object = commonLib.waitElement(element, timeout, index);
+        commonLib.randomSevenDigits();
+        String text = AutomationConstants.lastSevenDigits;
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                object.clear();
+                object.sendKeys(AutomationConstants.lastSevenDigits);
+
+                System.out.println("The text has been entered:" + text);
+                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+                return true;
+
             }
         } catch (Exception e) {
             Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
@@ -114,6 +139,7 @@ public class Stepdefs {
     public boolean verifyText(String element, int index) throws Exception {
         WebElement object = commonLib.findElement(element, index);
         boolean flag = false;
+        System.out.println("text: " + object.getText());
         try {
             if (object != null) {
                 String xmlFileName = "strings.xml";
@@ -164,8 +190,16 @@ public class Stepdefs {
     @And("^I wait (.*) element (\\d+) seconds at index (\\d+)")
     public void waitElement(String element, int timeout, int index) throws InterruptedException {
         commonLib.waitElement(element, timeout, index);
+        System.out.println(element);
         Allure.addAttachment("Element found", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
+    }
+
+    @Then("I go back previous page")
+    public void goBackToPreviousPage() {
+        //go back to previous page
+        oDriver.navigate().back();
+        CommonLib.waitSeconds(10);
     }
 
     @When("^(?:I )?click element: (\\w+(?: \\w+)*) at index (\\d+)")
@@ -373,6 +407,29 @@ public class Stepdefs {
             Assert.fail("Could not got the information.");
             flag = false;
 
+        }
+        return flag;
+    }
+
+    @When("^(?:I )?select element: \"([^\"]*)\" under (\\w+(?: \\w+)*) at index (\\d+)")
+    public boolean selectElement(String text, String element, int index) {
+        WebElement object = commonLib.findElement(element, index);
+        boolean flag = false;
+        try {
+            if (object != null) {
+                object.click();
+                System.out.println("Select the object type-->" + text + element);
+                Select select = new Select(object);
+                select.selectByVisibleText(text);
+                Allure.addAttachment("The selection is done.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("The selection cannot be done.");
+            Allure.addAttachment("The selection cannot be done.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("The selection cannot be done!");
+            flag = false;
         }
         return flag;
     }

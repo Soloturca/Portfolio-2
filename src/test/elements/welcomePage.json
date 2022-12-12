@@ -11,6 +11,9 @@
           "yeni faturali hat": "//a[contains(text(),'Yeni fatura')]"
         },
         {
+          "numarani tasi button": "//a[@class=\"button button--primary\" and contains(text(),'Numaran\u0131 Ta\u015F\u0131')]"
+        },
+        {
           "_comment": "laman",
           "welcome page text area": "//span[@class='breadcrumbs__crumb breadcrumbs__crumb--current']"
         },
