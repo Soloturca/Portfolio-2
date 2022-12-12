@@ -3,7 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [DefSuite]">
   <parameter name="browserName" value="chrome"/>
   <test thread-count="5" name="Test(failed)">
-    <parameter name="tagName" value="Beyza20"/>
+    <parameter name="tagName" value="BATU"/>
     <classes>
       <class name="com.project.runners.Runner">
         <methods>
@@ -11,7 +11,7 @@
           <include name="tearDownClass"/>
           <include name="teardown"/>
           <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0"/>
+          <include name="runScenario"/>
         </methods>
       </class> <!-- com.project.runners.Runner -->
     </classes>
