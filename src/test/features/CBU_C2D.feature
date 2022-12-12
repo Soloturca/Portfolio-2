@@ -1,8 +1,7 @@
 Feature: CBU_C2D
 
   #Batu
-  @BATU
-  #@TEST-953016
+  @TEST-953016
   Scenario: Ayni Adres MNP Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -56,8 +55,7 @@ Feature: CBU_C2D
     And I wait confirmationQuestionTextArea element 30 seconds at index 1
 
   #Batu
-  @BATU
-  #@TEST-953017
+  @TEST-953017
   Scenario: Farkli Adres MNP Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -122,8 +120,7 @@ Feature: CBU_C2D
 
 
   #Batu
-  @BATU
-  #@TEST-953018
+  @TEST-953018
   Scenario: Magazadan Al MNP Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -178,8 +175,7 @@ Feature: CBU_C2D
     And I wait confirmationSuccessfullyTextArea element 30 seconds at index 1
 
   #Batu
-  @BATU
-  #@TEST-953019
+  @TEST-953019
   Scenario: Rastgele Numarayla Adrese Teslim NL Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
