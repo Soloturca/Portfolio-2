@@ -15,6 +15,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
@@ -191,7 +192,7 @@ public class Stepdefs {
     }
 
     @Then("I go back previous page")
-    public void goBackToPreviousPage(String desiredTelephoneNumber) {
+    public void goBackToPreviousPage() {
         //go back to previous page
         oDriver.navigate().back();
         CommonLib.waitSeconds(10);

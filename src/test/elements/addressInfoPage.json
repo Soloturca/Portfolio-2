@@ -38,7 +38,12 @@
           "bill neighborhood": "//div[@id='billNeighborhoodsSelect']/input[@type='text']"
         },
         {
+          "bill neighborhood select": "//div[@id='billNeighborhoods']//span"
+        },
+        {
           "bill address input": "//input[@id='billAddress']"
+        },
+        {
           "dropDownCityDelivery": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
         },
         {
@@ -52,6 +57,8 @@
         },
         {
           "dropDownDistrictBilling": "//div[@id='billDistrictsSelect']/input[@type='text']"
+        },
+        {
           "address continue button": "//div[@class='component__source']//button[.=' Devam et ']"
         },
         {
@@ -62,6 +69,8 @@
         },
         {
           "dropDownNeighborhoodBilling": "//div[@id='billNeighborhoodsSelect']/input[@type='text']"
+        },
+        {
           "continue with Edevlet": "//div[@class='component__source']//p"
         },
         {
@@ -102,6 +111,8 @@
         },
         {
           "buy from shopping center area": "//a[@class=\"item\"]"
+        },
+        {
           "courier button": "//a[contains(text(),'Hay\u0131r, kurye')]"
         },
         {

@@ -8,7 +8,7 @@
       },
       "elements": [
         {
-          "random no radio button": "//div[2]/label[@class='e-radio']/span[@class='e-check']"
+          "random no radio button": "//span[@class=\"e-check\"]"
         },
         {
           "random telephone no": "//*[@id='content']//app-new-msisdn//div[4]/div[1]/div[1]"
@@ -32,16 +32,19 @@
           "confirm ve continue button": "//button[contains(text(),'Onayla ve Devam Et')]"
         },
         {
-          "search no radio button": "//div[1]/label[@class='e-radio']/span[@class='e-check']"
+          "search no radio button": "//label[@class='e-radio']/span[@class='e-check']"
         },
         {
-          "last seven digits": "input[name='form-input-text-required']"
+          "last seven digits": "//input[@name='form-input-text-required']"
         },
         {
           "search button": "//a[contains(text(),'Ara')]"
         },
         {
           "select telephone no": "//*[@id=\"content\"]//app-new-msisdn/div[2]/div[4]/div[1]"
+        },
+        {
+          "continue button 2": "//div[@class='align--right ng-star-inserted']/a[@href='javascript:;']"
         }
       ]
     }
