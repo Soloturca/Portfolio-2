@@ -4,7 +4,7 @@
       "pageInfo": {
         "pageName": "idInfoPage",
         "parent": "",
-        "waitelement": "name"
+        "waitelement": "name input area"
       },
       "elements": [
         {
@@ -27,7 +27,9 @@
         },
         {
           "bu kisi ile devam et button": "//*[@id=\"content\"]/app-tariff-detail-bar/div[4]/section/div/div/div/div[1]/app-private-session/div/div/div/div/div/div[2]/a"
-          "name": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[1]/label/input"
+        },
+        {
+        "name": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[1]/label/input"
         },
         {
           "surname": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[2]/label/input"
@@ -112,7 +114,36 @@
         {
           "_comment": "laman",
           "number text area": "//div[@class='basvuru-second']//p"
+        },
+        {
+          "_comment": "laman",
+          "basvuruya ozel text area": "//div[@class='basvuru-second']/span"
+        },
+        {
+          "_comment": "laman",
+          "warning text area": "//div[@class='spr-text']"
+        },
+        {
+          "_comment": "laman",
+          "gecebilecegim tarifeleri incele button": "//div[contains(text(),'tarifeleri incele')]"
+        },
+        {
+          "_comment": "laman",
+          "yeni hat sahibi tanimla button": "//div[contains(text(),'Yeni hat sahibi')]"
+        },
+        {
+          "_comment": "laman",
+          "yeni hat sahibi tanimla text area": "//p[@class='align--left bold no-gutter--top']"
+        },
+        {
+          "_comment": "laman",
+          "yeni hat sahibi tanimla details text area": "//p[@class='align--left no-gutter--top']"
         }
+
+
+
+
+
       ]
     }
   ]

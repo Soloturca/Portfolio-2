@@ -29,7 +29,7 @@
           "onaykodugonderbutton": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div[1]/app-new-msisdn/div[2]/div[2]/div/label/div/div/button"
         },
         {
-          "onayla ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-new-msisdn/div[2]/div[2]/div/form/div[2]/button"
+          "onaylaa ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-new-msisdn/div[2]/div[2]/div/form/div[2]/button"
         },
         {
           "tasimak istediginiz numara text area": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div[1]/app-mnp-msisdn/div[2]/div[2]/div/div/input"
@@ -177,7 +177,12 @@
         {
           "_comment": "laman",
           "number text area": "//div[@class='basvuru-second']//p"
+        },
+        {
+          "_comment": "laman",
+          "basvuruya ozel text area": "//div[@class='basvuru-second']/span"
         }
+
       ]
     }
   ]

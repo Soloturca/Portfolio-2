@@ -120,6 +120,8 @@
         {
           "_comment": "laman",
           "rating text area": "//app-starrate-popup//p[@class='popup-content-infotext']"
+        },
+        {
           "Yeni Faturali Hat Al": "//a[contains(text(),'Yeni fatura')]"
         },
         {

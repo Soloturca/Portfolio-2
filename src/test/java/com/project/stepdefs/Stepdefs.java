@@ -442,7 +442,7 @@ public class Stepdefs {
     }
 
     @When("I go back")
-    public void iGoBack() {
+    public void goBack() {
         oDriver.navigate().back();
     }
 
@@ -500,11 +500,11 @@ public class Stepdefs {
         clickElementA(element2, index);
         for (int i = 0; i < questionList.size(); i++) {
             object = questionList.get(i);
-            System.out.println(object.getText());
+            //System.out.println(object.getText());
             object.click();
             CommonLib.waitSeconds(3);
             object = answerList.get(i);
-            System.out.println(object.getText());
+            //System.out.println(object.getText());
             CommonLib.waitSeconds(3);
         }
 
@@ -615,11 +615,13 @@ public class Stepdefs {
 
         List<WebElement> kullanimEsaslariList = commonLib.findElements(elementHeader);
         System.out.println(kullanimEsaslariList.size());
-        for (int i=1;i<kullanimEsaslariList.size();i++){
+        for (int i=2;i<=kullanimEsaslariList.size();i++){
 
             WebElement object = commonLib.findElement(elementHeader, i);
-            object.click();
-            commonLib.waitElement(elementDetail,20,i);
+            clickElementA(elementHeader,i);
+            CommonLib.waitSeconds(5);
+            scrollToElement(elementDetail);
+            commonLib.checkElement(elementDetail,i);
         }
     }
 

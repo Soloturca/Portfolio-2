@@ -4,11 +4,13 @@
       "pageInfo": {
         "pageName": "addressInfoPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "delivery address"
       },
       "elements": [
         {
           "il": "//*[@id=\"deliveryCitiesSelect\"]/img"
+        },
+        {
           "delivery selection": "//h3[contains(text(),'Teslimat se\u00E7imi')]"
         },
         {
