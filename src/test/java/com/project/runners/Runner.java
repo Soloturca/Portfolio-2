@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 @CucumberOptions(
         features = "src/test/features/",
-        tags = "@TEST-953024",
+        tags = "@TEST-953772",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "json:target/cucumber-reports/Cucumber.json",
                 "junit:target/cucumber-reports/Cucumber.xml",

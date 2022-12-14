@@ -11,7 +11,7 @@
           <include name="tearDownClass"/>
           <include name="teardown"/>
           <include name="setUpClass"/>
-          <include name="runScenario"/>
+          <include name="runScenario" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.project.runners.Runner -->
     </classes>
