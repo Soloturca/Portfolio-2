@@ -4,7 +4,7 @@
       "pageInfo": {
         "pageName": "idInfoPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "name input area"
       },
       "elements": [
         {
@@ -27,7 +27,122 @@
         },
         {
           "bu kisi ile devam et button": "//*[@id=\"content\"]/app-tariff-detail-bar/div[4]/section/div/div/div/div[1]/app-private-session/div/div/div/div/div/div[2]/a"
+        },
+        {
+        "name": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[1]/label/input"
+        },
+        {
+          "surname": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[1]//div[2]/label/input"
+        },
+        {
+          "ID": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[2]//div[1]/label/input"
+        },
+        {
+          "father name": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[2]//div[2]/label/input"
+        },
+        {
+          "date of birth": "//*[@id='personalInfoErrorFocus']/fieldset/fieldset[3]//div/fieldset/input"
+        },
+        {
+          "id information continue button": "//*[@id='personalInfoErrorFocus']/fieldset/div[2]/button"
+        },
+        {
+          "_comment": "laman",
+          "name input area": "//input[@name='ad']"
+        },
+        {
+          "_comment": "laman",
+          "surname input area": "//input[@name='soyad']"
+        },
+        {
+          "_comment": "laman",
+          "tc input area": "//input[@name='form-input-number']"
+        },
+        {
+          "_comment": "laman",
+          "father name input area": "//input[@name='baba-adi']"
+        },
+        {
+          "_comment": "laman",
+          "birth date input area": "//input[@name='dogum-tarihi']"
+        },
+        {
+          "_comment": "laman",
+          "devam et button": "//button[contains(text(),'Devam Et')]"
+        },
+        {
+          "_comment": "laman",
+          "error text area": "//div[@class='errorText errorSubtext ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "alert text area": "//div[@class='caption__text caption__text--top alert__text']"
+        },
+        {
+          "_comment": "laman",
+          "line owner warning area": "//div[@class='hatsahibi-sec-pdng']"
+        },
+        {
+          "_comment": "laman",
+          "no button": "//a[contains(text(),'Hay\u0131r')]"
+        },
+        {
+          "_comment": "laman",
+          "yes button": "//a[contains(text(),'Evet')]"
+        },
+
+        {
+          "_comment": "laman",
+          "basvuru ozeti areas": "//div[@class='basvuru-item' or @class= 'basvuru-item ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "tariff name text area": "//div[@class='basvuru-item']//p"
+        },
+        {
+          "_comment": "laman",
+          "tariff details text area": "//div[@class='basvuru-item']//span"
+        },
+        {
+          "_comment": "laman",
+          "degistir button": "//a[@class='basvuru-bardegistir ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "tariff pay text area": "//div[@class='basvuru-item ng-star-inserted']//pre"
+        },
+        {
+          "_comment": "laman",
+          "number text area": "//div[@class='basvuru-second']//p"
+        },
+        {
+          "_comment": "laman",
+          "basvuruya ozel text area": "//div[@class='basvuru-second']/span"
+        },
+        {
+          "_comment": "laman",
+          "warning text area": "//div[@class='spr-text']"
+        },
+        {
+          "_comment": "laman",
+          "gecebilecegim tarifeleri incele button": "//div[contains(text(),'tarifeleri incele')]"
+        },
+        {
+          "_comment": "laman",
+          "yeni hat sahibi tanimla button": "//div[contains(text(),'Yeni hat sahibi')]"
+        },
+        {
+          "_comment": "laman",
+          "yeni hat sahibi tanimla text area": "//p[@class='align--left bold no-gutter--top']"
+        },
+        {
+          "_comment": "laman",
+          "yeni hat sahibi tanimla details text area": "//p[@class='align--left no-gutter--top']"
         }
+
+
+
+
 
       ]
     }

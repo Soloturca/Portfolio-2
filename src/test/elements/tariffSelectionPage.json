@@ -4,12 +4,130 @@
       "pageInfo": {
         "pageName": "tariffSelectionPage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "tarifeler area"
       },
       "elements": [
-      {
-      "tarife sec button": "//*[@id=\"1061463\"]/div[2]/div[4]/a[2]"
-      }
+        {
+          "tarife": "//app-tariff-card-rd[1]/div"
+        },
+        {
+          "tarife sec button": "//app-tariff-card-rd[1]//a[2]"
+        },
+        {
+          "_comment": "laman",
+          "select tariff buttons": "//a[contains(text(),'Se\u00E7')]"
+        },
+        {
+          "_comment": "laman",
+          "tarifeler area": "//a[contains(text(),'Tarifeler')]"
+        },
+        {
+          "_comment": "laman",
+          "active road map": "//a[@class='active']"
+        },
+        {
+          "_comment": "laman",
+          "vodafone logo": "//a[@class='vf-logo']"
+        },
+        {
+          "_comment": "laman",
+          "tarifeler and 26 yas altina ozel tarifeler tabs": "//div[@class='nav-cont ng-star-inserted']/a"
+        },
+        {
+          "_comment": "laman",
+          "tarifeler tabs": "//div[@class='tariff-select-tab']//a//p"
+        },
+        {
+          "_comment": "laman",
+          "red tariffs": "//div[@class='red tarife-card ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "tariffs": "//div[@class='tarife-name']"
+        },
+        {
+          "_comment": "laman",
+          "simple tariffs": "//div[@class='simple tarife-card ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "tariff tags": "//div[@class='tariff-select-tag']//a"
+        },
+        {
+          "_comment": "laman",
+          "detaylari goster button": "//a[contains(text(),'Detaylar')]"
+        },
+        {
+          "_comment": "laman",
+          "details popup area": "//div[@class='popup-content']"
+        },
+        {
+          "_comment": "laman",
+          "kapat button": "//a[contains(text(),'Kapat')]"
+        },
+        {
+          "_comment": "laman",
+          "tarifeyi sec button": "//a[contains(text(),'Tarifeyi')]"
+        },
+        {
+          "_comment": "laman",
+          "popup close button": "//a[@class='popup-close']"
+        },
+        {
+          "_comment": "laman",
+          "daha fazla goster button": "//a[contains(text(),'Daha Fazla')]"
+        },
+        {
+          "_comment": "laman",
+          "SSS headers": "//a[@class='tablinks' or @class='tablinks active']"
+        },
+        {
+          "_comment": "laman",
+          "dijitalden basvuru avantajlari sss": "//div[@id='dijitalden-basvuru-avantajlari']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "yeni numara almak sss": "//div[@id='yeni-numara-almak']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "numara tasimak sss": "//div[@id='numara-tasimak']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "genel sss": "//div[@id='genel']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "dijitalden basvuru avantajlari sss answer": "//div[@id='dijitalden-basvuru-avantajlari']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "yeni numara almak sss answer": "//div[@id='yeni-numara-almak']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "numara tasimak sss answer": "//div[@id='numara-tasimak']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "genel sss answer": "//div[@id='genel']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "kullanim esaslari button": "//span[contains(text(),'Kullan\u0131m Esaslar\u0131')]"
+        },
+        {
+          "_comment": "laman",
+          "kullanim esaslari tariffs header": "//div[@class='accordion__item']"
+        },
+        {
+          "_comment": "laman",
+          "kullanim esaslari tariffs details": "//div[@class='title-side']"
+        },
+        {
+          "tarife sec button": "//*[@id=\"1061463\"]/div[2]/div[4]/a[2]"
+        }
       ]
     }
   ]

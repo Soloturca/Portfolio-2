@@ -8,6 +8,120 @@
       },
       "elements": [
         {
+          "yeni faturali hat": "//a[contains(text(),'Yeni fatura')]"
+        },
+        {
+          "numarani tasi button": "//a[@class=\"button button--primary\" and contains(text(),'Numaran\u0131 Ta\u015F\u0131')]"
+        },
+        {
+          "_comment": "laman",
+          "welcome page text area": "//span[@class='breadcrumbs__crumb breadcrumbs__crumb--current']"
+        },
+        {
+          "_comment": "laman",
+          "campaign with countdown": "//div[@class='text']"
+        },
+        {
+          "_comment": "laman",
+          "numarani tasi button": "//a[contains(text(),'Numaran\u0131 Ta\u015F\u0131')]"
+        },
+        {
+          "_comment": "laman",
+          "yeni faturali hat al button": "//a[contains(text(),'Yeni fatura')]"
+        },
+        {
+          "_comment": "laman",
+          "campaigns in campaigns area": "//div[@class='owl-item active']"
+        },
+        {
+          "_comment": "laman",
+          "campaigns detaylari goster gizle button": "//a[@class='detaylar-mdl']"
+        },
+        {
+          "_comment": "laman",
+          "campaigns detaylari goster area": "//div[@class='list-block']"
+        },
+        {
+          "_comment": "laman",
+          "tarifeleri incele button": "//a[contains(text(),'Tarifeleri incele')]"
+        },
+        {
+          "_comment": "laman",
+          "SSS headers": "//a[@class='tablinks' or @class='tablinks active']"
+        },
+        {
+          "_comment": "laman",
+          "dijitalden basvuru avantajlari SSS header": "//span[contains(text(),'Dijitalden')]"
+        },
+        {
+          "_comment": "laman",
+          "yeni numara almak SSS header": "//span[contains(text(),'Yeni numara almak')]"
+        },
+        {
+          "_comment": "laman",
+          "numara tasimak SSS header": "//span[contains(text(),'Numara ta\u015F\u0131mak')]"
+        },
+        {
+          "_comment": "laman",
+          "genel SSS header": "//span[contains(text(),'Genel')]"
+        },
+        {
+          "_comment": "laman",
+          "dijitalden basvuru avantajlari sss": "//div[@id='dijitalden-basvuru-avantajlari']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "yeni numara almak sss": "//div[@id='yeni-numara-almak']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "numara tasimak sss": "//div[@id='numara-tasimak']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "genel sss": "//div[@id='genel']//div[@class='sss-item']"
+        },
+        {
+          "_comment": "laman",
+          "dijitalden basvuru avantajlari sss answer": "//div[@id='dijitalden-basvuru-avantajlari']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "yeni numara almak sss answer": "//div[@id='yeni-numara-almak']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "numara tasimak sss answer": "//div[@id='numara-tasimak']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "genel sss answer": "//div[@id='genel']//div[@class='sss-block']//p"
+        },
+        {
+          "_comment": "laman",
+          "star rating area": "//div[@class='tarife-starrate']"
+        },
+        {
+          "_comment": "laman",
+          "tariff in star rating area": "//div[@class='component__source']//div[@class='tariff-card-main']//p[@class='ng-star-inserted']"
+        },
+        {
+          "_comment": "laman",
+          "sec button in star rating area": "//div[@class='component__source']//a[.='Se\u00E7']"
+        },
+        {
+          "_comment": "laman",
+          "tarifeyi degerlendir button": "//span[contains(text(),'Tarifeyi de\u011Ferlendir')]"
+        },
+        {
+          "_comment": "laman",
+          "stars in rating popup": "//app-starrate-popup/div//div[@class='star-rating']/label"
+        },
+        {
+          "_comment": "laman",
+          "rating text area": "//app-starrate-popup//p[@class='popup-content-infotext']"
+        },
+        {
           "Yeni Faturali Hat Al": "//a[contains(text(),'Yeni fatura')]"
         },
         {

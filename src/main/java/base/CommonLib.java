@@ -21,9 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
@@ -153,15 +151,6 @@ public class CommonLib extends BaseTest{
         } while (!status);
         value = valueBuilder.toString();
         return value;
-    }
-    public void randomTelNumber() {
-
-        String txtTelNumber = "5";
-        Random r = new Random();
-        for (int i = 0; i < 9; i++) {
-            txtTelNumber += +r.nextInt(9);
-            AutomationConstants.txtTelNumber = txtTelNumber;
-        }
     }
 
     public static long generateRandomNumber(int numberCount) {
@@ -343,6 +332,26 @@ public class CommonLib extends BaseTest{
         }
     }
 
+    public void randomTelNumber() {
+
+       String txtTelNumber = "5";
+        Random r = new Random();
+        for (int i = 0; i < 9; i++) {
+            txtTelNumber += +r.nextInt(9);
+            AutomationConstants.txtTelNumber = txtTelNumber;
+        }
+    }
+
+    public void randomSevenDigits() {
+
+       String txtSevenNumber = "";
+        Random r = new Random();
+        for (int i = 0; i < 7; i++) {
+            txtSevenNumber += r.nextInt(9);
+            AutomationConstants.lastSevenDigits = txtSevenNumber;
+        }
+    }
+
 
     public WebElement waitElement(String element, int timeout, int index) throws InterruptedException {
         WebElement object;
@@ -402,6 +411,76 @@ public class CommonLib extends BaseTest{
         //System.out.println(itemValue);
         return elementText;
     }
+
+    public WebElement checkElement(String elem, int index) {
+        WebElement object = null;
+        String element = parser.getElement(page, elem);
+
+        try {
+            if (element != null) {
+                if (element.startsWith("//") || element.startsWith("(//")) {
+                    object = oDriver.findElements(By.xpath(element)).get(index - 1);
+
+                    System.out.println("Element found : " + elem);
+                } else if (element.startsWith("#") || element.startsWith(".")) {
+                    object = oDriver.findElements(By.cssSelector(element)).get(index - 1);
+                    System.out.println("Element found : " + elem);
+                } else {
+                    object = oDriver.findElements(By.id(element)).get(index - 1);
+                    System.out.println("Element found : " + elem);
+                }
+            } else if (element == null) {
+                object = oDriver.findElement(By.xpath("//*[text()='" + elem + "'or contains(text(),'" + elem + "')]"));
+            }
+
+            if (object == null) {
+                System.out.println("Element not found: " + elem);
+                Assert.fail("Element not found : " + elem);
+            }
+            return object;
+        } catch (Exception e) {
+            System.out.println("Element not found: " + elem);
+            return null;
+
+        }
+    }
+
+    public List<WebElement> findElements(String elem) {
+        List<WebElement> objects = null;
+        String element = parser.getElement(page, elem);
+
+        try {
+            if (element != null) {
+                if (element.startsWith("//") || element.startsWith("(//")) {
+                    objects = oDriver.findElements(By.xpath(element));
+
+                    System.out.println("Element found : " + elem);
+                } else if (element.startsWith("#") || element.startsWith(".")) {
+                    objects = oDriver.findElements(By.cssSelector(element));
+                    System.out.println("Element found : " + elem);
+                } else {
+                    objects = oDriver.findElements(By.id(element));
+                    System.out.println("Element found : " + elem);
+                }
+            } else if (element == null) {
+                objects = oDriver.findElements(By.xpath("//*[text()='" + elem + "'or contains(text(),'" + elem + "')]"));
+            }
+            if (objects == null) {
+                System.out.println("Element not found: " + elem);
+                Assert.fail("Element not found : " + elem);
+            }
+            return objects;
+        } catch (Exception e) {
+            System.out.println("Element not found: " + elem);
+            Allure.addAttachment("There is no such element.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+            Assert.fail("Element not found : " + elem);
+
+            return null;
+
+        }
+    }
+
+
 
 
 }

@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Dec 07 16:50:56 EET 2022</td>
+<td>Started on:</td><td>Tue Dec 13 15:31:44 EET 2022</td>
 </tr>
-<tr><td>Total time:</td><td>22 seconds (22442 ms)</td>
+<tr><td>Total time:</td><td>109 seconds (109137 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,20 +75,51 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.project.runners.Runner.runScenario()'><b>runScenario</b><br>Test class: com.project.runners.Runner<br>Test method: Runs Cucumber Feature<br>Parameters: "Yarým Basvuru 2", "CBU_C2D"</td>
-<td><div><pre>java.lang.AssertionError: Waiting element is not found!
-	at base.CommonLib.waitElement(CommonLib.java:361)
-	at com.project.stepdefs.Stepdefs.waitElement(Stepdefs.java:138)
-	at ?.I wait tarife sec button element 10 seconds at index 1(file:src/test/features/CBU_C2D.feature:144)
-... Removed 1 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace475024998", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace475024998'><pre>java.lang.AssertionError: Waiting element is not found!
-	at org.testng.Assert.fail(Assert.java:97)
-	at base.CommonLib.waitElement(CommonLib.java:361)
-	at com.project.stepdefs.Stepdefs.waitElement(Stepdefs.java:138)
-	at ?.I wait tarife sec button element 10 seconds at index 1(file:src/test/features/CBU_C2D.feature:144)
+<td title='com.project.runners.Runner.runScenario()'><b>runScenario</b><br>Test class: com.project.runners.Runner<br>Test method: Runs Cucumber Feature<br>Parameters: "Welcomepage", "CBU_C2D"</td>
+<td><div><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=108.0.5359.99)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;GML3LVALIZADA&apos;, ip: &apos;10.169.7.20&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;x86&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_181&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.99, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\AMDOCS~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53509}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: none, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 02f58133c0b319e457e80c5abceabc2c
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.project.stepdefs.Stepdefs.checkSSSandSSSAnswers(Stepdefs.java:504)
+	at ?.I check dijitalden basvuru avantajlari sss and dijitalden basvuru avantajlari sss answer at SSS headers at index 1(file:src/test/features/CBU_C2D.feature:55)
+... Removed 4 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace31927484", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace31927484'><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=108.0.5359.99)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;GML3LVALIZADA&apos;, ip: &apos;10.169.7.20&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;x86&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_181&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.99, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\AMDOCS~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:53509}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: none, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 02f58133c0b319e457e80c5abceabc2c
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.project.stepdefs.Stepdefs.checkSSSandSSSAnswers(Stepdefs.java:504)
+	at ?.I check dijitalden basvuru avantajlari sss and dijitalden basvuru avantajlari sss answer at SSS headers at index 1(file:src/test/features/CBU_C2D.feature:55)
 </pre></div></td>
-<td>15</td>
-<td>com.project.runners.Runner@4f9a3314</td></tr>
+<td>105</td>
+<td>com.project.runners.Runner@1e9807f</td></tr>
 </table><p>
 </body>
 </html>
