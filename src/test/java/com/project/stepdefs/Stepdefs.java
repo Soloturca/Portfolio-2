@@ -199,7 +199,7 @@ public class Stepdefs {
     public void goBackToPreviousPage() {
         //go back to previous page
         oDriver.navigate().back();
-        CommonLib.waitSeconds(10);
+        CommonLib.waitSeconds(5);
     }
 
     @When("^(?:I )?click element: (\\w+(?: \\w+)*) at index (\\d+)")
@@ -223,99 +223,15 @@ public class Stepdefs {
         return flag;
     }
 
-    @Then("^I enter value text to (.*) at index (\\d+)")
-    public boolean enterOFRCode(String element, int index) throws InterruptedException {
-        WebElement object;
-        object = commonLib.waitElement(element, timeout, index);
-        boolean flag = false;
-        try {
-            if (object != null) {
-                object.click();
-                object.clear();
-                object.sendKeys(AutomationConstants.value);
-                System.out.println("The text has been entered:" + AutomationConstants.code);
-                Allure.addAttachment("The text has been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-
-                return true;
-            }
-        } catch (Exception e) {
-            Allure.addAttachment("The text has not been entered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-            Assert.fail("Could not entered the text:" + AutomationConstants.code);
-            flag = false;
-        }
-        return flag;
-    }
-
     @And("^I need to just wait")
     public void justWait() throws InterruptedException {
         Thread.sleep(10000);
     }
 
-    @Then("^I need to check if record is (more|less|equal) to (\\d+) for (.*)")
-    public boolean getCountWebTable2(String rule, int expectedCount, String element) {
-
-        boolean flag = false;
-        int rowCount = Integer.valueOf(commonLib.findElement(element, 1).getText().substring(13));
-        System.out.println("Record count: " + rowCount);
-
-        switch (rule) {
-            case "more":
-                if (rowCount > expectedCount) flag = true;
-                break;
-            case "less":
-                if (rowCount < expectedCount) flag = true;
-                break;
-            case "equal":
-                if (rowCount == expectedCount) flag = true;
-                break;
-            default:
-                flag = false;
-                break;
-        }
-
-        if (flag) {
-            System.out.println("Condition of " + rule + " than " + expectedCount + " is PASSED");
-        } else {
-            Allure.addAttachment("FAIL", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-            Assert.fail("Condition of " + rule + " than " + expectedCount + " is FAILED! Record count: " + rowCount);
-        }
-        return true;
-    }
-
-
     @When("^(?:I )?double click element: (\\w+(?: \\w+)*) at index (\\d+)")
     public void doubleClickElement(String element, int index) {
         WebElement object = commonLib.findElement(element, index);
         commonLib.doubleClickElement(object);
-    }
-
-    @When("^(?:I )?switch to child window")
-    public void switchToChildWindow() throws InterruptedException {
-        String MainWindow = oDriver.getWindowHandle();
-        int timeCount = 1;
-        do {
-            oDriver.getWindowHandles();
-            Thread.sleep(200);
-            timeCount++;
-            if (timeCount > 50) {
-                break;
-            }
-        }
-        while (oDriver.getWindowHandles().size() == 1);
-        Set<String> s1 = oDriver.getWindowHandles();
-        Iterator<String> i1 = s1.iterator();
-
-        while (i1.hasNext()) {
-            String ChildWindow = i1.next();
-            //System.out.println(ChildWindow + "******" + driver.getTitle());
-            if (!MainWindow.equalsIgnoreCase(ChildWindow)) {
-                // Switching to Child window
-                oDriver.switchTo().window(ChildWindow);
-                Thread.sleep(3000);
-                System.out.println("Switched to child window ID : " + ChildWindow);
-                break;
-            }
-        }
     }
 
     @Then("^(?:I )?get the value of (\\w+(?: \\w+)*) at index (\\d+)")
@@ -339,57 +255,6 @@ public class Stepdefs {
         return flag;
     }
 
-    @Then("^I confirm if element: (.*) equals to value from API Response")
-    public boolean checkStrings(String element) {
-        boolean flag = false;
-        switch (element) {
-            case "list price text area":
-                String object1 = commonLib.getTheItemValueFromAttribute(element, 1);
-
-                try {
-                    if (object1.equals(AutomationConstants.listPrice)) {
-                        System.out.println(element + " is: " + AutomationConstants.listPrice + " .");
-                        Allure.addAttachment(element + " is: " + AutomationConstants.listPrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-                        flag = true;
-                    }
-                } catch (Exception e) {
-                    Allure.addAttachment(element + " and " + AutomationConstants.listPrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-                    Assert.fail(element + " and " + AutomationConstants.listPrice + " are not equal.");
-                }
-                break;
-
-            case "sale price text area":
-                String object2 = commonLib.getTheItemValueFromAttribute(element, 1);
-
-                try {
-                    if (object2.equals(AutomationConstants.salePrice)) {
-                        System.out.println(element + " is: " + AutomationConstants.salePrice + " .");
-                        Allure.addAttachment(element + " is: " + AutomationConstants.salePrice + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-                    }
-                } catch (Exception e) {
-                    Allure.addAttachment(element + " and " + AutomationConstants.salePrice + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-                    Assert.fail(element + " and " + AutomationConstants.salePrice + " are not equal.");
-
-                }
-                break;
-
-            case "stock quantity":
-                String object3 = commonLib.getTheItemValueFromAttribute(element, 1);
-
-                try {
-                    if (object3.equals(AutomationConstants.quantity)) {
-                        System.out.println(element + " is: " + AutomationConstants.quantity + " .");
-                        Allure.addAttachment(element + " is: " + AutomationConstants.quantity + " .", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-                    }
-                } catch (Exception e) {
-                    Allure.addAttachment(element + " and " + AutomationConstants.quantity + " are not equal.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
-                    Assert.fail(element + " and " + AutomationConstants.quantity + " are not equal.");
-                }
-                break;
-        }
-        return flag;
-    }
-
     @Then("^(?:I )?get the text area information: (\\w+(?: \\w+)*) at index (\\d+)")
     public boolean getTextFromAttribute(String element, int index) {
         String object = commonLib.getTheItemValueFromAttribute(element, index);
@@ -397,7 +262,7 @@ public class Stepdefs {
         try {
             if (object != null) {
                 System.out.println(object);
-                AutomationConstants.value=object;
+                AutomationConstants.value = object;
                 Allure.addAttachment("Information gathered.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
                 return true;
             }
@@ -441,11 +306,6 @@ public class Stepdefs {
         Thread.sleep(1000);
     }
 
-    @When("I go back")
-    public void goBack() {
-        oDriver.navigate().back();
-    }
-
     @Then("^I verify (\\w+(?: \\w+)*) (exists|notExists) at index (\\d+)")
     public boolean verifyElementExistOrNot(String element, String rule, int index) {
         WebElement elementToSee = commonLib.checkElement(element, index);
@@ -475,40 +335,17 @@ public class Stepdefs {
     @Then("^I check number of elements for: (\\w+(?: \\w+)*) is (\\d+)")
     public void checkElementIs(String element, int count) {
         System.out.println(element);
-
         List<WebElement> elements = commonLib.findElements(element);
 
         if (elements.size() == count) {
             System.out.println("Number of " + element + " is " + count);
             Allure.addAttachment("Number of " + element + " is " + count, new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
+        } else {
+            System.out.println("Number of " + element + " is not" + count);
+            Allure.addAttachment("Number of " + element + " is not" + count, new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
         }
 
-    }
-
-
-    @Then("^I check (\\w+(?: \\w+)*) and (\\w+(?: \\w+)*) at (\\w+(?: \\w+)*) at index (\\d+)")
-    public void checkSSSandSSSAnswers(String element, String element1, String element2, int index) throws InterruptedException {
-        WebElement object;
-
-        List<WebElement> SSSHeaders = commonLib.findElements(element2);
-        System.out.println(SSSHeaders.size());
-        List<WebElement> questionList = commonLib.findElements(element);
-        List<WebElement> answerList = commonLib.findElements(element1);
-        System.out.println(questionList.size());
-        // for (int j=1;j<SSSHeaders.size()+1;j++){
-        clickElementA(element2, index);
-        for (int i = 0; i < questionList.size(); i++) {
-            object = questionList.get(i);
-            //System.out.println(object.getText());
-            object.click();
-            CommonLib.waitSeconds(3);
-            object = answerList.get(i);
-            //System.out.println(object.getText());
-            CommonLib.waitSeconds(3);
-        }
-
-        // }
     }
 
     @When("^(?:I )?click element with action: (\\w+(?: \\w+)*) at index (\\d+)")
@@ -536,12 +373,10 @@ public class Stepdefs {
 
     @Then("I check {string} contains {string} or {string} in {string} at index {int} for {string} at index {int}")
     public void checkTariffTypes(String tariffsType, String text, String text2, String tariffs, int index, String tariffForAge, int index2) throws InterruptedException {
-        // List<WebElement> tariffsList1 = commonLib.findElements(tariffs);
-        //System.out.println(tariffsList1.size()+"tarifs tab");
+
         clickElementA(tariffForAge, index2);
         clickElementA(tariffs, index);
         List<WebElement> tariffsList = commonLib.findElements(tariffsType);
-        //System.out.println(tariffsList.size()+" tarifes");
         CommonLib.waitSeconds(10);
         scrollToElement(tariffsType);
         try {
@@ -615,35 +450,34 @@ public class Stepdefs {
 
         List<WebElement> kullanimEsaslariList = commonLib.findElements(elementHeader);
         System.out.println(kullanimEsaslariList.size());
-        for (int i=2;i<=kullanimEsaslariList.size();i++){
-
+        for (int i = 2; i <= kullanimEsaslariList.size(); i++) {
             WebElement object = commonLib.findElement(elementHeader, i);
-            clickElementA(elementHeader,i);
+            clickElementA(elementHeader, i);
             CommonLib.waitSeconds(5);
             scrollToElement(elementDetail);
-            commonLib.checkElement(elementDetail,i);
+            commonLib.checkElement(elementDetail, i);
         }
     }
 
     @Then("^I check element: (.*) is (enabled|disabled)")
-    public void iCheckElementCampaignDescriptionIsEnabled(String element,String rule) {
+    public void iCheckElementCampaignDescriptionIsEnabled(String element, String rule) {
         WebElement object = commonLib.findElement(element, 1);
         boolean flag = false;
         switch (rule) {
             case "enabled":
-                if (object.isEnabled()==true) flag = true;
+                if (object.isEnabled() == true) flag = true;
                 System.out.println("Element is enable." + element);
                 Allure.addAttachment("Element is enable.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
                 break;
             case "disabled":
-                if (object.isEnabled()==false) flag = true;
+                if (object.isEnabled() == false) flag = true;
                 System.out.println("Element is disable." + element);
                 Allure.addAttachment("Element is disable.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
 
                 break;
             default:
-                flag=false;
+                flag = false;
                 break;
         }
     }
@@ -656,4 +490,21 @@ public class Stepdefs {
 
     }
 
+    @Then("^I check (\\w+(?: \\w+)*) and (\\w+(?: \\w+)*)")
+    public void checkDijitaldenBasvuruAvantajlariSssAndDijitaldenBasvuruAvantajlariSssAnswer(String questions, String answers) {
+        List<WebElement> questionList = commonLib.findElements(questions);
+        //System.out.println(questionList.size() + "questions");
+        List<WebElement> answerList = commonLib.findElements(answers);
+        //System.out.println(answerList.size() + "answers");
+        if (questionList.size() == answerList.size()) {
+            System.out.println("Questions and Answers checked.");
+            Allure.addAttachment("Questions and Answers checked.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+
+        } else {
+            System.out.println("Questions and Answers unsuccessfully checked.");
+            Allure.addAttachment("Questions and Answers unsuccessfully checked.", new ByteArrayInputStream(((TakesScreenshot) oDriver).getScreenshotAs(OutputType.BYTES)));
+
+        }
+    }
 }

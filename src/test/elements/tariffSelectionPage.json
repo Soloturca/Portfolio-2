@@ -8,12 +8,6 @@
       },
       "elements": [
         {
-          "tarife": "//app-tariff-card-rd[1]/div"
-        },
-        {
-          "tarife sec button": "//app-tariff-card-rd[1]//a[2]"
-        },
-        {
           "_comment": "laman",
           "select tariff buttons": "//a[contains(text(),'Se\u00E7')]"
         },
@@ -124,9 +118,6 @@
         {
           "_comment": "laman",
           "kullanim esaslari tariffs details": "//div[@class='title-side']"
-        },
-        {
-          "tarife sec button": "//*[@id=\"1061463\"]/div[2]/div[4]/a[2]"
         }
       ]
     }

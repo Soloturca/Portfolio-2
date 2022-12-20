@@ -4,15 +4,9 @@
       "pageInfo": {
         "pageName": "welcomePage",
         "parent": "",
-        "waitelement": ""
+        "waitelement": "welcome page text area"
       },
       "elements": [
-        {
-          "yeni faturali hat": "//a[contains(text(),'Yeni fatura')]"
-        },
-        {
-          "numarani tasi button": "//a[@class=\"button button--primary\" and contains(text(),'Numaran\u0131 Ta\u015F\u0131')]"
-        },
         {
           "_comment": "laman",
           "welcome page text area": "//span[@class='breadcrumbs__crumb breadcrumbs__crumb--current']"
@@ -47,7 +41,7 @@
         },
         {
           "_comment": "laman",
-          "SSS headers": "//a[@class='tablinks' or @class='tablinks active']"
+          "SSS headers": "//a[contains(@class, 'tablinks')]"
         },
         {
           "_comment": "laman",
@@ -67,19 +61,19 @@
         },
         {
           "_comment": "laman",
-          "dijitalden basvuru avantajlari sss": "//div[@id='dijitalden-basvuru-avantajlari']//div[@class='sss-item']"
+          "dijitalden basvuru avantajlari sss": "//div[@id='dijitalden-basvuru-avantajlari']//a[@class='accordion-vf']"
         },
         {
           "_comment": "laman",
-          "yeni numara almak sss": "//div[@id='yeni-numara-almak']//div[@class='sss-item']"
+          "yeni numara almak sss": "//div[@id='yeni-numara-almak']//a[@class='accordion-vf']"
         },
         {
           "_comment": "laman",
-          "numara tasimak sss": "//div[@id='numara-tasimak']//div[@class='sss-item']"
+          "numara tasimak sss": "//div[@id='numara-tasimak']//a[@class='accordion-vf']"
         },
         {
           "_comment": "laman",
-          "genel sss": "//div[@id='genel']//div[@class='sss-item']"
+          "genel sss": "//div[@id='genel']//a[@class='accordion-vf']"
         },
         {
           "_comment": "laman",
@@ -120,12 +114,6 @@
         {
           "_comment": "laman",
           "rating text area": "//app-starrate-popup//p[@class='popup-content-infotext']"
-        },
-        {
-          "Yeni Faturali Hat Al": "//a[contains(text(),'Yeni fatura')]"
-        },
-        {
-          "Numarani Tasi": "//a[contains(text(),'Numaran')]"
         }
       ]
     }

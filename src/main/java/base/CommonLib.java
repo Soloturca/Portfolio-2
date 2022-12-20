@@ -17,6 +17,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -162,6 +163,28 @@ public class CommonLib extends BaseTest{
         }
         return Long.parseLong(new String(digits));
     }
+    public static boolean waitElementVisible(WebDriver oDriver, WebElement element) {
+        boolean flag = false;
+        WebDriverWait wait = new WebDriverWait(oDriver, 90);
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            flag = true;
+        } catch (Exception e) {
+        }
+        return flag;
+    }
+
+    public static boolean scrollDownUntilSeenElement(WebDriver oDriver, WebElement element) {
+        boolean flag = false;
+        JavascriptExecutor js = (JavascriptExecutor) oDriver;
+        //This will scroll the page till the element is found
+        js.executeScript("arguments[0].scrollIntoView();", element);
+        if (CommonLib.waitElementVisible(oDriver, element)) {
+            flag = true;
+        }
+        return flag;
+    }
+
 
     public static void allureReport(String status, String message) {
         try {

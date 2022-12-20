@@ -1,14 +1,13 @@
 Feature: CBU_C2D
-
+@web
   #Laman
   @TEST-952954
   Scenario: Welcomepage
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
-    #Then I have to verify the text for: welcome page text area at index 1
     Then I wait welcome page text area element 20 seconds at index 1
 
-    #verify
+  #verify
     And I wait campaign with countdown element 20 seconds at index 1
 
     When I wait numarani tasi button element 20 seconds at index 1
@@ -18,10 +17,10 @@ Feature: CBU_C2D
     When I wait select tariff buttons element 20 seconds at index 1
     Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
-    #verify
+  #verify
     Then I wait hattimi vodafonea tasi tab element 20 seconds at index 1
-    When I go back
-    Then I go back
+    When I go back previous page
+    Then I go back previous page
 
     Then I see welcomePage page
     When I wait yeni faturali hat al button element 20 seconds at index 1
@@ -30,10 +29,10 @@ Feature: CBU_C2D
     When I wait select tariff buttons element 20 seconds at index 1
     Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
-    #verify
+  #verify
     Then I wait yeni hat satin al tab element 20 seconds at index 1
-    When I go back
-    Then I go back
+    When I go back previous page
+    Then I go back previous page
 
     When I see welcomePage page
     Then I wait campaigns in campaigns area element 20 seconds at index 1
@@ -46,16 +45,21 @@ Feature: CBU_C2D
     When I wait tarifeleri incele button element 20 seconds at index 1
     Then I click element: tarifeleri incele button at index 1
     Then I see tariffSelectionPage page
-    #verify
+  #verify
     And I wait tarifeler area element 20 seconds at index 1
-    When I go back
+    When I go back previous page
 
     Then I see welcomePage page
     Then I check number of elements for: SSS headers is 4
-    Then I check dijitalden basvuru avantajlari sss and dijitalden basvuru avantajlari sss answer at SSS headers at index 1
-    Then I check yeni numara almak sss and yeni numara almak sss answer at SSS headers at index 2
-    Then I check numara tasimak sss and numara tasimak sss answer at SSS headers at index 3
-    Then I check genel sss and genel sss answer at SSS headers at index 4
+    Then I click element: SSS headers at index 1
+    Then I check dijitalden basvuru avantajlari sss and dijitalden basvuru avantajlari sss answer
+    Then I click element: SSS headers at index 2
+    Then I check yeni numara almak sss and yeni numara almak sss answer
+    Then I click element: SSS headers at index 3
+    Then I check numara tasimak sss and numara tasimak sss answer
+    Then I click element: SSS headers at index 4
+    Then I check genel sss and genel sss answer
+
 
     When I wait star rating area element 20 seconds at index 1
     #verify
@@ -65,10 +69,10 @@ Feature: CBU_C2D
     Then I see lineProcessesPage page
     #verify
     Then I wait hattimi vodafonea tasi tab element 20 seconds at index 1
-    Then I go back
+    Then I go back previous page
     When I see welcomePage page
     And I wait tarifeyi degerlendir button element 20 seconds at index 1
-    Then I click element with action: tarifeyi degerlendir button at index 1
+    Then I click element: tarifeyi degerlendir button at index 1
     When I wait stars in rating popup element 20 seconds at index 1
     Then I click element: stars in rating popup at index 1
     Then I need to just wait
@@ -123,7 +127,7 @@ Feature: CBU_C2D
     And I click element: kapat button at index 1
     When I click element: detaylari goster button at index 1
     Then I click element: tarifeyi sec button at index 1
-    When I go back
+    When I go back previous page
     Then I click element: detaylari goster button at index 1
     Then I click element: popup close button at index 1
 
@@ -131,16 +135,19 @@ Feature: CBU_C2D
     Then I see lineProcessesPage page
     And I wait hattimi vodafonea tasi tab element 20 seconds at index 1
 
-    When I go back
+    When I go back previous page
     Then I see tariffSelectionPage page
     When I click daha fazla goster button and check 6 tariffs added to tariffs
 
-
     Then I check number of elements for: SSS headers is 4
-    Then I check dijitalden basvuru avantajlari sss and dijitalden basvuru avantajlari sss answer at SSS headers at index 1
-    Then I check yeni numara almak sss and yeni numara almak sss answer at SSS headers at index 2
-    Then I check numara tasimak sss and numara tasimak sss answer at SSS headers at index 3
-    Then I check genel sss and genel sss answer at SSS headers at index 4
+    Then I click element: SSS headers at index 1
+    Then I check dijitalden basvuru avantajlari sss and dijitalden basvuru avantajlari sss answer
+    Then I click element: SSS headers at index 2
+    Then I check yeni numara almak sss and yeni numara almak sss answer
+    Then I click element: SSS headers at index 3
+    Then I check numara tasimak sss and numara tasimak sss answer
+    Then I click element: SSS headers at index 4
+    Then I check genel sss and genel sss answer
 
     When I click element with action: kullanim esaslari button at index 1
     Then I click element kullanim esaslari tariffs header and check kullanim esaslari tariffs details
@@ -171,7 +178,7 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see tariffSelectionPage page
     Then I need to just wait
-    Then I go back
+    Then I go back previous page
     Then I need to just wait
     Then I see idInfoPage page
     Then I enter "Ali" text to name input area at index 1
@@ -213,7 +220,7 @@ Feature: CBU_C2D
     And I click element: vodafone logo at index 1
     Then I see welcomePage page
     Then I wait welcome page text area element 20 seconds at index 1
-    Then I go back
+    Then I go back previous page
     Then I see lineProcessesPage page
 
     When I wait number entry area element 20 seconds at index 1
@@ -239,7 +246,7 @@ Feature: CBU_C2D
     Then I click element: onayla ve devam et button at index 1
     Then I see idInfoPage page
 
-    When I go back
+    When I go back previous page
     Then I see lineProcessesPage page
     Then I wait yeni hat satin al tab element 20 seconds at index 1
     And I click element: yeni hat satin al tab at index 1
@@ -315,13 +322,12 @@ Feature: CBU_C2D
     Then I enter "1111" text to onay kodu input area at index 1
     Then I click element: onayla ve devam et button at index 1
 
-
     Then I wait active road map element 20 seconds at index 1
 
     Then I wait vodafone logo element 20 seconds at index 1
     And I click element: vodafone logo at index 1
     Then I see welcomePage page
-    Then I go back
+    Then I go back previous page
 
     When I see idInfoPage page
     Then I wait name input area element 20 seconds at index 1
@@ -362,16 +368,14 @@ Feature: CBU_C2D
     And I click element: devam et button at index 1
 
     Then I need to just wait
-    When I go back
-   #Then I enter value text to number entry area at index 1
-   # When I click element: onay kodu gonder button at index 1
+    When I go back previous page
     Then I see idInfoPage page
     Then I wait line owner warning area element 20 seconds at index 1
     Then I wait no button element 20 seconds at index 1
     And I wait yes button element 20 seconds at index 1
     When I click element: yes button at index 1
     Then I see addressInfoPage page
-    Then I go back
+    Then I go back previous page
     Then I see idInfoPage page
     When I click element: no button at index 1
     Then I enter "Ali" text to name input area at index 1
@@ -379,7 +383,6 @@ Feature: CBU_C2D
     Then I enter "58919081214" text to tc input area at index 1
     Then I enter "Ali" text to father name input area at index 1
     Then I enter "03031998" text to birth date input area at index 1
-
 
     When I check number of elements for: basvuru ozeti areas is 4
     Then I wait tariff name text area element 20 seconds at index 2
@@ -398,45 +401,43 @@ Feature: CBU_C2D
     Then I need to just wait
 
 
-
+@Akif
 
 #Akif's Cases
   @TEST-953024
   Scenario: Istenen Numarayla Magazaya Teslim NL Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
-    And I wait Yeni Faturali Hat Al element 10 seconds at index 1
-    When I click element: Yeni Faturali Hat Al at index 1
+    And I wait yeni faturali hat al button element 10 seconds at index 1
+    When I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 10 seconds at index 1
-    When I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 10 seconds at index 1
+    When I click element: select tariff buttons at index 1
     And I need to just wait
     Then I see lineProcessesPage page
-    And I wait son7 hane text area element 10 seconds at index 1
-    When I click element: son7 hane text area at index 1
-    Then I enter "3333333" text to son7 hane text area at index 1
-    And I wait arabutton element 10 seconds at index 1
-    When I click element: arabutton at index 1
-    And I wait ilknumarabox element 10 seconds at index 1
-    When I click element: ilknumarabox at index 1
-    And I wait devametbutton element 10 seconds at index 1
-    When I click element: devametbutton at index 1
-    And I wait onaykodunumara text area element 10 seconds at index 1
-    Then I enter onaykodunumara text area random telephone number to at index 1
-    And I wait onaykodugonderbutton element 10 seconds at index 1
-    When I click element: onaykodugonderbutton at index 1
-    And I wait otp text area element 10 seconds at index 1
-    Then I enter "1111" text to otp text area at index 1
+    And I wait 7 hane text area element 10 seconds at index 1
+    When I click element: 7 hane text area at index 1
+    Then I enter "3333333" text to 7 hane text area at index 1
+    And I wait ara button element 10 seconds at index 1
+    When I click element: ara button at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
+    And I wait number entry area element 10 seconds at index 1
+    Then I enter number entry area random telephone number to at index 1
+    And I wait onay kodu gonder button element 10 seconds at index 1
+    When I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 10 seconds at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
     And I wait onayla ve devam et button element 10 seconds at index 1
     When I click element: onayla ve devam et button at index 1
     Then I see idInfoPage page
     #And I wait bu kisi ile devam et button element 10 seconds at index 1
     #When I click element: bu kisi ile devam et button at index 1
 #    Kimlik bilgileri sistemde kayıtlı. Kayıtlı kişi kullanılsın seçilip devam edildi. Kullanılan bilgiler aşağıdaki bilgilerdir.
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
-    And I wait soyad element 10 seconds at index 1
-    Then I enter "ALİ" text to soyad at index 1
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    And I wait surname input area element 10 seconds at index 1
+    Then I enter "ALİ" text to surname input area at index 1
     And I wait tckn element 10 seconds at index 1
     Then I enter "58919081214" text to tckn at index 1
     And I wait babaadi element 10 seconds at index 1
@@ -470,21 +471,21 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     And I need to just wait
-    And I wait Numarani Tasi element 10 seconds at index 1
-    When I click element: Numarani Tasi at index 1
+    And I wait numarani tasi button element 10 seconds at index 1
+    When I click element: numarani tasi button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 10 seconds at index 1
-    When I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 10 seconds at index 1
+    When I click element: select tariff buttons at index 1
     And I need to just wait
     Then I see lineProcessesPage page
-    And I wait tasimak istediginiz numara text area element 10 seconds at index 1
-    Then I enter tasimak istediginiz numara text area random telephone number to at index 1
-    And I wait tasinan numara gonder button element 10 seconds at index 1
-    When I click element: tasinan numara gonder button at index 1
-    And I wait tasima otp kod gonder button element 10 seconds at index 1
-    Then I enter "1111" text to tasima otp kod gonder button at index 1
-    And I wait tasima onayla ve devam et button element 10 seconds at index 1
-    When I click element: tasima onayla ve devam et button at index 1
+    And I wait number entry area element 10 seconds at index 1
+    Then I enter number entry area random telephone number to at index 1
+    And I wait onay kodu gonder button element 10 seconds at index 1
+    When I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 10 seconds at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 10 seconds at index 1
+    When I click element: onayla ve devam et button at index 1
     And I need to just wait
 
 
@@ -493,24 +494,24 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     And I need to just wait
-    And I wait Numarani Tasi element 10 seconds at index 1
-    When I click element: Numarani Tasi at index 1
+    And I wait numarani tasi button element 10 seconds at index 1
+    When I click element: numarani tasi button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 10 seconds at index 1
-    When I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 10 seconds at index 1
+    When I click element: select tariff buttons at index 1
     And I need to just wait
     Then I see lineProcessesPage page
-    And I wait tasimak istediginiz numara text area element 10 seconds at index 1
-    Then I enter tasimak istediginiz numara text area random telephone number to at index 1
-    And I wait tasinan numara gonder button element 10 seconds at index 1
-    When I click element: tasinan numara gonder button at index 1
-    And I wait tasima otp kod gonder button element 10 seconds at index 1
-    Then I enter "1111" text to tasima otp kod gonder button at index 1
-    And I wait tasima onayla ve devam et button element 10 seconds at index 1
-    When I click element: tasima onayla ve devam et button at index 1
+    And I wait number entry area element 10 seconds at index 1
+    Then I enter number entry area random telephone number to at index 1
+    And I wait onay kodu gonder button element 10 seconds at index 1
+    When I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 10 seconds at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 10 seconds at index 1
+    When I click element: onayla ve devam et button at index 1
     Then I see idInfoPage page
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
     And I wait soyad element 10 seconds at index 1
     Then I enter "ALİ" text to soyad at index 1
     And I wait tckn element 10 seconds at index 1
@@ -528,24 +529,24 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     And I need to just wait
-    And I wait Numarani Tasi element 10 seconds at index 1
-    When I click element: Numarani Tasi at index 1
+    And I wait numarani tasi button element 10 seconds at index 1
+    When I click element: numarani tasi button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 10 seconds at index 1
-    When I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 10 seconds at index 1
+    When I click element: select tariff buttons at index 1
     And I need to just wait
     Then I see lineProcessesPage page
-    And I wait tasimak istediginiz numara text area element 10 seconds at index 1
-    Then I enter tasimak istediginiz numara text area random telephone number to at index 1
-    And I wait tasinan numara gonder button element 10 seconds at index 1
-    When I click element: tasinan numara gonder button at index 1
-    And I wait tasima otp kod gonder button element 10 seconds at index 1
-    Then I enter "1111" text to tasima otp kod gonder button at index 1
-    And I wait tasima onayla ve devam et button element 10 seconds at index 1
-    When I click element: tasima onayla ve devam et button at index 1
+    And I wait number entry area element 10 seconds at index 1
+    Then I enter number entry area random telephone number to at index 1
+    And I wait onay kodu gonder button element 10 seconds at index 1
+    When I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 10 seconds at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 10 seconds at index 1
+    When I click element: onayla ve devam et button at index 1
     Then I see idInfoPage page
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
     And I wait soyad element 10 seconds at index 1
     Then I enter "ALİ" text to soyad at index 1
     And I wait tckn element 10 seconds at index 1
@@ -581,18 +582,18 @@ Feature: CBU_C2D
     And I wait numarani tasi button element 30 seconds at index 1
     Then I click element: numarani tasi button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
 
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text 2 element 30 seconds at index 1
-    Then I click element: confirmation code text 2 at index 1
-    Then I enter "1111" text to confirmation code text 2 at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
 
     Then I see idInfoPage page
@@ -635,18 +636,18 @@ Feature: CBU_C2D
     And I wait numarani tasi button element 30 seconds at index 1
     Then I click element: numarani tasi button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
 
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text 2 element 30 seconds at index 1
-    Then I click element: confirmation code text 2 at index 1
-    Then I enter "1111" text to confirmation code text 2 at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
 
     Then I see idInfoPage page
@@ -700,18 +701,18 @@ Feature: CBU_C2D
     And I wait numarani tasi button element 30 seconds at index 1
     Then I click element: numarani tasi button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
 
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text 2 element 30 seconds at index 1
-    Then I click element: confirmation code text 2 at index 1
-    Then I enter "1111" text to confirmation code text 2 at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
 
     Then I see idInfoPage page
@@ -753,24 +754,22 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     Then I need to just wait
-    And I wait yeni faturali hat element 30 seconds at index 1
-    Then I click element: yeni faturali hat at index 1
+    And I wait yeni faturali hat al button element 30 seconds at index 1
+    Then I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I click element: random no radio button at index 2
-    And I wait random telephone no element 30 seconds at index 1
-    Then I click element: random telephone no at index 1
+    Then I click element: yeni hat satin al options at index 2
     Then I click element: continue button at index 1
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text 2 element 30 seconds at index 1
-    Then I click element: confirmation code text 2 at index 1
-    Then I enter "1111" text to confirmation code text 2 at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
 
     Then I see idInfoPage page
@@ -812,26 +811,24 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     Then I need to just wait
-    And I wait yeni faturali hat element 30 seconds at index 1
-    Then I click element: yeni faturali hat at index 1
+    And I wait yeni faturali hat al button element 30 seconds at index 1
+    Then I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I click element: random no radio button at index 2
-    And I wait random telephone no element 30 seconds at index 1
-    Then I click element: random telephone no at index 1
+    Then I click element: yeni hat satin al options at index 2
     Then I click element: continue button at index 1
-    And I wait telephone number element 30 seconds at index 1
-    Then I click element: telephone number at index 1
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text element 30 seconds at index 1
-    Then I click element: confirmation code text at index 1
-    Then I enter "1111" text to confirmation code text at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    And I wait number entry area element 30 seconds at index 1
+    Then I click element: number entry area at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
     Then I see idInfoPage page
     Then I click element: name at index 1
@@ -912,26 +909,24 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     Then I need to just wait
-    And I wait yeni faturali hat element 30 seconds at index 1
-    Then I click element: yeni faturali hat at index 1
+    And I wait yeni faturali hat al button element 30 seconds at index 1
+    Then I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I click element: random no radio button at index 2
-    And I wait random telephone no element 30 seconds at index 1
-    Then I click element: random telephone no at index 1
-    Then I click element: continue button at index 1
-    And I wait telephone number element 30 seconds at index 1
-    Then I click element: telephone number at index 1
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text element 30 seconds at index 1
-    Then I click element: confirmation code text at index 1
-    Then I enter "1111" text to confirmation code text at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I click element: yeni hat satin al options at index 2
+    Then I click element: devam et button at index 1
+    And I wait number entry area element 30 seconds at index 1
+    Then I click element: number entry area at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
     Then I see idInfoPage page
     Then I click element: name at index 1
@@ -973,30 +968,28 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     Then I need to just wait
-    And I wait yeni faturali hat element 30 seconds at index 1
-    Then I click element: yeni faturali hat at index 1
+    And I wait yeni faturali hat al button element 30 seconds at index 1
+    Then I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I click element: search no radio button at index 1
-    And I wait last seven digits element 30 seconds at index 1
-    Then I click element: last seven digits at index 1
-    Then I enter last seven digits random seven digits to at index 1
-    Then I click element: search button at index 1
-    And I wait select telephone no element 30 seconds at index 1
-    Then I click element: select telephone no at index 1
-    Then I click element: continue button 2 at index 1
-    And I wait telephone number element 30 seconds at index 1
-    Then I click element: telephone number at index 1
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text element 30 seconds at index 1
-    Then I click element: confirmation code text at index 1
-    Then I enter "1111" text to confirmation code text at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I click element: yeni hat satin al options at index 1
+    And I wait 7 hane text area element 30 seconds at index 1
+    Then I click element: 7 hane text area at index 1
+    Then I enter 7 hane text area random seven digits to at index 1
+    Then I click element: ara button at index 1
+    Then I click element: devam et button at index 1
+    And I wait number entry area element 30 seconds at index 1
+    Then I click element: number entry area at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
     Then I see idInfoPage page
     Then I click element: name at index 1
@@ -1055,30 +1048,28 @@ Feature: CBU_C2D
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     Then I need to just wait
-    And I wait yeni faturali hat element 30 seconds at index 1
-    Then I click element: yeni faturali hat at index 1
+    And I wait yeni faturali hat al button element 30 seconds at index 1
+    Then I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 30 seconds at index 1
-    Then I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 30 seconds at index 1
+    Then I click element: select tariff buttons at index 1
     Then I see lineProcessesPage page
     Then I need to just wait
-    Then I click element: search no radio button at index 1
-    And I wait last seven digits element 30 seconds at index 1
-    Then I click element: last seven digits at index 1
-    Then I enter last seven digits random seven digits to at index 1
-    Then I click element: search button at index 1
-    And I wait select telephone no element 30 seconds at index 1
-    Then I click element: select telephone no at index 1
-    Then I click element: continue button 2 at index 1
-    And I wait telephone number element 30 seconds at index 1
-    Then I click element: telephone number at index 1
-    Then I enter telephone number random telephone number to at index 1
-    Then I click element: send confirmation code button at index 1
-    And I wait confirmation code text element 30 seconds at index 1
-    Then I click element: confirmation code text at index 1
-    Then I enter "1111" text to confirmation code text at index 1
-    And I wait confirm ve continue button element 30 seconds at index 1
-    Then I click element: confirm ve continue button at index 1
+    Then I click element: yeni hat satin al options at index 1
+    And I wait 7 hane text area element 30 seconds at index 1
+    Then I click element: 7 hane text area at index 1
+    Then I enter 7 hane text area random seven digits to at index 1
+    Then I click element: ara button at index 1
+    Then I click element: devam et button at index 1
+    And I wait number entry area element 30 seconds at index 1
+    Then I click element: number entry area at index 1
+    Then I enter number entry area random telephone number to at index 1
+    Then I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 30 seconds at index 1
+    Then I click element: onay kodu input area at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
+    And I wait onayla ve devam et button element 30 seconds at index 1
+    Then I click element: onayla ve devam et button at index 1
     Then I need to just wait
     Then I see idInfoPage page
     Then I click element: name at index 1
