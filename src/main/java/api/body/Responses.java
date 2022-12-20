@@ -1,16 +1,13 @@
 package api.body;
 
 import api.baseMethods.BaseMethods;
-import api.paytionPojo.OriginatorInfo;
-import base.AutomationConstants;
-import base.CommonLib;
+import api.base.AutomationConstants;
+import api.base.CommonLib;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
-import java.util.Locale;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Responses extends BaseMethods {
 

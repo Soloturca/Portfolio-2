@@ -29,19 +29,19 @@
           "onaykodugonderbutton": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div[1]/app-new-msisdn/div[2]/div[2]/div/label/div/div/button"
         },
         {
-          "onaylaa ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-new-msisdn/div[2]/div[2]/div/form/div[2]/button"
+          "onayla ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-new-msisdn/div[2]/div[2]/div/form/div[2]/button"
         },
         {
           "tasimak istediginiz numara text area": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div[1]/app-mnp-msisdn/div[2]/div[2]/div/div/input"
         },
         {
+          "tasima onay kodu area": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-mnp-msisdn/div[2]/div[2]/div/div[1]/div[1]/div/input"
+        },
+        {
           "tasinan numara gonder button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div[1]/app-mnp-msisdn/div[2]/div[2]/div/label/div/div/button"
         },
         {
-          "tasima otp kod gonder button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-mnp-msisdn/div[2]/div[2]/div/form/div[1]/div[1]/div/input"
-        },
-        {
-          "tasima onayla ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-mnp-msisdn/div[2]/div[2]/div/form/div[2]/button"
+          "tasima onayla ve devam et button": "//*[@id=\"content\"]/div[3]/app-tariff-detail-bar/div[3]/section/div/div/div/div[1]/div/app-mnp-msisdn/div[2]/div[2]/div/div[2]/button"
         },
         {
           "random no radio button": "//span[@class=\"e-check\"]"

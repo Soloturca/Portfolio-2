@@ -1,6 +1,6 @@
 package com.project.runners;
 
-import base.BaseTest;
+import api.base.BaseTest;
 import com.project.listener.MyLocalVariables;
 import gherkin.pickles.PickleTag;
 import io.cucumber.testng.CucumberFeatureWrapper;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 @CucumberOptions(
         features = "src/test/features/",
-        tags = "@TEST-952954",
+        tags = "@TEST-953772",
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "json:target/cucumber-reports/Cucumber.json",
                 "junit:target/cucumber-reports/Cucumber.xml",

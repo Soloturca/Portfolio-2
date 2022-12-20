@@ -430,22 +430,22 @@ Feature: CBU_C2D
     And I wait onayla ve devam et button element 10 seconds at index 1
     When I click element: onayla ve devam et button at index 1
     Then I see idInfoPage page
-    #And I wait bu kisi ile devam et button element 10 seconds at index 1
-    #When I click element: bu kisi ile devam et button at index 1
+#    And I wait bu kisi ile devam et button element 10 seconds at index 1
+#    When I click element: bu kisi ile devam et button at index 1
 #    Kimlik bilgileri sistemde kayıtlı. Kayıtlı kişi kullanılsın seçilip devam edildi. Kullanılan bilgiler aşağıdaki bilgilerdir.
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
-    And I wait soyad element 10 seconds at index 1
-    Then I enter "ALİ" text to soyad at index 1
-    And I wait tckn element 10 seconds at index 1
-    Then I enter "58919081214" text to tckn at index 1
-    And I wait babaadi element 10 seconds at index 1
-    Then I enter "ALİ" text to babaadi at index 1
-    And I wait dogum tarihi element 10 seconds at index 1
-    Then I enter "03/03/1998" text to dogum tarihi at index 1
-    And I wait kimlikbilgisidevametbutton element 10 seconds at index 1
-    When I click element: kimlikbilgisidevametbutton at index 1
-    Then I see addressInfoPage page
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    And I wait surname input area element 10 seconds at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    And I wait tc input area element 10 seconds at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    And I wait father name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    And I wait birth date input area element 10 seconds at index 1
+    Then I enter "03/03/1998" text to birth date input area at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
+    Then I see deliveryPage page
     And I wait il element 10 seconds at index 1
     When I click element: il at index 1
     And I wait istanbul element 10 seconds at index 1
@@ -509,22 +509,22 @@ Feature: CBU_C2D
     And I wait tasima onayla ve devam et button element 10 seconds at index 1
     When I click element: tasima onayla ve devam et button at index 1
     Then I see idInfoPage page
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
-    And I wait soyad element 10 seconds at index 1
-    Then I enter "ALİ" text to soyad at index 1
-    And I wait tckn element 10 seconds at index 1
-    Then I enter "58919081214" text to tckn at index 1
-    And I wait babaadi element 10 seconds at index 1
-    Then I enter "ALİ" text to babaadi at index 1
-    And I wait dogum tarihi element 10 seconds at index 1
-    Then I enter "03/03/1998" text to dogum tarihi at index 1
-    And I wait kimlikbilgisidevametbutton element 10 seconds at index 1
-    When I click element: kimlikbilgisidevametbutton at index 1
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    And I wait surname input area element 10 seconds at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    And I wait tc input area element 10 seconds at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    And I wait father name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    And I wait birth date input area element 10 seconds at index 1
+    Then I enter "03/03/1998" text to birth date input area at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
 
 
   @TEST-953027
-  Scenario: Yarım Basvuru 2
+  Scenario: Yarım Basvuru 3
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
     And I need to just wait
@@ -539,24 +539,24 @@ Feature: CBU_C2D
     Then I enter tasimak istediginiz numara text area random telephone number to at index 1
     And I wait tasinan numara gonder button element 10 seconds at index 1
     When I click element: tasinan numara gonder button at index 1
-    And I wait tasima otp kod gonder button element 10 seconds at index 1
-    Then I enter "1111" text to tasima otp kod gonder button at index 1
+    And I wait tasima onay kodu area element 10 seconds at index 1
+    Then I enter "1111" text to tasima onay kodu area at index 1
     And I wait tasima onayla ve devam et button element 10 seconds at index 1
     When I click element: tasima onayla ve devam et button at index 1
     Then I see idInfoPage page
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
-    And I wait soyad element 10 seconds at index 1
-    Then I enter "ALİ" text to soyad at index 1
-    And I wait tckn element 10 seconds at index 1
-    Then I enter "58919081214" text to tckn at index 1
-    And I wait babaadi element 10 seconds at index 1
-    Then I enter "ALİ" text to babaadi at index 1
-    And I wait dogum tarihi element 10 seconds at index 1
-    Then I enter "03/03/1998" text to dogum tarihi at index 1
-    And I wait kimlikbilgisidevametbutton element 10 seconds at index 1
-    When I click element: kimlikbilgisidevametbutton at index 1
-    Then I see addressInfoPage page
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    And I wait surname input area element 10 seconds at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    And I wait tc input area element 10 seconds at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    And I wait father name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    And I wait birth date input area element 10 seconds at index 1
+    Then I enter "03/03/1998" text to birth date input area at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
+    Then I see deliveryPage page
     And I wait il element 10 seconds at index 1
     When I click element: il at index 1
     And I wait istanbul element 10 seconds at index 1
@@ -596,18 +596,18 @@ Feature: CBU_C2D
     Then I need to just wait
 
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
 
     Then I see addressInfoPage page
@@ -650,18 +650,18 @@ Feature: CBU_C2D
     Then I need to just wait
 
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
 
     Then I see addressInfoPage page
@@ -715,18 +715,18 @@ Feature: CBU_C2D
     Then I need to just wait
 
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
 
     Then I see addressInfoPage page
@@ -774,18 +774,18 @@ Feature: CBU_C2D
     Then I need to just wait
 
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
 
     Then I see addressInfoPage page
@@ -834,18 +834,18 @@ Feature: CBU_C2D
     Then I click element: confirm ve continue button at index 1
     Then I need to just wait
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
@@ -934,18 +934,18 @@ Feature: CBU_C2D
     Then I click element: confirm ve continue button at index 1
     Then I need to just wait
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery selection element 15 seconds at index 1
@@ -999,18 +999,18 @@ Feature: CBU_C2D
     Then I click element: confirm ve continue button at index 1
     Then I need to just wait
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
@@ -1081,18 +1081,18 @@ Feature: CBU_C2D
     Then I click element: confirm ve continue button at index 1
     Then I need to just wait
     Then I see idInfoPage page
-    Then I click element: name at index 1
-    Then I enter "ALİ" text to name at index 1
-    Then I click element: surname at index 1
-    Then I enter "ALİ" text to surname at index 1
-    Then I click element: ID at index 1
-    Then I enter "58919081214" text to ID at index 1
-    Then I click element: father name at index 1
-    Then I enter "ALİ" text to father name at index 1
-    Then I click element: date of birth at index 1
-    Then I enter "03031998" text to date of birth at index 1
-    And I wait id information continue button element 30 seconds at index 1
-    Then I click element: id information continue button at index 1
+    Then I click element: name input area at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    Then I click element: surname input area at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    Then I click element: tc input area at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    Then I click element: father name input area at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    Then I click element: birth date input area at index 1
+    Then I enter "03031998" text to birth date input area at index 1
+    And I wait devam et button element 30 seconds at index 1
+    Then I click element: devam et button at index 1
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
@@ -1152,3 +1152,182 @@ Feature: CBU_C2D
     And I wait courier button element 30 seconds at index 1
     Then I click element: courier button at index 1
     And I wait continue with courier element 30 seconds at index 1
+
+#  mvn clean -Dtestname="TEST-953772" test
+  @TEST-953772
+  Scenario: Adres Bilgisi
+    Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
+    Then I see welcomePage page
+    And I wait Yeni Faturali Hat Al element 10 seconds at index 1
+    When I click element: Yeni Faturali Hat Al at index 1
+    Then I see tariffSelectionPage page
+    And I wait tarife sec button element 10 seconds at index 1
+    When I click element: tarife sec button at index 1
+    And I need to just wait
+    Then I see lineProcessesPage page
+    And I wait son7 hane text area element 10 seconds at index 1
+    When I click element: son7 hane text area at index 1
+    Then I enter "3333333" text to son7 hane text area at index 1
+    And I wait arabutton element 10 seconds at index 1
+    When I click element: arabutton at index 1
+    And I wait ilknumarabox element 10 seconds at index 1
+    When I click element: ilknumarabox at index 1
+    And I wait devametbutton element 10 seconds at index 1
+    When I click element: devametbutton at index 1
+    And I wait onaykodunumara text area element 10 seconds at index 1
+    Then I enter onaykodunumara text area random telephone number to at index 1
+    And I wait onaykodugonderbutton element 10 seconds at index 1
+    When I click element: onaykodugonderbutton at index 1
+    And I wait otp text area element 10 seconds at index 1
+    Then I enter "1111" text to otp text area at index 1
+    And I wait onayla ve devam et button element 10 seconds at index 1
+    When I click element: onayla ve devam et button at index 1
+    Then I see idInfoPage page
+    And I wait ad element 10 seconds at index 1
+    Then I enter "ALİ" text to ad at index 1
+    And I wait surname input area element 10 seconds at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    And I wait tc input area element 10 seconds at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    And I wait father name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    And I wait birth date input area element 10 seconds at index 1
+    Then I enter "03/03/1998" text to birth date input area at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
+    And I need to just wait
+    Then I see deliveryPage page
+    Then I wait active road map element 20 seconds at index 1
+    Then I wait vodafone logo element 20 seconds at index 1
+    And I click element: vodafone logo at index 1
+    And I need to just wait
+    Then I see welcomePage page
+    Then I go back
+    Then I see deliveryPage page
+    And I wait Adresime gelsin button active element 10 seconds at index 1
+    And I wait Adres text area element 10 seconds at index 1
+    And I wait il element 10 seconds at index 1
+    And I wait ilce element 10 seconds at index 1
+    And I wait mahalle element 10 seconds at index 1
+    And I wait eposta element 10 seconds at index 1
+    Then I check element: Devam et button is disabled
+    And I wait il element 10 seconds at index 1
+    When I click element: il at index 1
+    And I wait istanbul element 10 seconds at index 1
+    When I click element: istanbul at index 1
+    And I wait fatih element 10 seconds at index 1
+    When I click element: fatih at index 1
+    And I wait topkapi element 10 seconds at index 1
+    When I click element: topkapi at index 1
+    And I wait adres element 10 seconds at index 1
+    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to adres at index 1
+    And I wait eposta element 10 seconds at index 1
+    Then I enter "muhibbi@yahoo.com" text to eposta at index 1
+    And I wait adresdevametbutton element 10 seconds at index 1
+    When I click element: adresdevametbutton at index 1
+    Then I wait active road map element 20 seconds at index 1
+    Then I see confirmationPage page
+    And I wait basvuru ozeti element 10 seconds at index 1
+    And I wait basvuru ozeti i button element 10 seconds at index 1
+    When I click element: basvuru ozeti i button at index 1
+    And I wait kapat button element 10 seconds at index 1
+    And I wait cross button element 10 seconds at index 1
+    When I click element: cross button at index 1
+    And I wait Hayir kurye element 10 seconds at index 1
+    And I wait edevlete git element 10 seconds at index 1
+    When I click element: edevlete git at index 1
+    And I wait edevlet loading message element 10 seconds at index 1
+    Then I go back
+    Then I see deliveryPage page
+    And I wait il element 10 seconds at index 1
+    When I click element: il at index 1
+    And I wait istanbul element 10 seconds at index 1
+    When I click element: istanbul at index 1
+    And I wait fatih element 10 seconds at index 1
+    When I click element: fatih at index 1
+    And I wait topkapi element 10 seconds at index 1
+    When I click element: topkapi at index 1
+    And I wait adres element 10 seconds at index 1
+    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to adres at index 1
+    And I wait eposta element 10 seconds at index 1
+    Then I enter "muhibbi@yahoo.com" text to eposta at index 1
+    And I wait adresdevametbutton element 10 seconds at index 1
+    When I click element: adresdevametbutton at index 1
+    Then I see confirmationPage page
+    And I wait Hayir kurye element 10 seconds at index 1
+    When I click element: Hayir kurye at index 1
+    And I wait Basvuru alindi element 10 seconds at index 1
+    And I wait basvuru ozeti i button element 10 seconds at index 1
+    When I click element: basvuru ozeti i button at index 1
+    And I wait kapat button element 10 seconds at index 1
+    And I wait cross button element 10 seconds at index 1
+    When I click element: cross button at index 1
+    Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/adres_bilgileri URL
+    Then I see deliveryPage page
+    And I wait Magazadan alacagim button element 10 seconds at index 1
+    When I click element: Magazadan alacagim button at index 1
+    And I wait billAddress element 10 seconds at index 1
+    And I wait bill eposta element 10 seconds at index 1
+    And I wait bill il element 10 seconds at index 1
+    And I wait bill ilce element 10 seconds at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    And I wait bill eposta element 10 seconds at index 1
+    Then I check element: Devam et button is disabled
+    And I wait bill il element 10 seconds at index 1
+    When I click element: bill il at index 1
+    And I wait bill istanbul element 10 seconds at index 1
+    When I click element: bill istanbul at index 1
+    And I wait bill fatih element 10 seconds at index 1
+    When I click element: bill fatih at index 1
+    And I wait bill topkapi element 10 seconds at index 1
+    When I click element: bill topkapi at index 1
+    And I wait bill adres element 10 seconds at index 1
+    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to bill adres at index 1
+    And I wait bill eposta element 10 seconds at index 1
+    Then I enter "muhibbi@yahoo.com" text to bill eposta at index 1
+    And I wait adresdevametbutton element 10 seconds at index 1
+    When I click element: adresdevametbutton at index 1
+    Then I see confirmationPage page
+    And I wait bill basvuru kimlik uyarı message element 10 seconds at index 1
+    And I wait basvuru ozeti element 10 seconds at index 1
+    And I wait basvuru ozeti i button element 10 seconds at index 1
+    When I click element: basvuru ozeti i button at index 1
+    And I wait kapat button element 10 seconds at index 1
+    And I wait cross button element 10 seconds at index 1
+    When I click element: cross button at index 1
+    And I wait ana sayfaya git button element 10 seconds at index 1
+    When I click element: ana sayfaya git button at index 1
+    Then I go back
+    Then I go back
+    And I wait degistir button element 10 seconds at index 1
+    When I click element: degistir button at index 1
+    Then I see tariffSelectionPage page
+    And I wait baska tarife sec after degistir button element 10 seconds at index 1
+    When I click element: baska tarife sec after degistir button at index 1
+    Then I see idInfoPage page
+    And I wait name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to name input area at index 1
+    And I wait surname input area element 10 seconds at index 1
+    Then I enter "ALİ" text to surname input area at index 1
+    And I wait tc input area element 10 seconds at index 1
+    Then I enter "58919081214" text to tc input area at index 1
+    And I wait father name input area element 10 seconds at index 1
+    Then I enter "ALİ" text to father name input area at index 1
+    And I wait birth date input area element 10 seconds at index 1
+    Then I enter "03/03/1998" text to birth date input area at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
+    And I need to just wait
+    Then I see lineProcessesPage page
+    And I wait onaykodunumara text area element 10 seconds at index 1
+    Then I enter onaykodunumara text area random telephone number to at index 1
+    And I wait onaykodugonderbutton element 10 seconds at index 1
+    When I click element: onaykodugonderbutton at index 1
+    And I wait otp text area element 10 seconds at index 1
+    Then I enter "1111" text to otp text area at index 1
+    And I wait onayla ve devam et button element 10 seconds at index 1
+    When I click element: onayla ve devam et button at index 1
+
+
+
+

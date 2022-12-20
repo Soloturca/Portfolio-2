@@ -8,36 +8,6 @@
       },
       "elements": [
         {
-          "il": "//*[@id=\"deliveryCitiesSelect\"]/img"
-        },
-        {
-          "delivery selection": "//h3[contains(text(),'Teslimat se\u00E7imi')]"
-        },
-        {
-          "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
-        },
-        {
-          "istanbul": "//*[@id=\"deliveryCities\"]/label[1]/span[2]"
-        },
-        {
-          "fatih": "//*[@id=\"deliveryDistricts\"]/label[20]/span[2]"
-        },
-        {
-          "topkapi": "//*[@id=\"deliveryNeighborhoods\"]/label[60]/span[2]"
-        },
-        {
-          "adres": "//*[@id=\"address\"]"
-        },
-        {
-          "eposta": "//*[@id=\"eposta\"]"
-        },
-        {
-          "adresdevametbutton": "//div[@class='component__source']//button[.=' Devam et '] "
-        },
-        {
-          "kuryebutton": "//a[contains(text(), 'kurye gel')]"
-        },
-        {
           "city": "//div[@id='deliveryCitiesSelect']/input[@type='text']"
         },
         {

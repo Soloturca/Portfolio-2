@@ -1,6 +1,6 @@
 package db;
 
-import base.AutomationConstants;
+import api.base.AutomationConstants;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

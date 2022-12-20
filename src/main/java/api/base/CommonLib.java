@@ -1,4 +1,4 @@
-package base;
+package api.base;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;

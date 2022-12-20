@@ -1,6 +1,6 @@
 package api.body;
 
-import base.AutomationConstants;
+import api.base.AutomationConstants;
 
 public class Header {
     static io.restassured.http.Header header1 = new io.restassured.http.Header("Content-Type", "application/json");
