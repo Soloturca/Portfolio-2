@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Dec 19 16:04:10 EET 2022</td>
+<td>Started on:</td><td>Fri Dec 16 16:47:25 EET 2022</td>
 </tr>
-<tr><td>Total time:</td><td>155 seconds (155701 ms)</td>
+<tr><td>Total time:</td><td>262 seconds (262445 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,18 +67,28 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.project.runners.Runner.runScenario()'><b>runScenario</b><br>Test class: com.project.runners.Runner<br>Test method: Runs Cucumber Feature<br>Parameters: "Welcomepage", "CBU_C2D"</td>
-<td></td>
-<td>152</td>
-<td>com.project.runners.Runner@1e9807f</td></tr>
+<td title='com.project.runners.Runner.runScenario()'><b>runScenario</b><br>Test class: com.project.runners.Runner<br>Test method: Runs Cucumber Feature<br>Parameters: "Adres Bilgisi", "CBU_C2D"</td>
+<td><div><pre>java.lang.AssertionError: Waiting element is not found!
+	at api.base.CommonLib.waitElement(CommonLib.java:370)
+	at com.project.stepdefs.Stepdefs.waitElement(Stepdefs.java:193)
+	at ?.I wait bill fatih element 10 seconds at index 1(file:src/test/features/CBU_C2D.feature:1280)
+... Removed 1 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace975629453", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace975629453'><pre>java.lang.AssertionError: Waiting element is not found!
+	at org.testng.Assert.fail(Assert.java:97)
+	at api.base.CommonLib.waitElement(CommonLib.java:370)
+	at com.project.stepdefs.Stepdefs.waitElement(Stepdefs.java:193)
+	at ?.I wait bill fatih element 10 seconds at index 1(file:src/test/features/CBU_C2D.feature:1280)
+</pre></div></td>
+<td>257</td>
+<td>com.project.runners.Runner@1b68b9a4</td></tr>
 </table><p>
 </body>
 </html>

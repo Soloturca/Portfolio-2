@@ -6,7 +6,7 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static base.AutomationConstants.*;
+import static api.base.AutomationConstants.*;
 import static io.restassured.RestAssured.given;
 
 /**

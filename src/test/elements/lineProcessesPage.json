@@ -107,7 +107,6 @@
           "_comment": "laman",
           "basvuruya ozel text area": "//div[@class='basvuru-second']/span"
         }
-
       ]
     }
   ]

@@ -2,8 +2,8 @@ package api.baseMethods;
 
 
 import api.tokenMethods.OAUTH2GrantTypeTestCase;
-import base.AutomationConstants;
-import base.CommonLib;
+import api.base.AutomationConstants;
+import api.base.CommonLib;
 
 public class BaseMethods {
 

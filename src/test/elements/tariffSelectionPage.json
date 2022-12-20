@@ -118,6 +118,9 @@
         {
           "_comment": "laman",
           "kullanim esaslari tariffs details": "//div[@class='title-side']"
+        },
+        {
+          "baska tarife sec after degistir button": "//*[@id=\"1093128\"]/div[2]/div[4]/a[2]"
         }
       ]
     }

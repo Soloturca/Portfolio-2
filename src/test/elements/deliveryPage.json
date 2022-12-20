@@ -8,10 +8,105 @@
       },
       "elements": [
         {
+          "il": "//*[@id=\"deliveryCitiesSelect\"]/img"
+        },
+        {
+          "delivery selection": "//h3[contains(text(),'Teslimat se\u00E7imi')]"
+        },
+        {
+          "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
+        },
+        {
+          "istanbul": "//*[@id=\"deliveryCities\"]/label[1]/span[2]"
+        },
+        {
+          "fatih": "//*[@id=\"deliveryDistricts\"]/label[20]/span[2]"
+        },
+        {
+          "topkapi": "//*[@id=\"deliveryNeighborhoods\"]/label[60]/span[2]"
+        },
+        {
+          "adres": "//*[@id=\"address\"]"
+        },
+        {
+          "eposta": "//*[@id=\"eposta\"]"
+        },
+        {
+          "adresdevametbutton": "//div[@class='component__source']//button[.=' Devam et ']"
+        },
+        {
+          "kuryebutton": "//a[contains(text(), 'kurye gel')]"
+        },
+        {
           "confirmationQuestionTextArea": "//h3[contains(text(),'onaylamak')]"
         },
         {
           "confirmationSuccessfullyTextArea": "//h3[contains(text(),'tamam')]"
+        },
+        {
+          "_comment": "laman",
+          "active road map": "//a[@class='active']"
+        },
+        {
+          "_comment": "laman",
+          "vodafone logo": "//a[@class='vf-logo']"
+        },
+        {
+          "Adresime gelsin button active": "//a[@class='item active' and p[contains(text(),'Adresime gelsin')]]"
+        },
+        {
+          "Adres text area": "//*[@id=\"address\"]"
+        },
+        {
+          "il": "//*[@id=\"deliveryCitiesSelect\"]/input"
+        },
+        {
+          "ilce": "//*[@id=\"deliveryDistrictsSelect\"]/input"
+        },
+        {
+          "mahalle": "//*[@id=\"deliveryNeighborhoodsSelect\"]/input"
+        },
+        {
+          "eposta": "//*[@id=\"deliveryNeighborhoodsSelect\"]/input"
+        },
+        {
+          "Devam et button": "//button[contains(text(),'Devam et')]"
+        },
+        {
+          "Magazadan alacagim button": "//p[contains(text(),'Ma\u011Fazadan alaca\u011F\u0131m')]"
+        },
+        {
+          "billAddress": "//*[@id=\"billAddress\"]"
+        },
+        {
+          "bill eposta": "//*[@id=\"eposta\"]"
+        },
+        {
+          "bill il": "//*[@class=\"input-emr ng-pristine ng-valid ng-touched\"]"
+        },
+        {
+          "bill ilce": "//*[@class=\"input-emr ng-untouched ng-pristine\"]"
+        },
+        {
+          "bill mahalle": "//*[@id=\"billNeighborhoodsSelect\"]/input"
+        },
+        {
+          "bill adres": "//*[@id=\"billAddress\"]"
+        },
+        {
+          "bill eposta": "//*[@id=\"eposta\"]"
+        },
+        {
+          "bill istanbul": "//*[@id=\"billCities\"]/label[1]/span[2]"
+        },
+        {
+          "bill fatih": "//*[@id=\"billDistricts\"]/label[20]/span[2]"
+        },
+        {
+          "bill topkapi": "//*[@id=\"billNeighborhoods\"]/label[60]/span[2]"
+        },
+        {
+          "degistir button": "//a[@class=\"button button--primary basvuru-degistir-btn ng-star-inserted\"]"
         }
       ]
     }

@@ -8,7 +8,34 @@
       },
       "elements": [
         {
-
+          "basvuru ozeti": "//*[@class='text']"
+        },
+        {
+          "basvuru ozeti i button": "//*[@src='https://cms.vodafone.com.tr/static/img/content/22-05/19/ic-info-circle-red.png']"
+        },
+        {
+          "kapat button": "//*[contains(text(),'Kapat')]"
+        },
+        {
+          "cross button": "//*[@src='https://cms.vodafone.com.tr/static/img/content/22-03/02/ic-close.png']"
+        },
+        {
+          "edevlete git": "//a[@class='button button--primary' and contains(text(),'Evet')]"
+        },
+        {
+          "Hayir kurye": "//a[@class='button button--tertiary' and contains(text(),'Hay\u0131r')]"
+        },
+        {
+          "edevlet loading message": "//*[@class='loading-t-block']"
+        },
+        {
+          "Basvuru alindi": "//*[contains(text(),'Ba\u015Fvurunuz ba\u015Far\u0131yla tamamland\u0131.')]"
+        },
+        {
+          "bill basvuru kimlik uyarı message": "//*[contains(text(),'3 gün içerisinde')]"
+        },
+        {
+          "ana sayfaya git button": "//a[@class=\"button button--primary\"]"
         }
       ]
     }

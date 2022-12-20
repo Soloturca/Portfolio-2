@@ -1,6 +1,6 @@
 package api.body;
 
-import base.AutomationConstants;
+import api.base.AutomationConstants;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
