@@ -86,24 +86,6 @@
           "listNeighborhood": "//div[@id='deliveryNeighborhoods']/label"
         },
         {
-          "istanbulCity": "//span[contains(text(),'\u0130STANB\u0055L')]"
-        },
-        {
-          "ankaraCity": "//span[contains(text(),'ANKARA')]"
-        },
-        {
-          "adalarDistrict": "//span[contains(text(),'ADALAR')]"
-        },
-        {
-          "akyurtDistrict": "//span[contains(text(),'AKY\u0055RT')]"
-        },
-        {
-          "burgazadaStreet": "//span[contains(text(),'BURGAZADA')]"
-        },
-        {
-          "bozcaStreet": "//span[contains(text(),'BOZCA')]"
-        },
-        {
           "deliveryaddressTextArea": "//input[@id=\"address\"]"
         },
         {
@@ -132,6 +114,42 @@
         },
         {
           "bill address": "//h3[contains(text(),'Fatura adresi')]"
+        },
+        {
+          "il select area": "//*[@id=\"deliveryCitiesSelect\"]/img"
+        },
+        {
+          "all il selections": "//*[@id=\"deliveryCities\"]/label"
+        },
+        {
+          "ilce": "//*[@id=\"deliveryDistrictsSelect\"]/input"
+        },
+        {
+          "all ilce selections": "//*[@id=\"deliveryDistricts\"]/label"
+        },
+        {
+          "mahalle": "//*[@id=\"deliveryNeighborhoodsSelect\"]/input"
+        },
+        {
+          "all mahalle selections": "//*[@id=\"deliveryNeighborhoods\"]/label"
+        },
+        {
+          "bill il select area": "//*[@id=\"billCitiesSelect\"]/input"
+        },
+        {
+          "bill all il selections": "//*[@id=\"billCities\"]/label"
+        },
+        {
+          "bill ilce": "//*[@id=\"billDistrictsSelect\"]/input"
+        },
+        {
+          "bill all ilce selections": "//*[@id=\"billDistricts\"]/label"
+        },
+        {
+          "bill mahalle": "//*[@id=\"billNeighborhoodsSelect\"]/input"
+        },
+        {
+          "bill all mahalle selections": "//*[@id=\"billNeighborhoods\"]/label"
         }
       ]
     }

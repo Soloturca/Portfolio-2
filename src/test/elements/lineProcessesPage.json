@@ -77,7 +77,7 @@
         },
         {
           "_comment": "laman",
-          "devam et button": "//a[contains(text(),'Devam Et')]"
+          "devam et button": "//a[@class=\"button button--primary e-dvm-button\" and contains(text(),'Devam Et')]"
         },
         {
           "_comment": "laman",

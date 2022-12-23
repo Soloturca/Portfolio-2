@@ -431,9 +431,9 @@ Feature: CBU_C2D
     And I wait onayla ve devam et button element 10 seconds at index 1
     When I click element: onayla ve devam et button at index 1
     Then I see idInfoPage page
-#    And I wait bu kisi ile devam et button element 10 seconds at index 1
-#    When I click element: bu kisi ile devam et button at index 1
-#    Kimlik bilgileri sistemde kayıtlı. Kayıtlı kişi kullanılsın seçilip devam edildi. Kullanılan bilgiler aşağıdaki bilgilerdir.
+#   And I wait bu kisi ile devam et button element 10 seconds at index 1
+#   When I click element: bu kisi ile devam et button at index 1
+#   Kimlik bilgileri sistemde kayıtlı. Kayıtlı kişi kullanılsın seçilip devam edildi. Kullanılan bilgiler aşağıdaki bilgilerdir.
     And I wait name input area element 10 seconds at index 1
     Then I enter "ALİ" text to name input area at index 1
     And I wait surname input area element 10 seconds at index 1
@@ -447,16 +447,21 @@ Feature: CBU_C2D
     And I wait devam et button element 10 seconds at index 1
     When I click element: devam et button at index 1
     Then I see deliveryPage page
-    And I wait il element 10 seconds at index 1
-    When I click element: il at index 1
-    And I wait istanbul element 10 seconds at index 1
-    When I click element: istanbul at index 1
-    And I wait fatih element 10 seconds at index 1
-    When I click element: fatih at index 1
-    And I wait topkapi element 10 seconds at index 1
-    When I click element: topkapi at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     And I wait adres element 10 seconds at index 1
-    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to adres at index 1
+    Then I enter "Topkapı Sarayı" text to adres at index 1
     And I wait eposta element 10 seconds at index 1
     Then I enter "muhibbi@yahoo.com" text to eposta at index 1
     And I wait adresdevametbutton element 10 seconds at index 1
@@ -558,16 +563,21 @@ Feature: CBU_C2D
     And I wait devam et button element 10 seconds at index 1
     When I click element: devam et button at index 1
     Then I see deliveryPage page
-    And I wait il element 10 seconds at index 1
-    When I click element: il at index 1
-    And I wait istanbul element 10 seconds at index 1
-    When I click element: istanbul at index 1
-    And I wait fatih element 10 seconds at index 1
-    When I click element: fatih at index 1
-    And I wait topkapi element 10 seconds at index 1
-    When I click element: topkapi at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     And I wait adres element 10 seconds at index 1
-    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to adres at index 1
+    Then I enter "Topkapı Sarayı" text to adres at index 1
     And I wait eposta element 10 seconds at index 1
     Then I enter "muhibbi@yahoo.com" text to eposta at index 1
     And I wait adresdevametbutton element 10 seconds at index 1
@@ -614,12 +624,19 @@ Feature: CBU_C2D
     Then I see addressInfoPage page
     And I wait delivery selection element 15 seconds at index 1
     #deliveryAddress
-    Then I click element: dropDownCityDelivery at index 1
-    Then I click element: istanbulCity at index 1
-    Then I click element: dropDownDistrictDelivery at index 1
-    Then I click element: adalarDistrict at index 1
-    Then I click element: dropDownNeighborhoodDelivery at index 1
-    Then I click element: burgazadaStreet at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I enter "AddressDelivery" text to deliveryaddressTextArea at index 1
     Then I enter "vf@vf.com" text to emailTextArea at index 1
     And I wait address information continue button element 30 seconds at index 1
@@ -670,20 +687,34 @@ Feature: CBU_C2D
     Then I click element: different address checkbox at index 1
 
     #deliveryAddress
-    Then I click element: dropDownCityDelivery at index 1
-    Then I click element: istanbulCity at index 1
-    Then I click element: dropDownDistrictDelivery at index 1
-    Then I click element: adalarDistrict at index 1
-    Then I click element: dropDownNeighborhoodDelivery at index 1
-    Then I click element: burgazadaStreet at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I enter "AddressDelivery" text to deliveryaddressTextArea at index 1
     #BillingAddress
-    Then I click element: dropDownCityBilling at index 1
-    Then I click element: ankaraCity at index 2
-    Then I click element: dropDownDistrictBilling at index 1
-    Then I click element: akyurtDistrict at index 1
-    Then I click element: dropDownNeighborhoodBilling at index 1
-    Then I click element: bozcaStreet at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     Then I enter "AddressBilling" text to billingaddressTextArea at index 1
     Then I enter "vf@vf.com" text to emailTextArea at index 1
     And I wait address information continue button element 30 seconds at index 1
@@ -734,12 +765,19 @@ Feature: CBU_C2D
     And I wait delivery selection element 15 seconds at index 1
     Then I click element: buy from shopping center area at index 1
     #BillingAddress
-    Then I click element: dropDownCityBilling at index 1
-    Then I click element: istanbulCity at index 1
-    Then I click element: dropDownDistrictBilling at index 1
-    Then I click element: adalarDistrict at index 1
-    Then I click element: dropDownNeighborhoodBilling at index 1
-    Then I click element: burgazadaStreet at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     Then I enter "AddressBilling" text to billingaddressTextArea at index 1
     Then I enter "vf@vf.com" text to emailTextArea at index 1
     And I wait address information continue button element 30 seconds at index 1
@@ -790,12 +828,19 @@ Feature: CBU_C2D
     Then I see addressInfoPage page
     And I wait delivery selection element 15 seconds at index 1
     #deliveryAddress
-    Then I click element: dropDownCityDelivery at index 1
-    Then I click element: istanbulCity at index 1
-    Then I click element: dropDownDistrictDelivery at index 1
-    Then I click element: adalarDistrict at index 1
-    Then I click element: dropDownNeighborhoodDelivery at index 1
-    Then I click element: burgazadaStreet at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I enter "AddressDelivery" text to deliveryaddressTextArea at index 1
     Then I enter "vf@vf.com" text to emailTextArea at index 1
     And I wait address information continue button element 30 seconds at index 1
@@ -846,21 +891,37 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
-    And I wait city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to city at index 1
-    Then I enter "ADALAR" text to district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to neighborhood at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I click element: address input at index 1
     Then I enter "TEST" text to address input at index 1
     And I wait same address checkbox element 30 seconds at index 1
     Then I click element: same address checkbox at index 1
     Then I need to just wait
-    And I wait bill city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to bill city at index 1
-    Then I enter "ADALAR" text to bill district at index 1
-    Then I need to just wait
-    Then I enter "BÜYÜKADA" text to bill neighborhood at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     And I wait bill address input element 30 seconds at index 1
     Then I click element: bill address input at index 1
     Then I enter "BILL TEST" text to bill address input at index 1
@@ -876,21 +937,37 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
-    And I wait city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to city at index 1
-    Then I enter "ADALAR" text to district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I click element: address input at index 1
     Then I enter "TEST" text to address input at index 1
     And I wait same address checkbox element 30 seconds at index 1
     Then I click element: same address checkbox at index 1
     Then I need to just wait
-    And I wait bill city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to bill city at index 1
-    Then I enter "ADALAR" text to bill district at index 1
-    Then I need to just wait
-    Then I enter "BÜYÜKADA" text to bill neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     And I wait bill address input element 30 seconds at index 1
     Then I click element: bill address input at index 1
     Then I enter "BILL TEST" text to bill address input at index 1
@@ -947,12 +1024,19 @@ Feature: CBU_C2D
     And I wait buy in store button element 30 seconds at index 1
     Then I click element: buy in store button at index 1
     And I wait bill address element 30 seconds at index 1
-    And I wait bill city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to bill city at index 1
-    Then I enter "ADALAR" text to bill district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to bill neighborhood at index 1
-    Then I click element: bill neighborhood select at index 1
+     #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     And I wait bill address input element 30 seconds at index 1
     Then I enter "BILL TEST" text to bill address input at index 1
     And I wait mail input element 30 seconds at index 1
@@ -1007,11 +1091,19 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
-    And I wait city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to city at index 1
-    Then I enter "ADALAR" text to district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I click element: address input at index 1
     Then I enter "TEST" text to address input at index 1
     And I wait mail input element 30 seconds at index 1
@@ -1026,11 +1118,19 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
-    And I wait city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to city at index 1
-    Then I enter "ADALAR" text to district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I click element: address input at index 1
     Then I enter "TEST" text to address input at index 1
     And I wait mail input element 30 seconds at index 1
@@ -1087,21 +1187,37 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
-    And I wait city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to city at index 1
-    Then I enter "ADALAR" text to district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I click element: address input at index 1
     Then I enter "TEST" text to address input at index 1
     And I wait same address checkbox element 30 seconds at index 1
     Then I click element: same address checkbox at index 1
     Then I need to just wait
-    And I wait bill city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to bill city at index 1
-    Then I enter "ADALAR" text to bill district at index 1
-    Then I need to just wait
-    Then I enter "BÜYÜKADA" text to bill neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     And I wait bill address input element 30 seconds at index 1
     Then I click element: bill address input at index 1
     Then I enter "BILL TEST" text to bill address input at index 1
@@ -1117,21 +1233,37 @@ Feature: CBU_C2D
     Then I need to just wait
     Then I see addressInfoPage page
     And I wait delivery address element 15 seconds at index 1
-    And I wait city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to city at index 1
-    Then I enter "ADALAR" text to district at index 1
-    Then I need to just wait
-    Then I enter "BURGAZADA" text to neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     Then I click element: address input at index 1
     Then I enter "TEST" text to address input at index 1
     And I wait same address checkbox element 30 seconds at index 1
     Then I click element: same address checkbox at index 1
     Then I need to just wait
-    And I wait bill city element 15 seconds at index 1
-    Then I enter "İSTANBUL" text to bill city at index 1
-    Then I enter "ADALAR" text to bill district at index 1
-    Then I need to just wait
-    Then I enter "BÜYÜKADA" text to bill neighborhood at index 1
+    #   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait bill il select area element 10 seconds at index 1
+    When I click element: bill il select area at index 1
+    And I wait bill all il selections element 10 seconds at index 81
+    When I click element: bill all il selections at index 81
+    And I wait bill ilce element 10 seconds at index 1
+    When I click element: bill ilce at index 1
+    And I wait bill all ilce selections element 10 seconds at index 1
+    When I click element: bill all ilce selections at index 1
+    And I wait bill mahalle element 10 seconds at index 1
+    When I click element: bill mahalle at index 1
+    And I wait bill all mahalle selections element 10 seconds at index 1
+    When I click element: bill all mahalle selections at index 1
     And I wait bill address input element 30 seconds at index 1
     Then I click element: bill address input at index 1
     Then I enter "BILL TEST" text to bill address input at index 1
@@ -1149,33 +1281,33 @@ Feature: CBU_C2D
   Scenario: Adres Bilgisi
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
-    And I wait Yeni Faturali Hat Al element 10 seconds at index 1
-    When I click element: Yeni Faturali Hat Al at index 1
+    And I wait yeni faturali hat al button element 10 seconds at index 1
+    When I click element: yeni faturali hat al button at index 1
     Then I see tariffSelectionPage page
-    And I wait tarife sec button element 10 seconds at index 1
-    When I click element: tarife sec button at index 1
+    And I wait select tariff buttons element 10 seconds at index 1
+    When I click element: select tariff buttons at index 1
     And I need to just wait
     Then I see lineProcessesPage page
-    And I wait son7 hane text area element 10 seconds at index 1
-    When I click element: son7 hane text area at index 1
-    Then I enter "3333333" text to son7 hane text area at index 1
-    And I wait arabutton element 10 seconds at index 1
-    When I click element: arabutton at index 1
-    And I wait ilknumarabox element 10 seconds at index 1
-    When I click element: ilknumarabox at index 1
-    And I wait devametbutton element 10 seconds at index 1
-    When I click element: devametbutton at index 1
-    And I wait onaykodunumara text area element 10 seconds at index 1
-    Then I enter onaykodunumara text area random telephone number to at index 1
-    And I wait onaykodugonderbutton element 10 seconds at index 1
-    When I click element: onaykodugonderbutton at index 1
-    And I wait otp text area element 10 seconds at index 1
-    Then I enter "1111" text to otp text area at index 1
+    And I wait number entry area element 10 seconds at index 1
+    When I click element: number entry area at index 1
+    Then I enter "3333333" text to number entry area at index 1
+    And I wait ara button element 10 seconds at index 1
+    When I click element: ara button at index 1
+    And I wait devam et button element 10 seconds at index 1
+    When I click element: devam et button at index 1
+    And I wait onay kodu input area element 10 seconds at index 1
+    Then I enter onay kodu input area random telephone number to at index 1
+    And I wait onay kodu gonder button element 10 seconds at index 1
+    When I click element: onay kodu gonder button at index 1
+    And I wait onay kodu input area element 10 seconds at index 1
+    Then I enter "1111" text to onay kodu input area at index 1
     And I wait onayla ve devam et button element 10 seconds at index 1
     When I click element: onayla ve devam et button at index 1
+    Then I need to just wait
     Then I see idInfoPage page
-    And I wait ad element 10 seconds at index 1
-    Then I enter "ALİ" text to ad at index 1
+    And I wait name input area element 10 seconds at index 1
+    Then I need to just wait
+    Then I enter "ALİ" text to name input area at index 1
     And I wait surname input area element 10 seconds at index 1
     Then I enter "ALİ" text to surname input area at index 1
     And I wait tc input area element 10 seconds at index 1
@@ -1190,28 +1322,28 @@ Feature: CBU_C2D
     Then I see deliveryPage page
     Then I wait active road map element 20 seconds at index 1
     Then I wait vodafone logo element 20 seconds at index 1
-    And I click element: vodafone logo at index 1
-    And I need to just wait
-    Then I see welcomePage page
-    Then I go back previous page
-    Then I see deliveryPage page
     And I wait Adresime gelsin button active element 10 seconds at index 1
     And I wait Adres text area element 10 seconds at index 1
-    And I wait il element 10 seconds at index 1
+    And I wait il select area element 10 seconds at index 1
     And I wait ilce element 10 seconds at index 1
     And I wait mahalle element 10 seconds at index 1
     And I wait eposta element 10 seconds at index 1
     Then I check element: Devam et button is disabled
-    And I wait il element 10 seconds at index 1
-    When I click element: il at index 1
-    And I wait istanbul element 10 seconds at index 1
-    When I click element: istanbul at index 1
-    And I wait fatih element 10 seconds at index 1
-    When I click element: fatih at index 1
-    And I wait topkapi element 10 seconds at index 1
-    When I click element: topkapi at index 1
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     And I wait adres element 10 seconds at index 1
-    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to adres at index 1
+    Then I enter "Topkapı Sarayı" text to adres at index 1
     And I wait eposta element 10 seconds at index 1
     Then I enter "muhibbi@yahoo.com" text to eposta at index 1
     And I wait adresdevametbutton element 10 seconds at index 1
@@ -1230,16 +1362,30 @@ Feature: CBU_C2D
     And I wait edevlet loading message element 10 seconds at index 1
     Then I go back previous page
     Then I see deliveryPage page
-    And I wait il element 10 seconds at index 1
-    When I click element: il at index 1
-    And I wait istanbul element 10 seconds at index 1
-    When I click element: istanbul at index 1
-    And I wait fatih element 10 seconds at index 1
-    When I click element: fatih at index 1
-    And I wait topkapi element 10 seconds at index 1
-    When I click element: topkapi at index 1
+    And I wait degistir button element 10 seconds at index 1
+    When I click element: degistir button at index 1
+    Then I see tariffSelectionPage page
+    And I wait select tariff buttons element 10 seconds at index 1
+    When I click element: select tariff buttons at index 1
+    Then I see idInfoPage page
+    And I wait bu kisi ile devam et button element 10 seconds at index 1
+    When I click element: bu kisi ile devam et button at index 1
+    Then I see deliveryPage page
+#   Dynamic il, ilce and mahalle selections from index numbers.
+    And I wait il select area element 10 seconds at index 1
+    When I click element: il select area at index 1
+    And I wait all il selections element 10 seconds at index 81
+    When I click element: all il selections at index 81
+    And I wait ilce element 10 seconds at index 1
+    When I click element: ilce at index 1
+    And I wait all ilce selections element 10 seconds at index 1
+    When I click element: all ilce selections at index 1
+    And I wait mahalle element 10 seconds at index 1
+    When I click element: mahalle at index 1
+    And I wait all mahalle selections element 10 seconds at index 1
+    When I click element: all mahalle selections at index 1
     And I wait adres element 10 seconds at index 1
-    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to adres at index 1
+    Then I enter "Topkapı Sarayı" text to adres at index 1
     And I wait eposta element 10 seconds at index 1
     Then I enter "muhibbi@yahoo.com" text to eposta at index 1
     And I wait adresdevametbutton element 10 seconds at index 1
@@ -1253,72 +1399,7 @@ Feature: CBU_C2D
     And I wait kapat button element 10 seconds at index 1
     And I wait cross button element 10 seconds at index 1
     When I click element: cross button at index 1
-    Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/adres_bilgileri URL
-    Then I see deliveryPage page
-    And I wait Magazadan alacagim button element 10 seconds at index 1
-    When I click element: Magazadan alacagim button at index 1
-    And I wait billAddress element 10 seconds at index 1
-    And I wait bill eposta element 10 seconds at index 1
-    And I wait bill il element 10 seconds at index 1
-    And I wait bill ilce element 10 seconds at index 1
-    And I wait bill mahalle element 10 seconds at index 1
-    And I wait bill eposta element 10 seconds at index 1
-    Then I check element: Devam et button is disabled
-    And I wait bill il element 10 seconds at index 1
-    When I click element: bill il at index 1
-    And I wait bill istanbul element 10 seconds at index 1
-    When I click element: bill istanbul at index 1
-    And I wait bill fatih element 10 seconds at index 1
-    When I click element: bill fatih at index 1
-    And I wait bill topkapi element 10 seconds at index 1
-    When I click element: bill topkapi at index 1
-    And I wait bill adres element 10 seconds at index 1
-    Then I enter "Topkapı Sarayı, Has Oda Topkapı/Fatih/İstanbul" text to bill adres at index 1
-    And I wait bill eposta element 10 seconds at index 1
-    Then I enter "muhibbi@yahoo.com" text to bill eposta at index 1
-    And I wait adresdevametbutton element 10 seconds at index 1
-    When I click element: adresdevametbutton at index 1
-    Then I see confirmationPage page
-    And I wait bill basvuru kimlik uyarı message element 10 seconds at index 1
-    And I wait basvuru ozeti element 10 seconds at index 1
-    And I wait basvuru ozeti i button element 10 seconds at index 1
-    When I click element: basvuru ozeti i button at index 1
-    And I wait kapat button element 10 seconds at index 1
-    And I wait cross button element 10 seconds at index 1
-    When I click element: cross button at index 1
-    And I wait ana sayfaya git button element 10 seconds at index 1
-    When I click element: ana sayfaya git button at index 1
-    Then I go back previous page
-    Then I go back previous page
-    And I wait degistir button element 10 seconds at index 1
-    When I click element: degistir button at index 1
-    Then I see tariffSelectionPage page
-    And I wait baska tarife sec after degistir button element 10 seconds at index 1
-    When I click element: baska tarife sec after degistir button at index 1
-    Then I see idInfoPage page
-    And I wait name input area element 10 seconds at index 1
-    Then I enter "ALİ" text to name input area at index 1
-    And I wait surname input area element 10 seconds at index 1
-    Then I enter "ALİ" text to surname input area at index 1
-    And I wait tc input area element 10 seconds at index 1
-    Then I enter "58919081214" text to tc input area at index 1
-    And I wait father name input area element 10 seconds at index 1
-    Then I enter "ALİ" text to father name input area at index 1
-    And I wait birth date input area element 10 seconds at index 1
-    Then I enter "03/03/1998" text to birth date input area at index 1
-    And I wait devam et button element 10 seconds at index 1
-    When I click element: devam et button at index 1
-    And I need to just wait
-    Then I see lineProcessesPage page
-    And I wait onaykodunumara text area element 10 seconds at index 1
-    Then I enter onaykodunumara text area random telephone number to at index 1
-    And I wait onaykodugonderbutton element 10 seconds at index 1
-    When I click element: onaykodugonderbutton at index 1
-    And I wait otp text area element 10 seconds at index 1
-    Then I enter "1111" text to otp text area at index 1
-    And I wait onayla ve devam et button element 10 seconds at index 1
-    When I click element: onayla ve devam et button at index 1
-
+    Then I need to just wait
 
 
 

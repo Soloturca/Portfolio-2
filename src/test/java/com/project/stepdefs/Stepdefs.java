@@ -1,10 +1,11 @@
 package com.project.stepdefs;
 
+import api.base.TestUtils;
 import api.baseMethods.BaseMethods;
 import api.body.Responses;
-import base.AutomationConstants;
-import base.CommonLib;
-import base.LocalDriver;
+import api.base.AutomationConstants;
+import api.base.CommonLib;
+import api.base.LocalDriver;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -29,7 +30,7 @@ public class Stepdefs {
     WebDriver oDriver;
     InputStream stringsis;
     public static HashMap<String, String> strings = new HashMap<String, String>();
-    base.TestUtils utils;
+    TestUtils utils;
 
     int timeout = 30;
 

@@ -8,7 +8,7 @@
       },
       "elements": [
         {
-          "il": "//*[@id=\"deliveryCitiesSelect\"]/img"
+          "il select area": "//*[@id=\"deliveryCitiesSelect\"]/img"
         },
         {
           "delivery selection": "//h3[contains(text(),'Teslimat se\u00E7imi')]"
@@ -17,13 +17,13 @@
           "delivery address": "//h3[contains(text(),'Teslimat adresi')]"
         },
         {
-          "istanbul": "//*[@id=\"deliveryCities\"]/label[1]/span[2]"
+          "all il selections": "//*[@id=\"deliveryCities\"]/label"
         },
         {
-          "fatih": "//*[@id=\"deliveryDistricts\"]/label[20]/span[2]"
+          "all ilce selections": "//*[@id=\"deliveryDistricts\"]/label"
         },
         {
-          "topkapi": "//*[@id=\"deliveryNeighborhoods\"]/label[60]/span[2]"
+          "all mahalle selections": "//*[@id=\"deliveryNeighborhoods\"]/label"
         },
         {
           "adres": "//*[@id=\"address\"]"
@@ -58,9 +58,6 @@
           "Adres text area": "//*[@id=\"address\"]"
         },
         {
-          "il": "//*[@id=\"deliveryCitiesSelect\"]/input"
-        },
-        {
           "ilce": "//*[@id=\"deliveryDistrictsSelect\"]/input"
         },
         {
@@ -82,10 +79,10 @@
           "bill eposta": "//*[@id=\"eposta\"]"
         },
         {
-          "bill il": "//*[@class=\"input-emr ng-pristine ng-valid ng-touched\"]"
+          "bill il select area": "//*[@id=\"billCitiesSelect\"]/input"
         },
         {
-          "bill ilce": "//*[@class=\"input-emr ng-untouched ng-pristine\"]"
+          "bill ilce": "//*[@id=\"billDistrictsSelect\"]/input"
         },
         {
           "bill mahalle": "//*[@id=\"billNeighborhoodsSelect\"]/input"
@@ -97,16 +94,16 @@
           "bill eposta": "//*[@id=\"eposta\"]"
         },
         {
-          "bill istanbul": "//*[@id=\"billCities\"]/label[1]/span[2]"
-        },
-        {
-          "bill fatih": "//*[@id=\"billDistricts\"]/label[20]/span[2]"
-        },
-        {
-          "bill topkapi": "//*[@id=\"billNeighborhoods\"]/label[60]/span[2]"
-        },
-        {
           "degistir button": "//a[@class=\"button button--primary basvuru-degistir-btn ng-star-inserted\"]"
+        },
+        {
+          "bill all il selections": "//*[@id=\"billCities\"]/label"
+        },
+        {
+          "bill all ilce selections": "//*[@id=\"billDistricts\"]/label"
+        },
+        {
+          "bill all mahalle selections": "//*[@id=\"billNeighborhoods\"]/label"
         }
       ]
     }
