@@ -1,7 +1,7 @@
 Feature: CBU_C2D
 @web
   #Laman
-  @TEST-952954
+  @web
   Scenario: Welcomepage
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -81,7 +81,7 @@ Feature: CBU_C2D
 
     Then I need to just wait
 
-  @TEST-952981
+  @web
   Scenario: Tarifeler
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -204,7 +204,7 @@ Feature: CBU_C2D
 
 
   #Laman
-  @TEST-953003
+  @web
   Scenario: OTP Adımı
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -305,7 +305,7 @@ Feature: CBU_C2D
     Then I need to just wait
 
   #Laman
-  @TEST-953004
+  @web
   Scenario: Kişisel Bilgiler
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -401,10 +401,10 @@ Feature: CBU_C2D
     Then I need to just wait
 
 
-@Akif
+
 
 #Akif's Cases
-  @TEST-953024
+  @web
   Scenario: Istenen Numarayla Magazaya Teslim NL Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -471,7 +471,7 @@ Feature: CBU_C2D
     And I need to just wait
 
 
-  @TEST-953025
+  @web
   Scenario: Yarım Basvuru 1
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -494,7 +494,7 @@ Feature: CBU_C2D
     And I need to just wait
 
 
-  @TEST-953026
+  @web
   Scenario: Yarım Basvuru 2
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -529,7 +529,7 @@ Feature: CBU_C2D
     When I click element: devam et button at index 1
 
 
-  @TEST-953027
+  @web
   Scenario: Yarım Basvuru 3
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -585,7 +585,7 @@ Feature: CBU_C2D
 
 
     #Batu
-  @TEST-953016
+  @web
   Scenario: Ayni Adres MNP Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -646,7 +646,7 @@ Feature: CBU_C2D
     And I wait confirmationQuestionTextArea element 30 seconds at index 1
 
   #Batu
-  @TEST-953017
+  @web
   Scenario: Farkli Adres MNP Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -725,7 +725,7 @@ Feature: CBU_C2D
 
 
   #Batu
-  @TEST-953018
+  @web
   Scenario: Magazadan Al MNP Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -787,7 +787,7 @@ Feature: CBU_C2D
     And I wait confirmationSuccessfullyTextArea element 30 seconds at index 1
 
   #Batu
-  @TEST-953019
+  @web
   Scenario: Rastgele Numarayla Adrese Teslim NL Basvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -851,7 +851,7 @@ Feature: CBU_C2D
 
 
      #Beyza
-  @TEST-953020
+  @web
   Scenario: Rastgele Numarayla Farklı Adrese Teslim NL Başvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -981,7 +981,7 @@ Feature: CBU_C2D
     And I wait continue with courier element 30 seconds at index 1
 
     #Beyza
-  @TEST-953021
+  @web
   Scenario: Rastgele Numarayla Mağazaya Teslim NL Başvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -1047,7 +1047,7 @@ Feature: CBU_C2D
     And I wait continue with courier element 30 seconds at index 1
 
   #Beyza
-  @TEST-953022
+  @web
   Scenario: İstenen Numarayla Adrese Teslim NL Başvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -1143,7 +1143,7 @@ Feature: CBU_C2D
     And I wait continue with courier element 30 seconds at index 1
 
      #Beyza
-  @TEST-953023
+  @web
   Scenario: İstenen Numarayla Farklı Adrese Teslim NL Başvuru
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page
@@ -1276,8 +1276,8 @@ Feature: CBU_C2D
     Then I click element: courier button at index 1
     And I wait continue with courier element 30 seconds at index 1
 
-#  mvn clean -Dtestname="TEST-953772" test
-  @TEST-953772
+#  mvn clean -Dtestname="web" test
+  @web
   Scenario: Adres Bilgisi
     Given Open the https://efes.vodafone.com.tr/clicktodoor-mobil-dxl/ URL
     Then I see welcomePage page

@@ -3,7 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [DefSuite]">
   <parameter name="browserName" value="chrome"/>
   <test thread-count="5" name="Test(failed)">
-    <parameter name="tagName" value="TEST-953772"/>
+    <parameter name="tagName" value="web"/>
     <classes>
       <class name="com.project.runners.Runner">
         <methods>
